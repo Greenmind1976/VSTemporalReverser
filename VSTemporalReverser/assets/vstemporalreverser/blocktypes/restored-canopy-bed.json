@@ -1,0 +1,4014 @@
+{
+  "code": "restored-canopy-bed",
+  "class": "BlockRestoredCanopyBed",
+  "entityClassByType": {
+    "*-head-*": "Bed"
+  },
+  "variantgroups": [
+    {
+      "code": "material",
+      "states": [
+        "morningstaropen",
+        "morningstaropened",
+        "morningstarclosed",
+        "blueplaidopen",
+        "blueplaidopened",
+        "blueplaidclosed",
+        "greenplaidopen",
+        "greenplaidopened",
+        "greenplaidclosed",
+        "redplaidopen",
+        "redplaidopened",
+        "redplaidclosed",
+        "honeycombopen",
+        "honeycombopened",
+        "honeycombclosed",
+        "placeholder"
+      ]
+    },
+    {
+      "code": "wood",
+      "states": [
+        "mahogany",
+        "walnut",
+        "oak",
+        "maple",
+        "pine",
+        "redwood"
+      ]
+    },
+    {
+      "code": "part",
+      "states": [
+        "head",
+        "feet"
+      ]
+    },
+    {
+      "code": "side",
+      "loadFromProperties": "abstract/horizontalorientation"
+    }
+  ],
+  "attributes": {
+    "sleepEfficiencyByType": {
+      "*": 0.83333333
+    },
+    "handbook": {
+      "groupBy": [
+        "restored-canopy-bed-{material}-*-*"
+      ]
+    }
+  },
+  "blockmaterial": "Wood",
+  "replaceable": 550,
+  "resistance": 2,
+  "creativeinventory": {
+    "general": [
+      "*-morningstaropen-mahogany-head-north",
+      "*-morningstaropened-mahogany-head-north",
+      "*-morningstarclosed-mahogany-head-north",
+      "*-blueplaidopen-mahogany-head-north",
+      "*-blueplaidopened-mahogany-head-north",
+      "*-blueplaidclosed-mahogany-head-north",
+      "*-greenplaidopen-mahogany-head-north",
+      "*-greenplaidopened-mahogany-head-north",
+      "*-greenplaidclosed-mahogany-head-north",
+      "*-redplaidopen-mahogany-head-north",
+      "*-redplaidopened-mahogany-head-north",
+      "*-redplaidclosed-mahogany-head-north",
+      "*-honeycombopen-mahogany-head-north",
+      "*-honeycombopened-mahogany-head-north",
+      "*-honeycombclosed-mahogany-head-north"
+    ],
+    "decorative": [
+      "*-morningstaropen-mahogany-head-north",
+      "*-morningstaropened-mahogany-head-north",
+      "*-morningstarclosed-mahogany-head-north",
+      "*-blueplaidopen-mahogany-head-north",
+      "*-blueplaidopened-mahogany-head-north",
+      "*-blueplaidclosed-mahogany-head-north",
+      "*-greenplaidopen-mahogany-head-north",
+      "*-greenplaidopened-mahogany-head-north",
+      "*-greenplaidclosed-mahogany-head-north",
+      "*-redplaidopen-mahogany-head-north",
+      "*-redplaidopened-mahogany-head-north",
+      "*-redplaidclosed-mahogany-head-north",
+      "*-honeycombopen-mahogany-head-north",
+      "*-honeycombopened-mahogany-head-north",
+      "*-honeycombclosed-mahogany-head-north"
+    ]
+  },
+  "drawtype": "json",
+  "shapeinventoryByType": {
+    "*-morningstaropen-*-*": {
+      "base": "block/clutter/bed/bed-fancy-open"
+    },
+    "*-morningstaropened-*-*": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened"
+    },
+    "*-morningstarclosed-*-*": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed"
+    },
+    "*-blueplaidopen-*-*": {
+      "base": "block/clutter/bed/bed-fancy-open"
+    },
+    "*-blueplaidopened-*-*": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened"
+    },
+    "*-blueplaidclosed-*-*": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed"
+    },
+    "*-greenplaidopen-*-*": {
+      "base": "block/clutter/bed/bed-fancy-open"
+    },
+    "*-greenplaidopened-*-*": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened"
+    },
+    "*-greenplaidclosed-*-*": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed"
+    },
+    "*-redplaidopen-*-*": {
+      "base": "block/clutter/bed/bed-fancy-open"
+    },
+    "*-redplaidopened-*-*": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened"
+    },
+    "*-redplaidclosed-*-*": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed"
+    },
+    "*-honeycombopen-*-*": {
+      "base": "block/clutter/bed/bed-fancy-open"
+    },
+    "*-honeycombopened-*-*": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened"
+    },
+    "*-honeycombclosed-*-*": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed"
+    },
+    "*": {
+      "base": "block/clutter/bed/bed-fancy-open"
+    }
+  },
+  "shapebytype": {
+    "*-morningstaropen-mahogany-head-north": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 90
+    },
+    "*-morningstaropen-mahogany-head-east": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 0
+    },
+    "*-morningstaropen-mahogany-head-south": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 270
+    },
+    "*-morningstaropen-mahogany-head-west": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 180
+    },
+    "*-morningstaropen-mahogany-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-morningstaropen-walnut-head-north": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 90
+    },
+    "*-morningstaropen-walnut-head-east": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 0
+    },
+    "*-morningstaropen-walnut-head-south": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 270
+    },
+    "*-morningstaropen-walnut-head-west": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 180
+    },
+    "*-morningstaropen-walnut-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-morningstaropen-oak-head-north": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 90
+    },
+    "*-morningstaropen-oak-head-east": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 0
+    },
+    "*-morningstaropen-oak-head-south": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 270
+    },
+    "*-morningstaropen-oak-head-west": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 180
+    },
+    "*-morningstaropen-oak-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-morningstaropen-maple-head-north": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 90
+    },
+    "*-morningstaropen-maple-head-east": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 0
+    },
+    "*-morningstaropen-maple-head-south": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 270
+    },
+    "*-morningstaropen-maple-head-west": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 180
+    },
+    "*-morningstaropen-maple-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-morningstaropen-pine-head-north": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 90
+    },
+    "*-morningstaropen-pine-head-east": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 0
+    },
+    "*-morningstaropen-pine-head-south": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 270
+    },
+    "*-morningstaropen-pine-head-west": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 180
+    },
+    "*-morningstaropen-pine-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-morningstaropen-redwood-head-north": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 90
+    },
+    "*-morningstaropen-redwood-head-east": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 0
+    },
+    "*-morningstaropen-redwood-head-south": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 270
+    },
+    "*-morningstaropen-redwood-head-west": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 180
+    },
+    "*-morningstaropen-redwood-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-morningstaropened-mahogany-head-north": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 90
+    },
+    "*-morningstaropened-mahogany-head-east": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 0
+    },
+    "*-morningstaropened-mahogany-head-south": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 270
+    },
+    "*-morningstaropened-mahogany-head-west": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 180
+    },
+    "*-morningstaropened-mahogany-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-morningstaropened-walnut-head-north": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 90
+    },
+    "*-morningstaropened-walnut-head-east": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 0
+    },
+    "*-morningstaropened-walnut-head-south": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 270
+    },
+    "*-morningstaropened-walnut-head-west": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 180
+    },
+    "*-morningstaropened-walnut-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-morningstaropened-oak-head-north": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 90
+    },
+    "*-morningstaropened-oak-head-east": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 0
+    },
+    "*-morningstaropened-oak-head-south": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 270
+    },
+    "*-morningstaropened-oak-head-west": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 180
+    },
+    "*-morningstaropened-oak-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-morningstaropened-maple-head-north": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 90
+    },
+    "*-morningstaropened-maple-head-east": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 0
+    },
+    "*-morningstaropened-maple-head-south": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 270
+    },
+    "*-morningstaropened-maple-head-west": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 180
+    },
+    "*-morningstaropened-maple-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-morningstaropened-pine-head-north": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 90
+    },
+    "*-morningstaropened-pine-head-east": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 0
+    },
+    "*-morningstaropened-pine-head-south": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 270
+    },
+    "*-morningstaropened-pine-head-west": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 180
+    },
+    "*-morningstaropened-pine-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-morningstaropened-redwood-head-north": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 90
+    },
+    "*-morningstaropened-redwood-head-east": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 0
+    },
+    "*-morningstaropened-redwood-head-south": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 270
+    },
+    "*-morningstaropened-redwood-head-west": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 180
+    },
+    "*-morningstaropened-redwood-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-morningstarclosed-mahogany-head-north": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 90
+    },
+    "*-morningstarclosed-mahogany-head-east": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 0
+    },
+    "*-morningstarclosed-mahogany-head-south": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 270
+    },
+    "*-morningstarclosed-mahogany-head-west": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 180
+    },
+    "*-morningstarclosed-mahogany-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-morningstarclosed-walnut-head-north": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 90
+    },
+    "*-morningstarclosed-walnut-head-east": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 0
+    },
+    "*-morningstarclosed-walnut-head-south": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 270
+    },
+    "*-morningstarclosed-walnut-head-west": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 180
+    },
+    "*-morningstarclosed-walnut-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-morningstarclosed-oak-head-north": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 90
+    },
+    "*-morningstarclosed-oak-head-east": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 0
+    },
+    "*-morningstarclosed-oak-head-south": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 270
+    },
+    "*-morningstarclosed-oak-head-west": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 180
+    },
+    "*-morningstarclosed-oak-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-morningstarclosed-maple-head-north": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 90
+    },
+    "*-morningstarclosed-maple-head-east": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 0
+    },
+    "*-morningstarclosed-maple-head-south": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 270
+    },
+    "*-morningstarclosed-maple-head-west": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 180
+    },
+    "*-morningstarclosed-maple-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-morningstarclosed-pine-head-north": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 90
+    },
+    "*-morningstarclosed-pine-head-east": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 0
+    },
+    "*-morningstarclosed-pine-head-south": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 270
+    },
+    "*-morningstarclosed-pine-head-west": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 180
+    },
+    "*-morningstarclosed-pine-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-morningstarclosed-redwood-head-north": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 90
+    },
+    "*-morningstarclosed-redwood-head-east": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 0
+    },
+    "*-morningstarclosed-redwood-head-south": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 270
+    },
+    "*-morningstarclosed-redwood-head-west": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 180
+    },
+    "*-morningstarclosed-redwood-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-blueplaidopen-mahogany-head-north": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 90
+    },
+    "*-blueplaidopen-mahogany-head-east": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 0
+    },
+    "*-blueplaidopen-mahogany-head-south": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 270
+    },
+    "*-blueplaidopen-mahogany-head-west": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 180
+    },
+    "*-blueplaidopen-mahogany-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-blueplaidopen-walnut-head-north": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 90
+    },
+    "*-blueplaidopen-walnut-head-east": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 0
+    },
+    "*-blueplaidopen-walnut-head-south": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 270
+    },
+    "*-blueplaidopen-walnut-head-west": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 180
+    },
+    "*-blueplaidopen-walnut-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-blueplaidopen-oak-head-north": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 90
+    },
+    "*-blueplaidopen-oak-head-east": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 0
+    },
+    "*-blueplaidopen-oak-head-south": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 270
+    },
+    "*-blueplaidopen-oak-head-west": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 180
+    },
+    "*-blueplaidopen-oak-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-blueplaidopen-maple-head-north": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 90
+    },
+    "*-blueplaidopen-maple-head-east": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 0
+    },
+    "*-blueplaidopen-maple-head-south": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 270
+    },
+    "*-blueplaidopen-maple-head-west": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 180
+    },
+    "*-blueplaidopen-maple-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-blueplaidopen-pine-head-north": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 90
+    },
+    "*-blueplaidopen-pine-head-east": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 0
+    },
+    "*-blueplaidopen-pine-head-south": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 270
+    },
+    "*-blueplaidopen-pine-head-west": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 180
+    },
+    "*-blueplaidopen-pine-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-blueplaidopen-redwood-head-north": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 90
+    },
+    "*-blueplaidopen-redwood-head-east": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 0
+    },
+    "*-blueplaidopen-redwood-head-south": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 270
+    },
+    "*-blueplaidopen-redwood-head-west": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 180
+    },
+    "*-blueplaidopen-redwood-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-blueplaidopened-mahogany-head-north": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 90
+    },
+    "*-blueplaidopened-mahogany-head-east": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 0
+    },
+    "*-blueplaidopened-mahogany-head-south": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 270
+    },
+    "*-blueplaidopened-mahogany-head-west": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 180
+    },
+    "*-blueplaidopened-mahogany-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-blueplaidopened-walnut-head-north": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 90
+    },
+    "*-blueplaidopened-walnut-head-east": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 0
+    },
+    "*-blueplaidopened-walnut-head-south": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 270
+    },
+    "*-blueplaidopened-walnut-head-west": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 180
+    },
+    "*-blueplaidopened-walnut-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-blueplaidopened-oak-head-north": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 90
+    },
+    "*-blueplaidopened-oak-head-east": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 0
+    },
+    "*-blueplaidopened-oak-head-south": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 270
+    },
+    "*-blueplaidopened-oak-head-west": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 180
+    },
+    "*-blueplaidopened-oak-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-blueplaidopened-maple-head-north": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 90
+    },
+    "*-blueplaidopened-maple-head-east": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 0
+    },
+    "*-blueplaidopened-maple-head-south": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 270
+    },
+    "*-blueplaidopened-maple-head-west": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 180
+    },
+    "*-blueplaidopened-maple-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-blueplaidopened-pine-head-north": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 90
+    },
+    "*-blueplaidopened-pine-head-east": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 0
+    },
+    "*-blueplaidopened-pine-head-south": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 270
+    },
+    "*-blueplaidopened-pine-head-west": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 180
+    },
+    "*-blueplaidopened-pine-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-blueplaidopened-redwood-head-north": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 90
+    },
+    "*-blueplaidopened-redwood-head-east": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 0
+    },
+    "*-blueplaidopened-redwood-head-south": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 270
+    },
+    "*-blueplaidopened-redwood-head-west": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 180
+    },
+    "*-blueplaidopened-redwood-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-blueplaidclosed-mahogany-head-north": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 90
+    },
+    "*-blueplaidclosed-mahogany-head-east": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 0
+    },
+    "*-blueplaidclosed-mahogany-head-south": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 270
+    },
+    "*-blueplaidclosed-mahogany-head-west": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 180
+    },
+    "*-blueplaidclosed-mahogany-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-blueplaidclosed-walnut-head-north": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 90
+    },
+    "*-blueplaidclosed-walnut-head-east": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 0
+    },
+    "*-blueplaidclosed-walnut-head-south": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 270
+    },
+    "*-blueplaidclosed-walnut-head-west": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 180
+    },
+    "*-blueplaidclosed-walnut-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-blueplaidclosed-oak-head-north": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 90
+    },
+    "*-blueplaidclosed-oak-head-east": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 0
+    },
+    "*-blueplaidclosed-oak-head-south": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 270
+    },
+    "*-blueplaidclosed-oak-head-west": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 180
+    },
+    "*-blueplaidclosed-oak-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-blueplaidclosed-maple-head-north": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 90
+    },
+    "*-blueplaidclosed-maple-head-east": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 0
+    },
+    "*-blueplaidclosed-maple-head-south": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 270
+    },
+    "*-blueplaidclosed-maple-head-west": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 180
+    },
+    "*-blueplaidclosed-maple-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-blueplaidclosed-pine-head-north": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 90
+    },
+    "*-blueplaidclosed-pine-head-east": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 0
+    },
+    "*-blueplaidclosed-pine-head-south": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 270
+    },
+    "*-blueplaidclosed-pine-head-west": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 180
+    },
+    "*-blueplaidclosed-pine-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-blueplaidclosed-redwood-head-north": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 90
+    },
+    "*-blueplaidclosed-redwood-head-east": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 0
+    },
+    "*-blueplaidclosed-redwood-head-south": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 270
+    },
+    "*-blueplaidclosed-redwood-head-west": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 180
+    },
+    "*-blueplaidclosed-redwood-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-greenplaidopen-mahogany-head-north": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 90
+    },
+    "*-greenplaidopen-mahogany-head-east": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 0
+    },
+    "*-greenplaidopen-mahogany-head-south": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 270
+    },
+    "*-greenplaidopen-mahogany-head-west": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 180
+    },
+    "*-greenplaidopen-mahogany-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-greenplaidopen-walnut-head-north": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 90
+    },
+    "*-greenplaidopen-walnut-head-east": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 0
+    },
+    "*-greenplaidopen-walnut-head-south": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 270
+    },
+    "*-greenplaidopen-walnut-head-west": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 180
+    },
+    "*-greenplaidopen-walnut-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-greenplaidopen-oak-head-north": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 90
+    },
+    "*-greenplaidopen-oak-head-east": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 0
+    },
+    "*-greenplaidopen-oak-head-south": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 270
+    },
+    "*-greenplaidopen-oak-head-west": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 180
+    },
+    "*-greenplaidopen-oak-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-greenplaidopen-maple-head-north": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 90
+    },
+    "*-greenplaidopen-maple-head-east": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 0
+    },
+    "*-greenplaidopen-maple-head-south": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 270
+    },
+    "*-greenplaidopen-maple-head-west": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 180
+    },
+    "*-greenplaidopen-maple-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-greenplaidopen-pine-head-north": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 90
+    },
+    "*-greenplaidopen-pine-head-east": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 0
+    },
+    "*-greenplaidopen-pine-head-south": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 270
+    },
+    "*-greenplaidopen-pine-head-west": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 180
+    },
+    "*-greenplaidopen-pine-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-greenplaidopen-redwood-head-north": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 90
+    },
+    "*-greenplaidopen-redwood-head-east": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 0
+    },
+    "*-greenplaidopen-redwood-head-south": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 270
+    },
+    "*-greenplaidopen-redwood-head-west": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 180
+    },
+    "*-greenplaidopen-redwood-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-greenplaidopened-mahogany-head-north": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 90
+    },
+    "*-greenplaidopened-mahogany-head-east": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 0
+    },
+    "*-greenplaidopened-mahogany-head-south": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 270
+    },
+    "*-greenplaidopened-mahogany-head-west": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 180
+    },
+    "*-greenplaidopened-mahogany-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-greenplaidopened-walnut-head-north": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 90
+    },
+    "*-greenplaidopened-walnut-head-east": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 0
+    },
+    "*-greenplaidopened-walnut-head-south": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 270
+    },
+    "*-greenplaidopened-walnut-head-west": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 180
+    },
+    "*-greenplaidopened-walnut-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-greenplaidopened-oak-head-north": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 90
+    },
+    "*-greenplaidopened-oak-head-east": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 0
+    },
+    "*-greenplaidopened-oak-head-south": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 270
+    },
+    "*-greenplaidopened-oak-head-west": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 180
+    },
+    "*-greenplaidopened-oak-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-greenplaidopened-maple-head-north": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 90
+    },
+    "*-greenplaidopened-maple-head-east": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 0
+    },
+    "*-greenplaidopened-maple-head-south": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 270
+    },
+    "*-greenplaidopened-maple-head-west": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 180
+    },
+    "*-greenplaidopened-maple-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-greenplaidopened-pine-head-north": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 90
+    },
+    "*-greenplaidopened-pine-head-east": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 0
+    },
+    "*-greenplaidopened-pine-head-south": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 270
+    },
+    "*-greenplaidopened-pine-head-west": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 180
+    },
+    "*-greenplaidopened-pine-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-greenplaidopened-redwood-head-north": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 90
+    },
+    "*-greenplaidopened-redwood-head-east": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 0
+    },
+    "*-greenplaidopened-redwood-head-south": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 270
+    },
+    "*-greenplaidopened-redwood-head-west": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 180
+    },
+    "*-greenplaidopened-redwood-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-greenplaidclosed-mahogany-head-north": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 90
+    },
+    "*-greenplaidclosed-mahogany-head-east": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 0
+    },
+    "*-greenplaidclosed-mahogany-head-south": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 270
+    },
+    "*-greenplaidclosed-mahogany-head-west": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 180
+    },
+    "*-greenplaidclosed-mahogany-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-greenplaidclosed-walnut-head-north": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 90
+    },
+    "*-greenplaidclosed-walnut-head-east": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 0
+    },
+    "*-greenplaidclosed-walnut-head-south": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 270
+    },
+    "*-greenplaidclosed-walnut-head-west": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 180
+    },
+    "*-greenplaidclosed-walnut-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-greenplaidclosed-oak-head-north": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 90
+    },
+    "*-greenplaidclosed-oak-head-east": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 0
+    },
+    "*-greenplaidclosed-oak-head-south": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 270
+    },
+    "*-greenplaidclosed-oak-head-west": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 180
+    },
+    "*-greenplaidclosed-oak-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-greenplaidclosed-maple-head-north": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 90
+    },
+    "*-greenplaidclosed-maple-head-east": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 0
+    },
+    "*-greenplaidclosed-maple-head-south": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 270
+    },
+    "*-greenplaidclosed-maple-head-west": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 180
+    },
+    "*-greenplaidclosed-maple-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-greenplaidclosed-pine-head-north": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 90
+    },
+    "*-greenplaidclosed-pine-head-east": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 0
+    },
+    "*-greenplaidclosed-pine-head-south": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 270
+    },
+    "*-greenplaidclosed-pine-head-west": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 180
+    },
+    "*-greenplaidclosed-pine-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-greenplaidclosed-redwood-head-north": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 90
+    },
+    "*-greenplaidclosed-redwood-head-east": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 0
+    },
+    "*-greenplaidclosed-redwood-head-south": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 270
+    },
+    "*-greenplaidclosed-redwood-head-west": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 180
+    },
+    "*-greenplaidclosed-redwood-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-redplaidopen-mahogany-head-north": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 90
+    },
+    "*-redplaidopen-mahogany-head-east": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 0
+    },
+    "*-redplaidopen-mahogany-head-south": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 270
+    },
+    "*-redplaidopen-mahogany-head-west": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 180
+    },
+    "*-redplaidopen-mahogany-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-redplaidopen-walnut-head-north": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 90
+    },
+    "*-redplaidopen-walnut-head-east": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 0
+    },
+    "*-redplaidopen-walnut-head-south": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 270
+    },
+    "*-redplaidopen-walnut-head-west": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 180
+    },
+    "*-redplaidopen-walnut-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-redplaidopen-oak-head-north": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 90
+    },
+    "*-redplaidopen-oak-head-east": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 0
+    },
+    "*-redplaidopen-oak-head-south": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 270
+    },
+    "*-redplaidopen-oak-head-west": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 180
+    },
+    "*-redplaidopen-oak-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-redplaidopen-maple-head-north": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 90
+    },
+    "*-redplaidopen-maple-head-east": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 0
+    },
+    "*-redplaidopen-maple-head-south": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 270
+    },
+    "*-redplaidopen-maple-head-west": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 180
+    },
+    "*-redplaidopen-maple-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-redplaidopen-pine-head-north": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 90
+    },
+    "*-redplaidopen-pine-head-east": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 0
+    },
+    "*-redplaidopen-pine-head-south": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 270
+    },
+    "*-redplaidopen-pine-head-west": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 180
+    },
+    "*-redplaidopen-pine-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-redplaidopen-redwood-head-north": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 90
+    },
+    "*-redplaidopen-redwood-head-east": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 0
+    },
+    "*-redplaidopen-redwood-head-south": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 270
+    },
+    "*-redplaidopen-redwood-head-west": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 180
+    },
+    "*-redplaidopen-redwood-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-redplaidopened-mahogany-head-north": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 90
+    },
+    "*-redplaidopened-mahogany-head-east": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 0
+    },
+    "*-redplaidopened-mahogany-head-south": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 270
+    },
+    "*-redplaidopened-mahogany-head-west": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 180
+    },
+    "*-redplaidopened-mahogany-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-redplaidopened-walnut-head-north": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 90
+    },
+    "*-redplaidopened-walnut-head-east": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 0
+    },
+    "*-redplaidopened-walnut-head-south": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 270
+    },
+    "*-redplaidopened-walnut-head-west": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 180
+    },
+    "*-redplaidopened-walnut-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-redplaidopened-oak-head-north": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 90
+    },
+    "*-redplaidopened-oak-head-east": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 0
+    },
+    "*-redplaidopened-oak-head-south": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 270
+    },
+    "*-redplaidopened-oak-head-west": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 180
+    },
+    "*-redplaidopened-oak-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-redplaidopened-maple-head-north": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 90
+    },
+    "*-redplaidopened-maple-head-east": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 0
+    },
+    "*-redplaidopened-maple-head-south": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 270
+    },
+    "*-redplaidopened-maple-head-west": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 180
+    },
+    "*-redplaidopened-maple-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-redplaidopened-pine-head-north": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 90
+    },
+    "*-redplaidopened-pine-head-east": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 0
+    },
+    "*-redplaidopened-pine-head-south": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 270
+    },
+    "*-redplaidopened-pine-head-west": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 180
+    },
+    "*-redplaidopened-pine-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-redplaidopened-redwood-head-north": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 90
+    },
+    "*-redplaidopened-redwood-head-east": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 0
+    },
+    "*-redplaidopened-redwood-head-south": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 270
+    },
+    "*-redplaidopened-redwood-head-west": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 180
+    },
+    "*-redplaidopened-redwood-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-redplaidclosed-mahogany-head-north": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 90
+    },
+    "*-redplaidclosed-mahogany-head-east": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 0
+    },
+    "*-redplaidclosed-mahogany-head-south": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 270
+    },
+    "*-redplaidclosed-mahogany-head-west": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 180
+    },
+    "*-redplaidclosed-mahogany-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-redplaidclosed-walnut-head-north": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 90
+    },
+    "*-redplaidclosed-walnut-head-east": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 0
+    },
+    "*-redplaidclosed-walnut-head-south": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 270
+    },
+    "*-redplaidclosed-walnut-head-west": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 180
+    },
+    "*-redplaidclosed-walnut-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-redplaidclosed-oak-head-north": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 90
+    },
+    "*-redplaidclosed-oak-head-east": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 0
+    },
+    "*-redplaidclosed-oak-head-south": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 270
+    },
+    "*-redplaidclosed-oak-head-west": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 180
+    },
+    "*-redplaidclosed-oak-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-redplaidclosed-maple-head-north": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 90
+    },
+    "*-redplaidclosed-maple-head-east": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 0
+    },
+    "*-redplaidclosed-maple-head-south": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 270
+    },
+    "*-redplaidclosed-maple-head-west": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 180
+    },
+    "*-redplaidclosed-maple-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-redplaidclosed-pine-head-north": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 90
+    },
+    "*-redplaidclosed-pine-head-east": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 0
+    },
+    "*-redplaidclosed-pine-head-south": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 270
+    },
+    "*-redplaidclosed-pine-head-west": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 180
+    },
+    "*-redplaidclosed-pine-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-redplaidclosed-redwood-head-north": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 90
+    },
+    "*-redplaidclosed-redwood-head-east": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 0
+    },
+    "*-redplaidclosed-redwood-head-south": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 270
+    },
+    "*-redplaidclosed-redwood-head-west": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 180
+    },
+    "*-redplaidclosed-redwood-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-honeycombopen-mahogany-head-north": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 90
+    },
+    "*-honeycombopen-mahogany-head-east": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 0
+    },
+    "*-honeycombopen-mahogany-head-south": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 270
+    },
+    "*-honeycombopen-mahogany-head-west": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 180
+    },
+    "*-honeycombopen-mahogany-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-honeycombopen-walnut-head-north": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 90
+    },
+    "*-honeycombopen-walnut-head-east": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 0
+    },
+    "*-honeycombopen-walnut-head-south": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 270
+    },
+    "*-honeycombopen-walnut-head-west": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 180
+    },
+    "*-honeycombopen-walnut-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-honeycombopen-oak-head-north": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 90
+    },
+    "*-honeycombopen-oak-head-east": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 0
+    },
+    "*-honeycombopen-oak-head-south": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 270
+    },
+    "*-honeycombopen-oak-head-west": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 180
+    },
+    "*-honeycombopen-oak-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-honeycombopen-maple-head-north": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 90
+    },
+    "*-honeycombopen-maple-head-east": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 0
+    },
+    "*-honeycombopen-maple-head-south": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 270
+    },
+    "*-honeycombopen-maple-head-west": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 180
+    },
+    "*-honeycombopen-maple-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-honeycombopen-pine-head-north": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 90
+    },
+    "*-honeycombopen-pine-head-east": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 0
+    },
+    "*-honeycombopen-pine-head-south": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 270
+    },
+    "*-honeycombopen-pine-head-west": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 180
+    },
+    "*-honeycombopen-pine-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-honeycombopen-redwood-head-north": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 90
+    },
+    "*-honeycombopen-redwood-head-east": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 0
+    },
+    "*-honeycombopen-redwood-head-south": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 270
+    },
+    "*-honeycombopen-redwood-head-west": {
+      "base": "block/clutter/bed/bed-fancy-open",
+      "rotateY": 180
+    },
+    "*-honeycombopen-redwood-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-honeycombopened-mahogany-head-north": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 90
+    },
+    "*-honeycombopened-mahogany-head-east": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 0
+    },
+    "*-honeycombopened-mahogany-head-south": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 270
+    },
+    "*-honeycombopened-mahogany-head-west": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 180
+    },
+    "*-honeycombopened-mahogany-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-honeycombopened-walnut-head-north": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 90
+    },
+    "*-honeycombopened-walnut-head-east": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 0
+    },
+    "*-honeycombopened-walnut-head-south": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 270
+    },
+    "*-honeycombopened-walnut-head-west": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 180
+    },
+    "*-honeycombopened-walnut-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-honeycombopened-oak-head-north": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 90
+    },
+    "*-honeycombopened-oak-head-east": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 0
+    },
+    "*-honeycombopened-oak-head-south": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 270
+    },
+    "*-honeycombopened-oak-head-west": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 180
+    },
+    "*-honeycombopened-oak-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-honeycombopened-maple-head-north": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 90
+    },
+    "*-honeycombopened-maple-head-east": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 0
+    },
+    "*-honeycombopened-maple-head-south": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 270
+    },
+    "*-honeycombopened-maple-head-west": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 180
+    },
+    "*-honeycombopened-maple-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-honeycombopened-pine-head-north": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 90
+    },
+    "*-honeycombopened-pine-head-east": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 0
+    },
+    "*-honeycombopened-pine-head-south": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 270
+    },
+    "*-honeycombopened-pine-head-west": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 180
+    },
+    "*-honeycombopened-pine-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-honeycombopened-redwood-head-north": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 90
+    },
+    "*-honeycombopened-redwood-head-east": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 0
+    },
+    "*-honeycombopened-redwood-head-south": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 270
+    },
+    "*-honeycombopened-redwood-head-west": {
+      "base": "block/clutter/bed/bed-fancy-drapes-opened",
+      "rotateY": 180
+    },
+    "*-honeycombopened-redwood-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-honeycombclosed-mahogany-head-north": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 90
+    },
+    "*-honeycombclosed-mahogany-head-east": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 0
+    },
+    "*-honeycombclosed-mahogany-head-south": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 270
+    },
+    "*-honeycombclosed-mahogany-head-west": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 180
+    },
+    "*-honeycombclosed-mahogany-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-honeycombclosed-walnut-head-north": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 90
+    },
+    "*-honeycombclosed-walnut-head-east": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 0
+    },
+    "*-honeycombclosed-walnut-head-south": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 270
+    },
+    "*-honeycombclosed-walnut-head-west": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 180
+    },
+    "*-honeycombclosed-walnut-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-honeycombclosed-oak-head-north": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 90
+    },
+    "*-honeycombclosed-oak-head-east": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 0
+    },
+    "*-honeycombclosed-oak-head-south": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 270
+    },
+    "*-honeycombclosed-oak-head-west": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 180
+    },
+    "*-honeycombclosed-oak-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-honeycombclosed-maple-head-north": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 90
+    },
+    "*-honeycombclosed-maple-head-east": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 0
+    },
+    "*-honeycombclosed-maple-head-south": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 270
+    },
+    "*-honeycombclosed-maple-head-west": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 180
+    },
+    "*-honeycombclosed-maple-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-honeycombclosed-pine-head-north": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 90
+    },
+    "*-honeycombclosed-pine-head-east": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 0
+    },
+    "*-honeycombclosed-pine-head-south": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 270
+    },
+    "*-honeycombclosed-pine-head-west": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 180
+    },
+    "*-honeycombclosed-pine-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    },
+    "*-honeycombclosed-redwood-head-north": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 90
+    },
+    "*-honeycombclosed-redwood-head-east": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 0
+    },
+    "*-honeycombclosed-redwood-head-south": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 270
+    },
+    "*-honeycombclosed-redwood-head-west": {
+      "base": "block/clutter/bed/bed-fancy-drapes-closed",
+      "rotateY": 180
+    },
+    "*-honeycombclosed-redwood-feet-*": {
+      "base": "block/bed/restored-canopy-bed-feet-empty"
+    }
+  },
+  "textures": {
+    "blanket-head": {
+      "base": "block/cloth/bed/old/blanket-head"
+    },
+    "blanket-feet-sides": {
+      "base": "block/cloth/bed/old/blanket-feet-sides"
+    },
+    "blanket-head-sides": {
+      "base": "block/cloth/bed/old/blanket-head-sides"
+    },
+    "blanket-feet": {
+      "base": "block/cloth/bed/old/blanket-feet"
+    },
+    "mattress-ruined": {
+      "base": "block/cloth/bed/mattress-normal"
+    },
+    "pillow-ruined": {
+      "base": "block/cloth/bed/pillow-normal"
+    },
+    "cloth-stitched-blue": {
+      "base": "block/cloth/cloth-stitched-blue"
+    },
+    "panel-aged": {
+      "base": "block/wood/debarked/mahogany"
+    },
+    "aged": {
+      "base": "block/wood/debarked/mahogany"
+    },
+    "sides-aged": {
+      "base": "block/wood/debarked/mahogany"
+    }
+  },
+  "texturesByType": {
+    "*-morningstaropen-mahogany-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/morningstar-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/morningstar-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/morningstar-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/morningstar-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/mahogany"
+      },
+      "aged": {
+        "base": "block/wood/debarked/mahogany"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/mahogany"
+      }
+    },
+    "*-morningstaropen-walnut-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/morningstar-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/morningstar-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/morningstar-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/morningstar-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/walnut"
+      },
+      "aged": {
+        "base": "block/wood/debarked/walnut"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/walnut"
+      }
+    },
+    "*-morningstaropen-oak-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/morningstar-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/morningstar-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/morningstar-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/morningstar-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/oak"
+      },
+      "aged": {
+        "base": "block/wood/debarked/oak"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/oak"
+      }
+    },
+    "*-morningstaropen-maple-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/morningstar-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/morningstar-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/morningstar-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/morningstar-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/maple"
+      },
+      "aged": {
+        "base": "block/wood/debarked/maple"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/maple"
+      }
+    },
+    "*-morningstaropen-pine-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/morningstar-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/morningstar-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/morningstar-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/morningstar-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/pine"
+      },
+      "aged": {
+        "base": "block/wood/debarked/pine"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/pine"
+      }
+    },
+    "*-morningstaropen-redwood-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/morningstar-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/morningstar-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/morningstar-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/morningstar-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/redwood"
+      },
+      "aged": {
+        "base": "block/wood/debarked/redwood"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/redwood"
+      }
+    },
+    "*-morningstaropened-mahogany-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/morningstar-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/morningstar-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/morningstar-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/morningstar-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/mahogany"
+      },
+      "aged": {
+        "base": "block/wood/debarked/mahogany"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/mahogany"
+      }
+    },
+    "*-morningstaropened-walnut-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/morningstar-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/morningstar-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/morningstar-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/morningstar-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/walnut"
+      },
+      "aged": {
+        "base": "block/wood/debarked/walnut"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/walnut"
+      }
+    },
+    "*-morningstaropened-oak-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/morningstar-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/morningstar-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/morningstar-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/morningstar-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/oak"
+      },
+      "aged": {
+        "base": "block/wood/debarked/oak"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/oak"
+      }
+    },
+    "*-morningstaropened-maple-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/morningstar-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/morningstar-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/morningstar-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/morningstar-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/maple"
+      },
+      "aged": {
+        "base": "block/wood/debarked/maple"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/maple"
+      }
+    },
+    "*-morningstaropened-pine-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/morningstar-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/morningstar-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/morningstar-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/morningstar-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/pine"
+      },
+      "aged": {
+        "base": "block/wood/debarked/pine"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/pine"
+      }
+    },
+    "*-morningstaropened-redwood-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/morningstar-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/morningstar-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/morningstar-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/morningstar-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/redwood"
+      },
+      "aged": {
+        "base": "block/wood/debarked/redwood"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/redwood"
+      }
+    },
+    "*-morningstarclosed-mahogany-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/morningstar-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/morningstar-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/morningstar-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/morningstar-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/mahogany"
+      },
+      "aged": {
+        "base": "block/wood/debarked/mahogany"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/mahogany"
+      }
+    },
+    "*-morningstarclosed-walnut-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/morningstar-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/morningstar-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/morningstar-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/morningstar-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/walnut"
+      },
+      "aged": {
+        "base": "block/wood/debarked/walnut"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/walnut"
+      }
+    },
+    "*-morningstarclosed-oak-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/morningstar-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/morningstar-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/morningstar-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/morningstar-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/oak"
+      },
+      "aged": {
+        "base": "block/wood/debarked/oak"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/oak"
+      }
+    },
+    "*-morningstarclosed-maple-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/morningstar-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/morningstar-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/morningstar-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/morningstar-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/maple"
+      },
+      "aged": {
+        "base": "block/wood/debarked/maple"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/maple"
+      }
+    },
+    "*-morningstarclosed-pine-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/morningstar-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/morningstar-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/morningstar-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/morningstar-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/pine"
+      },
+      "aged": {
+        "base": "block/wood/debarked/pine"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/pine"
+      }
+    },
+    "*-morningstarclosed-redwood-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/morningstar-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/morningstar-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/morningstar-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/morningstar-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/redwood"
+      },
+      "aged": {
+        "base": "block/wood/debarked/redwood"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/redwood"
+      }
+    },
+    "*-blueplaidopen-mahogany-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/blueplaid-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/blueplaid-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/blueplaid-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/blueplaid-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/mahogany"
+      },
+      "aged": {
+        "base": "block/wood/debarked/mahogany"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/mahogany"
+      }
+    },
+    "*-blueplaidopen-walnut-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/blueplaid-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/blueplaid-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/blueplaid-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/blueplaid-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/walnut"
+      },
+      "aged": {
+        "base": "block/wood/debarked/walnut"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/walnut"
+      }
+    },
+    "*-blueplaidopen-oak-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/blueplaid-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/blueplaid-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/blueplaid-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/blueplaid-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/oak"
+      },
+      "aged": {
+        "base": "block/wood/debarked/oak"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/oak"
+      }
+    },
+    "*-blueplaidopen-maple-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/blueplaid-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/blueplaid-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/blueplaid-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/blueplaid-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/maple"
+      },
+      "aged": {
+        "base": "block/wood/debarked/maple"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/maple"
+      }
+    },
+    "*-blueplaidopen-pine-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/blueplaid-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/blueplaid-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/blueplaid-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/blueplaid-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/pine"
+      },
+      "aged": {
+        "base": "block/wood/debarked/pine"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/pine"
+      }
+    },
+    "*-blueplaidopen-redwood-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/blueplaid-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/blueplaid-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/blueplaid-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/blueplaid-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/redwood"
+      },
+      "aged": {
+        "base": "block/wood/debarked/redwood"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/redwood"
+      }
+    },
+    "*-blueplaidopened-mahogany-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/blueplaid-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/blueplaid-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/blueplaid-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/blueplaid-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/mahogany"
+      },
+      "aged": {
+        "base": "block/wood/debarked/mahogany"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/mahogany"
+      }
+    },
+    "*-blueplaidopened-walnut-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/blueplaid-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/blueplaid-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/blueplaid-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/blueplaid-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/walnut"
+      },
+      "aged": {
+        "base": "block/wood/debarked/walnut"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/walnut"
+      }
+    },
+    "*-blueplaidopened-oak-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/blueplaid-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/blueplaid-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/blueplaid-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/blueplaid-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/oak"
+      },
+      "aged": {
+        "base": "block/wood/debarked/oak"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/oak"
+      }
+    },
+    "*-blueplaidopened-maple-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/blueplaid-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/blueplaid-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/blueplaid-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/blueplaid-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/maple"
+      },
+      "aged": {
+        "base": "block/wood/debarked/maple"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/maple"
+      }
+    },
+    "*-blueplaidopened-pine-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/blueplaid-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/blueplaid-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/blueplaid-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/blueplaid-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/pine"
+      },
+      "aged": {
+        "base": "block/wood/debarked/pine"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/pine"
+      }
+    },
+    "*-blueplaidopened-redwood-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/blueplaid-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/blueplaid-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/blueplaid-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/blueplaid-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/redwood"
+      },
+      "aged": {
+        "base": "block/wood/debarked/redwood"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/redwood"
+      }
+    },
+    "*-blueplaidclosed-mahogany-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/blueplaid-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/blueplaid-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/blueplaid-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/blueplaid-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/mahogany"
+      },
+      "aged": {
+        "base": "block/wood/debarked/mahogany"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/mahogany"
+      }
+    },
+    "*-blueplaidclosed-walnut-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/blueplaid-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/blueplaid-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/blueplaid-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/blueplaid-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/walnut"
+      },
+      "aged": {
+        "base": "block/wood/debarked/walnut"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/walnut"
+      }
+    },
+    "*-blueplaidclosed-oak-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/blueplaid-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/blueplaid-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/blueplaid-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/blueplaid-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/oak"
+      },
+      "aged": {
+        "base": "block/wood/debarked/oak"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/oak"
+      }
+    },
+    "*-blueplaidclosed-maple-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/blueplaid-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/blueplaid-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/blueplaid-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/blueplaid-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/maple"
+      },
+      "aged": {
+        "base": "block/wood/debarked/maple"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/maple"
+      }
+    },
+    "*-blueplaidclosed-pine-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/blueplaid-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/blueplaid-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/blueplaid-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/blueplaid-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/pine"
+      },
+      "aged": {
+        "base": "block/wood/debarked/pine"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/pine"
+      }
+    },
+    "*-blueplaidclosed-redwood-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/blueplaid-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/blueplaid-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/blueplaid-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/blueplaid-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/redwood"
+      },
+      "aged": {
+        "base": "block/wood/debarked/redwood"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/redwood"
+      }
+    },
+    "*-greenplaidopen-mahogany-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/greenplaid-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/greenplaid-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/greenplaid-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/greenplaid-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/mahogany"
+      },
+      "aged": {
+        "base": "block/wood/debarked/mahogany"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/mahogany"
+      }
+    },
+    "*-greenplaidopen-walnut-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/greenplaid-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/greenplaid-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/greenplaid-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/greenplaid-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/walnut"
+      },
+      "aged": {
+        "base": "block/wood/debarked/walnut"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/walnut"
+      }
+    },
+    "*-greenplaidopen-oak-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/greenplaid-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/greenplaid-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/greenplaid-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/greenplaid-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/oak"
+      },
+      "aged": {
+        "base": "block/wood/debarked/oak"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/oak"
+      }
+    },
+    "*-greenplaidopen-maple-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/greenplaid-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/greenplaid-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/greenplaid-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/greenplaid-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/maple"
+      },
+      "aged": {
+        "base": "block/wood/debarked/maple"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/maple"
+      }
+    },
+    "*-greenplaidopen-pine-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/greenplaid-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/greenplaid-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/greenplaid-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/greenplaid-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/pine"
+      },
+      "aged": {
+        "base": "block/wood/debarked/pine"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/pine"
+      }
+    },
+    "*-greenplaidopen-redwood-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/greenplaid-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/greenplaid-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/greenplaid-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/greenplaid-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/redwood"
+      },
+      "aged": {
+        "base": "block/wood/debarked/redwood"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/redwood"
+      }
+    },
+    "*-greenplaidopened-mahogany-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/greenplaid-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/greenplaid-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/greenplaid-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/greenplaid-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/mahogany"
+      },
+      "aged": {
+        "base": "block/wood/debarked/mahogany"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/mahogany"
+      }
+    },
+    "*-greenplaidopened-walnut-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/greenplaid-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/greenplaid-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/greenplaid-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/greenplaid-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/walnut"
+      },
+      "aged": {
+        "base": "block/wood/debarked/walnut"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/walnut"
+      }
+    },
+    "*-greenplaidopened-oak-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/greenplaid-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/greenplaid-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/greenplaid-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/greenplaid-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/oak"
+      },
+      "aged": {
+        "base": "block/wood/debarked/oak"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/oak"
+      }
+    },
+    "*-greenplaidopened-maple-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/greenplaid-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/greenplaid-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/greenplaid-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/greenplaid-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/maple"
+      },
+      "aged": {
+        "base": "block/wood/debarked/maple"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/maple"
+      }
+    },
+    "*-greenplaidopened-pine-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/greenplaid-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/greenplaid-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/greenplaid-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/greenplaid-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/pine"
+      },
+      "aged": {
+        "base": "block/wood/debarked/pine"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/pine"
+      }
+    },
+    "*-greenplaidopened-redwood-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/greenplaid-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/greenplaid-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/greenplaid-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/greenplaid-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/redwood"
+      },
+      "aged": {
+        "base": "block/wood/debarked/redwood"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/redwood"
+      }
+    },
+    "*-greenplaidclosed-mahogany-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/greenplaid-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/greenplaid-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/greenplaid-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/greenplaid-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/mahogany"
+      },
+      "aged": {
+        "base": "block/wood/debarked/mahogany"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/mahogany"
+      }
+    },
+    "*-greenplaidclosed-walnut-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/greenplaid-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/greenplaid-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/greenplaid-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/greenplaid-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/walnut"
+      },
+      "aged": {
+        "base": "block/wood/debarked/walnut"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/walnut"
+      }
+    },
+    "*-greenplaidclosed-oak-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/greenplaid-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/greenplaid-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/greenplaid-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/greenplaid-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/oak"
+      },
+      "aged": {
+        "base": "block/wood/debarked/oak"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/oak"
+      }
+    },
+    "*-greenplaidclosed-maple-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/greenplaid-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/greenplaid-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/greenplaid-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/greenplaid-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/maple"
+      },
+      "aged": {
+        "base": "block/wood/debarked/maple"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/maple"
+      }
+    },
+    "*-greenplaidclosed-pine-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/greenplaid-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/greenplaid-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/greenplaid-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/greenplaid-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/pine"
+      },
+      "aged": {
+        "base": "block/wood/debarked/pine"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/pine"
+      }
+    },
+    "*-greenplaidclosed-redwood-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/greenplaid-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/greenplaid-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/greenplaid-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/greenplaid-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/redwood"
+      },
+      "aged": {
+        "base": "block/wood/debarked/redwood"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/redwood"
+      }
+    },
+    "*-redplaidopen-mahogany-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/redplaid-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/redplaid-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/redplaid-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/redplaid-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/mahogany"
+      },
+      "aged": {
+        "base": "block/wood/debarked/mahogany"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/mahogany"
+      }
+    },
+    "*-redplaidopen-walnut-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/redplaid-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/redplaid-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/redplaid-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/redplaid-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/walnut"
+      },
+      "aged": {
+        "base": "block/wood/debarked/walnut"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/walnut"
+      }
+    },
+    "*-redplaidopen-oak-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/redplaid-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/redplaid-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/redplaid-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/redplaid-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/oak"
+      },
+      "aged": {
+        "base": "block/wood/debarked/oak"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/oak"
+      }
+    },
+    "*-redplaidopen-maple-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/redplaid-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/redplaid-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/redplaid-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/redplaid-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/maple"
+      },
+      "aged": {
+        "base": "block/wood/debarked/maple"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/maple"
+      }
+    },
+    "*-redplaidopen-pine-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/redplaid-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/redplaid-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/redplaid-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/redplaid-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/pine"
+      },
+      "aged": {
+        "base": "block/wood/debarked/pine"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/pine"
+      }
+    },
+    "*-redplaidopen-redwood-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/redplaid-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/redplaid-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/redplaid-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/redplaid-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/redwood"
+      },
+      "aged": {
+        "base": "block/wood/debarked/redwood"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/redwood"
+      }
+    },
+    "*-redplaidopened-mahogany-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/redplaid-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/redplaid-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/redplaid-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/redplaid-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/mahogany"
+      },
+      "aged": {
+        "base": "block/wood/debarked/mahogany"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/mahogany"
+      }
+    },
+    "*-redplaidopened-walnut-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/redplaid-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/redplaid-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/redplaid-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/redplaid-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/walnut"
+      },
+      "aged": {
+        "base": "block/wood/debarked/walnut"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/walnut"
+      }
+    },
+    "*-redplaidopened-oak-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/redplaid-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/redplaid-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/redplaid-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/redplaid-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/oak"
+      },
+      "aged": {
+        "base": "block/wood/debarked/oak"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/oak"
+      }
+    },
+    "*-redplaidopened-maple-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/redplaid-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/redplaid-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/redplaid-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/redplaid-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/maple"
+      },
+      "aged": {
+        "base": "block/wood/debarked/maple"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/maple"
+      }
+    },
+    "*-redplaidopened-pine-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/redplaid-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/redplaid-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/redplaid-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/redplaid-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/pine"
+      },
+      "aged": {
+        "base": "block/wood/debarked/pine"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/pine"
+      }
+    },
+    "*-redplaidopened-redwood-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/redplaid-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/redplaid-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/redplaid-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/redplaid-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/redwood"
+      },
+      "aged": {
+        "base": "block/wood/debarked/redwood"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/redwood"
+      }
+    },
+    "*-redplaidclosed-mahogany-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/redplaid-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/redplaid-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/redplaid-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/redplaid-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/mahogany"
+      },
+      "aged": {
+        "base": "block/wood/debarked/mahogany"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/mahogany"
+      }
+    },
+    "*-redplaidclosed-walnut-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/redplaid-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/redplaid-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/redplaid-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/redplaid-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/walnut"
+      },
+      "aged": {
+        "base": "block/wood/debarked/walnut"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/walnut"
+      }
+    },
+    "*-redplaidclosed-oak-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/redplaid-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/redplaid-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/redplaid-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/redplaid-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/oak"
+      },
+      "aged": {
+        "base": "block/wood/debarked/oak"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/oak"
+      }
+    },
+    "*-redplaidclosed-maple-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/redplaid-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/redplaid-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/redplaid-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/redplaid-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/maple"
+      },
+      "aged": {
+        "base": "block/wood/debarked/maple"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/maple"
+      }
+    },
+    "*-redplaidclosed-pine-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/redplaid-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/redplaid-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/redplaid-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/redplaid-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/pine"
+      },
+      "aged": {
+        "base": "block/wood/debarked/pine"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/pine"
+      }
+    },
+    "*-redplaidclosed-redwood-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/redplaid-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/redplaid-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/redplaid-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/redplaid-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/redwood"
+      },
+      "aged": {
+        "base": "block/wood/debarked/redwood"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/redwood"
+      }
+    },
+    "*-honeycombopen-mahogany-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/honeycomb-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/honeycomb-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/honeycomb-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/honeycomb-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/mahogany"
+      },
+      "aged": {
+        "base": "block/wood/debarked/mahogany"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/mahogany"
+      }
+    },
+    "*-honeycombopen-walnut-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/honeycomb-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/honeycomb-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/honeycomb-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/honeycomb-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/walnut"
+      },
+      "aged": {
+        "base": "block/wood/debarked/walnut"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/walnut"
+      }
+    },
+    "*-honeycombopen-oak-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/honeycomb-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/honeycomb-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/honeycomb-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/honeycomb-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/oak"
+      },
+      "aged": {
+        "base": "block/wood/debarked/oak"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/oak"
+      }
+    },
+    "*-honeycombopen-maple-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/honeycomb-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/honeycomb-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/honeycomb-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/honeycomb-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/maple"
+      },
+      "aged": {
+        "base": "block/wood/debarked/maple"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/maple"
+      }
+    },
+    "*-honeycombopen-pine-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/honeycomb-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/honeycomb-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/honeycomb-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/honeycomb-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/pine"
+      },
+      "aged": {
+        "base": "block/wood/debarked/pine"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/pine"
+      }
+    },
+    "*-honeycombopen-redwood-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/honeycomb-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/honeycomb-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/honeycomb-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/honeycomb-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/redwood"
+      },
+      "aged": {
+        "base": "block/wood/debarked/redwood"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/redwood"
+      }
+    },
+    "*-honeycombopened-mahogany-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/honeycomb-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/honeycomb-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/honeycomb-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/honeycomb-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/mahogany"
+      },
+      "aged": {
+        "base": "block/wood/debarked/mahogany"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/mahogany"
+      }
+    },
+    "*-honeycombopened-walnut-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/honeycomb-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/honeycomb-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/honeycomb-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/honeycomb-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/walnut"
+      },
+      "aged": {
+        "base": "block/wood/debarked/walnut"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/walnut"
+      }
+    },
+    "*-honeycombopened-oak-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/honeycomb-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/honeycomb-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/honeycomb-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/honeycomb-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/oak"
+      },
+      "aged": {
+        "base": "block/wood/debarked/oak"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/oak"
+      }
+    },
+    "*-honeycombopened-maple-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/honeycomb-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/honeycomb-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/honeycomb-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/honeycomb-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/maple"
+      },
+      "aged": {
+        "base": "block/wood/debarked/maple"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/maple"
+      }
+    },
+    "*-honeycombopened-pine-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/honeycomb-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/honeycomb-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/honeycomb-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/honeycomb-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/pine"
+      },
+      "aged": {
+        "base": "block/wood/debarked/pine"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/pine"
+      }
+    },
+    "*-honeycombopened-redwood-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/honeycomb-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/honeycomb-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/honeycomb-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/honeycomb-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/redwood"
+      },
+      "aged": {
+        "base": "block/wood/debarked/redwood"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/redwood"
+      }
+    },
+    "*-honeycombclosed-mahogany-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/honeycomb-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/honeycomb-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/honeycomb-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/honeycomb-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/mahogany"
+      },
+      "aged": {
+        "base": "block/wood/debarked/mahogany"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/mahogany"
+      }
+    },
+    "*-honeycombclosed-walnut-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/honeycomb-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/honeycomb-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/honeycomb-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/honeycomb-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/walnut"
+      },
+      "aged": {
+        "base": "block/wood/debarked/walnut"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/walnut"
+      }
+    },
+    "*-honeycombclosed-oak-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/honeycomb-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/honeycomb-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/honeycomb-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/honeycomb-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/oak"
+      },
+      "aged": {
+        "base": "block/wood/debarked/oak"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/oak"
+      }
+    },
+    "*-honeycombclosed-maple-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/honeycomb-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/honeycomb-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/honeycomb-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/honeycomb-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/maple"
+      },
+      "aged": {
+        "base": "block/wood/debarked/maple"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/maple"
+      }
+    },
+    "*-honeycombclosed-pine-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/honeycomb-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/honeycomb-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/honeycomb-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/honeycomb-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/pine"
+      },
+      "aged": {
+        "base": "block/wood/debarked/pine"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/pine"
+      }
+    },
+    "*-honeycombclosed-redwood-*-*": {
+      "blanket-head": {
+        "base": "block/wood/bed/normal/blanket/honeycomb-head"
+      },
+      "blanket-feet-sides": {
+        "base": "block/wood/bed/normal/blanket/honeycomb-feet-sides"
+      },
+      "blanket-head-sides": {
+        "base": "block/wood/bed/normal/blanket/honeycomb-head-sides"
+      },
+      "blanket-feet": {
+        "base": "block/wood/bed/normal/blanket/honeycomb-feet"
+      },
+      "panel-aged": {
+        "base": "block/wood/debarked/redwood"
+      },
+      "aged": {
+        "base": "block/wood/debarked/redwood"
+      },
+      "sides-aged": {
+        "base": "block/wood/debarked/redwood"
+      }
+    }
+  },
+  "sidesolid": {
+    "all": false
+  },
+  "sideopaque": {
+    "all": false
+  },
+  "lightAbsorption": 0,
+  "maxStackSize": 2,
+  "collisionbox": {
+    "x1": 0,
+    "y1": 0,
+    "z1": 0,
+    "x2": 1,
+    "y2": 0.5,
+    "z2": 1
+  },
+  "selectionbox": {
+    "x1": 0,
+    "y1": 0,
+    "z1": 0,
+    "x2": 1,
+    "y2": 0.5,
+    "z2": 1
+  },
+  "sounds": {
+    "walk": "walk/wood",
+    "place": "block/planks",
+    "break": "block/planks"
+  },
+  "guitransform": {
+    "origin": {
+      "x": 0.1,
+      "y": 0.94,
+      "z": 0.7
+    },
+    "scale": 0.7,
+    "rotation": {
+      "x": -22.6,
+      "y": -45,
+      "z": 0
+    }
+  },
+  "heldTpIdleAnimation": "holdbothhandslarge",
+  "heldRightReadyAnimation": "heldblockready",
+  "heldTpUseAnimation": "twohandplaceblock",
+  "shapeByType": {}
+}

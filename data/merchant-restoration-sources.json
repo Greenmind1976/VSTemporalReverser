@@ -1,0 +1,619 @@
+{
+  "source": {
+    "scope": "vanilla game domain only",
+    "tradeLists": "/Applications/Vintage Story 1.22.app/assets/survival/config/tradelists",
+    "language": "/Applications/Vintage Story 1.22.app/assets/game/lang/en.json",
+    "traderEntities": [
+      "/Applications/Vintage Story 1.22.app/assets/survival/entities/humanoid/trader-female.json",
+      "/Applications/Vintage Story 1.22.app/assets/survival/entities/humanoid/trader-male.json"
+    ],
+    "tradePropsFilePattern": "config/tradelists/trader-{type}"
+  },
+  "summary": {
+    "tradeListsScanned": 17,
+    "sellEntriesScanned": 556,
+    "directClutterSellEntries": 16,
+    "uniqueDirectClutterTypesSold": 15,
+    "finding": "Most repair-useful furniture and lighting analogues are sold as registered blocks, not as game:clutter types. Directly sold clutter is mostly Tobias decorative/technical clutter."
+  },
+  "merchantBypassRestorationCandidates": [
+    {
+      "repairFrom": "chandelier-ruined*",
+      "repairFromDisplayNames": [
+        "Ruined chandelier"
+      ],
+      "restoreToSoldItem": {
+        "kind": "registeredBlock",
+        "code": "game:chandelier-candle0",
+        "displayName": "Chandelier",
+        "functionalBehavior": "BlockChandelier candle placement"
+      },
+      "merchantSources": [
+        {
+          "tradeList": "trader-luxuries",
+          "side": "selling",
+          "priceAvg": 17,
+          "stockAvg": 1
+        }
+      ],
+      "confidence": "very-high",
+      "note": "Best example of the merchant-bypass loop: the ruined clutter becomes the same functional chandelier players otherwise buy from a luxuries trader."
+    },
+    {
+      "repairFrom": "door-ruined-*",
+      "repairFromDisplayNames": [
+        "Ruined door",
+        "Ruined sleek door",
+        "Ruined solid gate",
+        "Ruined barred gate",
+        "Ruined windowed gate"
+      ],
+      "restoreToSoldItem": {
+        "kind": "registeredBlock",
+        "code": "game:door-sleek-windowed-oak",
+        "displayName": "Sleek door"
+      },
+      "merchantSources": [
+        {
+          "tradeList": "trader-furniture",
+          "side": "selling",
+          "priceAvgRange": "8-11",
+          "stockAvg": 2
+        }
+      ],
+      "confidence": "high",
+      "note": "Furniture trader sells many functional sleek windowed wood doors plus a windowed iron door. Oak is a conservative default; output could preserve material if a rule can infer it."
+    },
+    {
+      "repairFrom": "chair-ruined*",
+      "repairFromDisplayNames": [
+        "Ruined chair"
+      ],
+      "restoreToSoldItem": {
+        "kind": "registeredBlock",
+        "code": "game:chair-plain",
+        "displayName": "Chair (Plain)"
+      },
+      "merchantSources": [
+        {
+          "tradeList": "trader-furniture",
+          "side": "selling",
+          "priceAvg": 2,
+          "stockAvg": 4
+        }
+      ],
+      "confidence": "high",
+      "note": "Merchant-sold normal chair. If we add sit behavior to restored aged chairs later, that can be a modded alternative."
+    },
+    {
+      "repairFrom": "table-ruined*",
+      "repairFromDisplayNames": [
+        "Ruined table"
+      ],
+      "restoreToSoldItem": {
+        "kind": "registeredBlock",
+        "code": "game:table-normal",
+        "displayName": "Wooden table"
+      },
+      "merchantSources": [
+        {
+          "tradeList": "trader-furniture",
+          "side": "selling",
+          "priceAvg": 2,
+          "stockAvg": 2
+        }
+      ],
+      "confidence": "high",
+      "note": "Merchant-sold functional/normal table target."
+    },
+    {
+      "repairFrom": "bed/bed-ruined*",
+      "repairFromDisplayNames": [
+        "Ruined bed"
+      ],
+      "restoreToSoldItem": {
+        "kind": "registeredBlock",
+        "code": "game:bed-wood-head-north",
+        "displayName": "Wooden bed"
+      },
+      "merchantSources": [
+        {
+          "tradeList": "trader-furniture",
+          "side": "selling",
+          "priceAvg": 8,
+          "stockAvg": 1
+        }
+      ],
+      "confidence": "high",
+      "note": "Merchant-sold functional bed target. Bed multiblock handling still needs implementation care."
+    },
+    {
+      "repairFrom": "bed/bed-straw-ruined*",
+      "repairFromDisplayNames": [
+        "Ruined straw bed"
+      ],
+      "restoreToSoldItem": {
+        "kind": "registeredBlock",
+        "code": "game:bed-hay-head-north",
+        "displayName": "Hay bed"
+      },
+      "merchantSources": [
+        {
+          "tradeList": "trader-survivalgoods",
+          "side": "selling",
+          "priceAvg": 1,
+          "stockAvg": 1
+        }
+      ],
+      "confidence": "high",
+      "note": "Low-value functional bed target."
+    },
+    {
+      "repairFrom": "torchholder-ruined-*",
+      "repairFromDisplayNames": [
+        "Ruined torch holder"
+      ],
+      "restoreToSoldItem": {
+        "kind": "registeredBlock",
+        "code": "game:torchholder-brass-empty-north",
+        "displayName": "Brass torch holder"
+      },
+      "merchantSources": [
+        {
+          "tradeList": "trader-furniture",
+          "side": "selling",
+          "priceAvg": 12,
+          "stockAvg": 2
+        }
+      ],
+      "confidence": "high",
+      "note": "Merchant-sold functional torch holder target. Preserve facing during conversion."
+    },
+    {
+      "repairFrom": "crate/crate-*-ruined*",
+      "repairFromDisplayNames": [
+        "Small ruined crate",
+        "Large ruined crate"
+      ],
+      "restoreToSoldItem": {
+        "kind": "registeredBlock",
+        "code": "game:crate",
+        "displayName": "Aged crate",
+        "attributes": {
+          "type": "wood-aged"
+        }
+      },
+      "merchantSources": [
+        {
+          "tradeList": "trader-furniture",
+          "side": "selling",
+          "priceAvg": 2,
+          "stockAvg": 8
+        }
+      ],
+      "confidence": "medium",
+      "note": "Merchant-sold functional storage. This is useful, but balance-sensitive because storage has gameplay value."
+    },
+    {
+      "repairFrom": "claylamp-ruined* or claylamp-wall-ruined*",
+      "repairFromDisplayNames": [],
+      "repairFromDisplayNameNote": "No specific vanilla en.json clutter name found for clutter-claylamp-ruined*.",
+      "restoreToSoldItem": {
+        "kind": "registeredBlock",
+        "code": "game:lantern-large-up",
+        "displayName": "Large copper lantern",
+        "attributes": {
+          "material": "copper",
+          "lining": "plain"
+        }
+      },
+      "merchantSources": [
+        {
+          "tradeList": "trader-furniture",
+          "side": "selling",
+          "priceAvg": 11,
+          "stockAvg": 2
+        }
+      ],
+      "confidence": "medium",
+      "note": "Merchant-sold lighting target, but not a one-to-one clay lamp restoration."
+    },
+    {
+      "repairFrom": "bookshelves/scrollrack-ruined* or ruined bookshelf clutter",
+      "repairFromDisplayNames": [
+        "Ruined scroll rack",
+        "Ruined Bookshelf (Empty)",
+        "Ruined Bookshelf (With books)"
+      ],
+      "restoreToSoldItem": {
+        "kind": "registeredBlock",
+        "code": "game:bookshelf",
+        "displayName": "Bookshelf",
+        "attributes": {
+          "type": "2row1col",
+          "material": "larch"
+        }
+      },
+      "merchantSources": [
+        {
+          "tradeList": "trader-furniture",
+          "side": "selling",
+          "priceAvg": 8,
+          "stockAvg": 8
+        }
+      ],
+      "confidence": "medium",
+      "note": "Merchant-sold book furniture target. Exact scrollrack restoration is better as a modded restored scrollrack, because scrollrack itself was not found in merchant sell lists."
+    },
+    {
+      "repairFrom": "shelf/metal*-ruined*",
+      "repairFromDisplayNames": [
+        "Ruined metal shelf"
+      ],
+      "restoreToSoldItem": {
+        "kind": "registeredBlock",
+        "code": "game:shelf-normal-east",
+        "displayName": "Shelf"
+      },
+      "merchantSources": [
+        {
+          "tradeList": "trader-furniture",
+          "side": "selling",
+          "priceAvg": 2,
+          "stockAvg": 6
+        }
+      ],
+      "confidence": "medium",
+      "note": "Merchant-sold shelf target, but visually less exact than a modded restored metal shelf."
+    }
+  ],
+  "merchantSoldRestorationTargets": [
+    {
+      "repairFrom": "chair-ruined*",
+      "repairFromDisplayNames": [
+        "Ruined chair"
+      ],
+      "restoresTo": {
+        "kind": "registeredBlock",
+        "code": "game:chair-plain",
+        "displayName": "Chair (Plain)"
+      },
+      "merchantSources": [
+        {
+          "tradeList": "trader-furniture",
+          "side": "selling",
+          "priceAvg": 2,
+          "stockAvg": 4
+        }
+      ],
+      "note": "This is the strongest merchant-backed chair target. game:chair-aged exists but is not sold in the scanned trade lists."
+    },
+    {
+      "repairFrom": "table-ruined*",
+      "repairFromDisplayNames": [
+        "Ruined table"
+      ],
+      "restoresTo": {
+        "kind": "registeredBlock",
+        "code": "game:table-normal",
+        "displayName": "Wooden table"
+      },
+      "merchantSources": [
+        {
+          "tradeList": "trader-furniture",
+          "side": "selling",
+          "priceAvg": 2,
+          "stockAvg": 2
+        }
+      ],
+      "note": "This is merchant-backed and functional. game:table-aged exists but is not sold in the scanned trade lists."
+    },
+    {
+      "repairFrom": "bed/bed-ruined*",
+      "repairFromDisplayNames": [
+        "Ruined bed"
+      ],
+      "restoresTo": {
+        "kind": "registeredBlock",
+        "code": "game:bed-wood-head-north",
+        "displayName": "Wooden bed"
+      },
+      "merchantSources": [
+        {
+          "tradeList": "trader-furniture",
+          "side": "selling",
+          "priceAvg": 8,
+          "stockAvg": 1
+        }
+      ],
+      "note": "Functional bed candidate. Implementation must handle bed multiblock placement or drop the item/block stack instead of placing it."
+    },
+    {
+      "repairFrom": "bed/bed-straw-ruined*",
+      "repairFromDisplayNames": [
+        "Ruined straw bed"
+      ],
+      "restoresTo": {
+        "kind": "registeredBlock",
+        "code": "game:bed-hay-head-north",
+        "displayName": "Hay bed"
+      },
+      "merchantSources": [
+        {
+          "tradeList": "trader-survivalgoods",
+          "side": "selling",
+          "priceAvg": 1,
+          "stockAvg": 1
+        }
+      ],
+      "note": "Good low-value functional target for ruined straw/primitive beds."
+    },
+    {
+      "repairFrom": "chandelier-ruined*",
+      "repairFromDisplayNames": [
+        "Ruined chandelier"
+      ],
+      "restoresTo": {
+        "kind": "registeredBlock",
+        "code": "game:chandelier-candle0",
+        "displayName": "Chandelier"
+      },
+      "merchantSources": [
+        {
+          "tradeList": "trader-luxuries",
+          "side": "selling",
+          "priceAvg": 17,
+          "stockAvg": 1
+        },
+        {
+          "tradeList": "trader-furniture",
+          "side": "buying",
+          "priceAvg": 10,
+          "stockAvg": 1
+        }
+      ],
+      "note": "Sold by luxuries trader; furniture trader also buys it."
+    },
+    {
+      "repairFrom": "claylamp-ruined*",
+      "repairFromDisplayNames": [],
+      "repairFromDisplayNameNote": "No specific vanilla en.json clutter name found for clutter-claylamp-ruined*.",
+      "restoresTo": {
+        "kind": "registeredBlock",
+        "code": "game:lantern-large-up",
+        "displayName": "Large copper lantern",
+        "attributes": {
+          "material": "copper",
+          "lining": "plain"
+        }
+      },
+      "merchantSources": [
+        {
+          "tradeList": "trader-furniture",
+          "side": "selling",
+          "priceAvg": 11,
+          "stockAvg": 2
+        }
+      ],
+      "note": "Not a one-to-one clay lamp, but merchant-backed lighting restoration exists. Functional oil lamps should be checked separately if we prefer a closer semantic target."
+    },
+    {
+      "repairFrom": "torchholder-ruined-*",
+      "repairFromDisplayNames": [
+        "Ruined torch holder"
+      ],
+      "restoresTo": {
+        "kind": "registeredBlock",
+        "code": "game:torchholder-brass-empty-north",
+        "displayName": "Brass torch holder"
+      },
+      "merchantSources": [
+        {
+          "tradeList": "trader-furniture",
+          "side": "selling",
+          "priceAvg": 12,
+          "stockAvg": 2
+        }
+      ],
+      "note": "Merchant-backed functional target. If we want visual continuity instead, game:torchholder-aged-* exists but is not sold."
+    },
+    {
+      "repairFrom": "shelf/metal*-ruined* or shelf-like ruined clutter",
+      "repairFromDisplayNames": [
+        "Ruined metal shelf"
+      ],
+      "restoresTo": {
+        "kind": "registeredBlock",
+        "code": "game:shelf-normal-east",
+        "displayName": "Shelf"
+      },
+      "merchantSources": [
+        {
+          "tradeList": "trader-furniture",
+          "side": "selling",
+          "priceAvg": 2,
+          "stockAvg": 6
+        }
+      ],
+      "note": "Merchant-backed general shelf target. Metal shelf clutter has clean clutter models too, but they are not directly sold."
+    },
+    {
+      "repairFrom": "crate/crate-*-ruined*",
+      "repairFromDisplayNames": [
+        "Small ruined crate",
+        "Large ruined crate"
+      ],
+      "restoresTo": {
+        "kind": "registeredBlock",
+        "code": "game:crate",
+        "displayName": "Crate",
+        "attributes": {
+          "type": "wood-aged"
+        }
+      },
+      "merchantSources": [
+        {
+          "tradeList": "trader-furniture",
+          "side": "selling",
+          "priceAvg": 2,
+          "stockAvg": 8
+        }
+      ],
+      "note": "Merchant-backed storage-ish target. Balance risk is higher because this may create functional storage from decorative ruined clutter."
+    },
+    {
+      "repairFrom": "bookshelves/scrollrack-ruined* or ruined book clutter",
+      "repairFromDisplayNames": [
+        "Ruined scroll rack"
+      ],
+      "restoresTo": {
+        "kind": "registeredBlock",
+        "code": "game:bookshelf",
+        "displayName": "Bookshelf",
+        "attributes": {
+          "type": "2row1col",
+          "material": "larch"
+        }
+      },
+      "merchantSources": [
+        {
+          "tradeList": "trader-furniture",
+          "side": "selling",
+          "priceAvg": 8,
+          "stockAvg": 8
+        }
+      ],
+      "note": "Merchant-backed book furniture target. Scrollrack itself exists but was not sold in the scanned trade lists."
+    }
+  ],
+  "directClutterSoldByMerchants": [
+    {
+      "tradeList": "villager-tobias",
+      "clutterType": "tobias-lantern",
+      "displayName": "Lantern",
+      "priceAvg": 14,
+      "stockAvg": 1
+    },
+    {
+      "tradeList": "villager-tobias",
+      "clutterType": "tobias-ceilinglamp-lamp",
+      "displayName": "Ceiling lamp",
+      "priceAvg": 32,
+      "stockAvg": 1
+    },
+    {
+      "tradeList": "villager-tobias",
+      "clutterType": "tobias-ceilinglamp-mount",
+      "displayName": "Ceiling lamp mount",
+      "priceAvg": 24,
+      "stockAvg": 1
+    },
+    {
+      "tradeList": "villager-tobias",
+      "clutterType": "tobias-ceilinglamp-shaft",
+      "displayName": "Ceiling lamp shaft",
+      "priceAvg": 18,
+      "stockAvg": 4
+    },
+    {
+      "tradeList": "villager-tobias",
+      "clutterType": "book-big-closed",
+      "displayName": "Closed large book",
+      "priceAvg": 12,
+      "stockAvg": 1
+    },
+    {
+      "tradeList": "villager-tobias",
+      "clutterType": "book-big-open",
+      "displayName": "Opened large book",
+      "priceAvg": 12,
+      "stockAvg": 1
+    },
+    {
+      "tradeList": "villager-tobias",
+      "clutterType": "bookshelves/large-book-standing1",
+      "displayName": "Large book",
+      "priceAvg": 12,
+      "stockAvg": 1
+    },
+    {
+      "tradeList": "villager-tobias",
+      "clutterType": "bookshelves/bookstand-book-closed",
+      "displayName": "Book stand",
+      "priceAvg": 18,
+      "stockAvg": 1
+    },
+    {
+      "tradeList": "villager-tobias",
+      "clutterType": "pile-tobias-gadgets1",
+      "displayName": "Clutter",
+      "priceAvg": 24,
+      "stockAvg": 1
+    },
+    {
+      "tradeList": "villager-tobias",
+      "clutterType": "pile-tobias-gadgets2",
+      "displayName": "Clutter",
+      "priceAvg": 24,
+      "stockAvg": 1
+    },
+    {
+      "tradeList": "villager-tobias",
+      "clutterType": "pile-tobias-gadgets3",
+      "displayName": "Clutter",
+      "priceAvg": 24,
+      "stockAvg": 1
+    },
+    {
+      "tradeList": "villager-tobias",
+      "clutterType": "pile-tobias-gadgets4",
+      "displayName": "Clutter",
+      "priceAvg": 24,
+      "stockAvg": 1
+    },
+    {
+      "tradeList": "villager-tobias",
+      "clutterType": "pile-tobias-gadgets5",
+      "displayName": "Clutter",
+      "priceAvg": 24,
+      "stockAvg": 1
+    }
+  ],
+  "notMerchantSoldButVanillaTargetsExist": [
+    {
+      "code": "game:chair-aged",
+      "displayName": "Aged wooden chair",
+      "note": "Registered block exists and user-facing name exists, but it is not in merchant sell lists."
+    },
+    {
+      "code": "game:table-aged",
+      "displayName": "Aged wooden table",
+      "note": "Registered block exists and user-facing name exists, but it is not in merchant sell lists."
+    },
+    {
+      "code": "game:bed-woodaged-head-north",
+      "displayName": "Aged wooden bed",
+      "note": "Registered block exists and user-facing name exists, but it is not in merchant sell lists."
+    },
+    {
+      "code": "game:torchholder-aged-empty-north",
+      "displayName": "Empty Aged Torch holder",
+      "note": "Registered block exists and user-facing name exists, but it is not in merchant sell lists."
+    },
+    {
+      "code": "game:stove-unlit-north",
+      "displayName": "Stove (Unlit)",
+      "note": "Registered block exists and user-facing name exists, but it is not in merchant sell lists."
+    },
+    {
+      "code": "game:toolrack-north",
+      "displayName": "Tool rack",
+      "note": "Registered block exists, but it is not in merchant sell lists."
+    },
+    {
+      "code": "game:scrollrack",
+      "displayName": "Scroll rack",
+      "note": "Registered block exists, but it is not in merchant sell lists."
+    }
+  ]
+}

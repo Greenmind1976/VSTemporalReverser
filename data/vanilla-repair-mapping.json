@@ -1,0 +1,84 @@
+{
+  "source": {
+    "domain": "game",
+    "primaryDump": "/Users/garretcoffman/Library/Application Support/VintagestoryData-1.22/VSAssetInspector/assetinspect-ids-all-game-20260422-222237-433.json",
+    "comparisonDump": "/Users/garretcoffman/Library/Application Support/VintagestoryData/VSAssetInspector/assetinspect-ids-all-game-20260417-213253-208.json"
+  },
+  "exactItemMappings": {
+    "game:armor-head-antique-blackguard-broken": "game:armor-head-antique-blackguard-pristine",
+    "game:armor-body-antique-blackguard-broken": "game:armor-body-antique-blackguard-pristine",
+    "game:armor-legs-antique-blackguard-broken": "game:armor-legs-antique-blackguard-pristine",
+    "game:armor-head-antique-forlorn-broken": "game:armor-head-antique-forlorn-pristine",
+    "game:armor-body-antique-forlorn-broken": "game:armor-body-antique-forlorn-pristine",
+    "game:armor-legs-antique-forlorn-broken": "game:armor-legs-antique-forlorn-pristine"
+  },
+  "intermediateItemMappings": {
+    "game:armor-head-antique-blackguard-broken": "game:armor-head-antique-blackguard-damaged",
+    "game:armor-body-antique-blackguard-broken": "game:armor-body-antique-blackguard-damaged",
+    "game:armor-legs-antique-blackguard-broken": "game:armor-legs-antique-blackguard-damaged",
+    "game:armor-head-antique-forlorn-broken": "game:armor-head-antique-forlorn-damaged",
+    "game:armor-body-antique-forlorn-broken": "game:armor-body-antique-forlorn-damaged",
+    "game:armor-legs-antique-forlorn-broken": "game:armor-legs-antique-forlorn-damaged"
+  },
+  "exactBlockMappings": {
+    "game:statictranslocator-broken-north": "game:statictranslocator-normal-north",
+    "game:statictranslocator-broken-east": "game:statictranslocator-normal-east",
+    "game:statictranslocator-broken-south": "game:statictranslocator-normal-south",
+    "game:statictranslocator-broken-west": "game:statictranslocator-normal-west"
+  },
+  "repairInPlaceBlockCodes": [
+    "game:clutter"
+  ],
+  "repairInPlaceTypeContains": [
+    "broken",
+    "ruined"
+  ],
+  "candidateBlockMappingsNeedingDesign": {
+    "game:torchholder-ruined-empty-north": "game:torchholder-aged-empty-north",
+    "game:torchholder-ruined-empty-east": "game:torchholder-aged-empty-east",
+    "game:torchholder-ruined-empty-south": "game:torchholder-aged-empty-south",
+    "game:torchholder-ruined-empty-west": "game:torchholder-aged-empty-west",
+    "game:torchholder-ruined-filled-north": "game:torchholder-aged-filled-north",
+    "game:torchholder-ruined-filled-east": "game:torchholder-aged-filled-east",
+    "game:torchholder-ruined-filled-south": "game:torchholder-aged-filled-south",
+    "game:torchholder-ruined-filled-west": "game:torchholder-aged-filled-west"
+  },
+  "sameCodeDurabilityCandidates": [
+    "game:axe-bearded-ruined",
+    "game:axe-battle-ruined",
+    "game:axe-bardiche-ruined",
+    "game:axe-double-ruined",
+    "game:blade-gladius-ruined",
+    "game:blade-arming-ruined",
+    "game:blade-claymore-ruined",
+    "game:blade-sabre-ruined",
+    "game:club-flanged-ruined",
+    "game:club-morningstar-ruined",
+    "game:club-spiked-ruined",
+    "game:club-warhammer-ruined",
+    "game:knife-dagger-ruined",
+    "game:knife-stiletto-ruined",
+    "game:knife-khanjar-ruined",
+    "game:knife-baselard-ruined",
+    "game:spear-boar-ruined",
+    "game:spear-voulge-ruined",
+    "game:spear-fork-ruined",
+    "game:spear-ranseur-ruined"
+  ],
+  "excludedFalsePositives": [
+    "game:brickruin-irregular-brown",
+    "game:brickruin-irregular-gray",
+    "game:brickruin-irregular-orange",
+    "game:brickruin-irregular-red",
+    "game:brickruin-irregular-tan",
+    "game:egg-chicken-broken",
+    "game:painting-castleruin-east",
+    "game:painting-castleruin-north",
+    "game:painting-castleruin-south",
+    "game:painting-castleruin-west",
+    "game:painting-sunkenruin-east",
+    "game:painting-sunkenruin-north",
+    "game:painting-sunkenruin-south",
+    "game:painting-sunkenruin-west"
+  ]
+}

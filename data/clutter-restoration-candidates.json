@@ -1,0 +1,328 @@
+{
+  "source": {
+    "domain": "game",
+    "clutterAsset": "/Applications/Vintage Story 1.22.app/assets/survival/blocktypes/clutter.json",
+    "shapeRoot": "/Applications/Vintage Story 1.22.app/assets/survival/shapes/block/clutter",
+    "idDump": "/Users/garretcoffman/Library/Application Support/VintagestoryData-1.22/VSAssetInspector/assetinspect-ids-all-game-20260422-222237-433.json"
+  },
+  "notes": [
+    "These are candidate mappings from placed game:clutter type attributes to either clean game:clutter type attributes or registered vanilla block IDs.",
+    "targetKind=clutterType means spawn/drop game:clutter with attributes.type set to target and collected=true.",
+    "targetKind=registeredBlock means spawn/drop that block code directly. Orientation-sensitive block targets use north/up defaults until implementation handles facing.",
+    "Confidence is about semantic fit, not code certainty. Review entries should be tested in-game before enabling by default."
+  ],
+  "patternMappings": [
+    {
+      "fromPattern": "chair-ruined*",
+      "targetKind": "registeredBlock",
+      "target": "game:chair-aged",
+      "confidence": "high",
+      "reason": "Clean registered aged chair exists and matches ordinary ruined chair clutter."
+    },
+    {
+      "fromPattern": "chair-metal1-ruined*",
+      "targetKind": "clutterType",
+      "target": "chair-metal1",
+      "confidence": "high",
+      "reason": "Clean clutter model chair-metal1 exists; no separate registered metal chair ID found."
+    },
+    {
+      "fromPattern": "table-ruined*",
+      "targetKind": "registeredBlock",
+      "target": "game:table-aged",
+      "confidence": "high",
+      "reason": "Clean registered aged table exists and is a conservative restoration target."
+    },
+    {
+      "fromPattern": "table/metal1-ruined*",
+      "targetKind": "clutterType",
+      "target": "table/metal1",
+      "confidence": "high",
+      "reason": "Clean clutter model table/metal1 exists; no registered metal table ID found."
+    },
+    {
+      "fromPattern": "toolrack-ruined*",
+      "targetKind": "registeredBlock",
+      "target": "game:toolrack-north",
+      "confidence": "high",
+      "reason": "Registered toolrack blocks exist. Use target facing from source if available; north is only a default."
+    },
+    {
+      "fromPattern": "bookshelves/scrollrack-ruined*",
+      "targetKind": "registeredBlock",
+      "target": "game:scrollrack",
+      "confidence": "high",
+      "reason": "Registered scrollrack block exists and clean clutter scrollrack models also exist."
+    },
+    {
+      "fromPattern": "lecturn-ruined",
+      "targetKind": "clutterType",
+      "target": "lecturn-empty",
+      "confidence": "medium",
+      "reason": "Clean lecturn clutter models exist; no standalone registered lectern block ID found."
+    },
+    {
+      "fromPattern": "bookshelves/lecturn-ruined",
+      "targetKind": "clutterType",
+      "target": "bookshelves/lecturn-aged-empty",
+      "confidence": "medium",
+      "reason": "Clean bookshelves lecturn clutter models exist; keep it aged rather than pristine."
+    },
+    {
+      "fromPattern": "coatrack-ruined*",
+      "targetKind": "clutterType",
+      "target": "coatrack-pristine",
+      "confidence": "high",
+      "reason": "Clean/pristine coatrack clutter model exists."
+    },
+    {
+      "fromPattern": "crate/crate-small-ruined*",
+      "targetKind": "clutterType",
+      "target": "crate/crate-small-empty",
+      "confidence": "high",
+      "reason": "Clean empty small crate clutter model exists. Avoid creating storage unless intentionally desired."
+    },
+    {
+      "fromPattern": "crate/crate-large-ruined*",
+      "targetKind": "clutterType",
+      "target": "crate/crate-large-empty",
+      "confidence": "high",
+      "reason": "Clean empty large crate clutter model exists. Avoid creating storage unless intentionally desired."
+    },
+    {
+      "fromPattern": "fancy-bed-stitched-ruined",
+      "targetKind": "clutterType",
+      "target": "fancy-bed-old",
+      "confidence": "high",
+      "reason": "A non-ruined fancy-bed-old clutter type exists in clutter.json using the same clean shape path."
+    },
+    {
+      "fromPattern": "bed-short-stitched-ruined",
+      "targetKind": "clutterType",
+      "target": "bed-short-old",
+      "confidence": "high",
+      "reason": "A non-ruined bed-short-old clutter type exists in clutter.json using the same clean shape path."
+    },
+    {
+      "fromPattern": "bed/bed-fancy-ruined*",
+      "targetKind": "clutterType",
+      "target": "bed/bed-fancy-open",
+      "confidence": "medium",
+      "reason": "Clean fancy bed clutter model exists. It is decorative clutter, not necessarily a functional bed."
+    },
+    {
+      "fromPattern": "bed/bed-metal-ruined*",
+      "targetKind": "clutterType",
+      "target": "bed/bed-metal",
+      "confidence": "high",
+      "reason": "Clean metal bed clutter model exists."
+    },
+    {
+      "fromPattern": "bed/metal2-ruined*",
+      "targetKind": "clutterType",
+      "target": "bed/metal2",
+      "confidence": "high",
+      "reason": "Clean metal2 bed clutter model exists."
+    },
+    {
+      "fromPattern": "bed/bed-straw-ruined*",
+      "targetKind": "clutterType",
+      "target": "bed/bed-straw-single1",
+      "confidence": "medium",
+      "reason": "Clean straw bed clutter models exist. Choose single1 as a conservative default."
+    },
+    {
+      "fromPattern": "bed/bed-ruined*",
+      "targetKind": "registeredBlock",
+      "target": "game:bed-woodaged-head-north",
+      "confidence": "review",
+      "reason": "Functional aged wood bed block IDs exist, but beds are multi-block and orientation-sensitive. Implementation must spawn/place correctly."
+    },
+    {
+      "fromPattern": "chandelier-ruined*",
+      "targetKind": "registeredBlock",
+      "target": "game:chandelier-candle0",
+      "confidence": "medium",
+      "reason": "Registered chandelier blocks exist. candle0 is the unlit/empty-looking conservative target."
+    },
+    {
+      "fromPattern": "stove-ruined",
+      "targetKind": "registeredBlock",
+      "target": "game:stove-unlit-north",
+      "confidence": "medium",
+      "reason": "Registered stove blocks exist. Use source orientation if available; north is only a default."
+    },
+    {
+      "fromPattern": "censer/ceramic1-ruined*",
+      "targetKind": "clutterType",
+      "target": "censer/ceramic1",
+      "confidence": "high",
+      "reason": "Clean ceramic1 censer clutter model exists."
+    },
+    {
+      "fromPattern": "censer/metal1-ruined*",
+      "targetKind": "clutterType",
+      "target": "censer/metal1",
+      "confidence": "high",
+      "reason": "Clean metal1 censer clutter model exists."
+    },
+    {
+      "fromPattern": "censer/metal2-ruined*",
+      "targetKind": "clutterType",
+      "target": "censer/metal2",
+      "confidence": "high",
+      "reason": "Clean metal2 censer clutter model exists."
+    },
+    {
+      "fromPattern": "shelf/metal1-ruined1",
+      "targetKind": "clutterType",
+      "target": "shelf/metal1-empty",
+      "confidence": "high",
+      "reason": "Clean metal1-empty shelf clutter model exists."
+    },
+    {
+      "fromPattern": "shelf/metal2-ruined1",
+      "targetKind": "clutterType",
+      "target": "shelf/metal2-empty",
+      "confidence": "high",
+      "reason": "Clean metal2-empty shelf clutter model exists."
+    },
+    {
+      "fromPattern": "pipe-veryrusted-h-EW_broken",
+      "targetKind": "clutterType",
+      "target": "pipes/h-EW",
+      "confidence": "medium",
+      "reason": "Clean matching pipe model exists, but pipe material/state should be reviewed."
+    },
+    {
+      "fromPattern": "pipe-veryrusted-h-SW_broken",
+      "targetKind": "clutterType",
+      "target": "pipes/h-SW",
+      "confidence": "medium",
+      "reason": "Clean matching pipe model exists, but pipe material/state should be reviewed."
+    },
+    {
+      "fromPattern": "pipe-veryrusted-v-empty_broken",
+      "targetKind": "clutterType",
+      "target": "pipes/v-empty",
+      "confidence": "medium",
+      "reason": "Clean matching pipe model exists, but pipe material/state should be reviewed."
+    },
+    {
+      "fromPattern": "pipe-veryrusted-v-topW-broken",
+      "targetKind": "clutterType",
+      "target": "pipes/v-topW",
+      "confidence": "medium",
+      "reason": "Clean matching pipe model exists, but pipe material/state should be reviewed."
+    }
+  ],
+  "reviewMappings": [
+    {
+      "fromPattern": "anvil-broken*",
+      "candidateTargets": [
+        {"targetKind": "registeredBlock", "target": "game:anvil-iron"},
+        {"targetKind": "registeredBlock", "target": "game:anvil-copper"}
+      ],
+      "reason": "Functional anvils exist, but restoring a broken clutter anvil into a full anvil may be too valuable. Needs balance decision."
+    },
+    {
+      "fromPattern": "claylamp-wall-ruined*",
+      "candidateTargets": [
+        {"targetKind": "registeredBlock", "target": "game:oillamp-tan-north"},
+        {"targetKind": "registeredBlock", "target": "game:oillamp-brown-north"}
+      ],
+      "reason": "Functional oil lamp blocks exist, but no clean claylamp clutter model was found."
+    },
+    {
+      "fromPattern": "claylamp-ruined*",
+      "candidateTargets": [
+        {"targetKind": "registeredBlock", "target": "game:oillamp-tan-up"},
+        {"targetKind": "registeredBlock", "target": "game:oillamp-brown-up"}
+      ],
+      "reason": "Functional oil lamp blocks exist, but no clean claylamp clutter model was found."
+    },
+    {
+      "fromPattern": "hazmat-rack-ruined*",
+      "candidateTargets": [
+        {"targetKind": "clutterType", "target": "hazmat-rack-empty"},
+        {"targetKind": "clutterType", "target": "hazmat-rack"}
+      ],
+      "reason": "Clean hazmat rack models exist, but the filled/empty semantics need in-game checking."
+    },
+    {
+      "fromPattern": "hazmat-ruined*",
+      "candidateTargets": [
+        {"targetKind": "clutterType", "target": "hazmat-rack-empty"}
+      ],
+      "reason": "No obvious clean standalone hazmat suit clutter model was found. Might be better skipped."
+    },
+    {
+      "fromPattern": "mechanics-ruined*",
+      "candidateTargets": [],
+      "reason": "No obvious functional one-to-one repair target. Could become metal parts/scrap instead of furniture."
+    },
+    {
+      "fromPattern": "pipe-veryrusted-h-broken*",
+      "candidateTargets": [
+        {"targetKind": "clutterType", "target": "pipes/h-EW"}
+      ],
+      "reason": "Broken straight pipe variants exist, but exact clean counterpart is ambiguous."
+    },
+    {
+      "fromPattern": "pipe-veryrusted-v-broken*",
+      "candidateTargets": [
+        {"targetKind": "clutterType", "target": "pipes/v-empty"}
+      ],
+      "reason": "Broken vertical pipe variants exist, but exact clean counterpart is ambiguous."
+    }
+  ],
+  "shapeBackedCleanTargetsObserved": [
+    "bed/bed-fancy-open",
+    "bed/bed-fancy-drapes-opened",
+    "bed/bed-fancy-drapes-closed",
+    "bed/bed-metal",
+    "bed/metal2",
+    "bed/bed-straw-single1",
+    "bed/bed-straw-double1",
+    "chair-aged",
+    "chair-metal1",
+    "table-aged",
+    "table/metal1",
+    "crate/crate-small-empty",
+    "crate/crate-large-empty",
+    "bookshelves/scrollrack-empty1",
+    "bookshelves/scrollrack-full1",
+    "bookshelves/lecturn-aged-empty",
+    "lecturn-empty",
+    "toolrack-empty",
+    "coatrack-pristine",
+    "censer/ceramic1",
+    "censer/metal1",
+    "censer/metal2",
+    "shelf/metal1-empty",
+    "shelf/metal2-empty",
+    "pipes/h-EW",
+    "pipes/h-SW",
+    "pipes/v-empty",
+    "pipes/v-topW",
+    "hazmat-rack",
+    "hazmat-rack-empty"
+  ],
+  "registeredFunctionalTargetsObserved": [
+    "game:bed-hay-head-north",
+    "game:bed-village-head-north",
+    "game:bed-wood-head-north",
+    "game:bed-woodaged-head-north",
+    "game:chair-aged",
+    "game:table-aged",
+    "game:table-normal",
+    "game:scrollrack",
+    "game:shelf-normal-north",
+    "game:toolrack-north",
+    "game:chandelier-candle0",
+    "game:stove-unlit-north",
+    "game:oillamp-tan-up",
+    "game:crate",
+    "game:woodencrate-closed"
+  ]
+}

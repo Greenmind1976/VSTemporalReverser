@@ -1,0 +1,64 @@
+{
+  "code": "temporal-reverser",
+  "class": "ItemTemporalReverser",
+  "creativeinventory": {
+    "general": [
+      "*"
+    ],
+    "items": [
+      "*"
+    ]
+  },
+  "maxstacksize": 1,
+  "durability": 64,
+  "shape": {
+    "base": "game:item/tool/wrench"
+  },
+  "textures": {
+    "metal": {
+      "base": "game:block/metal/sheet/copper"
+    },
+    "wood": {
+      "base": "game:block/wood/debarked/oak"
+    },
+    "default": {
+      "base": "game:item/resource/temporalgear"
+    }
+  },
+  "guiTransform": {
+    "translation": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "rotation": {
+      "x": 0,
+      "y": 0,
+      "z": -35
+    },
+    "origin": {
+      "x": 0.5,
+      "y": 0.5,
+      "z": 0.5
+    },
+    "scale": 2.4
+  },
+  "groundTransform": {
+    "translation": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "rotation": {
+      "x": 90,
+      "y": 0,
+      "z": 0
+    },
+    "origin": {
+      "x": 0.5,
+      "y": 0.5,
+      "z": 0.5
+    },
+    "scale": 2.5
+  }
+}

@@ -1,137 +1,46 @@
-# VSMod Template
+# VSTemporalReverser
 
-Bootstrap helper for Vintage Story mod projects with a reusable local toolchain for texture/script workflows.
+Vintage Story mod experiment for restoring selected ruined or aged vanilla objects into usable forms.
 
-This repo is not itself a buildable mod skeleton. It is a helper repo that:
+The first implementation pass adds a creative-only `Temporal Reverser` item. When used on vanilla canopy bed clutter, it removes the clutter block and drops a sleepable vanilla aged wooden bed.
 
-- installs shared local tooling once
-- creates a new mod from the official Vintage Story templates
-- bootstraps the extra files you usually want in a real repo
+## Current Restoration Rules
 
-## Included
+- Aged canopy bed clutter costs 1 durability.
+- Ruined canopy bed clutter costs 2 durability.
+- Current output is `game:bed-woodaged-head-north`, which is sleepable.
 
-- `setup-image-tools.sh`
-  - Installs shared tools outside project repos:
-    - Homebrew: `python`, `imagemagick`, `ffmpeg`
-    - Python venv at `~/Documents/VSMods/.image-tools/venv`
-    - Python packages: `pillow`, `numpy`
-- `activate-tools.sh`
-  - Activates the shared venv in the current shell.
-- `bootstrap-mod.sh`
-  - Adds starter repo files after `dotnet new`
-  - Creates `VERSION`, `RELEASE_NOTES.md`, `TODO.md`, `.gitignore`, `README.md`, and `release.sh` when missing.
-- `new-mod.sh`
-  - Wraps `dotnet new vsmod` / `vsmoddll`
-  - Runs the bootstrap step automatically
+This is intentionally a narrow spike. It proves item interaction, vanilla clutter matching, durability cost, block removal, and restored sleepable item drop flow before adding custom functional canopy-bed behavior.
 
-## Why this layout
+## Layout
 
-You asked to keep tooling out of each mod repo. This helper installs tools once in a shared folder:
+- `VSTemporalReverser/` - buildable Vintage Story code mod project
+- `VSTemporalReverser/assets/vstemporalreverser/` - mod assets
+- `data/` - generated vanilla repair candidate data
+- `docs/` - analysis notes for repair candidates and merchant sources
+- `VERSION` - release version
+- `release.sh` - local release package builder
 
-- `~/Documents/VSMods/.image-tools`
+The older helper scripts from the template repo are still present for local tooling workflows.
 
-Any mod repo can reuse the same environment.
-
-## First-time setup (tools)
-
-From this repo:
+## Build
 
 ```bash
-chmod +x setup-image-tools.sh activate-tools.sh
-./setup-image-tools.sh
+VINTAGE_STORY="/Applications/Vintage Story 1.22.app" dotnet build VSTemporalReverser/VSTemporalReverser.csproj -c Debug -p:NuGetAudit=false
 ```
 
-## Official VS project bootstrap (NuGet template)
-
-Vintage Story’s current recommended bootstrap is the official template package.
-
-Install template package:
+## Install + Launch 1.22
 
 ```bash
-dotnet new install VintageStory.Mod.Templates
+./build-122-install.sh
 ```
 
-Set your game path for local API references:
+This builds the debug mod, installs it into `/Applications/Vintage Story 1.22.app/Mods/vstemporalreverser`, then launches Vintage Story 1.22 via `~/bin/vs-1.22` when that launcher exists.
+
+## Release Package
 
 ```bash
-export VINTAGE_STORY="/Applications/Vintage Story.app/Contents/Resources"
+./release.sh
 ```
 
-Create a new mod project:
-
-```bash
-dotnet new vsmod -n MyMod
-```
-
-Or DLL-only variant:
-
-```bash
-dotnet new vsmoddll -n MyMod
-```
-
-Then build:
-
-```bash
-dotnet build
-```
-
-## Quick project creation helper
-
-Use the included wrapper script:
-
-```bash
-chmod +x new-mod.sh
-./new-mod.sh MyMod
-```
-
-Options:
-
-```bash
-./new-mod.sh MyMod vsmoddll
-./new-mod.sh MyMod vsmod ~/Documents/VSMods
-```
-
-## Daily usage
-
-In any mod repo shell:
-
-```bash
-source ~/Documents/VSMods/VSMod-Template/activate-tools.sh
-```
-
-Then tools are available:
-
-- `python` with `Pillow` + `numpy`
-- `magick` (ImageMagick)
-- `ffmpeg`
-
-## Suggested workflow for a new mod
-
-1. Run `./new-mod.sh MyMod`.
-2. Activate shared tools.
-3. Update the generated `README.md`, `modinfo.json`, `VERSION`, and `RELEASE_NOTES.md`.
-4. Add texture scripts under `tools/textures/` in the mod repo if needed.
-5. Run build/test loop (`dotnet build`, in-game validation).
-
-## Optional shell helper
-
-To auto-load tools when entering any VSMods folder, add this to `~/.zshrc`:
-
-```bash
-vsmod-tools() {
-  source ~/Documents/VSMods/VSMod-Template/activate-tools.sh
-}
-```
-
-Then run:
-
-```bash
-vsmod-tools
-```
-
-## Notes
-
-- If `brew` is missing, install from <https://brew.sh/>.
-- `setup-image-tools.sh` is idempotent; re-running is safe.
-- If Python packages break after system updates, rerun setup.
-- You can keep your existing direct DLL-reference `.csproj` workflow; the NuGet template is just the cleaner bootstrap.
+The release zip is written to `dist/`.

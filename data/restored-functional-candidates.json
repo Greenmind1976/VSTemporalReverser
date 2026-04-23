@@ -1,0 +1,583 @@
+{
+  "source": {
+    "scope": "vanilla game domain only",
+    "clutterAsset": "/Applications/Vintage Story 1.22.app/assets/survival/blocktypes/clutter.json",
+    "language": "/Applications/Vintage Story 1.22.app/assets/game/lang/en.json",
+    "notes": [
+      "Ruined inputs should cost 2x Temporal Reverser durability.",
+      "Aged/old inputs should cost 1x Temporal Reverser durability.",
+      "Outputs are proposed modded restored blocks/items. They should reuse vanilla aged/old/clean models where possible, but provide functional behavior in the mod.",
+      "Aged is interpreted broadly where vanilla uses old, aged texture flips, or aged registered blocks."
+    ]
+  },
+  "summary": {
+    "uniqueRuinedVariantCodesObservedInVanillaBlocktypes": 119,
+    "uniqueAgedOrOldVariantCodesObservedInVanillaBlocktypes": 165,
+    "functionalRestorationFamiliesRecommendedForFirstPass": 14,
+    "bestProofOfConcept": "restored-canopy-bed"
+  },
+  "durabilityPolicy": {
+    "ruinedInputCostMultiplier": 2,
+    "agedInputCostMultiplier": 1
+  },
+  "families": [
+    {
+      "family": "canopy-bed",
+      "priority": "proof-of-concept",
+      "ruinedInputs": [
+        {
+          "kind": "clutterType",
+          "type": "fancy-bed-stitched-ruined",
+          "displayName": "Aged canopy bed",
+          "costMultiplier": 2
+        },
+        {
+          "kind": "clutterTypePattern",
+          "typePattern": "bed/bed-fancy-ruined*",
+          "displayNames": [
+            "Ruined bed",
+            "Ruined canopy bed"
+          ],
+          "costMultiplier": 2
+        }
+      ],
+      "agedInputs": [
+        {
+          "kind": "clutterType",
+          "type": "fancy-bed-old",
+          "displayName": "Aged canopy bed",
+          "costMultiplier": 1
+        },
+        {
+          "kind": "clutterType",
+          "type": "fancy-bed-old-drapes-opened",
+          "displayName": "Aged canopy bed",
+          "costMultiplier": 1
+        },
+        {
+          "kind": "clutterType",
+          "type": "fancy-bed-old-drapes-closed",
+          "displayName": "Aged canopy bed",
+          "costMultiplier": 1
+        }
+      ],
+      "restoredOutput": {
+        "domain": "temporalreverser",
+        "code": "restored-canopy-bed",
+        "displayName": "Restored canopy bed",
+        "modelSourcePreference": [
+          "game:clutter type fancy-bed-old-drapes-opened",
+          "game:clutter type fancy-bed-old",
+          "game:clutter type bed/bed-fancy-open"
+        ],
+        "functionTemplate": "vanilla bed behavior"
+      },
+      "implementationNotes": [
+        "This should be a modded functional bed, not vanilla game:clutter.",
+        "Bed placement likely needs head/foot and facing variants, or a custom block behavior that places a multiblock bed."
+      ]
+    },
+    {
+      "family": "short-bed",
+      "priority": "high",
+      "ruinedInputs": [
+        {
+          "kind": "clutterType",
+          "type": "bed-short-stitched-ruined",
+          "displayName": "Aged short bed",
+          "costMultiplier": 2
+        }
+      ],
+      "agedInputs": [
+        {
+          "kind": "clutterType",
+          "type": "bed-short-old",
+          "displayName": "Aged short bed",
+          "costMultiplier": 1
+        }
+      ],
+      "restoredOutput": {
+        "domain": "temporalreverser",
+        "code": "restored-short-bed",
+        "displayName": "Restored short bed",
+        "modelSourcePreference": [
+          "game:clutter type bed-short-old"
+        ],
+        "functionTemplate": "vanilla bed behavior"
+      }
+    },
+    {
+      "family": "wooden-bed",
+      "priority": "high",
+      "ruinedInputs": [
+        {
+          "kind": "clutterTypePattern",
+          "typePattern": "bed/bed-ruined*",
+          "displayName": "Ruined bed",
+          "costMultiplier": 2
+        }
+      ],
+      "agedInputs": [
+        {
+          "kind": "registeredBlockPattern",
+          "codePattern": "game:bed-woodaged-head-*",
+          "displayName": "Aged wooden bed",
+          "costMultiplier": 1
+        }
+      ],
+      "restoredOutput": {
+        "domain": "temporalreverser",
+        "code": "restored-aged-wooden-bed",
+        "displayName": "Restored aged wooden bed",
+        "modelSourcePreference": [
+          "game:bed-woodaged-head-*"
+        ],
+        "functionTemplate": "vanilla bed behavior"
+      }
+    },
+    {
+      "family": "metal-bed",
+      "priority": "high",
+      "ruinedInputs": [
+        {
+          "kind": "clutterTypePattern",
+          "typePattern": "bed/bed-metal-ruined*",
+          "displayName": "Ruined metal bed",
+          "costMultiplier": 2
+        },
+        {
+          "kind": "clutterTypePattern",
+          "typePattern": "bed/metal2-ruined*",
+          "displayName": "Ruined metal bed",
+          "costMultiplier": 2
+        }
+      ],
+      "agedInputs": [
+        {
+          "kind": "clutterType",
+          "type": "bed/bed-metal",
+          "displayName": "Metal bed",
+          "costMultiplier": 1
+        },
+        {
+          "kind": "clutterType",
+          "type": "bed/metal2",
+          "displayName": "Metal bed",
+          "costMultiplier": 1
+        }
+      ],
+      "restoredOutput": {
+        "domain": "temporalreverser",
+        "code": "restored-metal-bed",
+        "displayName": "Restored metal bed",
+        "modelSourcePreference": [
+          "game:clutter type bed/bed-metal",
+          "game:clutter type bed/metal2"
+        ],
+        "functionTemplate": "vanilla bed behavior"
+      }
+    },
+    {
+      "family": "chair",
+      "priority": "high",
+      "ruinedInputs": [
+        {
+          "kind": "clutterTypePattern",
+          "typePattern": "chair-ruined*",
+          "displayName": "Ruined chair",
+          "costMultiplier": 2
+        }
+      ],
+      "agedInputs": [
+        {
+          "kind": "clutterType",
+          "type": "chair-aged",
+          "displayName": "Aged chair",
+          "costMultiplier": 1
+        },
+        {
+          "kind": "registeredBlock",
+          "code": "game:chair-aged",
+          "displayName": "Aged wooden chair",
+          "costMultiplier": 1
+        }
+      ],
+      "restoredOutput": {
+        "domain": "temporalreverser",
+        "code": "restored-aged-chair",
+        "displayName": "Restored aged chair",
+        "modelSourcePreference": [
+          "game:chair-aged",
+          "game:clutter type chair-aged"
+        ],
+        "functionTemplate": "sit-capable chair behavior, if implemented"
+      }
+    },
+    {
+      "family": "table",
+      "priority": "high",
+      "ruinedInputs": [
+        {
+          "kind": "clutterTypePattern",
+          "typePattern": "table-ruined*",
+          "displayName": "Ruined table",
+          "costMultiplier": 2
+        }
+      ],
+      "agedInputs": [
+        {
+          "kind": "clutterType",
+          "type": "table-aged",
+          "displayName": "Aged table",
+          "costMultiplier": 1
+        },
+        {
+          "kind": "registeredBlock",
+          "code": "game:table-aged",
+          "displayName": "Aged wooden table",
+          "costMultiplier": 1
+        }
+      ],
+      "restoredOutput": {
+        "domain": "temporalreverser",
+        "code": "restored-aged-table",
+        "displayName": "Restored aged table",
+        "modelSourcePreference": [
+          "game:table-aged",
+          "game:clutter type table-aged"
+        ],
+        "functionTemplate": "vanilla table placement/collision behavior"
+      }
+    },
+    {
+      "family": "metal-chair",
+      "priority": "medium",
+      "ruinedInputs": [
+        {
+          "kind": "clutterTypePattern",
+          "typePattern": "chair-metal1-ruined*",
+          "displayName": "Ruined metal chair",
+          "costMultiplier": 2
+        }
+      ],
+      "agedInputs": [
+        {
+          "kind": "clutterType",
+          "type": "chair-metal1",
+          "displayName": "Metal chair",
+          "costMultiplier": 1
+        }
+      ],
+      "restoredOutput": {
+        "domain": "temporalreverser",
+        "code": "restored-metal-chair",
+        "displayName": "Restored metal chair",
+        "modelSourcePreference": [
+          "game:clutter type chair-metal1"
+        ],
+        "functionTemplate": "sit-capable chair behavior, if implemented"
+      }
+    },
+    {
+      "family": "metal-table",
+      "priority": "medium",
+      "ruinedInputs": [
+        {
+          "kind": "clutterTypePattern",
+          "typePattern": "table/metal1-ruined*",
+          "displayName": "Ruined metal table",
+          "costMultiplier": 2
+        }
+      ],
+      "agedInputs": [
+        {
+          "kind": "clutterType",
+          "type": "table/metal1",
+          "displayName": "Metal table",
+          "costMultiplier": 1
+        }
+      ],
+      "restoredOutput": {
+        "domain": "temporalreverser",
+        "code": "restored-metal-table",
+        "displayName": "Restored metal table",
+        "modelSourcePreference": [
+          "game:clutter type table/metal1"
+        ],
+        "functionTemplate": "vanilla table placement/collision behavior"
+      }
+    },
+    {
+      "family": "lectern",
+      "priority": "medium",
+      "ruinedInputs": [
+        {
+          "kind": "clutterType",
+          "type": "bookshelves/lecturn-ruined",
+          "displayName": "Ruined lectern",
+          "costMultiplier": 2
+        },
+        {
+          "kind": "clutterType",
+          "type": "lecturn-ruined",
+          "displayName": "Ruined lectern",
+          "costMultiplier": 2
+        }
+      ],
+      "agedInputs": [
+        {
+          "kind": "clutterType",
+          "type": "bookshelves/lecturn-aged-empty",
+          "displayName": "Aged lectern",
+          "costMultiplier": 1
+        },
+        {
+          "kind": "clutterType",
+          "type": "bookshelves/lecturn-aged-book-closed",
+          "displayName": "Aged lectern",
+          "costMultiplier": 1
+        },
+        {
+          "kind": "clutterType",
+          "type": "bookshelves/lecturn-aged-book-opened",
+          "displayName": "Aged lectern with empty book",
+          "costMultiplier": 1
+        }
+      ],
+      "restoredOutput": {
+        "domain": "temporalreverser",
+        "code": "restored-aged-lectern",
+        "displayName": "Restored aged lectern",
+        "modelSourcePreference": [
+          "game:clutter type bookshelves/lecturn-aged-empty"
+        ],
+        "functionTemplate": "decorative/display behavior unless a readable-book behavior is added"
+      }
+    },
+    {
+      "family": "scroll-rack",
+      "priority": "medium",
+      "ruinedInputs": [
+        {
+          "kind": "clutterTypePattern",
+          "typePattern": "bookshelves/scrollrack-ruined*",
+          "displayName": "Ruined scroll rack",
+          "costMultiplier": 2
+        }
+      ],
+      "agedInputs": [
+        {
+          "kind": "registeredBlock",
+          "code": "game:scrollrack-aged",
+          "displayName": "Aged oak scroll rack",
+          "costMultiplier": 1
+        },
+        {
+          "kind": "registeredBlock",
+          "code": "game:scrollrack-veryaged",
+          "displayName": "Very aged scroll rack",
+          "costMultiplier": 1
+        },
+        {
+          "kind": "clutterType",
+          "type": "bookshelves/scrollrack-empty1",
+          "displayName": "Cluttered scroll rack",
+          "costMultiplier": 1
+        }
+      ],
+      "restoredOutput": {
+        "domain": "temporalreverser",
+        "code": "restored-aged-scroll-rack",
+        "displayName": "Restored aged scroll rack",
+        "modelSourcePreference": [
+          "game:scrollrack-aged",
+          "game:clutter type bookshelves/scrollrack-empty1"
+        ],
+        "functionTemplate": "vanilla scrollrack behavior"
+      }
+    },
+    {
+      "family": "tool-rack",
+      "priority": "medium",
+      "ruinedInputs": [
+        {
+          "kind": "clutterTypePattern",
+          "typePattern": "toolrack-ruined*",
+          "displayName": "Ruined tool rack",
+          "costMultiplier": 2
+        }
+      ],
+      "agedInputs": [
+        {
+          "kind": "clutterType",
+          "type": "toolrack-empty",
+          "displayName": "Empty tool rack",
+          "costMultiplier": 1
+        },
+        {
+          "kind": "registeredBlockPattern",
+          "codePattern": "game:toolrack-*",
+          "displayName": "Tool rack",
+          "costMultiplier": 1
+        }
+      ],
+      "restoredOutput": {
+        "domain": "temporalreverser",
+        "code": "restored-aged-tool-rack",
+        "displayName": "Restored aged tool rack",
+        "modelSourcePreference": [
+          "game:clutter type toolrack-empty",
+          "game:toolrack-north"
+        ],
+        "functionTemplate": "vanilla toolrack behavior"
+      }
+    },
+    {
+      "family": "crate",
+      "priority": "medium",
+      "ruinedInputs": [
+        {
+          "kind": "clutterTypePattern",
+          "typePattern": "crate/crate-small-ruined*",
+          "displayName": "Small ruined crate",
+          "costMultiplier": 2
+        },
+        {
+          "kind": "clutterTypePattern",
+          "typePattern": "crate/crate-large-ruined*",
+          "displayName": "Large ruined crate",
+          "costMultiplier": 2
+        }
+      ],
+      "agedInputs": [
+        {
+          "kind": "registeredBlock",
+          "code": "game:crate",
+          "attributes": {
+            "type": "wood-aged",
+            "lidState": "closed"
+          },
+          "displayName": "Aged crate",
+          "costMultiplier": 1
+        },
+        {
+          "kind": "clutterType",
+          "type": "crate/crate-small-empty",
+          "displayName": "Small crate (Empty)",
+          "costMultiplier": 1
+        },
+        {
+          "kind": "clutterType",
+          "type": "crate/crate-large-empty",
+          "displayName": "Large crate (Empty)",
+          "costMultiplier": 1
+        }
+      ],
+      "restoredOutput": {
+        "domain": "temporalreverser",
+        "code": "restored-aged-crate",
+        "displayName": "Restored aged crate",
+        "modelSourcePreference": [
+          "game:crate attributes type=wood-aged",
+          "game:clutter type crate/crate-small-empty",
+          "game:clutter type crate/crate-large-empty"
+        ],
+        "functionTemplate": "vanilla crate behavior"
+      },
+      "balanceNote": "This creates functional storage from ruined decorative clutter, so it may need limited output capacity or a higher durability cost."
+    },
+    {
+      "family": "torch-holder",
+      "priority": "medium",
+      "ruinedInputs": [
+        {
+          "kind": "registeredBlockPattern",
+          "codePattern": "game:torchholder-ruined-*",
+          "displayName": "Ruined torch holder",
+          "costMultiplier": 2
+        }
+      ],
+      "agedInputs": [
+        {
+          "kind": "registeredBlockPattern",
+          "codePattern": "game:torchholder-aged-*",
+          "displayName": "Aged torch holder",
+          "costMultiplier": 1
+        }
+      ],
+      "restoredOutput": {
+        "domain": "temporalreverser",
+        "code": "restored-aged-torch-holder",
+        "displayName": "Restored aged torch holder",
+        "modelSourcePreference": [
+          "game:torchholder-aged-*"
+        ],
+        "functionTemplate": "vanilla torchholder behavior"
+      }
+    },
+    {
+      "family": "metal-shelf",
+      "priority": "low",
+      "ruinedInputs": [
+        {
+          "kind": "clutterType",
+          "type": "shelf/metal1-ruined1",
+          "displayName": "Ruined metal shelf",
+          "costMultiplier": 2
+        },
+        {
+          "kind": "clutterType",
+          "type": "shelf/metal2-ruined1",
+          "displayName": "Ruined metal shelf",
+          "costMultiplier": 2
+        }
+      ],
+      "agedInputs": [
+        {
+          "kind": "clutterType",
+          "type": "shelf/metal1-empty",
+          "displayName": "Metal shelf",
+          "costMultiplier": 1
+        },
+        {
+          "kind": "clutterType",
+          "type": "shelf/metal2-empty",
+          "displayName": "Metal shelf",
+          "costMultiplier": 1
+        }
+      ],
+      "restoredOutput": {
+        "domain": "temporalreverser",
+        "code": "restored-metal-shelf",
+        "displayName": "Restored metal shelf",
+        "modelSourcePreference": [
+          "game:clutter type shelf/metal1-empty",
+          "game:clutter type shelf/metal2-empty"
+        ],
+        "functionTemplate": "display/storage behavior if implemented"
+      }
+    }
+  ],
+  "notRecommendedForFirstPass": [
+    {
+      "family": "devastation-machinery-aged",
+      "reason": "Many aged machinery clutter types exist, but no clear ruined-to-functional gameplay target exists."
+    },
+    {
+      "family": "banner-aged",
+      "reason": "Aged banners exist, but no ruined banner counterpart was found in the useful repair set."
+    },
+    {
+      "family": "ladder-aged",
+      "reason": "Aged ladders already include climbable variants; not a strong restored-function candidate."
+    },
+    {
+      "family": "hazmat-and-mechanics",
+      "reason": "Ruined variants exist and some clean clutter exists, but no obvious functional restored behavior is defined."
+    },
+    {
+      "family": "censers-and-clay-lamps",
+      "reason": "Ruined and clean-ish clutter exists, but functional behavior needs a design decision: decorative, candle/oil-lamp behavior, or light source."
+    }
+  ]
+}
