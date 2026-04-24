@@ -1,0 +1,151 @@
+{
+  "code": "restored-chandelier",
+  "class": "BlockChandelier",
+  "behaviors": [
+    {
+      "name": "UnstableFalling",
+      "properties": {
+        "attachableFaces": ["up", "down"],
+        "impactDamageMul": 10,
+        "attachmentAreas": {
+          "down": { "x1": 7, "y1": 15, "z1": 7, "x2": 8, "y2": 15, "z2": 8 },
+          "up": { "x1": 7, "y1": 0, "z1": 7, "x2": 8, "y2": 0, "z2": 8 }
+        }
+      }
+    }
+  ],
+  "variantgroups": [
+    {
+      "code": "material",
+      "states": [
+        "copper",
+        "brass",
+        "blackbronze",
+        "bismuth",
+        "tinbronze",
+        "bismuthbronze",
+        "iron",
+        "molybdochalkos",
+        "silver",
+        "gold",
+        "steel",
+        "meteoriciron",
+        "electrum"
+      ]
+    },
+    {
+      "code": "type",
+      "states": [
+        "candle0",
+        "candle1",
+        "candle2",
+        "candle3",
+        "candle4",
+        "candle5",
+        "candle6",
+        "candle7",
+        "candle8"
+      ]
+    }
+  ],
+  "shapebytype": {
+    "*-candle0": { "base": "block/metal/chandelier/candle0" },
+    "*-candle1": { "base": "block/metal/chandelier/candle1" },
+    "*-candle2": { "base": "block/metal/chandelier/candle2" },
+    "*-candle3": { "base": "block/metal/chandelier/candle3" },
+    "*-candle4": { "base": "block/metal/chandelier/candle4" },
+    "*-candle5": { "base": "block/metal/chandelier/candle5" },
+    "*-candle6": { "base": "block/metal/chandelier/candle6" },
+    "*-candle7": { "base": "block/metal/chandelier/candle7" },
+    "*-candle8": { "base": "block/metal/chandelier/candle8" }
+  },
+  "textures": {
+    "blackbronze": { "base": "block/metal/lantern/{material}" },
+    "candle": { "base": "block/candle" }
+  },
+  "creativeinventory": {
+    "general": [
+      "*-copper-candle0",
+      "*-brass-candle0",
+      "*-blackbronze-candle0",
+      "*-bismuth-candle0",
+      "*-tinbronze-candle0",
+      "*-bismuthbronze-candle0",
+      "*-iron-candle0",
+      "*-molybdochalkos-candle0",
+      "*-silver-candle0",
+      "*-gold-candle0",
+      "*-steel-candle0",
+      "*-meteoriciron-candle0",
+      "*-electrum-candle0"
+    ],
+    "decorative": [
+      "*-copper-candle0",
+      "*-brass-candle0",
+      "*-blackbronze-candle0",
+      "*-bismuth-candle0",
+      "*-tinbronze-candle0",
+      "*-bismuthbronze-candle0",
+      "*-iron-candle0",
+      "*-molybdochalkos-candle0",
+      "*-silver-candle0",
+      "*-gold-candle0",
+      "*-steel-candle0",
+      "*-meteoriciron-candle0",
+      "*-electrum-candle0"
+    ]
+  },
+  "drawtype": "json",
+  "blockmaterial": "Metal",
+  "sidesolid": { "all": false },
+  "sideopaque": { "all": false },
+  "resistance": 3,
+  "lightHsvByType": {
+    "*-candle0": [7, 7, 0],
+    "*-candle1": [7, 7, 10],
+    "*-candle2": [7, 7, 12],
+    "*-candle3": [7, 7, 14],
+    "*-candle4": [7, 7, 16],
+    "*-candle5": [7, 7, 18],
+    "*-candle6": [7, 7, 20],
+    "*-candle7": [7, 7, 22],
+    "*-candle8": [7, 7, 24]
+  },
+  "drops": [
+    {
+      "type": "item",
+      "code": "game:candle",
+      "quantityByType": {
+        "*0": { "avg": 0 },
+        "*1": { "avg": 1 },
+        "*2": { "avg": 2 },
+        "*3": { "avg": 3 },
+        "*4": { "avg": 4 },
+        "*5": { "avg": 5 },
+        "*6": { "avg": 6 },
+        "*7": { "avg": 7 },
+        "*8": { "avg": 8 }
+      }
+    },
+    {
+      "type": "block",
+      "code": "vstemporalreverser:restored-chandelier-{material}-candle0"
+    }
+  ],
+  "lightAbsorption": 0,
+  "collisionSelectionBox": {
+    "x1": 0.0625,
+    "y1": 0,
+    "z1": 0.0625,
+    "x2": 0.9375,
+    "y2": 1,
+    "z2": 0.9375
+  },
+  "sounds": {
+    "hit": "block/chandelier-hit",
+    "break": "block/chandelier-break"
+  },
+  "shapeinventory": {
+    "base": "block/metal/chandelier/candle0"
+  }
+}

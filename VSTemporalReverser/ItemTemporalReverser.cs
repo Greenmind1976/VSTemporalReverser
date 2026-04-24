@@ -14,6 +14,42 @@ public class ItemTemporalReverser : Item
 {
     private const int AgedDurabilityCost = 1;
     private const int RuinedDurabilityCost = 2;
+    private static readonly string[] RandomLanternMaterials =
+    [
+        "copper",
+        "brass",
+        "blackbronze",
+        "bismuth",
+        "tinbronze",
+        "bismuthbronze",
+        "iron",
+        "molybdochalkos",
+        "silver",
+        "gold",
+        "steel",
+        "meteoriciron",
+        "electrum"
+    ];
+    private static readonly string[] RandomLanternLinings =
+    [
+        "plain",
+        "silver",
+        "gold",
+        "electrum"
+    ];
+    private static readonly string[] RandomTorchholderMaterials =
+    [
+        "aged",
+        "brass"
+    ];
+    private static readonly string[] RandomTableTypes =
+    [
+        "normal",
+        "aged",
+        "whitemarble",
+        "redmarble",
+        "greenmarble"
+    ];
     private static readonly string[] RandomRestoredWoodTypes =
     [
         "mahogany",
@@ -22,6 +58,22 @@ public class ItemTemporalReverser : Item
         "maple",
         "pine",
         "redwood"
+    ];
+    private static readonly string[] RandomRestoredTableWoodTypes =
+    [
+        "walnut",
+        "mahogany",
+        "ebony",
+        "acacia"
+    ];
+
+    private static readonly string[] RandomRestoredAgedTableStyles =
+    [
+        "agedwhite",
+        "agedblue",
+        "agedgreen",
+        "agedpurple",
+        "agedred"
     ];
     private static readonly string[] RandomOpenRestoredCanopyBedStyles =
     [
@@ -51,6 +103,23 @@ public class ItemTemporalReverser : Item
         "honeycombclosed"
     ];
 
+    private static readonly string[] RandomRestoredShortBedStyles =
+    [
+        "morningstar",
+        "blueplaid",
+        "greenplaid",
+        "redplaid",
+        "honeycomb"
+    ];
+
+    private static readonly string[] RandomNonGreenRestoredShortBedStyles =
+    [
+        "morningstar",
+        "blueplaid",
+        "redplaid",
+        "honeycomb"
+    ];
+
     private static readonly string[] RandomNonGreenOpenRestoredCanopyBedStyles =
     [
         "morningstaropen",
@@ -75,7 +144,7 @@ public class ItemTemporalReverser : Item
         "honeycombclosed"
     ];
 
-    private static readonly Dictionary<string, RestorationRule> CanopyBedRules = new(StringComparer.OrdinalIgnoreCase)
+    private static readonly Dictionary<string, RestorationRule> BedRules = new(StringComparer.OrdinalIgnoreCase)
     {
         ["fancy-bed-green"] = RestoredCanopyBedRule(AgedDurabilityCost, "greenplaidopen"),
         ["fancy-bed-stitched-ruined"] = RandomRestoredCanopyBedRule(RuinedDurabilityCost, RandomAnyRestoredCanopyBedStyles),
@@ -90,13 +159,65 @@ public class ItemTemporalReverser : Item
         ["fancy-bed-old-drapes-closed"] = RandomRestoredCanopyBedRule(AgedDurabilityCost, RandomNonGreenClosedRestoredCanopyBedStyles),
         ["fancy-bed-green-drapes-opened"] = RestoredCanopyBedRule(AgedDurabilityCost, "greenplaidopened"),
         ["fancy-bed-green-drapes-closed"] = RestoredCanopyBedRule(AgedDurabilityCost, "greenplaidclosed"),
+        ["bed-short-green"] = RestoredShortBedRule(AgedDurabilityCost, "greenplaid"),
+        ["bed-short-old"] = RandomRestoredShortBedRule(AgedDurabilityCost, RandomNonGreenRestoredShortBedStyles),
+        ["bed-short-stitched-ruined"] = RandomRestoredShortBedRule(RuinedDurabilityCost, RandomRestoredShortBedStyles),
+        ["bed/bed-ruined1"] = RandomRestoredShortBedRule(RuinedDurabilityCost, RandomRestoredShortBedStyles),
+        ["bed/bed-ruined2"] = RandomRestoredShortBedRule(RuinedDurabilityCost, RandomRestoredShortBedStyles),
+        ["bed/bed-ruined3"] = VanillaBedRule(RuinedDurabilityCost, "game:bed-woodaged-head-north"),
+        ["bed/bed-ruined4"] = VanillaBedRule(RuinedDurabilityCost, "game:bed-woodaged-head-north"),
+        ["bed/bed-ruined5"] = VanillaBedRule(RuinedDurabilityCost, "game:bed-woodaged-head-north"),
+        ["bed/bed-ruined6"] = VanillaBedRule(RuinedDurabilityCost, "game:bed-woodaged-head-north"),
+        ["table-aged"] = RestoredTableRule(AgedDurabilityCost, "agedwhite"),
+        ["table-long"] = RestoredTableRule(AgedDurabilityCost, "scribe"),
+        ["table-long-with-accessories"] = RestoredTableRule(AgedDurabilityCost, "scribeaccessories"),
+        ["table-long-with-cloth-blue"] = RestoredTableRule(AgedDurabilityCost, "scribeblue"),
+        ["table-long-with-cloth-green"] = RestoredTableRule(AgedDurabilityCost, "scribegreen"),
+        ["table-long-with-cloth-purple"] = RestoredTableRule(AgedDurabilityCost, "scribepurple"),
+        ["table-long-with-cloth-red"] = RestoredTableRule(AgedDurabilityCost, "scribered"),
+        ["table-ruined1"] = RandomRestoredTableRule(RuinedDurabilityCost, RandomRestoredAgedTableStyles),
+        ["table-ruined2"] = RandomRestoredTableRule(RuinedDurabilityCost, RandomRestoredAgedTableStyles),
+        ["table-ruined3"] = RandomRestoredTableRule(RuinedDurabilityCost, RandomRestoredAgedTableStyles),
+        ["table-ruined4"] = RandomRestoredTableRule(RuinedDurabilityCost, RandomRestoredAgedTableStyles),
+        ["table-ruined5"] = RandomRestoredTableRule(RuinedDurabilityCost, RandomRestoredAgedTableStyles),
+        ["table-ruined6"] = RandomRestoredTableRule(RuinedDurabilityCost, RandomRestoredAgedTableStyles),
+        ["lantern/ground1"] = RandomVanillaLanternRule(AgedDurabilityCost),
+        ["lantern/ground2"] = RandomVanillaLanternRule(AgedDurabilityCost),
+        ["lantern/ground3"] = RandomVanillaLanternRule(AgedDurabilityCost),
+        ["lantern/ground4"] = RandomVanillaLanternRule(AgedDurabilityCost),
+        ["lantern/ground5"] = RandomVanillaLanternRule(AgedDurabilityCost),
+        ["lantern/ground6"] = RandomVanillaLanternRule(AgedDurabilityCost),
+        ["lantern/wall1"] = RandomVanillaLanternRule(AgedDurabilityCost),
+        ["lantern/wall2"] = RandomVanillaLanternRule(AgedDurabilityCost),
+        ["lantern/wall3"] = RandomVanillaLanternRule(AgedDurabilityCost),
+        ["lantern/ceiling1"] = RandomVanillaLanternRule(AgedDurabilityCost),
+        ["lantern/ceiling2"] = RandomVanillaLanternRule(AgedDurabilityCost),
+        ["lantern/ground7"] = RandomVanillaLanternRule(RuinedDurabilityCost),
+        ["lantern/ground8"] = RandomVanillaLanternRule(RuinedDurabilityCost),
+        ["lantern/wall5"] = RandomVanillaLanternRule(RuinedDurabilityCost),
+        ["lantern/ceiling3"] = RandomVanillaLanternRule(RuinedDurabilityCost),
+        ["chandelier-ruined1"] = VanillaBlockRule(RuinedDurabilityCost, "vstemporalreverser:restored-chandelier-{material}-candle0"),
+        ["chandelier-ruined2"] = VanillaBlockRule(RuinedDurabilityCost, "vstemporalreverser:restored-chandelier-{material}-candle0"),
+        ["chandelier-ruined3"] = VanillaBlockRule(RuinedDurabilityCost, "vstemporalreverser:restored-chandelier-{material}-candle0")
+    };
+
+    private static readonly Dictionary<string, RestorationRule> BlockRules = new(StringComparer.OrdinalIgnoreCase)
+    {
+        ["torchholder-ruined-empty-north"] = VanillaBlockRule(RuinedDurabilityCost, "game:torchholder-{torchholdermaterial}-empty-north"),
+        ["torchholder-ruined-empty-east"] = VanillaBlockRule(RuinedDurabilityCost, "game:torchholder-{torchholdermaterial}-empty-east"),
+        ["torchholder-ruined-empty-south"] = VanillaBlockRule(RuinedDurabilityCost, "game:torchholder-{torchholdermaterial}-empty-south"),
+        ["torchholder-ruined-empty-west"] = VanillaBlockRule(RuinedDurabilityCost, "game:torchholder-{torchholdermaterial}-empty-west"),
+        ["torchholder-ruined-filled-north"] = VanillaBlockRule(RuinedDurabilityCost, "game:torchholder-{torchholdermaterial}-empty-north"),
+        ["torchholder-ruined-filled-east"] = VanillaBlockRule(RuinedDurabilityCost, "game:torchholder-{torchholdermaterial}-empty-east"),
+        ["torchholder-ruined-filled-south"] = VanillaBlockRule(RuinedDurabilityCost, "game:torchholder-{torchholdermaterial}-empty-south"),
+        ["torchholder-ruined-filled-west"] = VanillaBlockRule(RuinedDurabilityCost, "game:torchholder-{torchholdermaterial}-empty-west")
     };
 
     public override void GetHeldItemInfo(ItemSlot inSlot, StringBuilder dsc, IWorldAccessor world, bool withDebugInfo)
     {
         base.GetHeldItemInfo(inSlot, dsc, world, withDebugInfo);
         dsc.AppendLine();
-        dsc.AppendLine("Restores aged or ruined canopy bed clutter into a restored canopy bed.");
+        dsc.AppendLine("Restores selected aged or ruined clutter into usable furnishings.");
     }
 
     public override void OnHeldInteractStart(
@@ -121,18 +242,33 @@ public class ItemTemporalReverser : Item
 
         BlockPos pos = blockSel.Position;
         Block block = world.BlockAccessor.GetBlock(pos);
-        if (block?.Code == null || block.Code.Domain != "game" || block.Code.Path != "clutter")
+        if (block?.Code == null || block.Code.Domain != "game")
         {
             return;
         }
 
-        string? clutterType = GetClutterType(world, pos);
-        if (clutterType == null || !CanopyBedRules.TryGetValue(clutterType, out RestorationRule rule))
+        RestorationRule? matchedRule = null;
+        if (block.Code.Path == "clutter")
         {
-            SendNotification(byEntity, "The reverser hums, but finds no canopy bed pattern to restore.");
+            string? clutterType = GetClutterType(world, pos);
+            if (clutterType != null && BedRules.TryGetValue(clutterType, out RestorationRule clutterRule))
+            {
+                matchedRule = clutterRule;
+            }
+        }
+        else if (BlockRules.TryGetValue(block.Code.Path, out RestorationRule blockRule))
+        {
+            matchedRule = blockRule;
+        }
+
+        if (matchedRule == null)
+        {
+            SendNotification(byEntity, "The reverser hums, but finds no restorable pattern.");
             handling = EnumHandHandling.PreventDefault;
             return;
         }
+
+        RestorationRule rule = matchedRule.Value;
 
         ItemStack? restoredStack = CreateRestoredStack(world, rule);
         if (restoredStack == null)
@@ -149,7 +285,7 @@ public class ItemTemporalReverser : Item
         DamageItem(world, byEntity, slot, rule.DurabilityCost);
 
         world.PlaySoundAt(new AssetLocation("game", "sounds/effect/translocate"), pos.X + 0.5, pos.Y + 0.5, pos.Z + 0.5);
-        SendNotification(byEntity, "The canopy bed settles back into a usable shape.");
+        SendNotification(byEntity, "The restored item drops free in a usable shape.");
 
         handling = EnumHandHandling.PreventDefault;
     }
@@ -170,12 +306,74 @@ public class ItemTemporalReverser : Item
             return randomBlock == null ? null : new ItemStack(randomBlock, 1);
         }
 
+        if (rule.TargetKind == RestorationTargetKind.RandomRestoredShortBed)
+        {
+            string[] styles = rule.Targets ?? Array.Empty<string>();
+            if (styles.Length == 0)
+            {
+                return null;
+            }
+
+            string style = styles[Random.Shared.Next(styles.Length)];
+            string wood = RandomRestoredWoodTypes[Random.Shared.Next(RandomRestoredWoodTypes.Length)];
+            Block? randomBlock = world.GetBlock(ToAssetLocation($"vstemporalreverser:restored-short-bed-{style}-{wood}-head-north"));
+            return randomBlock == null ? null : new ItemStack(randomBlock, 1);
+        }
+
+        if (rule.TargetKind == RestorationTargetKind.RandomVanillaLantern)
+        {
+            Block? lanternBlock = world.GetBlock(ToAssetLocation("game:lantern-large-up"));
+            if (lanternBlock == null)
+            {
+                return null;
+            }
+
+            ItemStack lanternStack = new(lanternBlock, 1);
+            lanternStack.Attributes.SetString("material", RandomLanternMaterials[Random.Shared.Next(RandomLanternMaterials.Length)]);
+            lanternStack.Attributes.SetString("lining", RandomLanternLinings[Random.Shared.Next(RandomLanternLinings.Length)]);
+            lanternStack.Attributes.SetString("glass", "quartz");
+            lanternStack.ResolveBlockOrItem(world);
+            return lanternStack;
+        }
+
+        if (rule.TargetKind == RestorationTargetKind.RandomVanillaTable)
+        {
+            string tableType = RandomTableTypes[Random.Shared.Next(RandomTableTypes.Length)];
+            Block? tableBlock = world.GetBlock(ToAssetLocation($"game:table-{tableType}"));
+            if (tableBlock == null)
+            {
+                return null;
+            }
+
+            ItemStack tableStack = new(tableBlock, 1);
+            tableStack.ResolveBlockOrItem(world);
+            return tableStack;
+        }
+
         if (rule.TargetKind == RestorationTargetKind.Block)
         {
             string wood = RandomRestoredWoodTypes[Random.Shared.Next(RandomRestoredWoodTypes.Length)];
-            string targetCode = rule.Target.Replace("{wood}", wood, StringComparison.Ordinal);
+            string tableWood = RandomRestoredTableWoodTypes[Random.Shared.Next(RandomRestoredTableWoodTypes.Length)];
+            string tableStyle = rule.Targets != null && rule.Targets.Length > 0
+                ? rule.Targets[Random.Shared.Next(rule.Targets.Length)]
+                : string.Empty;
+            string material = RandomLanternMaterials[Random.Shared.Next(RandomLanternMaterials.Length)];
+            string torchholderMaterial = RandomTorchholderMaterials[Random.Shared.Next(RandomTorchholderMaterials.Length)];
+            string targetCode = rule.Target
+                .Replace("{wood}", wood, StringComparison.Ordinal)
+                .Replace("{tablestyle}", tableStyle, StringComparison.Ordinal)
+                .Replace("{tablewood}", tableWood, StringComparison.Ordinal)
+                .Replace("{material}", material, StringComparison.Ordinal);
+            targetCode = targetCode.Replace("{torchholdermaterial}", torchholderMaterial, StringComparison.Ordinal);
             Block? block = world.GetBlock(ToAssetLocation(targetCode));
-            return block == null ? null : new ItemStack(block, 1);
+            if (block == null)
+            {
+                return null;
+            }
+
+            ItemStack blockStack = new(block, 1);
+            blockStack.ResolveBlockOrItem(world);
+            return blockStack;
         }
 
         Block? clutterBlock = world.GetBlock(new AssetLocation("game", "clutter"));
@@ -259,10 +457,69 @@ public class ItemTemporalReverser : Item
         return new RestorationRule(durabilityCost, RestorationTargetKind.RandomRestoredCanopyBed, string.Empty, styles);
     }
 
+    private static RestorationRule RestoredShortBedRule(int durabilityCost, string style)
+    {
+        return new RestorationRule(
+            durabilityCost,
+            RestorationTargetKind.Block,
+            $"vstemporalreverser:restored-short-bed-{style}-{{wood}}-head-north");
+    }
+
+    private static RestorationRule RestoredTableRule(int durabilityCost, string style)
+    {
+        return new RestorationRule(
+            durabilityCost,
+            RestorationTargetKind.Block,
+            $"vstemporalreverser:restored-table-{style}-{{tablewood}}-north");
+    }
+
+    private static RestorationRule RandomRestoredTableRule(int durabilityCost, string[] styles)
+    {
+        return new RestorationRule(
+            durabilityCost,
+            RestorationTargetKind.Block,
+            $"vstemporalreverser:restored-table-{{tablestyle}}-{{tablewood}}-north",
+            styles);
+    }
+
+    private static RestorationRule VanillaBedRule(int durabilityCost, string code)
+    {
+        return new RestorationRule(
+            durabilityCost,
+            RestorationTargetKind.Block,
+            code);
+    }
+
+    private static RestorationRule VanillaBlockRule(int durabilityCost, string code)
+    {
+        return new RestorationRule(
+            durabilityCost,
+            RestorationTargetKind.Block,
+            code);
+    }
+
+    private static RestorationRule RandomRestoredShortBedRule(int durabilityCost, string[] styles)
+    {
+        return new RestorationRule(durabilityCost, RestorationTargetKind.RandomRestoredShortBed, string.Empty, styles);
+    }
+
+    private static RestorationRule RandomVanillaLanternRule(int durabilityCost)
+    {
+        return new RestorationRule(durabilityCost, RestorationTargetKind.RandomVanillaLantern, "game:lantern-large-up");
+    }
+
+    private static RestorationRule RandomVanillaTableRule(int durabilityCost)
+    {
+        return new RestorationRule(durabilityCost, RestorationTargetKind.RandomVanillaTable, "game:table-normal");
+    }
+
     private enum RestorationTargetKind
     {
         Block,
         RandomRestoredCanopyBed,
+        RandomRestoredShortBed,
+        RandomVanillaLantern,
+        RandomVanillaTable,
         ClutterType
     }
 

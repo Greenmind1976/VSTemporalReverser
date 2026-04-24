@@ -10,7 +10,7 @@
     ]
   },
   "maxstacksize": 1,
-  "durability": 64,
+  "durability": 2000,
   "shape": {
     "base": "game:item/tool/wrench"
   },

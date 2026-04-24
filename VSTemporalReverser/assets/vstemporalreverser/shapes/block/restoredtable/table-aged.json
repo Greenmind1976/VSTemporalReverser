@@ -1,0 +1,110 @@
+{
+	"editor": {
+		"allAngles": false,
+		"entityTextureMode": false
+	},
+	"textureWidth": 16,
+	"textureHeight": 16,
+	"textureSizes": {
+	},
+	"textures": {
+		"charred": "vstemporalreverser:block/restoredtable/wood/charred",
+		"cloth-top": "vstemporalreverser:block/restoredtable/cloth/aged/cloth-top",
+		"cloth-side": "vstemporalreverser:block/restoredtable/cloth/aged/cloth-side"
+	},
+	"elements": [
+		{
+			"name": "Cube1",
+			"from": [ 0.0, 12.0, 0.0 ],
+			"to": [ 16.0, 16.0, 16.0 ],
+			"faces": {
+				"north": { "texture": "#charred", "uv": [ 0.0, 0.0, 16.0, 4.0 ] },
+				"east": { "texture": "#charred", "uv": [ 0.0, 4.0, 16.0, 8.0 ] },
+				"south": { "texture": "#charred", "uv": [ 0.0, 12.0, 16.0, 16.0 ] },
+				"west": { "texture": "#charred", "uv": [ 0.0, 8.0, 16.0, 12.0 ] },
+				"up": { "texture": "#charred", "uv": [ 0.0, 0.0, 16.0, 16.0 ] },
+				"down": { "texture": "#charred", "uv": [ 0.0, 0.0, 16.0, 16.0 ] }
+			},
+			"children": [
+				{
+					"name": "Cube2",
+					"from": [ 0.5, -12.0, 0.5 ],
+					"to": [ 4.5, 0.0, 4.5 ],
+					"rotationOrigin": [ 0.5, 0.0, 0.5 ],
+					"faces": {
+						"north": { "texture": "#charred", "uv": [ 7.5, 3.0, 11.5, 15.0 ], "rotation": 90 },
+						"east": { "texture": "#charred", "uv": [ 11.5, 0.0, 15.5, 12.0 ], "rotation": 90 },
+						"south": { "texture": "#charred", "uv": [ 4.0, 2.0, 8.0, 14.0 ], "rotation": 90 },
+						"west": { "texture": "#charred", "uv": [ 0.0, 4.0, 4.0, 16.0 ], "rotation": 90 },
+						"down": { "texture": "#charred", "uv": [ 0.0, 0.0, 4.0, 4.0 ] }
+					}
+				},
+				{
+					"name": "Cube3",
+					"from": [ 11.5, -12.0, 0.5 ],
+					"to": [ 15.5, 0.0, 4.5 ],
+					"rotationOrigin": [ -0.5, 0.0, 0.5 ],
+					"faces": {
+						"north": { "texture": "#charred", "uv": [ 4.0, 4.0, 8.0, 16.0 ], "rotation": 90 },
+						"east": { "texture": "#charred", "uv": [ 8.0, 0.0, 12.0, 12.0 ], "rotation": 90 },
+						"south": { "texture": "#charred", "uv": [ 11.0, 0.0, 15.0, 12.0 ], "rotation": 90 },
+						"west": { "texture": "#charred", "uv": [ 4.0, 4.0, 8.0, 16.0 ], "rotation": 90 },
+						"down": { "texture": "#charred", "uv": [ 12.0, 0.0, 16.0, 4.0 ] }
+					}
+				},
+				{
+					"name": "Cube4",
+					"from": [ 11.5, -12.0, 11.5 ],
+					"to": [ 15.5, 0.0, 15.5 ],
+					"rotationOrigin": [ -0.5, 0.0, -0.5 ],
+					"faces": {
+						"north": { "texture": "#charred", "uv": [ 4.0, 2.0, 8.0, 14.0 ], "rotation": 90 },
+						"east": { "texture": "#charred", "uv": [ 1.0, 4.0, 5.0, 16.0 ], "rotation": 90 },
+						"south": { "texture": "#charred", "uv": [ 4.0, 1.0, 8.0, 13.0 ], "rotation": 90 },
+						"west": { "texture": "#charred", "uv": [ 10.0, 4.0, 14.0, 16.0 ], "rotation": 90 },
+						"down": { "texture": "#charred", "uv": [ 0.0, 12.0, 4.0, 16.0 ] }
+					}
+				},
+				{
+					"name": "Cube5",
+					"from": [ 0.5, -12.0, 11.5 ],
+					"to": [ 4.5, 0.0, 15.5 ],
+					"rotationOrigin": [ 0.5, 0.0, -0.5 ],
+					"faces": {
+						"north": { "texture": "#charred", "uv": [ 9.0, 4.0, 13.0, 16.0 ], "rotation": 90 },
+						"east": { "texture": "#charred", "uv": [ 5.0, 0.0, 9.0, 12.0 ], "rotation": 90 },
+						"south": { "texture": "#charred", "uv": [ 1.0, 0.0, 5.0, 12.0 ], "rotation": 90 },
+						"west": { "texture": "#charred", "uv": [ 0.0, 4.0, 4.0, 16.0 ], "rotation": 90 },
+						"down": { "texture": "#charred", "uv": [ 12.0, 12.0, 16.0, 16.0 ] }
+					}
+				},
+				{
+					"name": "clothTop",
+					"from": [ 1.5, 4.01, 0.0 ],
+					"to": [ 14.5, 4.01, 16.0 ],
+					"rotationOrigin": [ 8.0, 4.01, 8.0 ],
+					"faces": {
+						"up": { "texture": "#cloth-top", "uv": [ 1.5, 0.0, 14.5, 16.0 ] }
+					}
+				},
+				{
+					"name": "clothNorth",
+					"from": [ 1.5, 0.5, -0.02 ],
+					"to": [ 14.5, 4.01, -0.02 ],
+					"rotationOrigin": [ 8.0, 4.0, 0.0 ],
+					"faces": {
+						"north": { "texture": "#cloth-side", "uv": [ 1.5, 0.0, 14.5, 3.5 ] }
+					}
+				},
+				{
+					"name": "clothSouth",
+					"from": [ 1.5, 0.5, 16.02 ],
+					"to": [ 14.5, 4.01, 16.02 ],
+					"rotationOrigin": [ 8.0, 4.0, 16.0 ],
+					"faces": {
+						"south": { "texture": "#cloth-side", "uv": [ 14.5, 0.0, 1.5, 3.5 ] }
+					}
+				}
+			]
+		}
+	]}

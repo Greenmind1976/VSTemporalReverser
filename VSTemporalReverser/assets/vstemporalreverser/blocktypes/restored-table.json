@@ -1,0 +1,626 @@
+{
+  "code": "restored-table",
+  "behaviors": [
+    {
+      "name": "UnstableFalling"
+    }
+  ],
+  "variantgroups": [
+    {
+      "code": "style",
+      "states": [
+        "agedwhite",
+        "agedblue",
+        "agedgreen",
+        "agedpurple",
+        "agedred",
+        "scribe",
+        "scribeaccessories",
+        "scribeblue",
+        "scribegreen",
+        "scribepurple",
+        "scribered"
+      ]
+    },
+    {
+      "code": "wood",
+      "states": [
+        "walnut",
+        "mahogany",
+        "ebony",
+        "acacia"
+      ]
+    },
+    {
+      "code": "side",
+      "loadFromProperties": "abstract/horizontalorientation"
+    }
+  ],
+  "attributes": {
+    "humanoidTraversalCost": 100,
+    "pieFormingSurface": true,
+    "handbook": {
+      "groupBy": [
+        "restored-table-{style}-*-*"
+      ]
+    }
+  },
+  "drawtype": "json",
+  "blockmaterial": "Wood",
+  "replaceable": 900,
+  "resistance": 1.5,
+  "lightAbsorption": 1,
+  "sidesolid": {
+    "up": true,
+    "all": false
+  },
+  "sideopaque": {
+    "up": true,
+    "all": false
+  },
+  "sounds": {
+    "place": "block/planks",
+    "hit": "block/planks",
+    "break": "block/planks",
+    "walk": "walk/wood"
+  },
+  "combustibleProps": {
+    "burnTemperature": 600,
+    "burnDuration": 35
+  },
+  "shapeinventoryByType": {
+    "*-agedwhite-*-*": {
+      "base": "block/restoredtable/table-aged"
+    },
+    "*-agedblue-*-*": {
+      "base": "block/restoredtable/table-aged"
+    },
+    "*-agedgreen-*-*": {
+      "base": "block/restoredtable/table-aged"
+    },
+    "*-agedpurple-*-*": {
+      "base": "block/restoredtable/table-aged"
+    },
+    "*-agedred-*-*": {
+      "base": "block/restoredtable/table-aged"
+    },
+    "*-scribe-*-*": {
+      "base": "block/restoredtable/table-long"
+    },
+    "*-scribeaccessories-*-*": {
+      "base": "block/restoredtable/table-long-with-accessories"
+    },
+    "*-scribeblue-*-*": {
+      "base": "block/restoredtable/table-long-with-cloth-blue"
+    },
+    "*-scribegreen-*-*": {
+      "base": "block/restoredtable/table-long-with-cloth-green"
+    },
+    "*-scribepurple-*-*": {
+      "base": "block/restoredtable/table-long-with-cloth-purple"
+    },
+    "*-scribered-*-*": {
+      "base": "block/restoredtable/table-long-with-cloth-red"
+    }
+  },
+  "texturesByType": {
+    "*-agedwhite-walnut-*": {
+      "cloth-top": {
+        "base": "block/restoredtable/cloth/aged/white/cloth-top"
+      },
+      "cloth-side": {
+        "base": "block/restoredtable/cloth/aged/white/cloth-side"
+      },
+      "charred": {
+        "base": "block/restoredtable/wood/walnut"
+      }
+    },
+    "*-agedwhite-mahogany-*": {
+      "cloth-top": {
+        "base": "block/restoredtable/cloth/aged/white/cloth-top"
+      },
+      "cloth-side": {
+        "base": "block/restoredtable/cloth/aged/white/cloth-side"
+      },
+      "charred": {
+        "base": "block/restoredtable/wood/mahogany"
+      }
+    },
+    "*-agedwhite-ebony-*": {
+      "cloth-top": {
+        "base": "block/restoredtable/cloth/aged/white/cloth-top"
+      },
+      "cloth-side": {
+        "base": "block/restoredtable/cloth/aged/white/cloth-side"
+      },
+      "charred": {
+        "base": "block/restoredtable/wood/ebony"
+      }
+    },
+    "*-agedwhite-acacia-*": {
+      "cloth-top": {
+        "base": "block/restoredtable/cloth/aged/white/cloth-top"
+      },
+      "cloth-side": {
+        "base": "block/restoredtable/cloth/aged/white/cloth-side"
+      },
+      "charred": {
+        "base": "block/restoredtable/wood/acacia"
+      }
+    },
+    "*-agedblue-walnut-*": {
+      "cloth-top": {
+        "base": "block/restoredtable/cloth/aged/blue/cloth-top"
+      },
+      "cloth-side": {
+        "base": "block/restoredtable/cloth/aged/blue/cloth-side"
+      },
+      "charred": {
+        "base": "block/restoredtable/wood/walnut"
+      }
+    },
+    "*-agedblue-mahogany-*": {
+      "cloth-top": {
+        "base": "block/restoredtable/cloth/aged/blue/cloth-top"
+      },
+      "cloth-side": {
+        "base": "block/restoredtable/cloth/aged/blue/cloth-side"
+      },
+      "charred": {
+        "base": "block/restoredtable/wood/mahogany"
+      }
+    },
+    "*-agedblue-ebony-*": {
+      "cloth-top": {
+        "base": "block/restoredtable/cloth/aged/blue/cloth-top"
+      },
+      "cloth-side": {
+        "base": "block/restoredtable/cloth/aged/blue/cloth-side"
+      },
+      "charred": {
+        "base": "block/restoredtable/wood/ebony"
+      }
+    },
+    "*-agedblue-acacia-*": {
+      "cloth-top": {
+        "base": "block/restoredtable/cloth/aged/blue/cloth-top"
+      },
+      "cloth-side": {
+        "base": "block/restoredtable/cloth/aged/blue/cloth-side"
+      },
+      "charred": {
+        "base": "block/restoredtable/wood/acacia"
+      }
+    },
+    "*-agedgreen-walnut-*": {
+      "cloth-top": {
+        "base": "block/restoredtable/cloth/aged/green/cloth-top"
+      },
+      "cloth-side": {
+        "base": "block/restoredtable/cloth/aged/green/cloth-side"
+      },
+      "charred": {
+        "base": "block/restoredtable/wood/walnut"
+      }
+    },
+    "*-agedgreen-mahogany-*": {
+      "cloth-top": {
+        "base": "block/restoredtable/cloth/aged/green/cloth-top"
+      },
+      "cloth-side": {
+        "base": "block/restoredtable/cloth/aged/green/cloth-side"
+      },
+      "charred": {
+        "base": "block/restoredtable/wood/mahogany"
+      }
+    },
+    "*-agedgreen-ebony-*": {
+      "cloth-top": {
+        "base": "block/restoredtable/cloth/aged/green/cloth-top"
+      },
+      "cloth-side": {
+        "base": "block/restoredtable/cloth/aged/green/cloth-side"
+      },
+      "charred": {
+        "base": "block/restoredtable/wood/ebony"
+      }
+    },
+    "*-agedgreen-acacia-*": {
+      "cloth-top": {
+        "base": "block/restoredtable/cloth/aged/green/cloth-top"
+      },
+      "cloth-side": {
+        "base": "block/restoredtable/cloth/aged/green/cloth-side"
+      },
+      "charred": {
+        "base": "block/restoredtable/wood/acacia"
+      }
+    },
+    "*-agedpurple-walnut-*": {
+      "cloth-top": {
+        "base": "block/restoredtable/cloth/aged/purple/cloth-top"
+      },
+      "cloth-side": {
+        "base": "block/restoredtable/cloth/aged/purple/cloth-side"
+      },
+      "charred": {
+        "base": "block/restoredtable/wood/walnut"
+      }
+    },
+    "*-agedpurple-mahogany-*": {
+      "cloth-top": {
+        "base": "block/restoredtable/cloth/aged/purple/cloth-top"
+      },
+      "cloth-side": {
+        "base": "block/restoredtable/cloth/aged/purple/cloth-side"
+      },
+      "charred": {
+        "base": "block/restoredtable/wood/mahogany"
+      }
+    },
+    "*-agedpurple-ebony-*": {
+      "cloth-top": {
+        "base": "block/restoredtable/cloth/aged/purple/cloth-top"
+      },
+      "cloth-side": {
+        "base": "block/restoredtable/cloth/aged/purple/cloth-side"
+      },
+      "charred": {
+        "base": "block/restoredtable/wood/ebony"
+      }
+    },
+    "*-agedpurple-acacia-*": {
+      "cloth-top": {
+        "base": "block/restoredtable/cloth/aged/purple/cloth-top"
+      },
+      "cloth-side": {
+        "base": "block/restoredtable/cloth/aged/purple/cloth-side"
+      },
+      "charred": {
+        "base": "block/restoredtable/wood/acacia"
+      }
+    },
+    "*-agedred-walnut-*": {
+      "cloth-top": {
+        "base": "block/restoredtable/cloth/aged/red/cloth-top"
+      },
+      "cloth-side": {
+        "base": "block/restoredtable/cloth/aged/red/cloth-side"
+      },
+      "charred": {
+        "base": "block/restoredtable/wood/walnut"
+      }
+    },
+    "*-agedred-mahogany-*": {
+      "cloth-top": {
+        "base": "block/restoredtable/cloth/aged/red/cloth-top"
+      },
+      "cloth-side": {
+        "base": "block/restoredtable/cloth/aged/red/cloth-side"
+      },
+      "charred": {
+        "base": "block/restoredtable/wood/mahogany"
+      }
+    },
+    "*-agedred-ebony-*": {
+      "cloth-top": {
+        "base": "block/restoredtable/cloth/aged/red/cloth-top"
+      },
+      "cloth-side": {
+        "base": "block/restoredtable/cloth/aged/red/cloth-side"
+      },
+      "charred": {
+        "base": "block/restoredtable/wood/ebony"
+      }
+    },
+    "*-agedred-acacia-*": {
+      "cloth-top": {
+        "base": "block/restoredtable/cloth/aged/red/cloth-top"
+      },
+      "cloth-side": {
+        "base": "block/restoredtable/cloth/aged/red/cloth-side"
+      },
+      "charred": {
+        "base": "block/restoredtable/wood/acacia"
+      }
+    },
+    "*-scribe-walnut-*": {
+      "charred": {
+        "base": "block/restoredtable/wood/walnut"
+      }
+    },
+    "*-scribe-mahogany-*": {
+      "charred": {
+        "base": "block/restoredtable/wood/mahogany"
+      }
+    },
+    "*-scribe-ebony-*": {
+      "charred": {
+        "base": "block/restoredtable/wood/ebony"
+      }
+    },
+    "*-scribe-acacia-*": {
+      "charred": {
+        "base": "block/restoredtable/wood/acacia"
+      }
+    },
+    "*-scribeaccessories-walnut-*": {
+      "charred": {
+        "base": "block/restoredtable/wood/walnut"
+      }
+    },
+    "*-scribeaccessories-mahogany-*": {
+      "charred": {
+        "base": "block/restoredtable/wood/mahogany"
+      }
+    },
+    "*-scribeaccessories-ebony-*": {
+      "charred": {
+        "base": "block/restoredtable/wood/ebony"
+      }
+    },
+    "*-scribeaccessories-acacia-*": {
+      "charred": {
+        "base": "block/restoredtable/wood/acacia"
+      }
+    },
+    "*-scribeblue-walnut-*": {
+      "charred": {
+        "base": "block/restoredtable/wood/walnut"
+      }
+    },
+    "*-scribeblue-mahogany-*": {
+      "charred": {
+        "base": "block/restoredtable/wood/mahogany"
+      }
+    },
+    "*-scribeblue-ebony-*": {
+      "charred": {
+        "base": "block/restoredtable/wood/ebony"
+      }
+    },
+    "*-scribeblue-acacia-*": {
+      "charred": {
+        "base": "block/restoredtable/wood/acacia"
+      }
+    },
+    "*-scribegreen-walnut-*": {
+      "charred": {
+        "base": "block/restoredtable/wood/walnut"
+      }
+    },
+    "*-scribegreen-mahogany-*": {
+      "charred": {
+        "base": "block/restoredtable/wood/mahogany"
+      }
+    },
+    "*-scribegreen-ebony-*": {
+      "charred": {
+        "base": "block/restoredtable/wood/ebony"
+      }
+    },
+    "*-scribegreen-acacia-*": {
+      "charred": {
+        "base": "block/restoredtable/wood/acacia"
+      }
+    },
+    "*-scribepurple-walnut-*": {
+      "charred": {
+        "base": "block/restoredtable/wood/walnut"
+      }
+    },
+    "*-scribepurple-mahogany-*": {
+      "charred": {
+        "base": "block/restoredtable/wood/mahogany"
+      }
+    },
+    "*-scribepurple-ebony-*": {
+      "charred": {
+        "base": "block/restoredtable/wood/ebony"
+      }
+    },
+    "*-scribepurple-acacia-*": {
+      "charred": {
+        "base": "block/restoredtable/wood/acacia"
+      }
+    },
+    "*-scribered-walnut-*": {
+      "charred": {
+        "base": "block/restoredtable/wood/walnut"
+      }
+    },
+    "*-scribered-mahogany-*": {
+      "charred": {
+        "base": "block/restoredtable/wood/mahogany"
+      }
+    },
+    "*-scribered-ebony-*": {
+      "charred": {
+        "base": "block/restoredtable/wood/ebony"
+      }
+    },
+    "*-scribered-acacia-*": {
+      "charred": {
+        "base": "block/restoredtable/wood/acacia"
+      }
+    }
+  },
+  "shapebytype": {
+    "*-agedwhite-*-north": {
+      "base": "block/restoredtable/table-aged",
+      "rotateY": 90
+    },
+    "*-agedwhite-*-east": {
+      "base": "block/restoredtable/table-aged",
+      "rotateY": 0
+    },
+    "*-agedwhite-*-south": {
+      "base": "block/restoredtable/table-aged",
+      "rotateY": 270
+    },
+    "*-agedwhite-*-west": {
+      "base": "block/restoredtable/table-aged",
+      "rotateY": 180
+    },
+    "*-agedblue-*-north": {
+      "base": "block/restoredtable/table-aged",
+      "rotateY": 90
+    },
+    "*-agedblue-*-east": {
+      "base": "block/restoredtable/table-aged",
+      "rotateY": 0
+    },
+    "*-agedblue-*-south": {
+      "base": "block/restoredtable/table-aged",
+      "rotateY": 270
+    },
+    "*-agedblue-*-west": {
+      "base": "block/restoredtable/table-aged",
+      "rotateY": 180
+    },
+    "*-agedgreen-*-north": {
+      "base": "block/restoredtable/table-aged",
+      "rotateY": 90
+    },
+    "*-agedgreen-*-east": {
+      "base": "block/restoredtable/table-aged",
+      "rotateY": 0
+    },
+    "*-agedgreen-*-south": {
+      "base": "block/restoredtable/table-aged",
+      "rotateY": 270
+    },
+    "*-agedgreen-*-west": {
+      "base": "block/restoredtable/table-aged",
+      "rotateY": 180
+    },
+    "*-agedpurple-*-north": {
+      "base": "block/restoredtable/table-aged",
+      "rotateY": 90
+    },
+    "*-agedpurple-*-east": {
+      "base": "block/restoredtable/table-aged",
+      "rotateY": 0
+    },
+    "*-agedpurple-*-south": {
+      "base": "block/restoredtable/table-aged",
+      "rotateY": 270
+    },
+    "*-agedpurple-*-west": {
+      "base": "block/restoredtable/table-aged",
+      "rotateY": 180
+    },
+    "*-agedred-*-north": {
+      "base": "block/restoredtable/table-aged",
+      "rotateY": 90
+    },
+    "*-agedred-*-east": {
+      "base": "block/restoredtable/table-aged",
+      "rotateY": 0
+    },
+    "*-agedred-*-south": {
+      "base": "block/restoredtable/table-aged",
+      "rotateY": 270
+    },
+    "*-agedred-*-west": {
+      "base": "block/restoredtable/table-aged",
+      "rotateY": 180
+    },
+    "*-scribe-*-north": {
+      "base": "block/restoredtable/table-long",
+      "rotateY": 90
+    },
+    "*-scribe-*-east": {
+      "base": "block/restoredtable/table-long",
+      "rotateY": 0
+    },
+    "*-scribe-*-south": {
+      "base": "block/restoredtable/table-long",
+      "rotateY": 270
+    },
+    "*-scribe-*-west": {
+      "base": "block/restoredtable/table-long",
+      "rotateY": 180
+    },
+    "*-scribeaccessories-*-north": {
+      "base": "block/restoredtable/table-long-with-accessories",
+      "rotateY": 90
+    },
+    "*-scribeaccessories-*-east": {
+      "base": "block/restoredtable/table-long-with-accessories",
+      "rotateY": 0
+    },
+    "*-scribeaccessories-*-south": {
+      "base": "block/restoredtable/table-long-with-accessories",
+      "rotateY": 270
+    },
+    "*-scribeaccessories-*-west": {
+      "base": "block/restoredtable/table-long-with-accessories",
+      "rotateY": 180
+    },
+    "*-scribeblue-*-north": {
+      "base": "block/restoredtable/table-long-with-cloth-blue",
+      "rotateY": 90
+    },
+    "*-scribeblue-*-east": {
+      "base": "block/restoredtable/table-long-with-cloth-blue",
+      "rotateY": 0
+    },
+    "*-scribeblue-*-south": {
+      "base": "block/restoredtable/table-long-with-cloth-blue",
+      "rotateY": 270
+    },
+    "*-scribeblue-*-west": {
+      "base": "block/restoredtable/table-long-with-cloth-blue",
+      "rotateY": 180
+    },
+    "*-scribegreen-*-north": {
+      "base": "block/restoredtable/table-long-with-cloth-green",
+      "rotateY": 90
+    },
+    "*-scribegreen-*-east": {
+      "base": "block/restoredtable/table-long-with-cloth-green",
+      "rotateY": 0
+    },
+    "*-scribegreen-*-south": {
+      "base": "block/restoredtable/table-long-with-cloth-green",
+      "rotateY": 270
+    },
+    "*-scribegreen-*-west": {
+      "base": "block/restoredtable/table-long-with-cloth-green",
+      "rotateY": 180
+    },
+    "*-scribepurple-*-north": {
+      "base": "block/restoredtable/table-long-with-cloth-purple",
+      "rotateY": 90
+    },
+    "*-scribepurple-*-east": {
+      "base": "block/restoredtable/table-long-with-cloth-purple",
+      "rotateY": 0
+    },
+    "*-scribepurple-*-south": {
+      "base": "block/restoredtable/table-long-with-cloth-purple",
+      "rotateY": 270
+    },
+    "*-scribepurple-*-west": {
+      "base": "block/restoredtable/table-long-with-cloth-purple",
+      "rotateY": 180
+    },
+    "*-scribered-*-north": {
+      "base": "block/restoredtable/table-long-with-cloth-red",
+      "rotateY": 90
+    },
+    "*-scribered-*-east": {
+      "base": "block/restoredtable/table-long-with-cloth-red",
+      "rotateY": 0
+    },
+    "*-scribered-*-south": {
+      "base": "block/restoredtable/table-long-with-cloth-red",
+      "rotateY": 270
+    },
+    "*-scribered-*-west": {
+      "base": "block/restoredtable/table-long-with-cloth-red",
+      "rotateY": 180
+    }
+  }
+}
