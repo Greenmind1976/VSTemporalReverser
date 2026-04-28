@@ -1,0 +1,356 @@
+{
+  "code": "restored-censer",
+  "variantgroups": [
+    {
+      "code": "style",
+      "states": [
+        "ceramic1",
+        "ceramic2",
+        "ceramic3",
+        "metal1",
+        "metal1ceiling",
+        "metal1wall",
+        "metal2",
+        "metal2ceiling",
+        "metal2wall",
+        "metal3",
+        "metal3ceiling",
+        "metal3wall",
+        "metal4"
+      ]
+    },
+    {
+      "code": "finish",
+      "states": [
+        "blue1",
+        "brown1",
+        "fire1",
+        "red1",
+        "copper",
+        "brass",
+        "blackbronze",
+        "silver",
+        "gold",
+        "electrum"
+      ]
+    }
+  ],
+  "drawtype": "json",
+  "blockmaterial": "Other",
+  "replaceable": 900,
+  "resistance": 1.5,
+  "lightAbsorption": 0,
+  "doNotRenderAtLod2": true,
+  "guiTransformByType": {
+    "*-ceramic1-*": {
+      "origin": {
+        "x": 0.5,
+        "y": 0.26,
+        "z": 0.5
+      },
+      "scale": 2.27
+    },
+    "*-ceramic2-*": {
+      "origin": {
+        "x": 0.5,
+        "y": 0.26,
+        "z": 0.5
+      },
+      "scale": 2.27
+    },
+    "*-ceramic3-*": {
+      "origin": {
+        "x": 0.5,
+        "y": 0.26,
+        "z": 0.5
+      },
+      "scale": 2.27
+    },
+    "*-metal1-*": {
+      "origin": {
+        "x": 0.5,
+        "y": 0.16,
+        "z": 0.5
+      },
+      "scale": 3.1
+    },
+    "*-metal1ceiling-*": {
+      "origin": {
+        "x": 0.5,
+        "y": 0.26,
+        "z": 0.5
+      },
+      "scale": 3.1
+    },
+    "*-metal1wall-*": {
+      "origin": {
+        "x": 0.5,
+        "y": 0.16,
+        "z": 0.5
+      },
+      "scale": 3.1
+    },
+    "*-metal2-*": {
+      "origin": {
+        "x": 0.5,
+        "y": 0.16,
+        "z": 0.5
+      },
+      "scale": 3.1
+    },
+    "*-metal2ceiling-*": {
+      "origin": {
+        "x": 0.5,
+        "y": 0.26,
+        "z": 0.5
+      },
+      "scale": 3.1
+    },
+    "*-metal2wall-*": {
+      "origin": {
+        "x": 0.5,
+        "y": 0.16,
+        "z": 0.5
+      },
+      "scale": 3.1
+    },
+    "*-metal3-*": {
+      "origin": {
+        "x": 0.5,
+        "y": 0.16,
+        "z": 0.5
+      },
+      "scale": 3.1
+    },
+    "*-metal3ceiling-*": {
+      "origin": {
+        "x": 0.5,
+        "y": 0.26,
+        "z": 0.5
+      },
+      "scale": 3.1
+    },
+    "*-metal3wall-*": {
+      "origin": {
+        "x": 0.5,
+        "y": 0.16,
+        "z": 0.5
+      },
+      "scale": 3.1
+    },
+    "*-metal4-*": {
+      "origin": {
+        "x": 0.5,
+        "y": 0.16,
+        "z": 0.5
+      },
+      "scale": 3.1
+    }
+  },
+  "sidesolid": {
+    "all": false
+  },
+  "sideopaque": {
+    "all": false
+  },
+  "shapebytype": {
+    "*-ceramic1-*": { "base": "block/restoredcenser/ceramic1" },
+    "*-ceramic2-*": { "base": "block/restoredcenser/ceramic2" },
+    "*-ceramic3-*": { "base": "block/restoredcenser/ceramic3" },
+    "*-metal1-*": { "base": "block/restoredcenser/metal1" },
+    "*-metal1ceiling-*": { "base": "block/restoredcenser/metal1" },
+    "*-metal1wall-*": { "base": "block/restoredcenser/metal1" },
+    "*-metal2-*": { "base": "block/restoredcenser/metal2" },
+    "*-metal2ceiling-*": { "base": "block/restoredcenser/metal2" },
+    "*-metal2wall-*": { "base": "block/restoredcenser/metal2" },
+    "*-metal3-*": { "base": "block/restoredcenser/metal3" },
+    "*-metal3ceiling-*": { "base": "block/restoredcenser/metal3" },
+    "*-metal3wall-*": { "base": "block/restoredcenser/metal3" },
+    "*-metal4-*": { "base": "block/restoredcenser/metal4" }
+  },
+  "shapeinventoryByType": {
+    "*-ceramic1-*": { "base": "block/restoredcenser/ceramic1" },
+    "*-ceramic2-*": { "base": "block/restoredcenser/ceramic2" },
+    "*-ceramic3-*": { "base": "block/restoredcenser/ceramic3" },
+    "*-metal1-*": { "base": "block/restoredcenser/metal1" },
+    "*-metal1ceiling-*": { "base": "block/restoredcenser/metal1" },
+    "*-metal1wall-*": { "base": "block/restoredcenser/metal1" },
+    "*-metal2-*": { "base": "block/restoredcenser/metal2" },
+    "*-metal2ceiling-*": { "base": "block/restoredcenser/metal2" },
+    "*-metal2wall-*": { "base": "block/restoredcenser/metal2" },
+    "*-metal3-*": { "base": "block/restoredcenser/metal3" },
+    "*-metal3ceiling-*": { "base": "block/restoredcenser/metal3" },
+    "*-metal3wall-*": { "base": "block/restoredcenser/metal3" },
+    "*-metal4-*": { "base": "block/restoredcenser/metal4" }
+  },
+  "textures": {
+    "metal": { "base": "block/metal/lantern/copper" },
+    "brass": { "base": "block/metal/lantern/brass" },
+    "ceramic": { "base": "block/restoredcenser/ceramic/blue1" }
+  },
+  "texturesByType": {
+    "*-blue1": {
+      "ceramic": { "base": "block/restoredcenser/ceramic/blue1" }
+    },
+    "*-brown1": {
+      "ceramic": { "base": "block/restoredcenser/ceramic/brown1" }
+    },
+    "*-fire1": {
+      "ceramic": { "base": "block/restoredcenser/ceramic/fire1" }
+    },
+    "*-red1": {
+      "ceramic": { "base": "block/restoredcenser/ceramic/red1" }
+    },
+    "*-copper": {
+      "metal": { "base": "block/metal/lantern/copper" },
+      "brass": { "base": "block/metal/lantern/copper" }
+    },
+    "*-brass": {
+      "metal": { "base": "block/metal/lantern/brass" },
+      "brass": { "base": "block/metal/lantern/brass" }
+    },
+    "*-blackbronze": {
+      "metal": { "base": "block/metal/lantern/blackbronze" },
+      "brass": { "base": "block/metal/lantern/blackbronze" }
+    },
+    "*-silver": {
+      "metal": { "base": "block/metal/lantern/silver" },
+      "brass": { "base": "block/metal/lantern/silver" }
+    },
+    "*-gold": {
+      "metal": { "base": "block/metal/lantern/gold" },
+      "brass": { "base": "block/metal/lantern/gold" }
+    },
+    "*-electrum": {
+      "metal": { "base": "block/metal/lantern/electrum" },
+      "brass": { "base": "block/metal/lantern/electrum" }
+    }
+  },
+  "particlePropertiesByType": {
+    "*wall-*": [
+      {
+        "hsvaColor": [
+          { "avg": 0, "var": 0 },
+          { "avg": 0, "var": 0 },
+          { "avg": 35, "var": 18 },
+          { "avg": 185, "var": 35 }
+        ],
+        "opacityEvolve": { "transform": "quadratic", "factor": -16 },
+        "gravityEffect": { "avg": 0, "var": 0 },
+        "posOffset": [
+          { "avg": 0, "var": 0.05 },
+          { "avg": 0.08, "var": 0.03 },
+          { "avg": -0.16, "var": 0.05 }
+        ],
+        "velocity": [
+          { "avg": 0, "var": 0.02 },
+          { "avg": 0.09, "var": 0.03 },
+          { "avg": 0, "var": 0.02 }
+        ],
+        "quantity": { "avg": 0.16 },
+        "size": { "avg": 0.12, "var": 0.05 },
+        "sizeEvolve": { "transform": "linear", "factor": 0.45 },
+        "lifeLength": { "avg": 1.1, "var": 0.2 },
+        "particleModel": "Quad",
+        "windAffectednes": 0.55
+      }
+    ],
+    "*ceiling-*": [
+      {
+        "hsvaColor": [
+          { "avg": 0, "var": 0 },
+          { "avg": 0, "var": 0 },
+          { "avg": 35, "var": 18 },
+          { "avg": 185, "var": 35 }
+        ],
+        "opacityEvolve": { "transform": "quadratic", "factor": -16 },
+        "gravityEffect": { "avg": 0, "var": 0 },
+        "posOffset": [
+          { "avg": 0, "var": 0.05 },
+          { "avg": -0.02, "var": 0.03 },
+          { "avg": 0, "var": 0.05 }
+        ],
+        "velocity": [
+          { "avg": 0, "var": 0.02 },
+          { "avg": 0.09, "var": 0.03 },
+          { "avg": 0, "var": 0.02 }
+        ],
+        "quantity": { "avg": 0.16 },
+        "size": { "avg": 0.12, "var": 0.05 },
+        "sizeEvolve": { "transform": "linear", "factor": 0.45 },
+        "lifeLength": { "avg": 1.1, "var": 0.2 },
+        "particleModel": "Quad",
+        "windAffectednes": 0.55
+      }
+    ],
+    "*": [
+      {
+        "hsvaColor": [
+          { "avg": 0, "var": 0 },
+          { "avg": 0, "var": 0 },
+          { "avg": 35, "var": 18 },
+          { "avg": 185, "var": 35 }
+        ],
+        "opacityEvolve": { "transform": "quadratic", "factor": -16 },
+        "gravityEffect": { "avg": 0, "var": 0 },
+        "posOffset": [
+          { "avg": 0, "var": 0.05 },
+          { "avg": 0.12, "var": 0.03 },
+          { "avg": 0, "var": 0.05 }
+        ],
+        "velocity": [
+          { "avg": 0, "var": 0.02 },
+          { "avg": 0.09, "var": 0.03 },
+          { "avg": 0, "var": 0.02 }
+        ],
+        "quantity": { "avg": 0.16 },
+        "size": { "avg": 0.12, "var": 0.05 },
+        "sizeEvolve": { "transform": "linear", "factor": 0.45 },
+        "lifeLength": { "avg": 1.1, "var": 0.2 },
+        "particleModel": "Quad",
+        "windAffectednes": 0.55
+      }
+    ]
+  },
+  "collisionSelectionBox": {
+    "x1": 0.25,
+    "y1": 0,
+    "z1": 0.15,
+    "x2": 0.75,
+    "y2": 0.7,
+    "z2": 0.75
+  },
+  "creativeinventory": {
+    "general": [
+      "ceramic1-ceramic",
+      "ceramic2-ceramic",
+      "metal1-copper",
+      "metal1ceiling-copper",
+      "metal1wall-copper",
+      "metal2-copper",
+      "metal2ceiling-copper",
+      "metal2wall-copper",
+      "metal3-copper",
+      "metal3ceiling-copper",
+      "metal3wall-copper",
+      "metal4-copper"
+    ],
+    "decorative": [
+      "ceramic1-ceramic",
+      "ceramic2-ceramic",
+      "metal1-copper",
+      "metal1ceiling-copper",
+      "metal1wall-copper",
+      "metal2-copper",
+      "metal2ceiling-copper",
+      "metal2wall-copper",
+      "metal3-copper",
+      "metal3ceiling-copper",
+      "metal3wall-copper",
+      "metal4-copper"
+    ]
+  },
+  "sounds": {
+    "place": "player/build"
+  }
+}

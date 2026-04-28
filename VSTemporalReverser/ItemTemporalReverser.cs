@@ -42,6 +42,22 @@ public class ItemTemporalReverser : Item
         "aged",
         "brass"
     ];
+    private static readonly string[] RandomRestoredCenserMetalFinishes =
+    [
+        "copper",
+        "brass",
+        "blackbronze",
+        "silver",
+        "gold",
+        "electrum"
+    ];
+    private static readonly string[] RandomRestoredCenserCeramicFinishes =
+    [
+        "blue1",
+        "brown1",
+        "fire1",
+        "red1"
+    ];
     private static readonly string[] RandomTableTypes =
     [
         "normal",
@@ -66,7 +82,6 @@ public class ItemTemporalReverser : Item
         "ebony",
         "acacia"
     ];
-
     private static readonly string[] RandomRestoredAgedTableStyles =
     [
         "agedwhite",
@@ -221,6 +236,8 @@ public class ItemTemporalReverser : Item
         base.GetHeldItemInfo(inSlot, dsc, world, withDebugInfo);
         dsc.AppendLine();
         dsc.AppendLine("Restores selected aged or ruined clutter into usable furnishings.");
+        dsc.AppendLine("Aged targets cost 1 durability. Ruined targets cost 2 durability.");
+        dsc.AppendLine("Current targets include beds, tables, braziers, censers, lanterns, chandeliers, and torch holders.");
     }
 
     public override void OnHeldInteractStart(
@@ -254,7 +271,12 @@ public class ItemTemporalReverser : Item
         if (block.Code.Path == "clutter")
         {
             string? clutterType = GetClutterType(world, pos);
-            if (clutterType != null && BedRules.TryGetValue(clutterType, out RestorationRule clutterRule))
+            RestorationRule? censerRule = TryGetCenserRule(clutterType);
+            if (censerRule != null)
+            {
+                matchedRule = censerRule;
+            }
+            else if (clutterType != null && BedRules.TryGetValue(clutterType, out RestorationRule clutterRule))
             {
                 matchedRule = clutterRule;
             }
@@ -323,6 +345,19 @@ public class ItemTemporalReverser : Item
             return randomBlock == null ? null : new ItemStack(randomBlock, 1);
         }
 
+        if (rule.TargetKind == RestorationTargetKind.RandomRestoredCenser)
+        {
+            string[] finishes = rule.Targets ?? Array.Empty<string>();
+            if (string.IsNullOrWhiteSpace(rule.Target) || finishes.Length == 0)
+            {
+                return null;
+            }
+
+            string finish = finishes[Random.Shared.Next(finishes.Length)];
+            Block? censerBlock = world.GetBlock(ToAssetLocation($"vstemporalreverser:restored-censer-{rule.Target}-{finish}"));
+            return censerBlock == null ? null : new ItemStack(censerBlock, 1);
+        }
+
         if (rule.TargetKind == RestorationTargetKind.RandomVanillaLantern)
         {
             Block? lanternBlock = world.GetBlock(ToAssetLocation("game:lantern-large-up"));
@@ -351,6 +386,41 @@ public class ItemTemporalReverser : Item
             ItemStack tableStack = new(tableBlock, 1);
             tableStack.ResolveBlockOrItem(world);
             return tableStack;
+        }
+
+        if (rule.TargetKind == RestorationTargetKind.RandomizedClutterType)
+        {
+            string[] clutterTypes = rule.Targets ?? Array.Empty<string>();
+            string[] textureOptions = rule.TextureOptions ?? Array.Empty<string>();
+            if (clutterTypes.Length == 0)
+            {
+                return null;
+            }
+
+            Block? clutter = world.GetBlock(new AssetLocation("game", "clutter"));
+            if (clutter == null)
+            {
+                return null;
+            }
+
+            ItemStack clutterStack = new(clutter, 1);
+            clutterStack.Attributes.SetString("type", clutterTypes[Random.Shared.Next(clutterTypes.Length)]);
+            clutterStack.Attributes.SetBool("collected", true);
+            if (textureOptions.Length > 0)
+            {
+                string texturePath = textureOptions[Random.Shared.Next(textureOptions.Length)];
+                TreeAttribute textures = new();
+                textures.SetString(rule.TextureKey ?? "metal", texturePath);
+
+                TreeAttribute typeAttributes = new();
+                typeAttributes["textures"] = textures.Clone();
+
+                clutterStack.Attributes["collectedTextures"] = textures;
+                clutterStack.Attributes["textures"] = textures.Clone();
+                clutterStack.Attributes["typeAttributes"] = typeAttributes;
+            }
+            clutterStack.ResolveBlockOrItem(world);
+            return clutterStack;
         }
 
         if (rule.TargetKind == RestorationTargetKind.Block)
@@ -432,6 +502,40 @@ public class ItemTemporalReverser : Item
         return string.IsNullOrWhiteSpace(value) ? null : value;
     }
 
+    private static RestorationRule? TryGetCenserRule(string? clutterType)
+    {
+        if (string.IsNullOrWhiteSpace(clutterType))
+        {
+            return null;
+        }
+
+        string normalized = clutterType.StartsWith("censer/", StringComparison.OrdinalIgnoreCase)
+            ? clutterType["censer/".Length..]
+            : clutterType;
+
+        int durabilityCost = normalized.Contains("ruined", StringComparison.OrdinalIgnoreCase)
+            ? RuinedDurabilityCost
+            : AgedDurabilityCost;
+
+        return normalized switch
+        {
+            _ when normalized.StartsWith("ceramic1", StringComparison.OrdinalIgnoreCase) => RandomRestoredCenserRule(durabilityCost, "ceramic1", RandomRestoredCenserCeramicFinishes),
+            _ when normalized.StartsWith("ceramic2", StringComparison.OrdinalIgnoreCase) => RandomRestoredCenserRule(durabilityCost, "ceramic2", RandomRestoredCenserCeramicFinishes),
+            _ when normalized.StartsWith("ceramic3", StringComparison.OrdinalIgnoreCase) => RandomRestoredCenserRule(durabilityCost, "ceramic3", RandomRestoredCenserCeramicFinishes),
+            _ when normalized.StartsWith("metal1-ceiling", StringComparison.OrdinalIgnoreCase) => RandomRestoredCenserRule(durabilityCost, "metal1", RandomRestoredCenserMetalFinishes),
+            _ when normalized.StartsWith("metal1-wall", StringComparison.OrdinalIgnoreCase) => RandomRestoredCenserRule(durabilityCost, "metal1", RandomRestoredCenserMetalFinishes),
+            _ when normalized.StartsWith("metal1", StringComparison.OrdinalIgnoreCase) => RandomRestoredCenserRule(durabilityCost, "metal1", RandomRestoredCenserMetalFinishes),
+            _ when normalized.StartsWith("metal2-ceiling", StringComparison.OrdinalIgnoreCase) => RandomRestoredCenserRule(durabilityCost, "metal2", RandomRestoredCenserMetalFinishes),
+            _ when normalized.StartsWith("metal2-wall", StringComparison.OrdinalIgnoreCase) => RandomRestoredCenserRule(durabilityCost, "metal2", RandomRestoredCenserMetalFinishes),
+            _ when normalized.StartsWith("metal2", StringComparison.OrdinalIgnoreCase) => RandomRestoredCenserRule(durabilityCost, "metal2", RandomRestoredCenserMetalFinishes),
+            _ when normalized.StartsWith("metal3-ceiling", StringComparison.OrdinalIgnoreCase) => RandomRestoredCenserRule(durabilityCost, "metal3", RandomRestoredCenserMetalFinishes),
+            _ when normalized.StartsWith("metal3-wall", StringComparison.OrdinalIgnoreCase) => RandomRestoredCenserRule(durabilityCost, "metal3", RandomRestoredCenserMetalFinishes),
+            _ when normalized.StartsWith("metal3", StringComparison.OrdinalIgnoreCase) => RandomRestoredCenserRule(durabilityCost, "metal3", RandomRestoredCenserMetalFinishes),
+            _ when normalized.StartsWith("metal4", StringComparison.OrdinalIgnoreCase) => RandomRestoredCenserRule(durabilityCost, "metal4", RandomRestoredCenserMetalFinishes),
+            _ => null
+        };
+    }
+
     private static void SendNotification(EntityAgent byEntity, string message)
     {
         if (byEntity is not EntityPlayer entityPlayer || entityPlayer.Player is not IServerPlayer serverPlayer)
@@ -476,6 +580,15 @@ public class ItemTemporalReverser : Item
             $"vstemporalreverser:restored-table-{style}-{{tablewood}}-north");
     }
 
+    private static RestorationRule RandomRestoredCenserRule(int durabilityCost, string style, string[] finishes)
+    {
+        return new RestorationRule(
+            durabilityCost,
+            RestorationTargetKind.RandomRestoredCenser,
+            style,
+            finishes);
+    }
+
     private static RestorationRule RandomRestoredTableRule(int durabilityCost, string[] styles)
     {
         return new RestorationRule(
@@ -483,6 +596,17 @@ public class ItemTemporalReverser : Item
             RestorationTargetKind.Block,
             $"vstemporalreverser:restored-table-{{tablestyle}}-{{tablewood}}-north",
             styles);
+    }
+
+    private static RestorationRule RandomizedClutterRule(int durabilityCost, string[] clutterTypes, string textureKey, string[] textureOptions)
+    {
+        return new RestorationRule(
+            durabilityCost,
+            RestorationTargetKind.RandomizedClutterType,
+            string.Empty,
+            clutterTypes,
+            textureKey,
+            textureOptions);
     }
 
     private static RestorationRule VanillaBedRule(int durabilityCost, string code)
@@ -519,12 +643,20 @@ public class ItemTemporalReverser : Item
     private enum RestorationTargetKind
     {
         Block,
+        RandomRestoredCenser,
         RandomRestoredCanopyBed,
         RandomRestoredShortBed,
         RandomVanillaLantern,
         RandomVanillaTable,
+        RandomizedClutterType,
         ClutterType
     }
 
-    private readonly record struct RestorationRule(int DurabilityCost, RestorationTargetKind TargetKind, string Target, string[]? Targets = null);
+    private readonly record struct RestorationRule(
+        int DurabilityCost,
+        RestorationTargetKind TargetKind,
+        string Target,
+        string[]? Targets = null,
+        string? TextureKey = null,
+        string[]? TextureOptions = null);
 }
