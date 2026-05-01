@@ -1,0 +1,244 @@
+{
+  "code": "restored-crate-large",
+  "variantgroups": [
+    {
+      "code": "material",
+      "states": [
+        "birch",
+        "oak",
+        "maple",
+        "pine",
+        "acacia",
+        "kapok",
+        "redwood",
+        "baldcypress",
+        "larch",
+        "ebony",
+        "walnut",
+        "purpleheart",
+        "aged",
+        "veryaged"
+      ]
+    }
+  ],
+  "behaviors": [
+    {
+      "name": "UnstableFalling"
+    }
+  ],
+  "drawtype": "json",
+  "shapebytype": {
+    "*": {
+      "base": "block/restoredcrate/crate-large-empty"
+    }
+  },
+  "shapeinventorybytype": {
+    "*": {
+      "base": "block/restoredcrate/crate-large-empty"
+    }
+  },
+  "textures": {
+    "inside": {
+      "base": "block/wood/crate/oak-inside"
+    },
+    "sides": {
+      "base": "block/wood/crate/oak-sides"
+    },
+    "aged1": {
+      "base": "block/wood/crate/oak-sides"
+    }
+  },
+  "texturesbytype": {
+    "*-birch": {
+      "inside": {
+        "base": "block/wood/crate/birch-inside"
+      },
+      "sides": {
+        "base": "block/wood/crate/birch-sides"
+      },
+      "aged1": {
+        "base": "block/wood/crate/birch-sides"
+      }
+    },
+    "*-oak": {
+      "inside": {
+        "base": "block/wood/crate/oak-inside"
+      },
+      "sides": {
+        "base": "block/wood/crate/oak-sides"
+      },
+      "aged1": {
+        "base": "block/wood/crate/oak-sides"
+      }
+    },
+    "*-maple": {
+      "inside": {
+        "base": "block/wood/crate/maple-inside"
+      },
+      "sides": {
+        "base": "block/wood/crate/maple-sides"
+      },
+      "aged1": {
+        "base": "block/wood/crate/maple-sides"
+      }
+    },
+    "*-pine": {
+      "inside": {
+        "base": "block/wood/crate/pine-inside"
+      },
+      "sides": {
+        "base": "block/wood/crate/pine-sides"
+      },
+      "aged1": {
+        "base": "block/wood/crate/pine-sides"
+      }
+    },
+    "*-acacia": {
+      "inside": {
+        "base": "block/wood/crate/acacia-inside"
+      },
+      "sides": {
+        "base": "block/wood/crate/acacia-sides"
+      },
+      "aged1": {
+        "base": "block/wood/crate/acacia-sides"
+      }
+    },
+    "*-kapok": {
+      "inside": {
+        "base": "block/wood/crate/kapok-inside"
+      },
+      "sides": {
+        "base": "block/wood/crate/kapok-sides"
+      },
+      "aged1": {
+        "base": "block/wood/crate/kapok-sides"
+      }
+    },
+    "*-redwood": {
+      "inside": {
+        "base": "block/wood/crate/redwood-inside"
+      },
+      "sides": {
+        "base": "block/wood/crate/redwood-sides"
+      },
+      "aged1": {
+        "base": "block/wood/crate/redwood-sides"
+      }
+    },
+    "*-baldcypress": {
+      "inside": {
+        "base": "block/wood/crate/baldcypress-inside"
+      },
+      "sides": {
+        "base": "block/wood/crate/baldcypress-sides"
+      },
+      "aged1": {
+        "base": "block/wood/crate/baldcypress-sides"
+      }
+    },
+    "*-larch": {
+      "inside": {
+        "base": "block/wood/crate/larch-inside"
+      },
+      "sides": {
+        "base": "block/wood/crate/larch-sides"
+      },
+      "aged1": {
+        "base": "block/wood/crate/larch-sides"
+      }
+    },
+    "*-ebony": {
+      "inside": {
+        "base": "block/wood/crate/ebony-inside"
+      },
+      "sides": {
+        "base": "block/wood/crate/ebony-sides"
+      },
+      "aged1": {
+        "base": "block/wood/crate/ebony-sides"
+      }
+    },
+    "*-walnut": {
+      "inside": {
+        "base": "block/wood/crate/walnut-inside"
+      },
+      "sides": {
+        "base": "block/wood/crate/walnut-sides"
+      },
+      "aged1": {
+        "base": "block/wood/crate/walnut-sides"
+      }
+    },
+    "*-purpleheart": {
+      "inside": {
+        "base": "block/wood/crate/purpleheart-inside"
+      },
+      "sides": {
+        "base": "block/wood/crate/purpleheart-sides"
+      },
+      "aged1": {
+        "base": "block/wood/crate/purpleheart-sides"
+      }
+    },
+    "*-aged": {
+      "inside": {
+        "base": "block/wood/crate/aged-inside"
+      },
+      "sides": {
+        "base": "block/wood/crate/aged-sides"
+      },
+      "aged1": {
+        "base": "block/wood/crate/aged-sides"
+      }
+    },
+    "*-veryaged": {
+      "inside": {
+        "base": "block/wood/crate/aged-inside"
+      },
+      "sides": {
+        "base": "block/wood/crate/aged-sides"
+      },
+      "aged1": {
+        "base": "block/wood/crate/aged-sides"
+      }
+    }
+  },
+  "blockmaterial": "Wood",
+  "replaceable": 900,
+  "resistance": 1.5,
+  "lightAbsorption": 1,
+  "sidesolid": {
+    "all": false
+  },
+  "sideopaque": {
+    "all": false
+  },
+  "combustibleProps": {
+    "burnTemperature": 600,
+    "burnDuration": 30
+  },
+  "sounds": {
+    "place": "block/planks",
+    "hit": "block/planks",
+    "break": "block/planks",
+    "walk": "walk/wood"
+  },
+  "materialDensity": 600,
+  "selectionbox": {
+    "x1": 0.0313,
+    "y1": 0,
+    "z1": 0.0313,
+    "x2": 0.9687,
+    "y2": 1,
+    "z2": 0.9687
+  },
+  "collisionbox": {
+    "x1": 0.0313,
+    "y1": 0,
+    "z1": 0.0313,
+    "x2": 0.9687,
+    "y2": 1,
+    "z2": 0.9687
+  }
+}

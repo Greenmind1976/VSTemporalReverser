@@ -25,10 +25,20 @@
     {
       "code": "wood",
       "states": [
-        "walnut",
-        "mahogany",
+        "birch",
+        "oak",
+        "maple",
+        "pine",
+        "acacia",
+        "kapok",
+        "redwood",
+        "baldcypress",
+        "larch",
         "ebony",
-        "acacia"
+        "walnut",
+        "purpleheart",
+        "aged",
+        "veryaged"
       ]
     },
     {
@@ -442,6 +452,941 @@
     "*-scribered-acacia-*": {
       "charred": {
         "base": "block/restoredtable/wood/acacia"
+      }
+    },
+    "*-agedwhite-birch-*": {
+      "cloth-top": {
+        "base": "block/restoredtable/cloth/aged/white/cloth-top"
+      },
+      "cloth-side": {
+        "base": "block/restoredtable/cloth/aged/white/cloth-side"
+      },
+      "charred": {
+        "base": "block/wood/debarked/birch"
+      }
+    },
+    "*-agedwhite-oak-*": {
+      "cloth-top": {
+        "base": "block/restoredtable/cloth/aged/white/cloth-top"
+      },
+      "cloth-side": {
+        "base": "block/restoredtable/cloth/aged/white/cloth-side"
+      },
+      "charred": {
+        "base": "block/wood/debarked/oak"
+      }
+    },
+    "*-agedwhite-maple-*": {
+      "cloth-top": {
+        "base": "block/restoredtable/cloth/aged/white/cloth-top"
+      },
+      "cloth-side": {
+        "base": "block/restoredtable/cloth/aged/white/cloth-side"
+      },
+      "charred": {
+        "base": "block/wood/debarked/maple"
+      }
+    },
+    "*-agedwhite-pine-*": {
+      "cloth-top": {
+        "base": "block/restoredtable/cloth/aged/white/cloth-top"
+      },
+      "cloth-side": {
+        "base": "block/restoredtable/cloth/aged/white/cloth-side"
+      },
+      "charred": {
+        "base": "block/wood/debarked/pine"
+      }
+    },
+    "*-agedwhite-kapok-*": {
+      "cloth-top": {
+        "base": "block/restoredtable/cloth/aged/white/cloth-top"
+      },
+      "cloth-side": {
+        "base": "block/restoredtable/cloth/aged/white/cloth-side"
+      },
+      "charred": {
+        "base": "block/wood/debarked/kapok"
+      }
+    },
+    "*-agedwhite-redwood-*": {
+      "cloth-top": {
+        "base": "block/restoredtable/cloth/aged/white/cloth-top"
+      },
+      "cloth-side": {
+        "base": "block/restoredtable/cloth/aged/white/cloth-side"
+      },
+      "charred": {
+        "base": "block/wood/debarked/redwood"
+      }
+    },
+    "*-agedwhite-baldcypress-*": {
+      "cloth-top": {
+        "base": "block/restoredtable/cloth/aged/white/cloth-top"
+      },
+      "cloth-side": {
+        "base": "block/restoredtable/cloth/aged/white/cloth-side"
+      },
+      "charred": {
+        "base": "block/wood/debarked/baldcypress"
+      }
+    },
+    "*-agedwhite-larch-*": {
+      "cloth-top": {
+        "base": "block/restoredtable/cloth/aged/white/cloth-top"
+      },
+      "cloth-side": {
+        "base": "block/restoredtable/cloth/aged/white/cloth-side"
+      },
+      "charred": {
+        "base": "block/wood/debarked/larch"
+      }
+    },
+    "*-agedwhite-purpleheart-*": {
+      "cloth-top": {
+        "base": "block/restoredtable/cloth/aged/white/cloth-top"
+      },
+      "cloth-side": {
+        "base": "block/restoredtable/cloth/aged/white/cloth-side"
+      },
+      "charred": {
+        "base": "block/wood/debarked/purpleheart"
+      }
+    },
+    "*-agedblue-birch-*": {
+      "cloth-top": {
+        "base": "block/restoredtable/cloth/aged/blue/cloth-top"
+      },
+      "cloth-side": {
+        "base": "block/restoredtable/cloth/aged/blue/cloth-side"
+      },
+      "charred": {
+        "base": "block/wood/debarked/birch"
+      }
+    },
+    "*-agedblue-oak-*": {
+      "cloth-top": {
+        "base": "block/restoredtable/cloth/aged/blue/cloth-top"
+      },
+      "cloth-side": {
+        "base": "block/restoredtable/cloth/aged/blue/cloth-side"
+      },
+      "charred": {
+        "base": "block/wood/debarked/oak"
+      }
+    },
+    "*-agedblue-maple-*": {
+      "cloth-top": {
+        "base": "block/restoredtable/cloth/aged/blue/cloth-top"
+      },
+      "cloth-side": {
+        "base": "block/restoredtable/cloth/aged/blue/cloth-side"
+      },
+      "charred": {
+        "base": "block/wood/debarked/maple"
+      }
+    },
+    "*-agedblue-pine-*": {
+      "cloth-top": {
+        "base": "block/restoredtable/cloth/aged/blue/cloth-top"
+      },
+      "cloth-side": {
+        "base": "block/restoredtable/cloth/aged/blue/cloth-side"
+      },
+      "charred": {
+        "base": "block/wood/debarked/pine"
+      }
+    },
+    "*-agedblue-kapok-*": {
+      "cloth-top": {
+        "base": "block/restoredtable/cloth/aged/blue/cloth-top"
+      },
+      "cloth-side": {
+        "base": "block/restoredtable/cloth/aged/blue/cloth-side"
+      },
+      "charred": {
+        "base": "block/wood/debarked/kapok"
+      }
+    },
+    "*-agedblue-redwood-*": {
+      "cloth-top": {
+        "base": "block/restoredtable/cloth/aged/blue/cloth-top"
+      },
+      "cloth-side": {
+        "base": "block/restoredtable/cloth/aged/blue/cloth-side"
+      },
+      "charred": {
+        "base": "block/wood/debarked/redwood"
+      }
+    },
+    "*-agedblue-baldcypress-*": {
+      "cloth-top": {
+        "base": "block/restoredtable/cloth/aged/blue/cloth-top"
+      },
+      "cloth-side": {
+        "base": "block/restoredtable/cloth/aged/blue/cloth-side"
+      },
+      "charred": {
+        "base": "block/wood/debarked/baldcypress"
+      }
+    },
+    "*-agedblue-larch-*": {
+      "cloth-top": {
+        "base": "block/restoredtable/cloth/aged/blue/cloth-top"
+      },
+      "cloth-side": {
+        "base": "block/restoredtable/cloth/aged/blue/cloth-side"
+      },
+      "charred": {
+        "base": "block/wood/debarked/larch"
+      }
+    },
+    "*-agedblue-purpleheart-*": {
+      "cloth-top": {
+        "base": "block/restoredtable/cloth/aged/blue/cloth-top"
+      },
+      "cloth-side": {
+        "base": "block/restoredtable/cloth/aged/blue/cloth-side"
+      },
+      "charred": {
+        "base": "block/wood/debarked/purpleheart"
+      }
+    },
+    "*-agedgreen-birch-*": {
+      "cloth-top": {
+        "base": "block/restoredtable/cloth/aged/green/cloth-top"
+      },
+      "cloth-side": {
+        "base": "block/restoredtable/cloth/aged/green/cloth-side"
+      },
+      "charred": {
+        "base": "block/wood/debarked/birch"
+      }
+    },
+    "*-agedgreen-oak-*": {
+      "cloth-top": {
+        "base": "block/restoredtable/cloth/aged/green/cloth-top"
+      },
+      "cloth-side": {
+        "base": "block/restoredtable/cloth/aged/green/cloth-side"
+      },
+      "charred": {
+        "base": "block/wood/debarked/oak"
+      }
+    },
+    "*-agedgreen-maple-*": {
+      "cloth-top": {
+        "base": "block/restoredtable/cloth/aged/green/cloth-top"
+      },
+      "cloth-side": {
+        "base": "block/restoredtable/cloth/aged/green/cloth-side"
+      },
+      "charred": {
+        "base": "block/wood/debarked/maple"
+      }
+    },
+    "*-agedgreen-pine-*": {
+      "cloth-top": {
+        "base": "block/restoredtable/cloth/aged/green/cloth-top"
+      },
+      "cloth-side": {
+        "base": "block/restoredtable/cloth/aged/green/cloth-side"
+      },
+      "charred": {
+        "base": "block/wood/debarked/pine"
+      }
+    },
+    "*-agedgreen-kapok-*": {
+      "cloth-top": {
+        "base": "block/restoredtable/cloth/aged/green/cloth-top"
+      },
+      "cloth-side": {
+        "base": "block/restoredtable/cloth/aged/green/cloth-side"
+      },
+      "charred": {
+        "base": "block/wood/debarked/kapok"
+      }
+    },
+    "*-agedgreen-redwood-*": {
+      "cloth-top": {
+        "base": "block/restoredtable/cloth/aged/green/cloth-top"
+      },
+      "cloth-side": {
+        "base": "block/restoredtable/cloth/aged/green/cloth-side"
+      },
+      "charred": {
+        "base": "block/wood/debarked/redwood"
+      }
+    },
+    "*-agedgreen-baldcypress-*": {
+      "cloth-top": {
+        "base": "block/restoredtable/cloth/aged/green/cloth-top"
+      },
+      "cloth-side": {
+        "base": "block/restoredtable/cloth/aged/green/cloth-side"
+      },
+      "charred": {
+        "base": "block/wood/debarked/baldcypress"
+      }
+    },
+    "*-agedgreen-larch-*": {
+      "cloth-top": {
+        "base": "block/restoredtable/cloth/aged/green/cloth-top"
+      },
+      "cloth-side": {
+        "base": "block/restoredtable/cloth/aged/green/cloth-side"
+      },
+      "charred": {
+        "base": "block/wood/debarked/larch"
+      }
+    },
+    "*-agedgreen-purpleheart-*": {
+      "cloth-top": {
+        "base": "block/restoredtable/cloth/aged/green/cloth-top"
+      },
+      "cloth-side": {
+        "base": "block/restoredtable/cloth/aged/green/cloth-side"
+      },
+      "charred": {
+        "base": "block/wood/debarked/purpleheart"
+      }
+    },
+    "*-agedpurple-birch-*": {
+      "cloth-top": {
+        "base": "block/restoredtable/cloth/aged/purple/cloth-top"
+      },
+      "cloth-side": {
+        "base": "block/restoredtable/cloth/aged/purple/cloth-side"
+      },
+      "charred": {
+        "base": "block/wood/debarked/birch"
+      }
+    },
+    "*-agedpurple-oak-*": {
+      "cloth-top": {
+        "base": "block/restoredtable/cloth/aged/purple/cloth-top"
+      },
+      "cloth-side": {
+        "base": "block/restoredtable/cloth/aged/purple/cloth-side"
+      },
+      "charred": {
+        "base": "block/wood/debarked/oak"
+      }
+    },
+    "*-agedpurple-maple-*": {
+      "cloth-top": {
+        "base": "block/restoredtable/cloth/aged/purple/cloth-top"
+      },
+      "cloth-side": {
+        "base": "block/restoredtable/cloth/aged/purple/cloth-side"
+      },
+      "charred": {
+        "base": "block/wood/debarked/maple"
+      }
+    },
+    "*-agedpurple-pine-*": {
+      "cloth-top": {
+        "base": "block/restoredtable/cloth/aged/purple/cloth-top"
+      },
+      "cloth-side": {
+        "base": "block/restoredtable/cloth/aged/purple/cloth-side"
+      },
+      "charred": {
+        "base": "block/wood/debarked/pine"
+      }
+    },
+    "*-agedpurple-kapok-*": {
+      "cloth-top": {
+        "base": "block/restoredtable/cloth/aged/purple/cloth-top"
+      },
+      "cloth-side": {
+        "base": "block/restoredtable/cloth/aged/purple/cloth-side"
+      },
+      "charred": {
+        "base": "block/wood/debarked/kapok"
+      }
+    },
+    "*-agedpurple-redwood-*": {
+      "cloth-top": {
+        "base": "block/restoredtable/cloth/aged/purple/cloth-top"
+      },
+      "cloth-side": {
+        "base": "block/restoredtable/cloth/aged/purple/cloth-side"
+      },
+      "charred": {
+        "base": "block/wood/debarked/redwood"
+      }
+    },
+    "*-agedpurple-baldcypress-*": {
+      "cloth-top": {
+        "base": "block/restoredtable/cloth/aged/purple/cloth-top"
+      },
+      "cloth-side": {
+        "base": "block/restoredtable/cloth/aged/purple/cloth-side"
+      },
+      "charred": {
+        "base": "block/wood/debarked/baldcypress"
+      }
+    },
+    "*-agedpurple-larch-*": {
+      "cloth-top": {
+        "base": "block/restoredtable/cloth/aged/purple/cloth-top"
+      },
+      "cloth-side": {
+        "base": "block/restoredtable/cloth/aged/purple/cloth-side"
+      },
+      "charred": {
+        "base": "block/wood/debarked/larch"
+      }
+    },
+    "*-agedpurple-purpleheart-*": {
+      "cloth-top": {
+        "base": "block/restoredtable/cloth/aged/purple/cloth-top"
+      },
+      "cloth-side": {
+        "base": "block/restoredtable/cloth/aged/purple/cloth-side"
+      },
+      "charred": {
+        "base": "block/wood/debarked/purpleheart"
+      }
+    },
+    "*-agedred-birch-*": {
+      "cloth-top": {
+        "base": "block/restoredtable/cloth/aged/red/cloth-top"
+      },
+      "cloth-side": {
+        "base": "block/restoredtable/cloth/aged/red/cloth-side"
+      },
+      "charred": {
+        "base": "block/wood/debarked/birch"
+      }
+    },
+    "*-agedred-oak-*": {
+      "cloth-top": {
+        "base": "block/restoredtable/cloth/aged/red/cloth-top"
+      },
+      "cloth-side": {
+        "base": "block/restoredtable/cloth/aged/red/cloth-side"
+      },
+      "charred": {
+        "base": "block/wood/debarked/oak"
+      }
+    },
+    "*-agedred-maple-*": {
+      "cloth-top": {
+        "base": "block/restoredtable/cloth/aged/red/cloth-top"
+      },
+      "cloth-side": {
+        "base": "block/restoredtable/cloth/aged/red/cloth-side"
+      },
+      "charred": {
+        "base": "block/wood/debarked/maple"
+      }
+    },
+    "*-agedred-pine-*": {
+      "cloth-top": {
+        "base": "block/restoredtable/cloth/aged/red/cloth-top"
+      },
+      "cloth-side": {
+        "base": "block/restoredtable/cloth/aged/red/cloth-side"
+      },
+      "charred": {
+        "base": "block/wood/debarked/pine"
+      }
+    },
+    "*-agedred-kapok-*": {
+      "cloth-top": {
+        "base": "block/restoredtable/cloth/aged/red/cloth-top"
+      },
+      "cloth-side": {
+        "base": "block/restoredtable/cloth/aged/red/cloth-side"
+      },
+      "charred": {
+        "base": "block/wood/debarked/kapok"
+      }
+    },
+    "*-agedred-redwood-*": {
+      "cloth-top": {
+        "base": "block/restoredtable/cloth/aged/red/cloth-top"
+      },
+      "cloth-side": {
+        "base": "block/restoredtable/cloth/aged/red/cloth-side"
+      },
+      "charred": {
+        "base": "block/wood/debarked/redwood"
+      }
+    },
+    "*-agedred-baldcypress-*": {
+      "cloth-top": {
+        "base": "block/restoredtable/cloth/aged/red/cloth-top"
+      },
+      "cloth-side": {
+        "base": "block/restoredtable/cloth/aged/red/cloth-side"
+      },
+      "charred": {
+        "base": "block/wood/debarked/baldcypress"
+      }
+    },
+    "*-agedred-larch-*": {
+      "cloth-top": {
+        "base": "block/restoredtable/cloth/aged/red/cloth-top"
+      },
+      "cloth-side": {
+        "base": "block/restoredtable/cloth/aged/red/cloth-side"
+      },
+      "charred": {
+        "base": "block/wood/debarked/larch"
+      }
+    },
+    "*-agedred-purpleheart-*": {
+      "cloth-top": {
+        "base": "block/restoredtable/cloth/aged/red/cloth-top"
+      },
+      "cloth-side": {
+        "base": "block/restoredtable/cloth/aged/red/cloth-side"
+      },
+      "charred": {
+        "base": "block/wood/debarked/purpleheart"
+      }
+    },
+    "*-scribe-birch-*": {
+      "charred": {
+        "base": "block/wood/debarked/birch"
+      }
+    },
+    "*-scribe-oak-*": {
+      "charred": {
+        "base": "block/wood/debarked/oak"
+      }
+    },
+    "*-scribe-maple-*": {
+      "charred": {
+        "base": "block/wood/debarked/maple"
+      }
+    },
+    "*-scribe-pine-*": {
+      "charred": {
+        "base": "block/wood/debarked/pine"
+      }
+    },
+    "*-scribe-kapok-*": {
+      "charred": {
+        "base": "block/wood/debarked/kapok"
+      }
+    },
+    "*-scribe-redwood-*": {
+      "charred": {
+        "base": "block/wood/debarked/redwood"
+      }
+    },
+    "*-scribe-baldcypress-*": {
+      "charred": {
+        "base": "block/wood/debarked/baldcypress"
+      }
+    },
+    "*-scribe-larch-*": {
+      "charred": {
+        "base": "block/wood/debarked/larch"
+      }
+    },
+    "*-scribe-purpleheart-*": {
+      "charred": {
+        "base": "block/wood/debarked/purpleheart"
+      }
+    },
+    "*-scribeaccessories-birch-*": {
+      "charred": {
+        "base": "block/wood/debarked/birch"
+      }
+    },
+    "*-scribeaccessories-oak-*": {
+      "charred": {
+        "base": "block/wood/debarked/oak"
+      }
+    },
+    "*-scribeaccessories-maple-*": {
+      "charred": {
+        "base": "block/wood/debarked/maple"
+      }
+    },
+    "*-scribeaccessories-pine-*": {
+      "charred": {
+        "base": "block/wood/debarked/pine"
+      }
+    },
+    "*-scribeaccessories-kapok-*": {
+      "charred": {
+        "base": "block/wood/debarked/kapok"
+      }
+    },
+    "*-scribeaccessories-redwood-*": {
+      "charred": {
+        "base": "block/wood/debarked/redwood"
+      }
+    },
+    "*-scribeaccessories-baldcypress-*": {
+      "charred": {
+        "base": "block/wood/debarked/baldcypress"
+      }
+    },
+    "*-scribeaccessories-larch-*": {
+      "charred": {
+        "base": "block/wood/debarked/larch"
+      }
+    },
+    "*-scribeaccessories-purpleheart-*": {
+      "charred": {
+        "base": "block/wood/debarked/purpleheart"
+      }
+    },
+    "*-scribeblue-birch-*": {
+      "charred": {
+        "base": "block/wood/debarked/birch"
+      }
+    },
+    "*-scribeblue-oak-*": {
+      "charred": {
+        "base": "block/wood/debarked/oak"
+      }
+    },
+    "*-scribeblue-maple-*": {
+      "charred": {
+        "base": "block/wood/debarked/maple"
+      }
+    },
+    "*-scribeblue-pine-*": {
+      "charred": {
+        "base": "block/wood/debarked/pine"
+      }
+    },
+    "*-scribeblue-kapok-*": {
+      "charred": {
+        "base": "block/wood/debarked/kapok"
+      }
+    },
+    "*-scribeblue-redwood-*": {
+      "charred": {
+        "base": "block/wood/debarked/redwood"
+      }
+    },
+    "*-scribeblue-baldcypress-*": {
+      "charred": {
+        "base": "block/wood/debarked/baldcypress"
+      }
+    },
+    "*-scribeblue-larch-*": {
+      "charred": {
+        "base": "block/wood/debarked/larch"
+      }
+    },
+    "*-scribeblue-purpleheart-*": {
+      "charred": {
+        "base": "block/wood/debarked/purpleheart"
+      }
+    },
+    "*-scribegreen-birch-*": {
+      "charred": {
+        "base": "block/wood/debarked/birch"
+      }
+    },
+    "*-scribegreen-oak-*": {
+      "charred": {
+        "base": "block/wood/debarked/oak"
+      }
+    },
+    "*-scribegreen-maple-*": {
+      "charred": {
+        "base": "block/wood/debarked/maple"
+      }
+    },
+    "*-scribegreen-pine-*": {
+      "charred": {
+        "base": "block/wood/debarked/pine"
+      }
+    },
+    "*-scribegreen-kapok-*": {
+      "charred": {
+        "base": "block/wood/debarked/kapok"
+      }
+    },
+    "*-scribegreen-redwood-*": {
+      "charred": {
+        "base": "block/wood/debarked/redwood"
+      }
+    },
+    "*-scribegreen-baldcypress-*": {
+      "charred": {
+        "base": "block/wood/debarked/baldcypress"
+      }
+    },
+    "*-scribegreen-larch-*": {
+      "charred": {
+        "base": "block/wood/debarked/larch"
+      }
+    },
+    "*-scribegreen-purpleheart-*": {
+      "charred": {
+        "base": "block/wood/debarked/purpleheart"
+      }
+    },
+    "*-scribepurple-birch-*": {
+      "charred": {
+        "base": "block/wood/debarked/birch"
+      }
+    },
+    "*-scribepurple-oak-*": {
+      "charred": {
+        "base": "block/wood/debarked/oak"
+      }
+    },
+    "*-scribepurple-maple-*": {
+      "charred": {
+        "base": "block/wood/debarked/maple"
+      }
+    },
+    "*-scribepurple-pine-*": {
+      "charred": {
+        "base": "block/wood/debarked/pine"
+      }
+    },
+    "*-scribepurple-kapok-*": {
+      "charred": {
+        "base": "block/wood/debarked/kapok"
+      }
+    },
+    "*-scribepurple-redwood-*": {
+      "charred": {
+        "base": "block/wood/debarked/redwood"
+      }
+    },
+    "*-scribepurple-baldcypress-*": {
+      "charred": {
+        "base": "block/wood/debarked/baldcypress"
+      }
+    },
+    "*-scribepurple-larch-*": {
+      "charred": {
+        "base": "block/wood/debarked/larch"
+      }
+    },
+    "*-scribepurple-purpleheart-*": {
+      "charred": {
+        "base": "block/wood/debarked/purpleheart"
+      }
+    },
+    "*-scribered-birch-*": {
+      "charred": {
+        "base": "block/wood/debarked/birch"
+      }
+    },
+    "*-scribered-oak-*": {
+      "charred": {
+        "base": "block/wood/debarked/oak"
+      }
+    },
+    "*-scribered-maple-*": {
+      "charred": {
+        "base": "block/wood/debarked/maple"
+      }
+    },
+    "*-scribered-pine-*": {
+      "charred": {
+        "base": "block/wood/debarked/pine"
+      }
+    },
+    "*-scribered-kapok-*": {
+      "charred": {
+        "base": "block/wood/debarked/kapok"
+      }
+    },
+    "*-scribered-redwood-*": {
+      "charred": {
+        "base": "block/wood/debarked/redwood"
+      }
+    },
+    "*-scribered-baldcypress-*": {
+      "charred": {
+        "base": "block/wood/debarked/baldcypress"
+      }
+    },
+    "*-scribered-larch-*": {
+      "charred": {
+        "base": "block/wood/debarked/larch"
+      }
+    },
+    "*-scribered-purpleheart-*": {
+      "charred": {
+        "base": "block/wood/debarked/purpleheart"
+      }
+    },
+    "*-agedwhite-aged-*": {
+      "cloth-top": {
+        "base": "block/restoredtable/cloth/aged/white/cloth-top"
+      },
+      "cloth-side": {
+        "base": "block/restoredtable/cloth/aged/white/cloth-side"
+      },
+      "charred": {
+        "base": "block/wood/debarked/aged"
+      }
+    },
+    "*-agedwhite-veryaged-*": {
+      "cloth-top": {
+        "base": "block/restoredtable/cloth/aged/white/cloth-top"
+      },
+      "cloth-side": {
+        "base": "block/restoredtable/cloth/aged/white/cloth-side"
+      },
+      "charred": {
+        "base": "block/wood/debarked/veryaged"
+      }
+    },
+    "*-agedblue-aged-*": {
+      "cloth-top": {
+        "base": "block/restoredtable/cloth/aged/blue/cloth-top"
+      },
+      "cloth-side": {
+        "base": "block/restoredtable/cloth/aged/blue/cloth-side"
+      },
+      "charred": {
+        "base": "block/wood/debarked/aged"
+      }
+    },
+    "*-agedblue-veryaged-*": {
+      "cloth-top": {
+        "base": "block/restoredtable/cloth/aged/blue/cloth-top"
+      },
+      "cloth-side": {
+        "base": "block/restoredtable/cloth/aged/blue/cloth-side"
+      },
+      "charred": {
+        "base": "block/wood/debarked/veryaged"
+      }
+    },
+    "*-agedgreen-aged-*": {
+      "cloth-top": {
+        "base": "block/restoredtable/cloth/aged/green/cloth-top"
+      },
+      "cloth-side": {
+        "base": "block/restoredtable/cloth/aged/green/cloth-side"
+      },
+      "charred": {
+        "base": "block/wood/debarked/aged"
+      }
+    },
+    "*-agedgreen-veryaged-*": {
+      "cloth-top": {
+        "base": "block/restoredtable/cloth/aged/green/cloth-top"
+      },
+      "cloth-side": {
+        "base": "block/restoredtable/cloth/aged/green/cloth-side"
+      },
+      "charred": {
+        "base": "block/wood/debarked/veryaged"
+      }
+    },
+    "*-agedpurple-aged-*": {
+      "cloth-top": {
+        "base": "block/restoredtable/cloth/aged/purple/cloth-top"
+      },
+      "cloth-side": {
+        "base": "block/restoredtable/cloth/aged/purple/cloth-side"
+      },
+      "charred": {
+        "base": "block/wood/debarked/aged"
+      }
+    },
+    "*-agedpurple-veryaged-*": {
+      "cloth-top": {
+        "base": "block/restoredtable/cloth/aged/purple/cloth-top"
+      },
+      "cloth-side": {
+        "base": "block/restoredtable/cloth/aged/purple/cloth-side"
+      },
+      "charred": {
+        "base": "block/wood/debarked/veryaged"
+      }
+    },
+    "*-agedred-aged-*": {
+      "cloth-top": {
+        "base": "block/restoredtable/cloth/aged/red/cloth-top"
+      },
+      "cloth-side": {
+        "base": "block/restoredtable/cloth/aged/red/cloth-side"
+      },
+      "charred": {
+        "base": "block/wood/debarked/aged"
+      }
+    },
+    "*-agedred-veryaged-*": {
+      "cloth-top": {
+        "base": "block/restoredtable/cloth/aged/red/cloth-top"
+      },
+      "cloth-side": {
+        "base": "block/restoredtable/cloth/aged/red/cloth-side"
+      },
+      "charred": {
+        "base": "block/wood/debarked/veryaged"
+      }
+    },
+    "*-scribe-aged-*": {
+      "charred": {
+        "base": "block/wood/debarked/aged"
+      }
+    },
+    "*-scribe-veryaged-*": {
+      "charred": {
+        "base": "block/wood/debarked/veryaged"
+      }
+    },
+    "*-scribeaccessories-aged-*": {
+      "charred": {
+        "base": "block/wood/debarked/aged"
+      }
+    },
+    "*-scribeaccessories-veryaged-*": {
+      "charred": {
+        "base": "block/wood/debarked/veryaged"
+      }
+    },
+    "*-scribeblue-aged-*": {
+      "charred": {
+        "base": "block/wood/debarked/aged"
+      }
+    },
+    "*-scribeblue-veryaged-*": {
+      "charred": {
+        "base": "block/wood/debarked/veryaged"
+      }
+    },
+    "*-scribegreen-aged-*": {
+      "charred": {
+        "base": "block/wood/debarked/aged"
+      }
+    },
+    "*-scribegreen-veryaged-*": {
+      "charred": {
+        "base": "block/wood/debarked/veryaged"
+      }
+    },
+    "*-scribepurple-aged-*": {
+      "charred": {
+        "base": "block/wood/debarked/aged"
+      }
+    },
+    "*-scribepurple-veryaged-*": {
+      "charred": {
+        "base": "block/wood/debarked/veryaged"
+      }
+    },
+    "*-scribered-aged-*": {
+      "charred": {
+        "base": "block/wood/debarked/aged"
+      }
+    },
+    "*-scribered-veryaged-*": {
+      "charred": {
+        "base": "block/wood/debarked/veryaged"
       }
     }
   },

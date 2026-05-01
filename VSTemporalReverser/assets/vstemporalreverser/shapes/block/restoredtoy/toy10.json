@@ -1,0 +1,2213 @@
+{
+  "editor": {
+    "collapsedPaths": "Root/origin/body/legL,Root/origin/body/neck/head/origin hat/hat base/side 1,Root/origin/body/armL,Root/origin/body/legR,Root/origin/body/neck/head/origin hat,Root/origin/body/neck/head/origin hat/hat base/side 1/Cube7,Root/origin/body/armR,Root/origin/body/neck/head/origin hat/hat base",
+    "allAngles": false,
+    "entityTextureMode": false
+  },
+  "textureWidth": 16,
+  "textureHeight": 16,
+  "textureSizes": {},
+  "textures": {
+    "ceramic": "vstemporalreverser:block/restoredtoy/ceramic/brown1",
+    "top": "vstemporalreverser:block/restoredtoy/cloth/aged/red/top",
+    "cloth-stitched": "vstemporalreverser:block/restoredtoy/cloth/linen/white",
+    "mordant": "vstemporalreverser:block/restoredtoy/cloth/linen/plain",
+    "yellow": "vstemporalreverser:block/restoredtoy/cloth/linen/yellow",
+    "rusty-iron": "vstemporalreverser:block/restoredtoy/metal/tarnished/rusty-iron",
+    "wood": "vstemporalreverser:block/restoredtoy/wood/chair/oak"
+  },
+  "elements": [
+    {
+      "name": "origin",
+      "from": [
+        8,
+        0,
+        8
+      ],
+      "to": [
+        8,
+        0,
+        8
+      ],
+      "rotationOrigin": [
+        8,
+        0,
+        8
+      ],
+      "faces": {},
+      "children": [
+        {
+          "name": "body",
+          "from": [
+            -1.5,
+            0.1,
+            -1.5
+          ],
+          "to": [
+            1.5,
+            5.1,
+            1.5
+          ],
+          "rotationOrigin": [
+            0,
+            0.1,
+            0
+          ],
+          "rotationX": -10,
+          "faces": {
+            "north": {
+              "texture": "#mordant",
+              "uv": [
+                7,
+                6,
+                10,
+                11
+              ]
+            },
+            "east": {
+              "texture": "#mordant",
+              "uv": [
+                3.5,
+                4,
+                6.5,
+                9
+              ]
+            },
+            "south": {
+              "texture": "#mordant",
+              "uv": [
+                5.5,
+                2.5,
+                8.5,
+                7.5
+              ]
+            },
+            "west": {
+              "texture": "#mordant",
+              "uv": [
+                6.5,
+                2.5,
+                9.5,
+                7.5
+              ]
+            },
+            "up": {
+              "texture": "#mordant",
+              "uv": [
+                3.5,
+                10.5,
+                6.5,
+                13.5
+              ]
+            },
+            "down": {
+              "texture": "#mordant",
+              "uv": [
+                6.5,
+                5,
+                9.5,
+                8
+              ]
+            }
+          },
+          "children": [
+            {
+              "name": "neck",
+              "from": [
+                1,
+                4.5,
+                1
+              ],
+              "to": [
+                2,
+                7,
+                2
+              ],
+              "rotationOrigin": [
+                1.5,
+                5,
+                1.5
+              ],
+              "rotationX": 45,
+              "faces": {
+                "north": {
+                  "texture": "#rusty-iron",
+                  "uv": [
+                    12.5,
+                    4.5,
+                    13.5,
+                    7
+                  ]
+                },
+                "east": {
+                  "texture": "#rusty-iron",
+                  "uv": [
+                    5,
+                    9,
+                    6,
+                    11.5
+                  ]
+                },
+                "south": {
+                  "texture": "#rusty-iron",
+                  "uv": [
+                    12.5,
+                    11,
+                    13.5,
+                    13.5
+                  ]
+                },
+                "west": {
+                  "texture": "#rusty-iron",
+                  "uv": [
+                    2.5,
+                    2,
+                    3.5,
+                    4.5
+                  ]
+                }
+              },
+              "children": [
+                {
+                  "name": "head",
+                  "from": [
+                    -0.5,
+                    2,
+                    -0.5
+                  ],
+                  "to": [
+                    1.5,
+                    4,
+                    1.5
+                  ],
+                  "rotationOrigin": [
+                    0.5,
+                    2,
+                    0.5
+                  ],
+                  "rotationX": -15.5,
+                  "faces": {
+                    "north": {
+                      "texture": "#cloth-stitched",
+                      "uv": [
+                        7.5,
+                        10.5,
+                        9.5,
+                        12.5
+                      ]
+                    },
+                    "east": {
+                      "texture": "#cloth-stitched",
+                      "uv": [
+                        1,
+                        2.5,
+                        3,
+                        4.5
+                      ]
+                    },
+                    "south": {
+                      "texture": "#cloth-stitched",
+                      "uv": [
+                        8.5,
+                        0.5,
+                        10.5,
+                        2.5
+                      ]
+                    },
+                    "west": {
+                      "texture": "#cloth-stitched",
+                      "uv": [
+                        9.5,
+                        2,
+                        11.5,
+                        4
+                      ]
+                    },
+                    "up": {
+                      "texture": "#cloth-stitched",
+                      "uv": [
+                        6,
+                        1,
+                        8,
+                        3
+                      ]
+                    },
+                    "down": {
+                      "texture": "#cloth-stitched",
+                      "uv": [
+                        12.5,
+                        8,
+                        14.5,
+                        10
+                      ]
+                    }
+                  },
+                  "children": [
+                    {
+                      "name": "eyeR",
+                      "from": [
+                        0.25,
+                        1,
+                        2
+                      ],
+                      "to": [
+                        0.75,
+                        1.5,
+                        2.2
+                      ],
+                      "rotationOrigin": [
+                        0.5,
+                        1.25,
+                        2
+                      ],
+                      "faces": {
+                        "east": {
+                          "texture": "#ceramic",
+                          "uv": [
+                            12,
+                            10.5,
+                            12.5,
+                            11
+                          ]
+                        },
+                        "south": {
+                          "texture": "#ceramic",
+                          "uv": [
+                            13.5,
+                            13.5,
+                            14,
+                            14
+                          ]
+                        },
+                        "west": {
+                          "texture": "#ceramic",
+                          "uv": [
+                            4,
+                            10,
+                            4.5,
+                            10.5
+                          ]
+                        },
+                        "up": {
+                          "texture": "#ceramic",
+                          "uv": [
+                            15,
+                            2,
+                            15.5,
+                            2.5
+                          ]
+                        },
+                        "down": {
+                          "texture": "#ceramic",
+                          "uv": [
+                            14.5,
+                            6.5,
+                            15,
+                            7
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "name": "eyeL",
+                      "from": [
+                        1.25,
+                        1,
+                        2
+                      ],
+                      "to": [
+                        1.75,
+                        1.5,
+                        2.2
+                      ],
+                      "rotationOrigin": [
+                        1.5,
+                        1.25,
+                        2
+                      ],
+                      "faces": {
+                        "east": {
+                          "texture": "#ceramic",
+                          "uv": [
+                            4.5,
+                            1.5,
+                            5,
+                            2
+                          ]
+                        },
+                        "south": {
+                          "texture": "#ceramic",
+                          "uv": [
+                            5.5,
+                            6,
+                            6,
+                            6.5
+                          ]
+                        },
+                        "west": {
+                          "texture": "#ceramic",
+                          "uv": [
+                            9.5,
+                            13.5,
+                            10,
+                            14
+                          ]
+                        },
+                        "up": {
+                          "texture": "#ceramic",
+                          "uv": [
+                            1.5,
+                            10.5,
+                            2,
+                            11
+                          ]
+                        },
+                        "down": {
+                          "texture": "#ceramic",
+                          "uv": [
+                            6.5,
+                            13.5,
+                            7,
+                            14
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "name": "origin hat",
+                      "from": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "to": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "faces": {
+                        "north": {
+                          "texture": "#top",
+                          "uv": [
+                            1.5,
+                            6.5,
+                            2,
+                            7
+                          ]
+                        },
+                        "east": {
+                          "texture": "#top",
+                          "uv": [
+                            1,
+                            3.5,
+                            1.5,
+                            4
+                          ]
+                        },
+                        "south": {
+                          "texture": "#top",
+                          "uv": [
+                            7,
+                            13.5,
+                            7.5,
+                            14
+                          ]
+                        },
+                        "west": {
+                          "texture": "#top",
+                          "uv": [
+                            2,
+                            4,
+                            2.5,
+                            4.5
+                          ]
+                        },
+                        "up": {
+                          "texture": "#top",
+                          "uv": [
+                            1.5,
+                            15,
+                            2,
+                            15.5
+                          ]
+                        },
+                        "down": {
+                          "texture": "#top",
+                          "uv": [
+                            5,
+                            7.5,
+                            5.5,
+                            8
+                          ]
+                        }
+                      },
+                      "children": [
+                        {
+                          "name": "hat base",
+                          "from": [
+                            -0.3,
+                            0.6,
+                            -0.4
+                          ],
+                          "to": [
+                            2.3,
+                            2.6,
+                            1.6
+                          ],
+                          "rotationOrigin": [
+                            -0.3,
+                            0.6,
+                            -0.4
+                          ],
+                          "rotationX": 6,
+                          "faces": {
+                            "north": {
+                              "texture": "#top",
+                              "uv": [
+                                6,
+                                9.5,
+                                8.5,
+                                11.5
+                              ]
+                            },
+                            "east": {
+                              "texture": "#top",
+                              "uv": [
+                                9,
+                                4,
+                                11,
+                                6
+                              ]
+                            },
+                            "south": {
+                              "texture": "#top",
+                              "uv": [
+                                7,
+                                1.5,
+                                9.5,
+                                3.5
+                              ]
+                            },
+                            "west": {
+                              "texture": "#top",
+                              "uv": [
+                                12.5,
+                                13,
+                                14.5,
+                                15
+                              ]
+                            },
+                            "up": {
+                              "texture": "#top",
+                              "uv": [
+                                1,
+                                11.5,
+                                3.5,
+                                13.5
+                              ]
+                            },
+                            "down": {
+                              "texture": "#top",
+                              "uv": [
+                                2.5,
+                                5.5,
+                                5,
+                                7.5
+                              ]
+                            }
+                          },
+                          "children": [
+                            {
+                              "name": "side 1",
+                              "from": [
+                                0.1,
+                                1.2,
+                                0.2
+                              ],
+                              "to": [
+                                1.6,
+                                2.7,
+                                1.7
+                              ],
+                              "rotationOrigin": [
+                                0.1,
+                                1.2,
+                                0.2
+                              ],
+                              "rotationX": -1,
+                              "rotationZ": 28,
+                              "faces": {
+                                "north": {
+                                  "texture": "#top",
+                                  "uv": [
+                                    0,
+                                    9.5,
+                                    1.5,
+                                    11
+                                  ]
+                                },
+                                "east": {
+                                  "texture": "#top",
+                                  "uv": [
+                                    0.5,
+                                    2.5,
+                                    2,
+                                    4
+                                  ]
+                                },
+                                "south": {
+                                  "texture": "#top",
+                                  "uv": [
+                                    0.5,
+                                    1,
+                                    2,
+                                    2.5
+                                  ]
+                                },
+                                "west": {
+                                  "texture": "#top",
+                                  "uv": [
+                                    0,
+                                    5.5,
+                                    1.5,
+                                    7
+                                  ]
+                                },
+                                "up": {
+                                  "texture": "#top",
+                                  "uv": [
+                                    0.5,
+                                    2.5,
+                                    2,
+                                    4
+                                  ]
+                                },
+                                "down": {
+                                  "texture": "#top",
+                                  "uv": [
+                                    0.5,
+                                    5,
+                                    2,
+                                    6.5
+                                  ]
+                                }
+                              },
+                              "children": [
+                                {
+                                  "name": "Cube7",
+                                  "from": [
+                                    0.3,
+                                    1.2,
+                                    0.2
+                                  ],
+                                  "to": [
+                                    1.3,
+                                    2.2,
+                                    1.2
+                                  ],
+                                  "rotationOrigin": [
+                                    0.3,
+                                    1.2,
+                                    0.2
+                                  ],
+                                  "rotationX": 7,
+                                  "rotationY": -4,
+                                  "rotationZ": 15,
+                                  "faces": {
+                                    "north": {
+                                      "texture": "#top",
+                                      "uv": [
+                                        5.5,
+                                        7,
+                                        6.5,
+                                        8
+                                      ]
+                                    },
+                                    "east": {
+                                      "texture": "#top",
+                                      "uv": [
+                                        3.5,
+                                        8.5,
+                                        4.5,
+                                        9.5
+                                      ]
+                                    },
+                                    "south": {
+                                      "texture": "#top",
+                                      "uv": [
+                                        11,
+                                        0,
+                                        12,
+                                        1
+                                      ]
+                                    },
+                                    "west": {
+                                      "texture": "#top",
+                                      "uv": [
+                                        14,
+                                        6,
+                                        15,
+                                        7
+                                      ]
+                                    },
+                                    "up": {
+                                      "texture": "#top",
+                                      "uv": [
+                                        11,
+                                        11,
+                                        12,
+                                        12
+                                      ]
+                                    },
+                                    "down": {
+                                      "texture": "#top",
+                                      "uv": [
+                                        0,
+                                        13,
+                                        1,
+                                        14
+                                      ]
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "name": "Cube8",
+                                      "from": [
+                                        0.3,
+                                        0.7,
+                                        0.2
+                                      ],
+                                      "to": [
+                                        0.8,
+                                        1.7,
+                                        0.7
+                                      ],
+                                      "rotationOrigin": [
+                                        0.3,
+                                        0.7,
+                                        0.2
+                                      ],
+                                      "rotationZ": 19,
+                                      "faces": {
+                                        "north": {
+                                          "texture": "#top",
+                                          "uv": [
+                                            1.5,
+                                            2.5,
+                                            2,
+                                            3.5
+                                          ]
+                                        },
+                                        "east": {
+                                          "texture": "#top",
+                                          "uv": [
+                                            0,
+                                            14,
+                                            0.5,
+                                            15
+                                          ]
+                                        },
+                                        "south": {
+                                          "texture": "#top",
+                                          "uv": [
+                                            1.5,
+                                            9,
+                                            2,
+                                            10
+                                          ]
+                                        },
+                                        "west": {
+                                          "texture": "#top",
+                                          "uv": [
+                                            8,
+                                            7,
+                                            8.5,
+                                            8
+                                          ]
+                                        },
+                                        "up": {
+                                          "texture": "#top",
+                                          "uv": [
+                                            3.5,
+                                            14.5,
+                                            4,
+                                            15
+                                          ]
+                                        },
+                                        "down": {
+                                          "texture": "#top",
+                                          "uv": [
+                                            12.5,
+                                            7.5,
+                                            13,
+                                            8
+                                          ]
+                                        }
+                                      },
+                                      "children": [
+                                        {
+                                          "name": "Cube9",
+                                          "from": [
+                                            -0.1,
+                                            0.8,
+                                            0.4
+                                          ],
+                                          "to": [
+                                            0.2,
+                                            1.1,
+                                            0.7
+                                          ],
+                                          "rotationOrigin": [
+                                            0.1,
+                                            0.8,
+                                            0.4
+                                          ],
+                                          "faces": {
+                                            "north": {
+                                              "texture": "#yellow",
+                                              "uv": [
+                                                8,
+                                                7.5,
+                                                8.5,
+                                                8
+                                              ]
+                                            },
+                                            "east": {
+                                              "texture": "#yellow",
+                                              "uv": [
+                                                6,
+                                                15,
+                                                6.5,
+                                                15.5
+                                              ]
+                                            },
+                                            "south": {
+                                              "texture": "#yellow",
+                                              "uv": [
+                                                3.5,
+                                                15,
+                                                4,
+                                                15.5
+                                              ]
+                                            },
+                                            "west": {
+                                              "texture": "#yellow",
+                                              "uv": [
+                                                6.5,
+                                                12.5,
+                                                7,
+                                                13
+                                              ]
+                                            },
+                                            "up": {
+                                              "texture": "#yellow",
+                                              "uv": [
+                                                3.5,
+                                                12.5,
+                                                4,
+                                                13
+                                              ]
+                                            },
+                                            "down": {
+                                              "texture": "#yellow",
+                                              "uv": [
+                                                1.5,
+                                                7,
+                                                2,
+                                                7.5
+                                              ]
+                                            }
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "name": "side 2",
+                              "from": [
+                                1.6,
+                                1.9,
+                                -0.2
+                              ],
+                              "to": [
+                                3.1,
+                                3.4,
+                                1.3
+                              ],
+                              "rotationOrigin": [
+                                1.6,
+                                1.9,
+                                -0.2
+                              ],
+                              "rotationX": 9,
+                              "rotationY": -26,
+                              "rotationZ": -28,
+                              "faces": {
+                                "north": {
+                                  "texture": "#top",
+                                  "uv": [
+                                    2.5,
+                                    9.5,
+                                    4,
+                                    11
+                                  ]
+                                },
+                                "east": {
+                                  "texture": "#top",
+                                  "uv": [
+                                    4.5,
+                                    4.5,
+                                    6,
+                                    6
+                                  ]
+                                },
+                                "south": {
+                                  "texture": "#top",
+                                  "uv": [
+                                    7,
+                                    5,
+                                    8.5,
+                                    6.5
+                                  ]
+                                },
+                                "west": {
+                                  "texture": "#top",
+                                  "uv": [
+                                    4,
+                                    9.5,
+                                    5.5,
+                                    11
+                                  ]
+                                },
+                                "up": {
+                                  "texture": "#top",
+                                  "uv": [
+                                    4.5,
+                                    9,
+                                    6,
+                                    10.5
+                                  ]
+                                },
+                                "down": {
+                                  "texture": "#top",
+                                  "uv": [
+                                    8.5,
+                                    5,
+                                    10,
+                                    6.5
+                                  ]
+                                }
+                              },
+                              "children": [
+                                {
+                                  "name": "Cube10",
+                                  "from": [
+                                    0.4,
+                                    1.6,
+                                    0.4
+                                  ],
+                                  "to": [
+                                    1.4,
+                                    2.6,
+                                    1.4
+                                  ],
+                                  "rotationOrigin": [
+                                    0.4,
+                                    1.6,
+                                    0.4
+                                  ],
+                                  "rotationX": 19,
+                                  "rotationY": -2,
+                                  "rotationZ": -17,
+                                  "faces": {
+                                    "north": {
+                                      "texture": "#top",
+                                      "uv": [
+                                        12.5,
+                                        13.5,
+                                        13.5,
+                                        14.5
+                                      ]
+                                    },
+                                    "east": {
+                                      "texture": "#top",
+                                      "uv": [
+                                        0,
+                                        13,
+                                        1,
+                                        14
+                                      ]
+                                    },
+                                    "south": {
+                                      "texture": "#top",
+                                      "uv": [
+                                        0.5,
+                                        12.5,
+                                        1.5,
+                                        13.5
+                                      ]
+                                    },
+                                    "west": {
+                                      "texture": "#top",
+                                      "uv": [
+                                        0.5,
+                                        4,
+                                        1.5,
+                                        5
+                                      ]
+                                    },
+                                    "up": {
+                                      "texture": "#top",
+                                      "uv": [
+                                        1.5,
+                                        5.5,
+                                        2.5,
+                                        6.5
+                                      ]
+                                    },
+                                    "down": {
+                                      "texture": "#top",
+                                      "uv": [
+                                        2,
+                                        10.5,
+                                        3,
+                                        11.5
+                                      ]
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "name": "Cube11",
+                                      "from": [
+                                        0.5,
+                                        0.9,
+                                        0.4
+                                      ],
+                                      "to": [
+                                        1,
+                                        1.9,
+                                        0.9
+                                      ],
+                                      "rotationOrigin": [
+                                        0.5,
+                                        0.9,
+                                        0.4
+                                      ],
+                                      "rotationX": 22,
+                                      "rotationY": -8,
+                                      "rotationZ": -31,
+                                      "faces": {
+                                        "north": {
+                                          "texture": "#top",
+                                          "uv": [
+                                            6.5,
+                                            7.5,
+                                            7,
+                                            8.5
+                                          ]
+                                        },
+                                        "east": {
+                                          "texture": "#top",
+                                          "uv": [
+                                            5.5,
+                                            9,
+                                            6,
+                                            10
+                                          ]
+                                        },
+                                        "south": {
+                                          "texture": "#top",
+                                          "uv": [
+                                            2,
+                                            6.5,
+                                            2.5,
+                                            7.5
+                                          ]
+                                        },
+                                        "west": {
+                                          "texture": "#top",
+                                          "uv": [
+                                            8.5,
+                                            8,
+                                            9,
+                                            9
+                                          ]
+                                        },
+                                        "up": {
+                                          "texture": "#top",
+                                          "uv": [
+                                            2,
+                                            12,
+                                            2.5,
+                                            12.5
+                                          ]
+                                        },
+                                        "down": {
+                                          "texture": "#top",
+                                          "uv": [
+                                            6.5,
+                                            4.5,
+                                            7,
+                                            5
+                                          ]
+                                        }
+                                      },
+                                      "children": [
+                                        {
+                                          "name": "Cube12",
+                                          "from": [
+                                            0.2,
+                                            1,
+                                            0.2
+                                          ],
+                                          "to": [
+                                            0.5,
+                                            1.3,
+                                            0.5
+                                          ],
+                                          "rotationOrigin": [
+                                            0.4,
+                                            1,
+                                            0.2
+                                          ],
+                                          "rotationZ": -36,
+                                          "faces": {
+                                            "north": {
+                                              "texture": "#yellow",
+                                              "uv": [
+                                                7.5,
+                                                3.5,
+                                                8,
+                                                4
+                                              ]
+                                            },
+                                            "east": {
+                                              "texture": "#yellow",
+                                              "uv": [
+                                                0,
+                                                7,
+                                                0.5,
+                                                7.5
+                                              ]
+                                            },
+                                            "south": {
+                                              "texture": "#yellow",
+                                              "uv": [
+                                                12,
+                                                6,
+                                                12.5,
+                                                6.5
+                                              ]
+                                            },
+                                            "west": {
+                                              "texture": "#yellow",
+                                              "uv": [
+                                                2.5,
+                                                3,
+                                                3,
+                                                3.5
+                                              ]
+                                            },
+                                            "up": {
+                                              "texture": "#yellow",
+                                              "uv": [
+                                                1,
+                                                6,
+                                                1.5,
+                                                6.5
+                                              ]
+                                            },
+                                            "down": {
+                                              "texture": "#yellow",
+                                              "uv": [
+                                                14.5,
+                                                13.5,
+                                                15,
+                                                14
+                                              ]
+                                            }
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "nose",
+                      "from": [
+                        0.75,
+                        0.5,
+                        2
+                      ],
+                      "to": [
+                        1.25,
+                        1,
+                        2.4
+                      ],
+                      "rotationOrigin": [
+                        1,
+                        0.75,
+                        2
+                      ],
+                      "faces": {
+                        "east": {
+                          "texture": "#top",
+                          "uv": [
+                            0,
+                            11,
+                            0.5,
+                            11.5
+                          ]
+                        },
+                        "south": {
+                          "texture": "#top",
+                          "uv": [
+                            1,
+                            6.5,
+                            1.5,
+                            7
+                          ]
+                        },
+                        "west": {
+                          "texture": "#top",
+                          "uv": [
+                            2,
+                            5.5,
+                            2.5,
+                            6
+                          ]
+                        },
+                        "up": {
+                          "texture": "#top",
+                          "uv": [
+                            0.5,
+                            1,
+                            1,
+                            1.5
+                          ]
+                        },
+                        "down": {
+                          "texture": "#top",
+                          "uv": [
+                            1,
+                            6.5,
+                            1.5,
+                            7
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "armR",
+              "from": [
+                -1,
+                1,
+                1
+              ],
+              "to": [
+                0,
+                5,
+                2
+              ],
+              "rotationOrigin": [
+                0,
+                4.5,
+                1.5
+              ],
+              "rotationZ": -14,
+              "faces": {
+                "north": {
+                  "texture": "#wood",
+                  "uv": [
+                    5,
+                    10,
+                    6,
+                    14
+                  ]
+                },
+                "east": {
+                  "texture": "#wood",
+                  "uv": [
+                    2,
+                    5,
+                    3,
+                    9
+                  ]
+                },
+                "south": {
+                  "texture": "#wood",
+                  "uv": [
+                    6,
+                    9,
+                    7,
+                    13
+                  ]
+                },
+                "west": {
+                  "texture": "#wood",
+                  "uv": [
+                    9.5,
+                    1.5,
+                    10.5,
+                    5.5
+                  ]
+                },
+                "up": {
+                  "texture": "#wood",
+                  "uv": [
+                    13,
+                    14.5,
+                    14,
+                    15.5
+                  ]
+                },
+                "down": {
+                  "texture": "#wood",
+                  "uv": [
+                    10,
+                    6.5,
+                    11,
+                    7.5
+                  ]
+                }
+              },
+              "children": [
+                {
+                  "name": "nail2",
+                  "from": [
+                    -0.2,
+                    3.2,
+                    0.2
+                  ],
+                  "to": [
+                    1.2,
+                    3.8,
+                    0.8
+                  ],
+                  "rotationOrigin": [
+                    0,
+                    3.5,
+                    0.5
+                  ],
+                  "rotationX": -45,
+                  "faces": {
+                    "north": {
+                      "texture": "#rusty-iron",
+                      "uv": [
+                        3.5,
+                        9.5,
+                        4.5,
+                        10
+                      ]
+                    },
+                    "east": {
+                      "texture": "#rusty-iron",
+                      "uv": [
+                        11,
+                        0.5,
+                        11.5,
+                        1
+                      ],
+                      "windMode": [
+                        -1,
+                        -1,
+                        -1,
+                        -1
+                      ]
+                    },
+                    "south": {
+                      "texture": "#rusty-iron",
+                      "uv": [
+                        11.5,
+                        10,
+                        12.5,
+                        10.5
+                      ]
+                    },
+                    "west": {
+                      "texture": "#rusty-iron",
+                      "uv": [
+                        10,
+                        4,
+                        10.5,
+                        4.5
+                      ]
+                    },
+                    "up": {
+                      "texture": "#rusty-iron",
+                      "uv": [
+                        14,
+                        8,
+                        15,
+                        8.5
+                      ]
+                    },
+                    "down": {
+                      "texture": "#rusty-iron",
+                      "uv": [
+                        3,
+                        6,
+                        4,
+                        6.5
+                      ]
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "name": "armL",
+              "from": [
+                3,
+                1,
+                1
+              ],
+              "to": [
+                4,
+                5,
+                2
+              ],
+              "rotationOrigin": [
+                3,
+                4.5,
+                1.5
+              ],
+              "rotationX": -22.5,
+              "rotationZ": 5,
+              "faces": {
+                "north": {
+                  "texture": "#wood",
+                  "uv": [
+                    0,
+                    5.5,
+                    1,
+                    9.5
+                  ]
+                },
+                "east": {
+                  "texture": "#wood",
+                  "uv": [
+                    5.5,
+                    3,
+                    6.5,
+                    7
+                  ]
+                },
+                "south": {
+                  "texture": "#wood",
+                  "uv": [
+                    4.5,
+                    3.5,
+                    5.5,
+                    7.5
+                  ]
+                },
+                "west": {
+                  "texture": "#wood",
+                  "uv": [
+                    7,
+                    2,
+                    8,
+                    6
+                  ]
+                },
+                "up": {
+                  "texture": "#wood",
+                  "uv": [
+                    7.5,
+                    3.5,
+                    8.5,
+                    4.5
+                  ]
+                },
+                "down": {
+                  "texture": "#wood",
+                  "uv": [
+                    0,
+                    5.5,
+                    1,
+                    6.5
+                  ]
+                }
+              },
+              "children": [
+                {
+                  "name": "nail1",
+                  "from": [
+                    -0.2,
+                    3.2,
+                    0.2
+                  ],
+                  "to": [
+                    1.2,
+                    3.8,
+                    0.8
+                  ],
+                  "rotationOrigin": [
+                    1,
+                    3.5,
+                    0.5
+                  ],
+                  "rotationX": -45,
+                  "faces": {
+                    "north": {
+                      "texture": "#rusty-iron",
+                      "uv": [
+                        7,
+                        5.5,
+                        8,
+                        6
+                      ]
+                    },
+                    "east": {
+                      "texture": "#rusty-iron",
+                      "uv": [
+                        12.5,
+                        12.5,
+                        13,
+                        13
+                      ]
+                    },
+                    "south": {
+                      "texture": "#rusty-iron",
+                      "uv": [
+                        3,
+                        3,
+                        4,
+                        3.5
+                      ]
+                    },
+                    "west": {
+                      "texture": "#rusty-iron",
+                      "uv": [
+                        6.5,
+                        0.5,
+                        7,
+                        1
+                      ],
+                      "windMode": [
+                        -1,
+                        -1,
+                        -1,
+                        -1
+                      ]
+                    },
+                    "up": {
+                      "texture": "#rusty-iron",
+                      "uv": [
+                        10.5,
+                        14,
+                        11.5,
+                        14.5
+                      ]
+                    },
+                    "down": {
+                      "texture": "#rusty-iron",
+                      "uv": [
+                        5,
+                        1.5,
+                        6,
+                        2
+                      ]
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "name": "legR",
+              "from": [
+                -0.5,
+                0,
+                1
+              ],
+              "to": [
+                0.5,
+                1,
+                5
+              ],
+              "rotationOrigin": [
+                0,
+                0.5,
+                1
+              ],
+              "rotationX": 10,
+              "rotationY": -5,
+              "faces": {
+                "north": {
+                  "texture": "#wood",
+                  "uv": [
+                    3.5,
+                    6,
+                    4.5,
+                    7
+                  ]
+                },
+                "east": {
+                  "texture": "#wood",
+                  "uv": [
+                    7.5,
+                    14.5,
+                    11.5,
+                    15.5
+                  ]
+                },
+                "south": {
+                  "texture": "#wood",
+                  "uv": [
+                    1,
+                    12.5,
+                    2,
+                    13.5
+                  ]
+                },
+                "west": {
+                  "texture": "#wood",
+                  "uv": [
+                    0,
+                    10.5,
+                    4,
+                    11.5
+                  ]
+                },
+                "up": {
+                  "texture": "#wood",
+                  "uv": [
+                    13,
+                    6.5,
+                    14,
+                    10.5
+                  ]
+                },
+                "down": {
+                  "texture": "#wood",
+                  "uv": [
+                    7,
+                    2.5,
+                    8,
+                    6.5
+                  ]
+                }
+              },
+              "children": [
+                {
+                  "name": "footR",
+                  "from": [
+                    -0.5,
+                    0,
+                    4
+                  ],
+                  "to": [
+                    1.5,
+                    2,
+                    4.5
+                  ],
+                  "rotationOrigin": [
+                    0.5,
+                    0.5,
+                    4
+                  ],
+                  "rotationX": 22.5,
+                  "faces": {
+                    "north": {
+                      "texture": "#rusty-iron",
+                      "uv": [
+                        6.5,
+                        2,
+                        8.5,
+                        4
+                      ]
+                    },
+                    "east": {
+                      "texture": "#rusty-iron",
+                      "uv": [
+                        8.5,
+                        11.5,
+                        9,
+                        13.5
+                      ]
+                    },
+                    "south": {
+                      "texture": "#rusty-iron",
+                      "uv": [
+                        3.5,
+                        8,
+                        5.5,
+                        10
+                      ]
+                    },
+                    "west": {
+                      "texture": "#rusty-iron",
+                      "uv": [
+                        2.5,
+                        9,
+                        3,
+                        11
+                      ]
+                    },
+                    "up": {
+                      "texture": "#rusty-iron",
+                      "uv": [
+                        4.5,
+                        12.5,
+                        6.5,
+                        13
+                      ]
+                    },
+                    "down": {
+                      "texture": "#rusty-iron",
+                      "uv": [
+                        9,
+                        1,
+                        11,
+                        1.5
+                      ]
+                    }
+                  }
+                },
+                {
+                  "name": "nail4",
+                  "from": [
+                    -0.2,
+                    0.2,
+                    0.2
+                  ],
+                  "to": [
+                    1.2,
+                    0.8,
+                    0.8
+                  ],
+                  "rotationOrigin": [
+                    0,
+                    0.5,
+                    0.5
+                  ],
+                  "rotationX": -45,
+                  "faces": {
+                    "north": {
+                      "texture": "#rusty-iron",
+                      "uv": [
+                        4.5,
+                        9.5,
+                        5.5,
+                        10
+                      ]
+                    },
+                    "east": {
+                      "texture": "#rusty-iron",
+                      "uv": [
+                        8,
+                        13.5,
+                        8.5,
+                        14
+                      ]
+                    },
+                    "south": {
+                      "texture": "#rusty-iron",
+                      "uv": [
+                        12.5,
+                        0,
+                        13.5,
+                        0.5
+                      ]
+                    },
+                    "west": {
+                      "texture": "#rusty-iron",
+                      "uv": [
+                        2,
+                        6,
+                        2.5,
+                        6.5
+                      ]
+                    },
+                    "up": {
+                      "texture": "#rusty-iron",
+                      "uv": [
+                        6,
+                        12,
+                        7,
+                        12.5
+                      ]
+                    },
+                    "down": {
+                      "texture": "#rusty-iron",
+                      "uv": [
+                        11,
+                        15,
+                        12,
+                        15.5
+                      ]
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "name": "legL",
+              "from": [
+                2.5,
+                0,
+                1
+              ],
+              "to": [
+                3.5,
+                1,
+                5
+              ],
+              "rotationOrigin": [
+                3,
+                0.5,
+                1
+              ],
+              "rotationX": 10,
+              "rotationY": 15,
+              "faces": {
+                "north": {
+                  "texture": "#wood",
+                  "uv": [
+                    7,
+                    5,
+                    8,
+                    6
+                  ]
+                },
+                "east": {
+                  "texture": "#wood",
+                  "uv": [
+                    10,
+                    0.5,
+                    14,
+                    1.5
+                  ]
+                },
+                "south": {
+                  "texture": "#wood",
+                  "uv": [
+                    10.5,
+                    6,
+                    11.5,
+                    7
+                  ]
+                },
+                "west": {
+                  "texture": "#wood",
+                  "uv": [
+                    6,
+                    0.5,
+                    10,
+                    1.5
+                  ]
+                },
+                "up": {
+                  "texture": "#wood",
+                  "uv": [
+                    10,
+                    7,
+                    11,
+                    11
+                  ]
+                },
+                "down": {
+                  "texture": "#wood",
+                  "uv": [
+                    13.5,
+                    8.5,
+                    14.5,
+                    12.5
+                  ]
+                }
+              },
+              "children": [
+                {
+                  "name": "footL",
+                  "from": [
+                    -0.5,
+                    0,
+                    4
+                  ],
+                  "to": [
+                    1.5,
+                    2,
+                    4.5
+                  ],
+                  "rotationOrigin": [
+                    0.5,
+                    0.5,
+                    4
+                  ],
+                  "rotationX": 17,
+                  "faces": {
+                    "north": {
+                      "texture": "#rusty-iron",
+                      "uv": [
+                        2,
+                        5.5,
+                        4,
+                        7.5
+                      ]
+                    },
+                    "east": {
+                      "texture": "#rusty-iron",
+                      "uv": [
+                        12.5,
+                        1.5,
+                        13,
+                        3.5
+                      ]
+                    },
+                    "south": {
+                      "texture": "#rusty-iron",
+                      "uv": [
+                        9.5,
+                        4,
+                        11.5,
+                        6
+                      ]
+                    },
+                    "west": {
+                      "texture": "#rusty-iron",
+                      "uv": [
+                        5,
+                        0.5,
+                        5.5,
+                        2.5
+                      ]
+                    },
+                    "up": {
+                      "texture": "#rusty-iron",
+                      "uv": [
+                        3.5,
+                        4,
+                        5.5,
+                        4.5
+                      ]
+                    },
+                    "down": {
+                      "texture": "#rusty-iron",
+                      "uv": [
+                        2,
+                        7.5,
+                        4,
+                        8
+                      ]
+                    }
+                  }
+                },
+                {
+                  "name": "nail3",
+                  "from": [
+                    -0.2,
+                    0.2,
+                    0.2
+                  ],
+                  "to": [
+                    1.2,
+                    0.8,
+                    0.8
+                  ],
+                  "rotationOrigin": [
+                    0,
+                    0.5,
+                    0.5
+                  ],
+                  "rotationX": -45,
+                  "faces": {
+                    "north": {
+                      "texture": "#rusty-iron",
+                      "uv": [
+                        8.5,
+                        1.5,
+                        9.5,
+                        2
+                      ]
+                    },
+                    "east": {
+                      "texture": "#rusty-iron",
+                      "uv": [
+                        13.5,
+                        7.5,
+                        14,
+                        8
+                      ]
+                    },
+                    "south": {
+                      "texture": "#rusty-iron",
+                      "uv": [
+                        1,
+                        1,
+                        2,
+                        1.5
+                      ]
+                    },
+                    "west": {
+                      "texture": "#rusty-iron",
+                      "uv": [
+                        5.5,
+                        5,
+                        6,
+                        5.5
+                      ]
+                    },
+                    "up": {
+                      "texture": "#rusty-iron",
+                      "uv": [
+                        9,
+                        2.5,
+                        10,
+                        3
+                      ]
+                    },
+                    "down": {
+                      "texture": "#rusty-iron",
+                      "uv": [
+                        11.5,
+                        7,
+                        12.5,
+                        7.5
+                      ]
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "name": "button 1",
+              "from": [
+                1.2,
+                4.2,
+                3
+              ],
+              "to": [
+                1.8,
+                4.8,
+                3.2
+              ],
+              "rotationOrigin": [
+                1.5,
+                4.5,
+                3
+              ],
+              "faces": {
+                "north": {
+                  "texture": "#rusty-iron",
+                  "uv": [
+                    14,
+                    9,
+                    14.5,
+                    9.5
+                  ]
+                },
+                "east": {
+                  "texture": "#rusty-iron",
+                  "uv": [
+                    2,
+                    7,
+                    2.5,
+                    7.5
+                  ]
+                },
+                "south": {
+                  "texture": "#rusty-iron",
+                  "uv": [
+                    6.5,
+                    1,
+                    7,
+                    1.5
+                  ]
+                },
+                "west": {
+                  "texture": "#rusty-iron",
+                  "uv": [
+                    5.5,
+                    15.5,
+                    6,
+                    16
+                  ]
+                },
+                "up": {
+                  "texture": "#rusty-iron",
+                  "uv": [
+                    10,
+                    4,
+                    10.5,
+                    4.5
+                  ]
+                },
+                "down": {
+                  "texture": "#rusty-iron",
+                  "uv": [
+                    8.5,
+                    6,
+                    9,
+                    6.5
+                  ]
+                }
+              }
+            },
+            {
+              "name": "button 2",
+              "from": [
+                1.2,
+                3.1,
+                3
+              ],
+              "to": [
+                1.8,
+                3.7,
+                3.2
+              ],
+              "rotationOrigin": [
+                1.5,
+                3.4,
+                3
+              ],
+              "faces": {
+                "north": {
+                  "texture": "#rusty-iron",
+                  "uv": [
+                    12,
+                    13.5,
+                    12.5,
+                    14
+                  ]
+                },
+                "east": {
+                  "texture": "#rusty-iron",
+                  "uv": [
+                    2,
+                    14,
+                    2.5,
+                    14.5
+                  ]
+                },
+                "south": {
+                  "texture": "#rusty-iron",
+                  "uv": [
+                    11,
+                    11,
+                    11.5,
+                    11.5
+                  ]
+                },
+                "west": {
+                  "texture": "#rusty-iron",
+                  "uv": [
+                    1,
+                    1.5,
+                    1.5,
+                    2
+                  ]
+                },
+                "up": {
+                  "texture": "#rusty-iron",
+                  "uv": [
+                    10.5,
+                    1.5,
+                    11,
+                    2
+                  ]
+                },
+                "down": {
+                  "texture": "#rusty-iron",
+                  "uv": [
+                    13.5,
+                    8.5,
+                    14,
+                    9
+                  ]
+                }
+              }
+            },
+            {
+              "name": "button 3",
+              "from": [
+                1.2,
+                1.9,
+                3
+              ],
+              "to": [
+                1.8,
+                2.5,
+                3.2
+              ],
+              "rotationOrigin": [
+                1.5,
+                2.2,
+                3
+              ],
+              "faces": {
+                "north": {
+                  "texture": "#rusty-iron",
+                  "uv": [
+                    14,
+                    9,
+                    14.5,
+                    9.5
+                  ]
+                },
+                "east": {
+                  "texture": "#rusty-iron",
+                  "uv": [
+                    2,
+                    7,
+                    2.5,
+                    7.5
+                  ]
+                },
+                "south": {
+                  "texture": "#rusty-iron",
+                  "uv": [
+                    12,
+                    5.5,
+                    12.5,
+                    6
+                  ]
+                },
+                "west": {
+                  "texture": "#rusty-iron",
+                  "uv": [
+                    5.5,
+                    15.5,
+                    6,
+                    16
+                  ]
+                },
+                "up": {
+                  "texture": "#rusty-iron",
+                  "uv": [
+                    10,
+                    4,
+                    10.5,
+                    4.5
+                  ]
+                },
+                "down": {
+                  "texture": "#rusty-iron",
+                  "uv": [
+                    10,
+                    4,
+                    10.5,
+                    4.5
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

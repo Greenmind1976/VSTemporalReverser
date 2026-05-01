@@ -1,0 +1,63 @@
+{
+  "code": "restored-toy-toy9",
+  "class": "ItemRestoredToy",
+  "maxstacksize": 1,
+  "behaviors": [
+    {
+      "name": "GroundStorable",
+      "properties": {
+        "layout": "Quadrants",
+        "collisionBox": {
+          "x1": 0,
+          "y1": 0,
+          "z1": 0,
+          "x2": 1,
+          "y2": 0.25,
+          "z2": 1
+        }
+      }
+    }
+  ],
+  "attributes": {
+    "displaycaseable": true,
+    "shelvable": true,
+    "iconItemCode": "restored-toy-icon-toy9"
+  },
+  "shape": {
+    "base": "item/restoredtoy/toy9"
+  },
+  "guiTransform": {
+    "rotation": {
+      "x": -22,
+      "y": -135,
+      "z": 0
+    },
+    "origin": {
+      "x": 0.5,
+      "y": 0.25,
+      "z": 0.5
+    },
+    "scale": 1.7
+  },
+  "groundTransform": {
+    "rotation": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "origin": {
+      "x": 0.5,
+      "y": 0,
+      "z": 0.5
+    },
+    "scale": 3
+  },
+  "creativeinventory": {
+    "general": [
+      "restored-toy-toy9"
+    ],
+    "clutter": [
+      "restored-toy-toy9"
+    ]
+  }
+}

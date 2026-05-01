@@ -1,0 +1,35 @@
+{
+  "code": "restored-toy-icon-toy14",
+  "maxstacksize": 1,
+  "shape": {
+    "base": "item/restoredtoy/icon/toy14"
+  },
+  "guiTransform": {
+    "rotate": true,
+    "rotation": {
+      "x": -22,
+      "y": -135,
+      "z": 0
+    },
+    "origin": {
+      "x": 0.6,
+      "y": -0.1,
+      "z": 0.5
+    },
+    "scale": 2
+  },
+  "groundTransform": {
+    "rotation": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "origin": {
+      "x": 0.5,
+      "y": 0,
+      "z": 0.5
+    },
+    "scale": 3
+  },
+  "creativeinventory": {}
+}

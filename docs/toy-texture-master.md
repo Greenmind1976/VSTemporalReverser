@@ -1,0 +1,69 @@
+# Toy Texture Master
+
+Source shapes: `/Users/garretcoffman/Documents/VSMods/VSTemporalReverser/VSTemporalReverser/assets/vstemporalreverser/shapes/block/restoredtoy`
+
+This catalog shows every unique texture reference used by the toy clutter shapes, along with the resolved file path I found for it and the toys that use it.
+
+- `vstemporalreverser:block/restoredcenser/ceramic/blue1`
+  - File: [/Users/garretcoffman/Documents/VSMods/VSTemporalReverser/VSTemporalReverser/assets/vstemporalreverser/textures/block/restoredcenser/ceramic/blue1.png](</Users/garretcoffman/Documents/VSMods/VSTemporalReverser/VSTemporalReverser/assets/vstemporalreverser/textures/block/restoredcenser/ceramic/blue1.png>)
+  - Used by: toy1 (aged-ceramic1)
+- `vstemporalreverser:block/restoredcenser/ceramic/brown1`
+  - File: [/Users/garretcoffman/Documents/VSMods/VSTemporalReverser/VSTemporalReverser/assets/vstemporalreverser/textures/block/restoredcenser/ceramic/brown1.png](</Users/garretcoffman/Documents/VSMods/VSTemporalReverser/VSTemporalReverser/assets/vstemporalreverser/textures/block/restoredcenser/ceramic/brown1.png>)
+  - Used by: toy2 (aged-ceramic1)
+- `vstemporalreverser:block/restoredtoy/ceramic/brown1`
+  - File: [/Users/garretcoffman/Documents/VSMods/VSTemporalReverser/VSTemporalReverser/assets/vstemporalreverser/textures/block/restoredtoy/ceramic/brown1.png](</Users/garretcoffman/Documents/VSMods/VSTemporalReverser/VSTemporalReverser/assets/vstemporalreverser/textures/block/restoredtoy/ceramic/brown1.png>)
+  - Used by: toy4 (ceramic), toy5 (ceramic), toy6 (ceramic), toy7 (ceramic), toy10 (ceramic), toy11 (ceramic), toy13 (ceramic), toy14 (ceramic)
+- `vstemporalreverser:block/restoredtoy/cloth/aged/red/top`
+  - File: [/Users/garretcoffman/Documents/VSMods/VSTemporalReverser/VSTemporalReverser/assets/vstemporalreverser/textures/block/restoredtoy/cloth/aged/red/top.png](</Users/garretcoffman/Documents/VSMods/VSTemporalReverser/VSTemporalReverser/assets/vstemporalreverser/textures/block/restoredtoy/cloth/aged/red/top.png>)
+  - Used by: toy10 (top)
+- `vstemporalreverser:block/restoredtoy/cloth/cloth-ruined`
+  - File: [/Users/garretcoffman/Documents/VSMods/VSTemporalReverser/VSTemporalReverser/assets/vstemporalreverser/textures/block/restoredtoy/cloth/cloth-ruined.png](</Users/garretcoffman/Documents/VSMods/VSTemporalReverser/VSTemporalReverser/assets/vstemporalreverser/textures/block/restoredtoy/cloth/cloth-ruined.png>)
+  - Used by: toy16 (cloth-ruined)
+- `vstemporalreverser:block/restoredtoy/cloth/cloth-stitched`
+  - File: [/Users/garretcoffman/Documents/VSMods/VSTemporalReverser/VSTemporalReverser/assets/vstemporalreverser/textures/block/restoredtoy/cloth/cloth-stitched.png](</Users/garretcoffman/Documents/VSMods/VSTemporalReverser/VSTemporalReverser/assets/vstemporalreverser/textures/block/restoredtoy/cloth/cloth-stitched.png>)
+  - Used by: toy1 (cloth-stitched), toy2 (cloth-stitched), toy3 (cloth-stitched), toy10 (cloth-stitched)
+- `vstemporalreverser:block/restoredtoy/cloth/linen/mordant`
+  - File: [/Users/garretcoffman/Documents/VSMods/VSTemporalReverser/VSTemporalReverser/assets/vstemporalreverser/textures/block/restoredtoy/cloth/linen/mordant.png](</Users/garretcoffman/Documents/VSMods/VSTemporalReverser/VSTemporalReverser/assets/vstemporalreverser/textures/block/restoredtoy/cloth/linen/mordant.png>)
+  - Used by: toy10 (mordant)
+- `vstemporalreverser:block/restoredtoy/cloth/linen/yellow`
+  - File: [/Users/garretcoffman/Documents/VSMods/VSTemporalReverser/VSTemporalReverser/assets/vstemporalreverser/textures/block/restoredtoy/cloth/linen/yellow.png](</Users/garretcoffman/Documents/VSMods/VSTemporalReverser/VSTemporalReverser/assets/vstemporalreverser/textures/block/restoredtoy/cloth/linen/yellow.png>)
+  - Used by: toy10 (yellow)
+- `vstemporalreverser:block/restoredtoy/cloth/reedrope`
+  - File: [/Users/garretcoffman/Documents/VSMods/VSTemporalReverser/VSTemporalReverser/assets/vstemporalreverser/textures/block/restoredtoy/cloth/reedrope.png](</Users/garretcoffman/Documents/VSMods/VSTemporalReverser/VSTemporalReverser/assets/vstemporalreverser/textures/block/restoredtoy/cloth/reedrope.png>)
+  - Used by: toy8 (reedrope)
+- `vstemporalreverser:block/restoredtoy/cloth/ropedcloth`
+  - File: [/Users/garretcoffman/Documents/VSMods/VSTemporalReverser/VSTemporalReverser/assets/vstemporalreverser/textures/block/restoredtoy/cloth/ropedcloth.png](</Users/garretcoffman/Documents/VSMods/VSTemporalReverser/VSTemporalReverser/assets/vstemporalreverser/textures/block/restoredtoy/cloth/ropedcloth.png>)
+  - Used by: toy6 (ropedcloth)
+- `vstemporalreverser:block/restoredtoy/hay/bundle`
+  - File: [/Users/garretcoffman/Documents/VSMods/VSTemporalReverser/VSTemporalReverser/assets/vstemporalreverser/textures/block/restoredtoy/hay/bundle.png](</Users/garretcoffman/Documents/VSMods/VSTemporalReverser/VSTemporalReverser/assets/vstemporalreverser/textures/block/restoredtoy/hay/bundle.png>)
+  - Used by: toy13 (bundle)
+- `vstemporalreverser:block/restoredtoy/leather/aged1`
+  - File: [/Users/garretcoffman/Documents/VSMods/VSTemporalReverser/VSTemporalReverser/assets/vstemporalreverser/textures/block/restoredtoy/leather/aged1.png](</Users/garretcoffman/Documents/VSMods/VSTemporalReverser/VSTemporalReverser/assets/vstemporalreverser/textures/block/restoredtoy/leather/aged1.png>)
+  - Used by: toy16 (aged1)
+- `vstemporalreverser:block/restoredtoy/leather/poor`
+  - File: [/Users/garretcoffman/Documents/VSMods/VSTemporalReverser/VSTemporalReverser/assets/vstemporalreverser/textures/block/restoredtoy/leather/poor.png](</Users/garretcoffman/Documents/VSMods/VSTemporalReverser/VSTemporalReverser/assets/vstemporalreverser/textures/block/restoredtoy/leather/poor.png>)
+  - Used by: toy9 (poor), toy16 (poor)
+- `vstemporalreverser:block/restoredtoy/metal/tarnished/copper1`
+  - File: [/Users/garretcoffman/Documents/VSMods/VSTemporalReverser/VSTemporalReverser/assets/vstemporalreverser/textures/block/restoredtoy/metal/tarnished/copper1.png](</Users/garretcoffman/Documents/VSMods/VSTemporalReverser/VSTemporalReverser/assets/vstemporalreverser/textures/block/restoredtoy/metal/tarnished/copper1.png>)
+  - Used by: toy8 (copper)
+- `vstemporalreverser:block/restoredtoy/metal/tarnished/rusty-iron`
+  - File: [/Users/garretcoffman/Documents/VSMods/VSTemporalReverser/VSTemporalReverser/assets/vstemporalreverser/textures/block/restoredtoy/metal/tarnished/rusty-iron.png](</Users/garretcoffman/Documents/VSMods/VSTemporalReverser/VSTemporalReverser/assets/vstemporalreverser/textures/block/restoredtoy/metal/tarnished/rusty-iron.png>)
+  - Used by: toy1 (rusty-iron), toy2 (rusty-iron), toy3 (rusty-iron), toy8 (rusty-iron), toy10 (rusty-iron)
+- `vstemporalreverser:block/restoredtoy/stone/rock/basalt1`
+  - File: [/Users/garretcoffman/Documents/VSMods/VSTemporalReverser/VSTemporalReverser/assets/vstemporalreverser/textures/block/restoredtoy/stone/rock/basalt1.png](</Users/garretcoffman/Documents/VSMods/VSTemporalReverser/VSTemporalReverser/assets/vstemporalreverser/textures/block/restoredtoy/stone/rock/basalt1.png>)
+  - Used by: toy15 (basalt1), toy16 (basalt1)
+- `vstemporalreverser:block/restoredtoy/stone/rock/granite4`
+  - File: [/Users/garretcoffman/Documents/VSMods/VSTemporalReverser/VSTemporalReverser/assets/vstemporalreverser/textures/block/restoredtoy/stone/rock/granite4.png](</Users/garretcoffman/Documents/VSMods/VSTemporalReverser/VSTemporalReverser/assets/vstemporalreverser/textures/block/restoredtoy/stone/rock/granite4.png>)
+  - Used by: toy15 (granite4)
+- `vstemporalreverser:block/restoredtoy/wood/chair/oak`
+  - File: [/Users/garretcoffman/Documents/VSMods/VSTemporalReverser/VSTemporalReverser/assets/vstemporalreverser/textures/block/restoredtoy/wood/chair/oak.png](</Users/garretcoffman/Documents/VSMods/VSTemporalReverser/VSTemporalReverser/assets/vstemporalreverser/textures/block/restoredtoy/wood/chair/oak.png>)
+  - Used by: toy4 (wood), toy5 (wood), toy6 (wood), toy7 (wood), toy10 (wood), toy11 (wood), toy13 (wood), toy14 (wood)
+- `vstemporalreverser:block/restoredtoy/wood/debarked/aged`
+  - File: [/Users/garretcoffman/Documents/VSMods/VSTemporalReverser/VSTemporalReverser/assets/vstemporalreverser/textures/block/restoredtoy/wood/debarked/aged.png](</Users/garretcoffman/Documents/VSMods/VSTemporalReverser/VSTemporalReverser/assets/vstemporalreverser/textures/block/restoredtoy/wood/debarked/aged.png>)
+  - Used by: toy15 (aged)
+- `vstemporalreverser:block/restoredtoy/wood/debarked/veryaged`
+  - File: [/Users/garretcoffman/Documents/VSMods/VSTemporalReverser/VSTemporalReverser/assets/vstemporalreverser/textures/block/restoredtoy/wood/debarked/veryaged.png](</Users/garretcoffman/Documents/VSMods/VSTemporalReverser/VSTemporalReverser/assets/vstemporalreverser/textures/block/restoredtoy/wood/debarked/veryaged.png>)
+  - Used by: toy12 (veryaged)
+- `vstemporalreverser:block/restoredtoy/wood/plainoak`
+  - File: [/Users/garretcoffman/Documents/VSMods/VSTemporalReverser/VSTemporalReverser/assets/vstemporalreverser/textures/block/restoredtoy/wood/plainoak.png](</Users/garretcoffman/Documents/VSMods/VSTemporalReverser/VSTemporalReverser/assets/vstemporalreverser/textures/block/restoredtoy/wood/plainoak.png>)
+  - Used by: toy1 (charred), toy2 (charred), toy3 (charred)

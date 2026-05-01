@@ -1,0 +1,176 @@
+{
+  "code": "restored-bookstand",
+  "behaviors": [
+    {
+      "name": "Lockable"
+    }
+  ],
+  "variantgroups": [
+    {
+      "code": "material",
+      "states": [
+        "birch",
+        "oak",
+        "maple",
+        "pine",
+        "acacia",
+        "kapok",
+        "redwood",
+        "baldcypress",
+        "larch",
+        "ebony",
+        "walnut",
+        "purpleheart",
+        "aged",
+        "veryaged"
+      ]
+    }
+  ],
+  "attributes": {
+    "reinforcable": true,
+    "height": 0.406
+  },
+  "drawtype": "json",
+  "shapebytype": {
+    "*": {
+      "base": "block/restoredbookstand/bookstand"
+    }
+  },
+  "shapeinventorybytype": {
+    "*": {
+      "base": "block/restoredbookstand/bookstand"
+    }
+  },
+  "textures": {
+    "bottom": {
+      "base": "block/wood/debarked/oak"
+    }
+  },
+  "texturesbytype": {
+    "*-birch": {
+      "bottom": {
+        "base": "block/wood/debarked/birch"
+      }
+    },
+    "*-oak": {
+      "bottom": {
+        "base": "block/wood/debarked/oak"
+      }
+    },
+    "*-maple": {
+      "bottom": {
+        "base": "block/wood/debarked/maple"
+      }
+    },
+    "*-pine": {
+      "bottom": {
+        "base": "block/wood/debarked/pine"
+      }
+    },
+    "*-acacia": {
+      "bottom": {
+        "base": "block/wood/debarked/acacia"
+      }
+    },
+    "*-kapok": {
+      "bottom": {
+        "base": "block/wood/debarked/kapok"
+      }
+    },
+    "*-redwood": {
+      "bottom": {
+        "base": "block/wood/debarked/redwood"
+      }
+    },
+    "*-baldcypress": {
+      "bottom": {
+        "base": "block/wood/debarked/baldcypress"
+      }
+    },
+    "*-larch": {
+      "bottom": {
+        "base": "block/wood/debarked/larch"
+      }
+    },
+    "*-ebony": {
+      "bottom": {
+        "base": "block/wood/debarked/ebony"
+      }
+    },
+    "*-walnut": {
+      "bottom": {
+        "base": "block/wood/debarked/walnut"
+      }
+    },
+    "*-purpleheart": {
+      "bottom": {
+        "base": "block/wood/debarked/purpleheart"
+      }
+    },
+    "*-aged": {
+      "bottom": {
+        "base": "block/wood/debarked/aged"
+      }
+    },
+    "*-veryaged": {
+      "bottom": {
+        "base": "block/wood/debarked/veryaged"
+      }
+    }
+  },
+  "blockmaterial": "Wood",
+  "replaceable": 900,
+  "resistance": 1.5,
+  "lightAbsorption": 0,
+  "sidesolid": {
+    "all": false
+  },
+  "sideopaque": {
+    "all": false
+  },
+  "emitSideAo": {
+    "all": false
+  },
+  "sounds": {
+    "place": "block/planks",
+    "break": "block/planks",
+    "hit": "block/planks",
+    "walk": "walk/wood"
+  },
+  "collisionSelectionBoxes": [
+    {
+      "x1": 0.1386,
+      "y1": 0,
+      "z1": 0.1129,
+      "x2": 0.9123,
+      "y2": 0.406,
+      "z2": 0.8866
+    }
+  ],
+  "guiTransform": {
+    "rotation": {
+      "x": -22,
+      "y": -45,
+      "z": 0
+    },
+    "origin": {
+      "x": 0.5,
+      "y": 0.3,
+      "z": 0.5
+    },
+    "scale": 1.26
+  },
+  "tpHandTransform": {
+    "translation": {
+      "x": -1.9,
+      "y": -1.4,
+      "z": -1.7
+    },
+    "rotation": {
+      "x": 0,
+      "y": -85,
+      "z": -15
+    },
+    "scale": 0.3
+  }
+}

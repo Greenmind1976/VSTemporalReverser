@@ -21,8 +21,154 @@ The mod currently adds a creative-only `Temporal Reverser` item. When used on su
 - Lanterns
 - Chandeliers
 - Torch holders
+- Book stands
+- Lecterns
 
 The mod has moved past the original canopy-bed-only spike. It now covers a small curated set of ruined or aged furnishings while still using the same basic interaction flow: match a target, consume durability, remove the original block, and drop the restored result.
+
+## Bonus Loot Table
+
+These restored targets currently drop extra loot in addition to the restored block:
+
+| Restored target | Bonus loot |
+|---|---|
+| `crate-large-tools1` | `2` random tools |
+| `crate/large-clothing1` | `2-4` clothing items, plus a `1%` `backpack-sturdy` roll |
+| `crate/crate-large-pottery`, `crate/large-pottery1`, `crate/large-pottery2`, `crate/large-pottery3` | `1-2` fired pottery pieces |
+| `crate/crate-medium-books` | `2-4` normal books |
+| `crate/crate-medium-pottery`, `crate/crate-medium-pottery-alt` | `1` fired pottery piece |
+| `crate/crate-small-pottery` | `1-2` fired pottery pieces |
+| `crate/crate-large-rot` | `4-6` rot items |
+| `crate/crate-small-rot` | `2-4` rot items |
+| `crate/crate-large-junk`, `crate/crate-medium-junk`, `crate/crate-small-junk`, `crate/large-generic-junk1` | Tiered junk loot |
+| `crate/large-metaljunk1` | Tiered metal loot, with metal bits at `10` per stack and nails at `4` per stack |
+
+Current junk tiers:
+
+- `-junk` common tier: paintings, arrows, bombs, seeds, fabric, nails, resin, and leather
+- `-junk` uncommon tier: copper/bronze ingots and plates, windmill and helve hammer parts, and lower-tier armor, with armor taking only 10% of the uncommon junk roll
+- `-junk` rare tier: iron and meteoric iron ingots/plates, plus iron and meteoric iron armor
+- `-junk` ultra-rare tier: `backpack-sturdy`, plus gold, silver, and steel armor
+- `-metaljunk1` common tier: nails, 4 at a time, from a random metal; and random metal bits, 10 at a time
+- `-metaljunk1` uncommon tier: copper/bronze ingots and plates
+- `-metaljunk1` rare tier: iron, meteoric iron, silver, and gold ingots and plates, plus iron and meteoric iron armor
+- `-metaljunk1` ultra-rare tier: silver, gold, and steel armor and plates
+
+## Crate Restorations
+
+These crate clutter targets restore into crate blocks and may also drop bonus loot:
+
+| Crate target | Restored output |
+|---|---|
+| `crate/crate-large-ore1`, `crate/crate-large-ore2`, `crate/crate-large-ore3`, `crate/crate-large-oldore` | `20-40` ore nuggets of one random ore type |
+| contaminated ore crate variants | `20-40` ore nuggets of one random ore type, plus rare `nugget-pentlandite` and `nugget-uranium` rolls |
+| `crate-large-tools1` | `2` random tools |
+| `crate/large-clothing1` | `2-4` clothing items, plus a `1%` sturdy backpack roll |
+| `crate/crate-large-pottery`, `crate/large-pottery1`, `crate/large-pottery2`, `crate/large-pottery3` | `1-2` fired pottery pieces |
+| `crate/crate-medium-books` | `2-4` books |
+| `crate/crate-medium-pottery`, `crate/crate-medium-pottery-alt` | `1` fired pottery piece |
+| `crate/crate-small-pottery` | `1-2` fired pottery pieces |
+| `crate/crate-large-rot` | `4-6` rot items |
+| `crate/crate-small-rot` | `2-4` rot items |
+| `crate/crate-large-junk`, `crate/crate-medium-junk`, `crate/crate-small-junk`, `crate/large-generic-junk1` | Tiered junk loot |
+| `crate/large-metaljunk1` | Tiered metal loot, with metal bits at `10` per stack and nails at `4` per stack |
+| `crate/crate-large-empty` | Empty large crate |
+| `crate/crate-medium-empty` | Empty medium crate |
+| `crate/crate-small-empty` | Empty small crate |
+| `crate/crate-small-stacked` | `2` small crates |
+| `crate/crate-large-cobweb`, `crate/crate-large-evaporating`, ruined large crates | Empty large crate |
+| `crate/crate-small-evaporating`, ruined small crates | Empty small crate |
+| `crate/crate-medium-evaporating`, ruined medium crates | Empty medium crate |
+
+### Crate Item Pools
+
+The randomized loot pools behind the crate families are:
+
+- `crate/crate-large-ore1`, `crate/crate-large-ore2`, `crate/crate-large-ore3`, `crate/crate-large-oldore`
+  - `nugget-bismuthinite`
+  - `nugget-cassiterite`
+  - `nugget-chromite`
+  - `nugget-galena`
+  - `nugget-hematite`
+  - `nugget-ilmenite`
+  - `nugget-limonite`
+  - `nugget-magnetite`
+  - `nugget-malachite`
+  - `nugget-nativecopper`
+  - `nugget-nativegold`
+  - `nugget-nativesilver`
+  - `nugget-pentlandite`
+  - `nugget-rhodochrosite`
+  - `nugget-sphalerite`
+  - `nugget-uranium`
+  - `nugget-wolframite`
+- contaminated ore crate variants
+  - same nugget pool as above
+  - rare bonus rolls for `nugget-pentlandite` and `nugget-uranium`
+- `crate-large-tools1`
+  - Random restored tool codes across axes, hammers, hoes, knives, pickaxes, saws, scythes, shovels, spears, chisels, wrenches, prospecting picks, shears, and tongs
+- `crate/large-clothing1`
+  - `cloth-black`
+  - `cloth-blue`
+  - `cloth-brown`
+  - `cloth-gray`
+  - `cloth-green`
+  - `cloth-orange`
+  - `cloth-pink`
+  - `cloth-plain`
+  - `cloth-purple`
+  - `cloth-red`
+  - `cloth-white`
+  - `cloth-yellow`
+  - `linen-normal-down`
+  - `linen-offset-down`
+  - `linen-diamond-down`
+  - `linen-square-down`
+- `crate/crate-large-pottery`, `crate/large-pottery1`, `crate/large-pottery2`, `crate/large-pottery3`, `crate/crate-medium-pottery`, `crate/crate-medium-pottery-alt`, `crate/crate-small-pottery`
+  - Fired bowls, clay planters, clay pots, crocks, crucibles, flowerpots, storage vessels, jugs, and watering cans in the four color families
+- `crate/crate-medium-books`
+  - Normal books in the common color set
+- `crate/crate-large-rot`, `crate/crate-small-rot`
+  - `leather-normal-plain`
+  - `seeds-amaranth`
+  - `seeds-bellpepper`
+  - `seeds-cabbage`
+  - `seeds-carrot`
+  - `seeds-cassava`
+  - `seeds-fennel`
+  - `seeds-flax`
+  - `seeds-onion`
+  - `seeds-parsnip`
+  - `seeds-peanut`
+  - `seeds-pumpkin`
+  - `seeds-rice`
+  - `seeds-rye`
+  - `seeds-soybean`
+  - `seeds-spelt`
+  - `seeds-sunflower`
+  - `seeds-turnip`
+- `crate/crate-large-junk`, `crate/crate-medium-junk`, `crate/crate-small-junk`, `crate/large-generic-junk1`
+  - Common tier: paintings, arrows, bombs, fabric, nails, resin, leather, and seed items
+  - Uncommon tier: copper and bronze ingots/plates, windmill parts, helve hammer parts, and lower-tier armor at 10% of the uncommon roll
+  - Rare tier: iron and meteoric iron ingots/plates, plus iron and meteoric iron armor
+  - Ultra-rare tier: `backpack-sturdy`, plus gold, silver, and steel armor
+- `crate/large-metaljunk1`
+  - Common tier: nails, 4 at a time, from a random metal; and metal bits, 10 at a time
+  - Uncommon tier: copper/bronze ingots and plates
+  - Rare tier: iron, meteoric iron, silver, and gold ingots and plates, plus iron and meteoric iron armor
+  - Ultra-rare tier: silver, gold, and steel armor and plates
+
+## Current Limitations
+
+- Restored book stands and lecterns currently restore as decorative blocks plus a random book.
+- Placing books onto restored book stands or lecterns is not supported yet.
+
+## Configuration
+
+- `VSTemporalReverserConfig.json` lets players control which wood textures are eligible for restored wood-based outputs.
+- `EnableDebugLogging` is off by default and writes restore events to `~/Library/Application Support/VintagestoryData/Logs/VSTemporalReverser/restore-debug.jsonl` on macOS, or the equivalent `VintagestoryData/Logs/VSTemporalReverser/restore-debug.jsonl` path on other platforms.
+- If `configlib` and your GUI config mod are installed, each supported wood type is exposed as its own checkbox.
+- The legacy `EnabledWoodTypes` list is still supported for manual JSON editing or older configs.
 
 ## Layout
 
