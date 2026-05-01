@@ -1,0 +1,67 @@
+{
+  "code": "restored-lectern-metal",
+  "behaviors": [
+    { "name": "Lockable" }
+  ],
+  "variantgroups": [
+    {
+      "code": "material",
+      "states": [
+        "copper",
+        "brass",
+        "blackbronze",
+        "silver",
+        "gold",
+        "electrum"
+      ]
+    }
+  ],
+  "attributes": {
+    "reinforcable": true,
+    "height": 1.1875
+  },
+  "drawtype": "json",
+  "shapebytype": {
+    "*": { "base": "block/restoredlectern/metal" }
+  },
+  "shapeinventorybytype": {
+    "*": { "base": "block/restoredlectern/metal" }
+  },
+  "textures": {
+    "iron": { "base": "block/metal/lantern/copper" }
+  },
+  "texturesbytype": {
+    "*-copper": { "iron": { "base": "block/metal/lantern/copper" } },
+    "*-brass": { "iron": { "base": "block/metal/lantern/brass" } },
+    "*-blackbronze": { "iron": { "base": "block/metal/lantern/blackbronze" } },
+    "*-silver": { "iron": { "base": "block/metal/lantern/silver" } },
+    "*-gold": { "iron": { "base": "block/metal/lantern/gold" } },
+    "*-electrum": { "iron": { "base": "block/metal/lantern/electrum" } }
+  },
+  "blockmaterial": "Metal",
+  "replaceable": 900,
+  "resistance": 1.5,
+  "lightAbsorption": 0,
+  "sidesolid": { "all": false },
+  "sideopaque": { "all": false },
+  "emitSideAo": { "all": false },
+  "sounds": {
+    "place": "block/anvil",
+    "break": "block/anvil",
+    "hit": "block/anvil",
+    "walk": "walk/metalore"
+  },
+  "collisionSelectionBoxes": [
+    { "x1": 0.15625, "y1": 0, "z1": 0.15625, "x2": 0.84375, "y2": 1.1875, "z2": 0.84375 }
+  ],
+  "guiTransform": {
+    "rotation": { "x": -22.6, "y": 135, "z": 0 },
+    "origin": { "x": 0.5, "y": 0.7, "z": 0.5 },
+    "scale": 1
+  },
+  "tpHandTransform": {
+    "translation": { "x": -1.8, "y": -1.6, "z": -1.6 },
+    "rotation": { "x": 84, "y": 0, "z": -79 },
+    "scale": 0.3
+  }
+}

@@ -1,0 +1,176 @@
+{
+  "code": "restored-lectern-ruinedwood",
+  "behaviors": [
+    {
+      "name": "Lockable"
+    }
+  ],
+  "variantgroups": [
+    {
+      "code": "material",
+      "states": [
+        "birch",
+        "oak",
+        "maple",
+        "pine",
+        "acacia",
+        "kapok",
+        "redwood",
+        "baldcypress",
+        "larch",
+        "ebony",
+        "walnut",
+        "purpleheart",
+        "aged",
+        "veryaged"
+      ]
+    }
+  ],
+  "attributes": {
+    "reinforcable": true,
+    "height": 0.75
+  },
+  "drawtype": "json",
+  "shapebytype": {
+    "*": {
+      "base": "block/restoredlectern/ruinedwood"
+    }
+  },
+  "shapeinventorybytype": {
+    "*": {
+      "base": "block/restoredlectern/ruinedwood"
+    }
+  },
+  "textures": {
+    "charred": {
+      "base": "block/wood/debarked/oak"
+    }
+  },
+  "texturesbytype": {
+    "*-birch": {
+      "charred": {
+        "base": "block/wood/debarked/birch"
+      }
+    },
+    "*-oak": {
+      "charred": {
+        "base": "block/wood/debarked/oak"
+      }
+    },
+    "*-maple": {
+      "charred": {
+        "base": "block/wood/debarked/maple"
+      }
+    },
+    "*-pine": {
+      "charred": {
+        "base": "block/wood/debarked/pine"
+      }
+    },
+    "*-acacia": {
+      "charred": {
+        "base": "block/wood/debarked/acacia"
+      }
+    },
+    "*-kapok": {
+      "charred": {
+        "base": "block/wood/debarked/kapok"
+      }
+    },
+    "*-redwood": {
+      "charred": {
+        "base": "block/wood/debarked/redwood"
+      }
+    },
+    "*-baldcypress": {
+      "charred": {
+        "base": "block/wood/debarked/baldcypress"
+      }
+    },
+    "*-larch": {
+      "charred": {
+        "base": "block/wood/debarked/larch"
+      }
+    },
+    "*-ebony": {
+      "charred": {
+        "base": "block/wood/debarked/ebony"
+      }
+    },
+    "*-walnut": {
+      "charred": {
+        "base": "block/wood/debarked/walnut"
+      }
+    },
+    "*-purpleheart": {
+      "charred": {
+        "base": "block/wood/debarked/purpleheart"
+      }
+    },
+    "*-aged": {
+      "charred": {
+        "base": "block/wood/debarked/aged"
+      }
+    },
+    "*-veryaged": {
+      "charred": {
+        "base": "block/wood/debarked/veryaged"
+      }
+    }
+  },
+  "blockmaterial": "Wood",
+  "replaceable": 900,
+  "resistance": 1.5,
+  "lightAbsorption": 0,
+  "sidesolid": {
+    "all": false
+  },
+  "sideopaque": {
+    "all": false
+  },
+  "emitSideAo": {
+    "all": false
+  },
+  "sounds": {
+    "place": "block/planks",
+    "break": "block/planks",
+    "hit": "block/planks",
+    "walk": "walk/wood"
+  },
+  "collisionSelectionBoxes": [
+    {
+      "x1": 0.03125,
+      "y1": 0,
+      "z1": 0.0625,
+      "x2": 0.6875,
+      "y2": 0.75,
+      "z2": 0.59375
+    }
+  ],
+  "guiTransform": {
+    "rotation": {
+      "x": -22.6,
+      "y": 135,
+      "z": 0
+    },
+    "origin": {
+      "x": 0.5,
+      "y": 0.45,
+      "z": 0.5
+    },
+    "scale": 1.2
+  },
+  "tpHandTransform": {
+    "translation": {
+      "x": -1.8,
+      "y": -1.6,
+      "z": -1.6
+    },
+    "rotation": {
+      "x": 84,
+      "y": 0,
+      "z": -79
+    },
+    "scale": 0.3
+  }
+}

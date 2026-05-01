@@ -1,0 +1,221 @@
+{
+  "code": "restored-lectern-ornatewood",
+  "behaviors": [
+    {
+      "name": "Lockable"
+    }
+  ],
+  "variantgroups": [
+    {
+      "code": "material",
+      "states": [
+        "birch",
+        "oak",
+        "maple",
+        "pine",
+        "acacia",
+        "kapok",
+        "redwood",
+        "baldcypress",
+        "larch",
+        "ebony",
+        "walnut",
+        "purpleheart",
+        "aged",
+        "veryaged"
+      ]
+    }
+  ],
+  "attributes": {
+    "reinforcable": true,
+    "height": 1.2248
+  },
+  "drawtype": "json",
+  "shapebytype": {
+    "*": {
+      "base": "block/restoredlectern/ornatewood"
+    }
+  },
+  "shapeinventorybytype": {
+    "*": {
+      "base": "block/restoredlectern/ornatewood"
+    }
+  },
+  "textures": {
+    "ebony": {
+      "base": "block/wood/debarked/oak"
+    },
+    "ebony-ornate": {
+      "base": "block/wood/debarked/oak"
+    }
+  },
+  "texturesbytype": {
+    "*-birch": {
+      "ebony": {
+        "base": "block/wood/debarked/birch"
+      },
+      "ebony-ornate": {
+        "base": "block/wood/debarked/birch"
+      }
+    },
+    "*-oak": {
+      "ebony": {
+        "base": "block/wood/debarked/oak"
+      },
+      "ebony-ornate": {
+        "base": "block/wood/debarked/oak"
+      }
+    },
+    "*-maple": {
+      "ebony": {
+        "base": "block/wood/debarked/maple"
+      },
+      "ebony-ornate": {
+        "base": "block/wood/debarked/maple"
+      }
+    },
+    "*-pine": {
+      "ebony": {
+        "base": "block/wood/debarked/pine"
+      },
+      "ebony-ornate": {
+        "base": "block/wood/debarked/pine"
+      }
+    },
+    "*-acacia": {
+      "ebony": {
+        "base": "block/wood/debarked/acacia"
+      },
+      "ebony-ornate": {
+        "base": "block/wood/debarked/acacia"
+      }
+    },
+    "*-kapok": {
+      "ebony": {
+        "base": "block/wood/debarked/kapok"
+      },
+      "ebony-ornate": {
+        "base": "block/wood/debarked/kapok"
+      }
+    },
+    "*-redwood": {
+      "ebony": {
+        "base": "block/wood/debarked/redwood"
+      },
+      "ebony-ornate": {
+        "base": "block/wood/debarked/redwood"
+      }
+    },
+    "*-baldcypress": {
+      "ebony": {
+        "base": "block/wood/debarked/baldcypress"
+      },
+      "ebony-ornate": {
+        "base": "block/wood/debarked/baldcypress"
+      }
+    },
+    "*-larch": {
+      "ebony": {
+        "base": "block/wood/debarked/larch"
+      },
+      "ebony-ornate": {
+        "base": "block/wood/debarked/larch"
+      }
+    },
+    "*-ebony": {
+      "ebony": {
+        "base": "block/wood/debarked/ebony"
+      },
+      "ebony-ornate": {
+        "base": "block/wood/debarked/ebony"
+      }
+    },
+    "*-walnut": {
+      "ebony": {
+        "base": "block/wood/debarked/walnut"
+      },
+      "ebony-ornate": {
+        "base": "block/wood/debarked/walnut"
+      }
+    },
+    "*-purpleheart": {
+      "ebony": {
+        "base": "block/wood/debarked/purpleheart"
+      },
+      "ebony-ornate": {
+        "base": "block/wood/debarked/purpleheart"
+      }
+    },
+    "*-aged": {
+      "ebony": {
+        "base": "block/wood/debarked/aged"
+      },
+      "ebony-ornate": {
+        "base": "block/wood/debarked/aged"
+      }
+    },
+    "*-veryaged": {
+      "ebony": {
+        "base": "block/wood/debarked/veryaged"
+      },
+      "ebony-ornate": {
+        "base": "block/wood/debarked/veryaged"
+      }
+    }
+  },
+  "blockmaterial": "Wood",
+  "replaceable": 900,
+  "resistance": 1.5,
+  "lightAbsorption": 0,
+  "sidesolid": {
+    "all": false
+  },
+  "sideopaque": {
+    "all": false
+  },
+  "emitSideAo": {
+    "all": false
+  },
+  "sounds": {
+    "place": "block/planks",
+    "break": "block/planks",
+    "hit": "block/planks",
+    "walk": "walk/wood"
+  },
+  "collisionSelectionBoxes": [
+    {
+      "x1": 0.15625,
+      "y1": 0,
+      "z1": 0.15625,
+      "x2": 0.90625,
+      "y2": 1.3125,
+      "z2": 0.84375
+    }
+  ],
+  "guiTransform": {
+    "rotation": {
+      "x": -22.6,
+      "y": 135,
+      "z": 0
+    },
+    "origin": {
+      "x": 0.5,
+      "y": 0.7,
+      "z": 0.5
+    },
+    "scale": 1
+  },
+  "tpHandTransform": {
+    "translation": {
+      "x": -1.8,
+      "y": -1.6,
+      "z": -1.6
+    },
+    "rotation": {
+      "x": 84,
+      "y": 0,
+      "z": -79
+    },
+    "scale": 0.3
+  }
+}

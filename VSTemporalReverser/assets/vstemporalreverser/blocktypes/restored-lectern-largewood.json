@@ -1,0 +1,176 @@
+{
+  "code": "restored-lectern-largewood",
+  "behaviors": [
+    {
+      "name": "Lockable"
+    }
+  ],
+  "variantgroups": [
+    {
+      "code": "material",
+      "states": [
+        "birch",
+        "oak",
+        "maple",
+        "pine",
+        "acacia",
+        "kapok",
+        "redwood",
+        "baldcypress",
+        "larch",
+        "ebony",
+        "walnut",
+        "purpleheart",
+        "aged",
+        "veryaged"
+      ]
+    }
+  ],
+  "attributes": {
+    "reinforcable": true,
+    "height": 1.25
+  },
+  "drawtype": "json",
+  "shapebytype": {
+    "*": {
+      "base": "block/restoredlectern/largewood"
+    }
+  },
+  "shapeinventorybytype": {
+    "*": {
+      "base": "block/restoredlectern/largewood"
+    }
+  },
+  "textures": {
+    "oak": {
+      "base": "block/wood/debarked/oak"
+    }
+  },
+  "texturesbytype": {
+    "*-birch": {
+      "oak": {
+        "base": "block/wood/debarked/birch"
+      }
+    },
+    "*-oak": {
+      "oak": {
+        "base": "block/wood/debarked/oak"
+      }
+    },
+    "*-maple": {
+      "oak": {
+        "base": "block/wood/debarked/maple"
+      }
+    },
+    "*-pine": {
+      "oak": {
+        "base": "block/wood/debarked/pine"
+      }
+    },
+    "*-acacia": {
+      "oak": {
+        "base": "block/wood/debarked/acacia"
+      }
+    },
+    "*-kapok": {
+      "oak": {
+        "base": "block/wood/debarked/kapok"
+      }
+    },
+    "*-redwood": {
+      "oak": {
+        "base": "block/wood/debarked/redwood"
+      }
+    },
+    "*-baldcypress": {
+      "oak": {
+        "base": "block/wood/debarked/baldcypress"
+      }
+    },
+    "*-larch": {
+      "oak": {
+        "base": "block/wood/debarked/larch"
+      }
+    },
+    "*-ebony": {
+      "oak": {
+        "base": "block/wood/debarked/ebony"
+      }
+    },
+    "*-walnut": {
+      "oak": {
+        "base": "block/wood/debarked/walnut"
+      }
+    },
+    "*-purpleheart": {
+      "oak": {
+        "base": "block/wood/debarked/purpleheart"
+      }
+    },
+    "*-aged": {
+      "oak": {
+        "base": "block/wood/debarked/aged"
+      }
+    },
+    "*-veryaged": {
+      "oak": {
+        "base": "block/wood/debarked/veryaged"
+      }
+    }
+  },
+  "blockmaterial": "Wood",
+  "replaceable": 900,
+  "resistance": 1.5,
+  "lightAbsorption": 0,
+  "sidesolid": {
+    "all": false
+  },
+  "sideopaque": {
+    "all": false
+  },
+  "emitSideAo": {
+    "all": false
+  },
+  "sounds": {
+    "place": "block/planks",
+    "break": "block/planks",
+    "hit": "block/planks",
+    "walk": "walk/wood"
+  },
+  "collisionSelectionBoxes": [
+    {
+      "x1": 0.0,
+      "y1": 0.0,
+      "z1": 0.0,
+      "x2": 1.0,
+      "y2": 1.25,
+      "z2": 1.0
+    }
+  ],
+  "guiTransform": {
+    "rotation": {
+      "x": -22.6,
+      "y": 135,
+      "z": 0
+    },
+    "origin": {
+      "x": 0.5,
+      "y": 0.7,
+      "z": 0.5
+    },
+    "scale": 1
+  },
+  "tpHandTransform": {
+    "translation": {
+      "x": -1.8,
+      "y": -1.6,
+      "z": -1.6
+    },
+    "rotation": {
+      "x": 84,
+      "y": 0,
+      "z": -79
+    },
+    "scale": 0.3
+  }
+}

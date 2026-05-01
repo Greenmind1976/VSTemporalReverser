@@ -1,0 +1,1750 @@
+{
+  "editor": {
+    "allAngles": false,
+    "entityTextureMode": false
+  },
+  "textureWidth": 16,
+  "textureHeight": 16,
+  "textureSizes": {},
+  "textures": {
+    "wood": "vstemporalreverser:block/restoredtoy/wood/chair/oak",
+    "ceramic": "vstemporalreverser:block/restoredtoy/ceramic/brown1"
+  },
+  "elements": [
+    {
+      "name": "origin",
+      "from": [
+        8,
+        0,
+        8
+      ],
+      "to": [
+        8,
+        0,
+        8
+      ],
+      "rotationOrigin": [
+        8,
+        0,
+        8
+      ],
+      "faces": {
+        "north": {
+          "texture": "#null",
+          "uv": [
+            11.5,
+            15,
+            12,
+            15.5
+          ],
+          "enabled": false
+        },
+        "east": {
+          "texture": "#null",
+          "uv": [
+            4.5,
+            2.5,
+            5,
+            3
+          ],
+          "enabled": false
+        },
+        "south": {
+          "texture": "#null",
+          "uv": [
+            5,
+            1.5,
+            5.5,
+            2
+          ],
+          "enabled": false
+        },
+        "west": {
+          "texture": "#null",
+          "uv": [
+            2.5,
+            7,
+            3,
+            7.5
+          ],
+          "enabled": false
+        },
+        "up": {
+          "texture": "#null",
+          "uv": [
+            10,
+            11,
+            10.5,
+            11.5
+          ],
+          "enabled": false
+        },
+        "down": {
+          "texture": "#null",
+          "uv": [
+            10.5,
+            14.5,
+            11,
+            15
+          ],
+          "enabled": false
+        }
+      },
+      "children": [
+        {
+          "name": "body1",
+          "from": [
+            1,
+            2,
+            -5
+          ],
+          "to": [
+            5,
+            4,
+            -3
+          ],
+          "rotationOrigin": [
+            3,
+            3,
+            -4
+          ],
+          "rotationY": 45,
+          "faces": {
+            "north": {
+              "texture": "#ceramic",
+              "uv": [
+                0,
+                0,
+                4,
+                2
+              ]
+            },
+            "east": {
+              "texture": "#ceramic",
+              "uv": [
+                0,
+                0,
+                2,
+                2
+              ]
+            },
+            "south": {
+              "texture": "#ceramic",
+              "uv": [
+                0,
+                0,
+                4,
+                2
+              ]
+            },
+            "west": {
+              "texture": "#ceramic",
+              "uv": [
+                0,
+                0,
+                2,
+                2
+              ]
+            },
+            "up": {
+              "texture": "#ceramic",
+              "uv": [
+                0,
+                0,
+                4,
+                2
+              ]
+            },
+            "down": {
+              "texture": "#ceramic",
+              "uv": [
+                0,
+                0,
+                4,
+                2
+              ]
+            }
+          },
+          "children": [
+            {
+              "name": "neck1",
+              "from": [
+                -0.5,
+                1,
+                0.5
+              ],
+              "to": [
+                0.5,
+                3,
+                1.5
+              ],
+              "rotationOrigin": [
+                0,
+                1,
+                1
+              ],
+              "faces": {
+                "north": {
+                  "texture": "#wood",
+                  "uv": [
+                    0,
+                    0,
+                    1,
+                    2
+                  ]
+                },
+                "east": {
+                  "texture": "#wood",
+                  "uv": [
+                    0,
+                    0,
+                    1,
+                    2
+                  ]
+                },
+                "south": {
+                  "texture": "#wood",
+                  "uv": [
+                    0,
+                    0,
+                    1,
+                    2
+                  ]
+                },
+                "west": {
+                  "texture": "#wood",
+                  "uv": [
+                    0,
+                    0,
+                    1,
+                    2
+                  ]
+                },
+                "up": {
+                  "texture": "#wood",
+                  "uv": [
+                    0,
+                    0,
+                    1,
+                    1
+                  ],
+                  "enabled": false
+                },
+                "down": {
+                  "texture": "#wood",
+                  "uv": [
+                    0,
+                    0,
+                    1,
+                    1
+                  ]
+                }
+              },
+              "children": [
+                {
+                  "name": "head1",
+                  "from": [
+                    -1,
+                    2,
+                    0
+                  ],
+                  "to": [
+                    1,
+                    3,
+                    1
+                  ],
+                  "rotationOrigin": [
+                    0.5,
+                    2,
+                    0.5
+                  ],
+                  "faces": {
+                    "north": {
+                      "texture": "#wood",
+                      "uv": [
+                        0,
+                        0,
+                        2,
+                        1
+                      ]
+                    },
+                    "east": {
+                      "texture": "#wood",
+                      "uv": [
+                        0,
+                        0,
+                        1,
+                        1
+                      ]
+                    },
+                    "south": {
+                      "texture": "#wood",
+                      "uv": [
+                        0,
+                        0,
+                        2,
+                        1
+                      ]
+                    },
+                    "west": {
+                      "texture": "#wood",
+                      "uv": [
+                        0,
+                        0,
+                        1,
+                        1
+                      ]
+                    },
+                    "up": {
+                      "texture": "#wood",
+                      "uv": [
+                        0,
+                        0,
+                        2,
+                        1
+                      ]
+                    },
+                    "down": {
+                      "texture": "#wood",
+                      "uv": [
+                        0,
+                        0,
+                        2,
+                        1
+                      ]
+                    }
+                  },
+                  "children": [
+                    {
+                      "name": "earL1",
+                      "from": [
+                        1.5,
+                        0.5,
+                        1
+                      ],
+                      "to": [
+                        2,
+                        1.5,
+                        1.5
+                      ],
+                      "rotationOrigin": [
+                        1.5,
+                        0.5,
+                        1
+                      ],
+                      "faces": {
+                        "north": {
+                          "texture": "#wood",
+                          "uv": [
+                            0,
+                            0,
+                            0.5,
+                            1
+                          ]
+                        },
+                        "east": {
+                          "texture": "#wood",
+                          "uv": [
+                            0,
+                            0,
+                            0.5,
+                            1
+                          ]
+                        },
+                        "south": {
+                          "texture": "#wood",
+                          "uv": [
+                            0,
+                            0,
+                            0.5,
+                            1
+                          ]
+                        },
+                        "west": {
+                          "texture": "#wood",
+                          "uv": [
+                            0,
+                            0,
+                            0.5,
+                            1
+                          ]
+                        },
+                        "up": {
+                          "texture": "#wood",
+                          "uv": [
+                            0,
+                            0,
+                            0.5,
+                            0.5
+                          ]
+                        },
+                        "down": {
+                          "texture": "#wood",
+                          "uv": [
+                            0,
+                            0,
+                            0.5,
+                            0.5
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "name": "earR2",
+                      "from": [
+                        1.5,
+                        0.5,
+                        -0.5
+                      ],
+                      "to": [
+                        2,
+                        1.5,
+                        0
+                      ],
+                      "rotationOrigin": [
+                        1.5,
+                        0.5,
+                        -0.5
+                      ],
+                      "faces": {
+                        "north": {
+                          "texture": "#wood",
+                          "uv": [
+                            0,
+                            0,
+                            0.5,
+                            1
+                          ]
+                        },
+                        "east": {
+                          "texture": "#wood",
+                          "uv": [
+                            0,
+                            0,
+                            0.5,
+                            1
+                          ]
+                        },
+                        "south": {
+                          "texture": "#wood",
+                          "uv": [
+                            0,
+                            0,
+                            0.5,
+                            1
+                          ]
+                        },
+                        "west": {
+                          "texture": "#wood",
+                          "uv": [
+                            0,
+                            0,
+                            0.5,
+                            1
+                          ]
+                        },
+                        "up": {
+                          "texture": "#wood",
+                          "uv": [
+                            0,
+                            0,
+                            0.5,
+                            0.5
+                          ]
+                        },
+                        "down": {
+                          "texture": "#wood",
+                          "uv": [
+                            0,
+                            0,
+                            0.5,
+                            0.5
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "tail1",
+              "from": [
+                4,
+                -0.5,
+                0.5
+              ],
+              "to": [
+                4.5,
+                1.5,
+                1.5
+              ],
+              "rotationOrigin": [
+                4,
+                1,
+                1
+              ],
+              "faces": {
+                "north": {
+                  "texture": "#wood",
+                  "uv": [
+                    0,
+                    0,
+                    0.5,
+                    2
+                  ]
+                },
+                "east": {
+                  "texture": "#wood",
+                  "uv": [
+                    0,
+                    0,
+                    1,
+                    2
+                  ]
+                },
+                "south": {
+                  "texture": "#wood",
+                  "uv": [
+                    0,
+                    0,
+                    0.5,
+                    2
+                  ]
+                },
+                "west": {
+                  "texture": "#wood",
+                  "uv": [
+                    0,
+                    0,
+                    1,
+                    2
+                  ]
+                },
+                "up": {
+                  "texture": "#wood",
+                  "uv": [
+                    0,
+                    0,
+                    0.5,
+                    1
+                  ]
+                },
+                "down": {
+                  "texture": "#wood",
+                  "uv": [
+                    0,
+                    0,
+                    0.5,
+                    1
+                  ]
+                }
+              }
+            },
+            {
+              "name": "legFL1",
+              "from": [
+                0,
+                -2,
+                2
+              ],
+              "to": [
+                1,
+                1,
+                2.5
+              ],
+              "rotationOrigin": [
+                0.5,
+                1,
+                2
+              ],
+              "faces": {
+                "north": {
+                  "texture": "#wood",
+                  "uv": [
+                    0,
+                    0,
+                    1,
+                    3
+                  ]
+                },
+                "east": {
+                  "texture": "#wood",
+                  "uv": [
+                    0,
+                    0,
+                    0.5,
+                    3
+                  ]
+                },
+                "south": {
+                  "texture": "#wood",
+                  "uv": [
+                    0,
+                    0,
+                    1,
+                    3
+                  ]
+                },
+                "west": {
+                  "texture": "#wood",
+                  "uv": [
+                    0,
+                    0,
+                    0.5,
+                    3
+                  ]
+                },
+                "up": {
+                  "texture": "#wood",
+                  "uv": [
+                    0,
+                    0,
+                    1,
+                    0.5
+                  ]
+                },
+                "down": {
+                  "texture": "#wood",
+                  "uv": [
+                    0,
+                    0,
+                    1,
+                    0.5
+                  ]
+                }
+              }
+            },
+            {
+              "name": "legBL1",
+              "from": [
+                3,
+                -2,
+                2
+              ],
+              "to": [
+                4,
+                1,
+                2.5
+              ],
+              "rotationOrigin": [
+                3.5,
+                1,
+                2
+              ],
+              "faces": {
+                "north": {
+                  "texture": "#wood",
+                  "uv": [
+                    0,
+                    0,
+                    1,
+                    3
+                  ]
+                },
+                "east": {
+                  "texture": "#wood",
+                  "uv": [
+                    0,
+                    0,
+                    0.5,
+                    3
+                  ]
+                },
+                "south": {
+                  "texture": "#wood",
+                  "uv": [
+                    0,
+                    0,
+                    1,
+                    3
+                  ]
+                },
+                "west": {
+                  "texture": "#wood",
+                  "uv": [
+                    0,
+                    0,
+                    0.5,
+                    3
+                  ]
+                },
+                "up": {
+                  "texture": "#wood",
+                  "uv": [
+                    0,
+                    0,
+                    1,
+                    0.5
+                  ]
+                },
+                "down": {
+                  "texture": "#wood",
+                  "uv": [
+                    0,
+                    0,
+                    1,
+                    0.5
+                  ]
+                }
+              }
+            },
+            {
+              "name": "legFR1",
+              "from": [
+                0,
+                -2,
+                -0.5
+              ],
+              "to": [
+                1,
+                1,
+                0
+              ],
+              "rotationOrigin": [
+                0.5,
+                1,
+                0
+              ],
+              "faces": {
+                "north": {
+                  "texture": "#wood",
+                  "uv": [
+                    0,
+                    0,
+                    1,
+                    3
+                  ]
+                },
+                "east": {
+                  "texture": "#wood",
+                  "uv": [
+                    0,
+                    0,
+                    0.5,
+                    3
+                  ]
+                },
+                "south": {
+                  "texture": "#wood",
+                  "uv": [
+                    0,
+                    0,
+                    1,
+                    3
+                  ]
+                },
+                "west": {
+                  "texture": "#wood",
+                  "uv": [
+                    0,
+                    0,
+                    0.5,
+                    3
+                  ]
+                },
+                "up": {
+                  "texture": "#wood",
+                  "uv": [
+                    0,
+                    0,
+                    1,
+                    0.5
+                  ]
+                },
+                "down": {
+                  "texture": "#wood",
+                  "uv": [
+                    0,
+                    0,
+                    1,
+                    0.5
+                  ]
+                }
+              }
+            },
+            {
+              "name": "legBR1",
+              "from": [
+                3,
+                -2,
+                -0.5
+              ],
+              "to": [
+                4,
+                1,
+                0
+              ],
+              "rotationOrigin": [
+                3.5,
+                1,
+                0
+              ],
+              "faces": {
+                "north": {
+                  "texture": "#wood",
+                  "uv": [
+                    0,
+                    0,
+                    1,
+                    3
+                  ]
+                },
+                "east": {
+                  "texture": "#wood",
+                  "uv": [
+                    0,
+                    0,
+                    0.5,
+                    3
+                  ]
+                },
+                "south": {
+                  "texture": "#wood",
+                  "uv": [
+                    0,
+                    0,
+                    1,
+                    3
+                  ]
+                },
+                "west": {
+                  "texture": "#wood",
+                  "uv": [
+                    0,
+                    0,
+                    0.5,
+                    3
+                  ]
+                },
+                "up": {
+                  "texture": "#wood",
+                  "uv": [
+                    0,
+                    0,
+                    1,
+                    0.5
+                  ]
+                },
+                "down": {
+                  "texture": "#wood",
+                  "uv": [
+                    0,
+                    0,
+                    1,
+                    0.5
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "body2",
+          "from": [
+            -4,
+            1,
+            3
+          ],
+          "to": [
+            0,
+            3,
+            5
+          ],
+          "rotationOrigin": [
+            -2,
+            2,
+            4
+          ],
+          "rotationY": -157.5,
+          "faces": {
+            "north": {
+              "texture": "#ceramic",
+              "uv": [
+                0,
+                0,
+                4,
+                2
+              ]
+            },
+            "east": {
+              "texture": "#ceramic",
+              "uv": [
+                0,
+                0,
+                2,
+                2
+              ]
+            },
+            "south": {
+              "texture": "#ceramic",
+              "uv": [
+                0,
+                0,
+                4,
+                2
+              ]
+            },
+            "west": {
+              "texture": "#ceramic",
+              "uv": [
+                0,
+                0,
+                2,
+                2
+              ]
+            },
+            "up": {
+              "texture": "#ceramic",
+              "uv": [
+                0,
+                0,
+                4,
+                2
+              ]
+            },
+            "down": {
+              "texture": "#ceramic",
+              "uv": [
+                0,
+                0,
+                4,
+                2
+              ]
+            }
+          },
+          "children": [
+            {
+              "name": "neck2",
+              "from": [
+                -0.5,
+                1,
+                0.5
+              ],
+              "to": [
+                0.5,
+                2,
+                1.5
+              ],
+              "rotationOrigin": [
+                0,
+                1,
+                1
+              ],
+              "faces": {
+                "north": {
+                  "texture": "#wood",
+                  "uv": [
+                    0,
+                    0,
+                    1,
+                    1
+                  ]
+                },
+                "east": {
+                  "texture": "#wood",
+                  "uv": [
+                    0,
+                    0,
+                    1,
+                    1
+                  ]
+                },
+                "south": {
+                  "texture": "#wood",
+                  "uv": [
+                    0,
+                    0,
+                    1,
+                    1
+                  ]
+                },
+                "west": {
+                  "texture": "#wood",
+                  "uv": [
+                    0,
+                    0,
+                    1,
+                    1
+                  ]
+                },
+                "up": {
+                  "texture": "#wood",
+                  "uv": [
+                    0,
+                    0,
+                    1,
+                    1
+                  ],
+                  "enabled": false
+                },
+                "down": {
+                  "texture": "#wood",
+                  "uv": [
+                    0,
+                    0,
+                    1,
+                    1
+                  ]
+                }
+              },
+              "children": [
+                {
+                  "name": "head2",
+                  "from": [
+                    -1,
+                    1,
+                    0
+                  ],
+                  "to": [
+                    1,
+                    2,
+                    1
+                  ],
+                  "rotationOrigin": [
+                    0.5,
+                    1,
+                    0.5
+                  ],
+                  "faces": {
+                    "north": {
+                      "texture": "#wood",
+                      "uv": [
+                        0,
+                        0,
+                        2,
+                        1
+                      ]
+                    },
+                    "east": {
+                      "texture": "#wood",
+                      "uv": [
+                        0,
+                        0,
+                        1,
+                        1
+                      ]
+                    },
+                    "south": {
+                      "texture": "#wood",
+                      "uv": [
+                        0,
+                        0,
+                        2,
+                        1
+                      ]
+                    },
+                    "west": {
+                      "texture": "#wood",
+                      "uv": [
+                        0,
+                        0,
+                        1,
+                        1
+                      ]
+                    },
+                    "up": {
+                      "texture": "#wood",
+                      "uv": [
+                        0,
+                        0,
+                        2,
+                        1
+                      ]
+                    },
+                    "down": {
+                      "texture": "#wood",
+                      "uv": [
+                        0,
+                        0,
+                        2,
+                        1
+                      ]
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "name": "legFL2",
+              "from": [
+                0,
+                -1,
+                2
+              ],
+              "to": [
+                1,
+                1,
+                2.5
+              ],
+              "rotationOrigin": [
+                0.5,
+                2,
+                2
+              ],
+              "faces": {
+                "north": {
+                  "texture": "#wood",
+                  "uv": [
+                    0,
+                    0,
+                    1,
+                    2
+                  ]
+                },
+                "east": {
+                  "texture": "#wood",
+                  "uv": [
+                    0,
+                    0,
+                    0.5,
+                    2
+                  ]
+                },
+                "south": {
+                  "texture": "#wood",
+                  "uv": [
+                    0,
+                    0,
+                    1,
+                    2
+                  ]
+                },
+                "west": {
+                  "texture": "#wood",
+                  "uv": [
+                    0,
+                    0,
+                    0.5,
+                    2
+                  ]
+                },
+                "up": {
+                  "texture": "#wood",
+                  "uv": [
+                    0,
+                    0,
+                    1,
+                    0.5
+                  ]
+                },
+                "down": {
+                  "texture": "#wood",
+                  "uv": [
+                    0,
+                    0,
+                    1,
+                    0.5
+                  ]
+                }
+              }
+            },
+            {
+              "name": "legBL2",
+              "from": [
+                3,
+                -1,
+                2
+              ],
+              "to": [
+                4,
+                1,
+                2.5
+              ],
+              "rotationOrigin": [
+                3.5,
+                2,
+                2
+              ],
+              "faces": {
+                "north": {
+                  "texture": "#wood",
+                  "uv": [
+                    0,
+                    0,
+                    1,
+                    2
+                  ]
+                },
+                "east": {
+                  "texture": "#wood",
+                  "uv": [
+                    0,
+                    0,
+                    0.5,
+                    2
+                  ]
+                },
+                "south": {
+                  "texture": "#wood",
+                  "uv": [
+                    0,
+                    0,
+                    1,
+                    2
+                  ]
+                },
+                "west": {
+                  "texture": "#wood",
+                  "uv": [
+                    0,
+                    0,
+                    0.5,
+                    2
+                  ]
+                },
+                "up": {
+                  "texture": "#wood",
+                  "uv": [
+                    0,
+                    0,
+                    1,
+                    0.5
+                  ]
+                },
+                "down": {
+                  "texture": "#wood",
+                  "uv": [
+                    0,
+                    0,
+                    1,
+                    0.5
+                  ]
+                }
+              }
+            },
+            {
+              "name": "legFR2",
+              "from": [
+                0,
+                -1,
+                -0.5
+              ],
+              "to": [
+                1,
+                1,
+                0
+              ],
+              "rotationOrigin": [
+                0.5,
+                2,
+                0
+              ],
+              "faces": {
+                "north": {
+                  "texture": "#wood",
+                  "uv": [
+                    0,
+                    0,
+                    1,
+                    2
+                  ]
+                },
+                "east": {
+                  "texture": "#wood",
+                  "uv": [
+                    0,
+                    0,
+                    0.5,
+                    2
+                  ]
+                },
+                "south": {
+                  "texture": "#wood",
+                  "uv": [
+                    0,
+                    0,
+                    1,
+                    2
+                  ]
+                },
+                "west": {
+                  "texture": "#wood",
+                  "uv": [
+                    0,
+                    0,
+                    0.5,
+                    2
+                  ]
+                },
+                "up": {
+                  "texture": "#wood",
+                  "uv": [
+                    0,
+                    0,
+                    1,
+                    0.5
+                  ]
+                },
+                "down": {
+                  "texture": "#wood",
+                  "uv": [
+                    0,
+                    0,
+                    1,
+                    0.5
+                  ]
+                }
+              }
+            },
+            {
+              "name": "legBR2",
+              "from": [
+                3,
+                -1,
+                -0.5
+              ],
+              "to": [
+                4,
+                1,
+                0
+              ],
+              "rotationOrigin": [
+                3.5,
+                2,
+                0
+              ],
+              "faces": {
+                "north": {
+                  "texture": "#wood",
+                  "uv": [
+                    0,
+                    0,
+                    1,
+                    2
+                  ]
+                },
+                "east": {
+                  "texture": "#wood",
+                  "uv": [
+                    0,
+                    0,
+                    0.5,
+                    2
+                  ]
+                },
+                "south": {
+                  "texture": "#wood",
+                  "uv": [
+                    0,
+                    0,
+                    1,
+                    2
+                  ]
+                },
+                "west": {
+                  "texture": "#wood",
+                  "uv": [
+                    0,
+                    0,
+                    0.5,
+                    2
+                  ]
+                },
+                "up": {
+                  "texture": "#wood",
+                  "uv": [
+                    0,
+                    0,
+                    1,
+                    0.5
+                  ]
+                },
+                "down": {
+                  "texture": "#wood",
+                  "uv": [
+                    0,
+                    0,
+                    1,
+                    0.5
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "body3",
+          "from": [
+            -2,
+            2,
+            -1
+          ],
+          "to": [
+            0,
+            5,
+            1
+          ],
+          "rotationOrigin": [
+            -1,
+            2,
+            0
+          ],
+          "rotationY": 67.5,
+          "faces": {
+            "north": {
+              "texture": "#wood",
+              "uv": [
+                7.5,
+                4,
+                9.5,
+                7
+              ]
+            },
+            "east": {
+              "texture": "#wood",
+              "uv": [
+                8.5,
+                10.5,
+                10.5,
+                13.5
+              ]
+            },
+            "south": {
+              "texture": "#wood",
+              "uv": [
+                8,
+                1.5,
+                10,
+                4.5
+              ]
+            },
+            "west": {
+              "texture": "#wood",
+              "uv": [
+                0.5,
+                12.5,
+                2.5,
+                15.5
+              ]
+            },
+            "up": {
+              "texture": "#wood",
+              "uv": [
+                0.5,
+                12,
+                2.5,
+                14
+              ]
+            },
+            "down": {
+              "texture": "#wood",
+              "uv": [
+                4.5,
+                8.5,
+                6.5,
+                10.5
+              ]
+            }
+          },
+          "children": [
+            {
+              "name": "head3",
+              "from": [
+                0.5,
+                3,
+                0.5
+              ],
+              "to": [
+                1.5,
+                4,
+                1.5
+              ],
+              "rotationOrigin": [
+                1,
+                3,
+                1
+              ],
+              "faces": {
+                "north": {
+                  "texture": "#wood",
+                  "uv": [
+                    7,
+                    0.5,
+                    8,
+                    1.5
+                  ]
+                },
+                "east": {
+                  "texture": "#wood",
+                  "uv": [
+                    5,
+                    1,
+                    6,
+                    2
+                  ]
+                },
+                "south": {
+                  "texture": "#wood",
+                  "uv": [
+                    12.5,
+                    10.5,
+                    13.5,
+                    11.5
+                  ]
+                },
+                "west": {
+                  "texture": "#wood",
+                  "uv": [
+                    6.5,
+                    12.5,
+                    7.5,
+                    13.5
+                  ]
+                },
+                "up": {
+                  "texture": "#wood",
+                  "uv": [
+                    6.5,
+                    11,
+                    7.5,
+                    12
+                  ],
+                  "windMode": [
+                    -1,
+                    -1,
+                    -1,
+                    -1
+                  ]
+                },
+                "down": {
+                  "texture": "#wood",
+                  "uv": [
+                    10,
+                    9.5,
+                    11,
+                    10.5
+                  ],
+                  "enabled": false
+                }
+              }
+            },
+            {
+              "name": "armR3",
+              "from": [
+                -1,
+                -0.5,
+                0.5
+              ],
+              "to": [
+                0,
+                2.5,
+                1.5
+              ],
+              "rotationOrigin": [
+                0,
+                2.5,
+                1
+              ],
+              "faces": {
+                "north": {
+                  "texture": "#wood",
+                  "uv": [
+                    8,
+                    0,
+                    9,
+                    3
+                  ]
+                },
+                "east": {
+                  "texture": "#wood",
+                  "uv": [
+                    7.5,
+                    11,
+                    8.5,
+                    14
+                  ]
+                },
+                "south": {
+                  "texture": "#wood",
+                  "uv": [
+                    11,
+                    8.5,
+                    12,
+                    11.5
+                  ]
+                },
+                "west": {
+                  "texture": "#wood",
+                  "uv": [
+                    4.5,
+                    11,
+                    5.5,
+                    14
+                  ]
+                },
+                "up": {
+                  "texture": "#wood",
+                  "uv": [
+                    3,
+                    14,
+                    4,
+                    15
+                  ]
+                },
+                "down": {
+                  "texture": "#wood",
+                  "uv": [
+                    2,
+                    6.5,
+                    3,
+                    7.5
+                  ]
+                }
+              }
+            },
+            {
+              "name": "armL3",
+              "from": [
+                2,
+                -0.5,
+                0.5
+              ],
+              "to": [
+                3,
+                2.5,
+                1.5
+              ],
+              "rotationOrigin": [
+                2,
+                2.5,
+                1
+              ],
+              "faces": {
+                "north": {
+                  "texture": "#wood",
+                  "uv": [
+                    6,
+                    8.5,
+                    7,
+                    11.5
+                  ]
+                },
+                "east": {
+                  "texture": "#wood",
+                  "uv": [
+                    6.5,
+                    6.5,
+                    7.5,
+                    9.5
+                  ]
+                },
+                "south": {
+                  "texture": "#wood",
+                  "uv": [
+                    10,
+                    10.5,
+                    11,
+                    13.5
+                  ]
+                },
+                "west": {
+                  "texture": "#wood",
+                  "uv": [
+                    13.5,
+                    6.5,
+                    14.5,
+                    9.5
+                  ]
+                },
+                "up": {
+                  "texture": "#wood",
+                  "uv": [
+                    4.5,
+                    11,
+                    5.5,
+                    12
+                  ]
+                },
+                "down": {
+                  "texture": "#wood",
+                  "uv": [
+                    9.5,
+                    13.5,
+                    10.5,
+                    14.5
+                  ]
+                }
+              }
+            },
+            {
+              "name": "leg3",
+              "from": [
+                0,
+                -2,
+                0.5
+              ],
+              "to": [
+                2,
+                0,
+                1.5
+              ],
+              "rotationOrigin": [
+                1,
+                -2,
+                1
+              ],
+              "faces": {
+                "north": {
+                  "texture": "#wood",
+                  "uv": [
+                    0,
+                    5,
+                    2,
+                    7
+                  ]
+                },
+                "east": {
+                  "texture": "#wood",
+                  "uv": [
+                    7.5,
+                    12.5,
+                    8.5,
+                    14.5
+                  ]
+                },
+                "south": {
+                  "texture": "#wood",
+                  "uv": [
+                    13,
+                    4.5,
+                    15,
+                    6.5
+                  ]
+                },
+                "west": {
+                  "texture": "#wood",
+                  "uv": [
+                    6,
+                    4.5,
+                    7,
+                    6.5
+                  ]
+                },
+                "up": {
+                  "texture": "#wood",
+                  "uv": [
+                    8,
+                    0,
+                    10,
+                    1
+                  ],
+                  "enabled": false
+                },
+                "down": {
+                  "texture": "#wood",
+                  "uv": [
+                    5.5,
+                    10.5,
+                    7.5,
+                    11.5
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

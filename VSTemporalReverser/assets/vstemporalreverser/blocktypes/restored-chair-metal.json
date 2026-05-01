@@ -1,0 +1,658 @@
+{
+  "code": "restored-chair-metal",
+  "attributes": {
+    "humanoidTraversalCost": 100,
+    "handbook": {
+      "groupBy": [
+        "restored-chair-metal-*-*"
+      ]
+    }
+  },
+  "variantgroups": [
+    {
+      "code": "metal",
+      "states": [
+        "copper",
+        "brass",
+        "blackbronze",
+        "silver",
+        "gold",
+        "electrum"
+      ]
+    },
+    {
+      "code": "color",
+      "states": [
+        "blue",
+        "red",
+        "yellow",
+        "purple",
+        "brown",
+        "green",
+        "orange",
+        "black",
+        "gray",
+        "pink",
+        "white"
+      ]
+    }
+  ],
+  "drawtype": "json",
+  "shapebytype": {
+    "*": {
+      "base": "block/restoredmetal/chair-metal1-pillow"
+    }
+  },
+  "shapeinventorybytype": {
+    "*": {
+      "base": "block/restoredmetal/chair-metal1-pillow"
+    }
+  },
+  "textures": {
+    "metal": {
+      "base": "block/metal/lantern/blackbronze"
+    },
+    "mesh1": {
+      "base": "block/metal/mesh1"
+    },
+    "cover": {
+      "base": "block/cloth/linen/gray"
+    }
+  },
+  "texturesbytype": {
+    "*-copper-blue": {
+      "metal": {
+        "base": "block/metal/lantern/copper"
+      },
+      "cover": {
+        "base": "block/cloth/linen/blue"
+      }
+    },
+    "*-copper-red": {
+      "metal": {
+        "base": "block/metal/lantern/copper"
+      },
+      "cover": {
+        "base": "block/cloth/linen/red"
+      }
+    },
+    "*-copper-yellow": {
+      "metal": {
+        "base": "block/metal/lantern/copper"
+      },
+      "cover": {
+        "base": "block/cloth/linen/yellow"
+      }
+    },
+    "*-copper-purple": {
+      "metal": {
+        "base": "block/metal/lantern/copper"
+      },
+      "cover": {
+        "base": "block/cloth/linen/purple"
+      }
+    },
+    "*-copper-brown": {
+      "metal": {
+        "base": "block/metal/lantern/copper"
+      },
+      "cover": {
+        "base": "block/cloth/linen/brown"
+      }
+    },
+    "*-copper-green": {
+      "metal": {
+        "base": "block/metal/lantern/copper"
+      },
+      "cover": {
+        "base": "block/cloth/linen/green"
+      }
+    },
+    "*-copper-orange": {
+      "metal": {
+        "base": "block/metal/lantern/copper"
+      },
+      "cover": {
+        "base": "block/cloth/linen/orange"
+      }
+    },
+    "*-copper-black": {
+      "metal": {
+        "base": "block/metal/lantern/copper"
+      },
+      "cover": {
+        "base": "block/cloth/linen/black"
+      }
+    },
+    "*-copper-gray": {
+      "metal": {
+        "base": "block/metal/lantern/copper"
+      },
+      "cover": {
+        "base": "block/cloth/linen/gray"
+      }
+    },
+    "*-copper-pink": {
+      "metal": {
+        "base": "block/metal/lantern/copper"
+      },
+      "cover": {
+        "base": "block/cloth/linen/pink"
+      }
+    },
+    "*-copper-white": {
+      "metal": {
+        "base": "block/metal/lantern/copper"
+      },
+      "cover": {
+        "base": "block/cloth/linen/white"
+      }
+    },
+    "*-brass-blue": {
+      "metal": {
+        "base": "block/metal/lantern/brass"
+      },
+      "cover": {
+        "base": "block/cloth/linen/blue"
+      }
+    },
+    "*-brass-red": {
+      "metal": {
+        "base": "block/metal/lantern/brass"
+      },
+      "cover": {
+        "base": "block/cloth/linen/red"
+      }
+    },
+    "*-brass-yellow": {
+      "metal": {
+        "base": "block/metal/lantern/brass"
+      },
+      "cover": {
+        "base": "block/cloth/linen/yellow"
+      }
+    },
+    "*-brass-purple": {
+      "metal": {
+        "base": "block/metal/lantern/brass"
+      },
+      "cover": {
+        "base": "block/cloth/linen/purple"
+      }
+    },
+    "*-brass-brown": {
+      "metal": {
+        "base": "block/metal/lantern/brass"
+      },
+      "cover": {
+        "base": "block/cloth/linen/brown"
+      }
+    },
+    "*-brass-green": {
+      "metal": {
+        "base": "block/metal/lantern/brass"
+      },
+      "cover": {
+        "base": "block/cloth/linen/green"
+      }
+    },
+    "*-brass-orange": {
+      "metal": {
+        "base": "block/metal/lantern/brass"
+      },
+      "cover": {
+        "base": "block/cloth/linen/orange"
+      }
+    },
+    "*-brass-black": {
+      "metal": {
+        "base": "block/metal/lantern/brass"
+      },
+      "cover": {
+        "base": "block/cloth/linen/black"
+      }
+    },
+    "*-brass-gray": {
+      "metal": {
+        "base": "block/metal/lantern/brass"
+      },
+      "cover": {
+        "base": "block/cloth/linen/gray"
+      }
+    },
+    "*-brass-pink": {
+      "metal": {
+        "base": "block/metal/lantern/brass"
+      },
+      "cover": {
+        "base": "block/cloth/linen/pink"
+      }
+    },
+    "*-brass-white": {
+      "metal": {
+        "base": "block/metal/lantern/brass"
+      },
+      "cover": {
+        "base": "block/cloth/linen/white"
+      }
+    },
+    "*-blackbronze-blue": {
+      "metal": {
+        "base": "block/metal/lantern/blackbronze"
+      },
+      "cover": {
+        "base": "block/cloth/linen/blue"
+      }
+    },
+    "*-blackbronze-red": {
+      "metal": {
+        "base": "block/metal/lantern/blackbronze"
+      },
+      "cover": {
+        "base": "block/cloth/linen/red"
+      }
+    },
+    "*-blackbronze-yellow": {
+      "metal": {
+        "base": "block/metal/lantern/blackbronze"
+      },
+      "cover": {
+        "base": "block/cloth/linen/yellow"
+      }
+    },
+    "*-blackbronze-purple": {
+      "metal": {
+        "base": "block/metal/lantern/blackbronze"
+      },
+      "cover": {
+        "base": "block/cloth/linen/purple"
+      }
+    },
+    "*-blackbronze-brown": {
+      "metal": {
+        "base": "block/metal/lantern/blackbronze"
+      },
+      "cover": {
+        "base": "block/cloth/linen/brown"
+      }
+    },
+    "*-blackbronze-green": {
+      "metal": {
+        "base": "block/metal/lantern/blackbronze"
+      },
+      "cover": {
+        "base": "block/cloth/linen/green"
+      }
+    },
+    "*-blackbronze-orange": {
+      "metal": {
+        "base": "block/metal/lantern/blackbronze"
+      },
+      "cover": {
+        "base": "block/cloth/linen/orange"
+      }
+    },
+    "*-blackbronze-black": {
+      "metal": {
+        "base": "block/metal/lantern/blackbronze"
+      },
+      "cover": {
+        "base": "block/cloth/linen/black"
+      }
+    },
+    "*-blackbronze-gray": {
+      "metal": {
+        "base": "block/metal/lantern/blackbronze"
+      },
+      "cover": {
+        "base": "block/cloth/linen/gray"
+      }
+    },
+    "*-blackbronze-pink": {
+      "metal": {
+        "base": "block/metal/lantern/blackbronze"
+      },
+      "cover": {
+        "base": "block/cloth/linen/pink"
+      }
+    },
+    "*-blackbronze-white": {
+      "metal": {
+        "base": "block/metal/lantern/blackbronze"
+      },
+      "cover": {
+        "base": "block/cloth/linen/white"
+      }
+    },
+    "*-silver-blue": {
+      "metal": {
+        "base": "block/metal/lantern/silver"
+      },
+      "cover": {
+        "base": "block/cloth/linen/blue"
+      }
+    },
+    "*-silver-red": {
+      "metal": {
+        "base": "block/metal/lantern/silver"
+      },
+      "cover": {
+        "base": "block/cloth/linen/red"
+      }
+    },
+    "*-silver-yellow": {
+      "metal": {
+        "base": "block/metal/lantern/silver"
+      },
+      "cover": {
+        "base": "block/cloth/linen/yellow"
+      }
+    },
+    "*-silver-purple": {
+      "metal": {
+        "base": "block/metal/lantern/silver"
+      },
+      "cover": {
+        "base": "block/cloth/linen/purple"
+      }
+    },
+    "*-silver-brown": {
+      "metal": {
+        "base": "block/metal/lantern/silver"
+      },
+      "cover": {
+        "base": "block/cloth/linen/brown"
+      }
+    },
+    "*-silver-green": {
+      "metal": {
+        "base": "block/metal/lantern/silver"
+      },
+      "cover": {
+        "base": "block/cloth/linen/green"
+      }
+    },
+    "*-silver-orange": {
+      "metal": {
+        "base": "block/metal/lantern/silver"
+      },
+      "cover": {
+        "base": "block/cloth/linen/orange"
+      }
+    },
+    "*-silver-black": {
+      "metal": {
+        "base": "block/metal/lantern/silver"
+      },
+      "cover": {
+        "base": "block/cloth/linen/black"
+      }
+    },
+    "*-silver-gray": {
+      "metal": {
+        "base": "block/metal/lantern/silver"
+      },
+      "cover": {
+        "base": "block/cloth/linen/gray"
+      }
+    },
+    "*-silver-pink": {
+      "metal": {
+        "base": "block/metal/lantern/silver"
+      },
+      "cover": {
+        "base": "block/cloth/linen/pink"
+      }
+    },
+    "*-silver-white": {
+      "metal": {
+        "base": "block/metal/lantern/silver"
+      },
+      "cover": {
+        "base": "block/cloth/linen/white"
+      }
+    },
+    "*-gold-blue": {
+      "metal": {
+        "base": "block/metal/lantern/gold"
+      },
+      "cover": {
+        "base": "block/cloth/linen/blue"
+      }
+    },
+    "*-gold-red": {
+      "metal": {
+        "base": "block/metal/lantern/gold"
+      },
+      "cover": {
+        "base": "block/cloth/linen/red"
+      }
+    },
+    "*-gold-yellow": {
+      "metal": {
+        "base": "block/metal/lantern/gold"
+      },
+      "cover": {
+        "base": "block/cloth/linen/yellow"
+      }
+    },
+    "*-gold-purple": {
+      "metal": {
+        "base": "block/metal/lantern/gold"
+      },
+      "cover": {
+        "base": "block/cloth/linen/purple"
+      }
+    },
+    "*-gold-brown": {
+      "metal": {
+        "base": "block/metal/lantern/gold"
+      },
+      "cover": {
+        "base": "block/cloth/linen/brown"
+      }
+    },
+    "*-gold-green": {
+      "metal": {
+        "base": "block/metal/lantern/gold"
+      },
+      "cover": {
+        "base": "block/cloth/linen/green"
+      }
+    },
+    "*-gold-orange": {
+      "metal": {
+        "base": "block/metal/lantern/gold"
+      },
+      "cover": {
+        "base": "block/cloth/linen/orange"
+      }
+    },
+    "*-gold-black": {
+      "metal": {
+        "base": "block/metal/lantern/gold"
+      },
+      "cover": {
+        "base": "block/cloth/linen/black"
+      }
+    },
+    "*-gold-gray": {
+      "metal": {
+        "base": "block/metal/lantern/gold"
+      },
+      "cover": {
+        "base": "block/cloth/linen/gray"
+      }
+    },
+    "*-gold-pink": {
+      "metal": {
+        "base": "block/metal/lantern/gold"
+      },
+      "cover": {
+        "base": "block/cloth/linen/pink"
+      }
+    },
+    "*-gold-white": {
+      "metal": {
+        "base": "block/metal/lantern/gold"
+      },
+      "cover": {
+        "base": "block/cloth/linen/white"
+      }
+    },
+    "*-electrum-blue": {
+      "metal": {
+        "base": "block/metal/lantern/electrum"
+      },
+      "cover": {
+        "base": "block/cloth/linen/blue"
+      }
+    },
+    "*-electrum-red": {
+      "metal": {
+        "base": "block/metal/lantern/electrum"
+      },
+      "cover": {
+        "base": "block/cloth/linen/red"
+      }
+    },
+    "*-electrum-yellow": {
+      "metal": {
+        "base": "block/metal/lantern/electrum"
+      },
+      "cover": {
+        "base": "block/cloth/linen/yellow"
+      }
+    },
+    "*-electrum-purple": {
+      "metal": {
+        "base": "block/metal/lantern/electrum"
+      },
+      "cover": {
+        "base": "block/cloth/linen/purple"
+      }
+    },
+    "*-electrum-brown": {
+      "metal": {
+        "base": "block/metal/lantern/electrum"
+      },
+      "cover": {
+        "base": "block/cloth/linen/brown"
+      }
+    },
+    "*-electrum-green": {
+      "metal": {
+        "base": "block/metal/lantern/electrum"
+      },
+      "cover": {
+        "base": "block/cloth/linen/green"
+      }
+    },
+    "*-electrum-orange": {
+      "metal": {
+        "base": "block/metal/lantern/electrum"
+      },
+      "cover": {
+        "base": "block/cloth/linen/orange"
+      }
+    },
+    "*-electrum-black": {
+      "metal": {
+        "base": "block/metal/lantern/electrum"
+      },
+      "cover": {
+        "base": "block/cloth/linen/black"
+      }
+    },
+    "*-electrum-gray": {
+      "metal": {
+        "base": "block/metal/lantern/electrum"
+      },
+      "cover": {
+        "base": "block/cloth/linen/gray"
+      }
+    },
+    "*-electrum-pink": {
+      "metal": {
+        "base": "block/metal/lantern/electrum"
+      },
+      "cover": {
+        "base": "block/cloth/linen/pink"
+      }
+    },
+    "*-electrum-white": {
+      "metal": {
+        "base": "block/metal/lantern/electrum"
+      },
+      "cover": {
+        "base": "block/cloth/linen/white"
+      }
+    }
+  },
+  "behaviors": [
+    {
+      "name": "UnstableFalling"
+    }
+  ],
+  "blockmaterial": "Metal",
+  "replaceable": 900,
+  "resistance": 2,
+  "lightAbsorption": 1,
+  "sidesolid": {
+    "all": false
+  },
+  "sideopaque": {
+    "all": false
+  },
+  "sounds": {
+    "place": "block/lantern",
+    "hit": "block/lantern",
+    "break": "block/lantern",
+    "walk": "walk/stone"
+  },
+  "materialDensity": 400,
+  "selectionbox": {
+    "x1": 0.05,
+    "y1": 0,
+    "z1": 0.05,
+    "x2": 0.95,
+    "y2": 0.5,
+    "z2": 0.95
+  },
+  "collisionbox": {
+    "x1": 0.05,
+    "y1": 0,
+    "z1": 0.05,
+    "x2": 0.95,
+    "y2": 0.5,
+    "z2": 0.95
+  },
+  "guiTransform": {
+    "translation": {
+      "x": 0,
+      "y": 2,
+      "z": 0
+    },
+    "origin": {
+      "x": 0.5,
+      "y": 0.25,
+      "z": 0.5
+    }
+  },
+  "groundTransform": {
+    "scale": 1.5
+  },
+  "tpHandTransform": {
+    "translation": {
+      "x": -1.33,
+      "y": -0.91,
+      "z": -0.6
+    },
+    "rotation": {
+      "x": 17,
+      "y": 11,
+      "z": -76
+    },
+    "scale": 0.45
+  }
+}
