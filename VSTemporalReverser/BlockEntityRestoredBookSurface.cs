@@ -83,7 +83,7 @@ public class BlockEntityRestoredBookSurface : BlockEntityDisplay
 
         MeshData mesh = getDefaultMesh(stack);
 
-        ModelTransform? meshTransform = Block.Attributes?["displayedItemMeshTransform"].AsObject<ModelTransform>(null);
+        ModelTransform? meshTransform = Block.Attributes?["displayedItemMeshTransform"].AsObject(ModelTransform.NoTransform);
         if (meshTransform != null)
         {
             meshTransform.EnsureDefaultValues();

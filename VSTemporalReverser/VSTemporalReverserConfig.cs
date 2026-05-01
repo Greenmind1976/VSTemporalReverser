@@ -47,6 +47,10 @@ public sealed class VSTemporalReverserConfig
     public bool AgedWood { get; set; } = true;
     public bool VeryAgedWood { get; set; } = true;
 
+    public bool EnableRaccoonCritterSpawns { get; set; } = true;
+    public bool EnableMouseCritterSpawns { get; set; } = true;
+    public bool EnableMothCritterSpawns { get; set; } = true;
+
     public bool EnableDebugLogging { get; set; } = false;
 
     public void Normalize()
