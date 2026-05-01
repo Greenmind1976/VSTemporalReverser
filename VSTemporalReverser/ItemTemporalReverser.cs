@@ -110,6 +110,35 @@ public class ItemTemporalReverser : Item
         "walnut",
         "purpleheart"
     ];
+    private static readonly string[] RandomLargeCrateRaccoonEntities =
+    [
+        "game:raccoon-common-adult-female",
+        "game:raccoon-common-adult-male"
+    ];
+    private static readonly string[] RandomLargeRotCrateMouseEntities =
+    [
+        "vstemporalreverser:mouse"
+    ];
+    private static readonly string[] RandomMouseCreatureEntities =
+    [
+        "vstemporalreverser:mouse"
+    ];
+    private static readonly string[] RandomMothCreatureEntities =
+    [
+        "game:butterfly-atlasmothfemale",
+        "game:butterfly-atlasmothmale",
+        "game:butterfly-gardentigermothmale",
+        "game:butterfly-limehawkmoth",
+        "game:butterfly-macrocosmamoth",
+        "game:butterfly-madagascansunsetmoth",
+        "game:butterfly-oleanderhawkmothmale",
+        "game:butterfly-sagebrushgirdlemoth"
+    ];
+    private static readonly string[][] RandomCrateCreatureEntityGroups =
+    [
+        RandomLargeCrateRaccoonEntities,
+        RandomLargeRotCrateMouseEntities
+    ];
     private static readonly string[] RandomRestoredCommonMetals =
     [
         "copper",
@@ -1065,21 +1094,28 @@ public class ItemTemporalReverser : Item
         }
 
         Vec3d dropPos = pos.ToVec3d().Add(0.5, 0.25, 0.5);
-        List<ItemStack> spawnedStacks = [restoredStack];
+        List<string> spawnedEntries = [DescribeStackForRecord(restoredStack)];
 
         world.BlockAccessor.SetBlock(0, pos);
         world.SpawnItemEntity(restoredStack, dropPos);
         foreach (ItemStack extraStack in CreateSupplementalRestoredStacks(world, rule))
         {
-            spawnedStacks.Add(extraStack);
+            spawnedEntries.Add(DescribeStackForRecord(extraStack));
             world.SpawnItemEntity(extraStack, dropPos);
+        }
+        foreach (string entityCode in CreateSupplementalRestoredEntities(rule))
+        {
+            if (TrySpawnRestoredEntity(world, dropPos, entityCode))
+            {
+                spawnedEntries.Add(DescribeEntityForRecord(entityCode));
+            }
         }
         DamageItem(world, byEntity, slot, rule.DurabilityCost);
 
         WriteRestoreDebugRecord(
             clutterType ?? block.Code.Path,
             rule,
-            spawnedStacks);
+            spawnedEntries);
 
         world.PlaySoundAt(new AssetLocation("game", "sounds/effect/translocate"), pos.X + 0.5, pos.Y + 0.5, pos.Z + 0.5);
         SendNotification(byEntity, "The restored item drops free in a usable shape.");
@@ -1712,22 +1748,22 @@ public class ItemTemporalReverser : Item
 
         return normalized switch
         {
-            "toy1" => RandomVanillaItemRule(AgedDurabilityCost, RandomRestoredToyItems),
-            "toy2" => RandomVanillaItemRule(AgedDurabilityCost, RandomRestoredToyItems),
-            "toy3" => RandomVanillaItemRule(AgedDurabilityCost, RandomRestoredToyItems),
-            "toy4" => RandomVanillaItemRule(AgedDurabilityCost, RandomRestoredToyItems),
-            "toy5" => RandomVanillaItemRule(AgedDurabilityCost, RandomRestoredToyItems),
-            "toy6" => RandomVanillaItemRule(AgedDurabilityCost, RandomRestoredToyItems),
-            "toy7" => RandomVanillaItemRule(AgedDurabilityCost, RandomRestoredToyItems),
-            "toy8" => RandomVanillaItemRule(AgedDurabilityCost, RandomRestoredToyItems),
-            "toy9" => RandomVanillaItemRule(AgedDurabilityCost, RandomRestoredToyItems),
-            "toy10" => RandomVanillaItemRule(AgedDurabilityCost, RandomRestoredToyItems),
-            "toy11" => RandomVanillaItemRule(AgedDurabilityCost, RandomRestoredToyItems),
-            "toy12" => RandomVanillaItemRule(AgedDurabilityCost, RandomRestoredToyItems),
-            "toy13" => RandomVanillaItemRule(AgedDurabilityCost, RandomRestoredToyItems),
-            "toy14" => RandomVanillaItemRule(AgedDurabilityCost, RandomRestoredToyItems),
-            "toy15" => RandomVanillaItemRule(AgedDurabilityCost, RandomRestoredToyItems),
-            "toy16" => RandomVanillaItemRule(AgedDurabilityCost, RandomRestoredToyItems),
+            "toy1" => RandomVanillaItemRule(AgedDurabilityCost, ["vstemporalreverser:restored-toy-toy10"]),
+            "toy2" => RandomVanillaItemRule(AgedDurabilityCost, ["vstemporalreverser:restored-toy-toy10"]),
+            "toy3" => RandomVanillaItemRule(AgedDurabilityCost, ["vstemporalreverser:restored-toy-toy10"]),
+            "toy4" => RandomVanillaItemRule(AgedDurabilityCost, ["vstemporalreverser:restored-toy-toy4"]),
+            "toy5" => RandomVanillaItemRule(AgedDurabilityCost, ["vstemporalreverser:restored-toy-toy5"]),
+            "toy6" => RandomVanillaItemRule(AgedDurabilityCost, ["vstemporalreverser:restored-toy-toy6"]),
+            "toy7" => RandomVanillaItemRule(AgedDurabilityCost, ["vstemporalreverser:restored-toy-toy7"]),
+            "toy8" => RandomVanillaItemRule(AgedDurabilityCost, ["vstemporalreverser:restored-toy-toy8"]),
+            "toy9" => RandomVanillaItemRule(AgedDurabilityCost, ["vstemporalreverser:restored-toy-toy9"]),
+            "toy10" => RandomVanillaItemRule(AgedDurabilityCost, ["vstemporalreverser:restored-toy-toy10"]),
+            "toy11" => RandomVanillaItemRule(AgedDurabilityCost, ["vstemporalreverser:restored-toy-toy11"]),
+            "toy12" => RandomVanillaItemRule(AgedDurabilityCost, ["vstemporalreverser:restored-toy-toy12"]),
+            "toy13" => RandomVanillaItemRule(AgedDurabilityCost, ["vstemporalreverser:restored-toy-toy13"]),
+            "toy14" => RandomVanillaItemRule(AgedDurabilityCost, ["vstemporalreverser:restored-toy-toy14"]),
+            "toy15" => RandomVanillaItemRule(AgedDurabilityCost, ["vstemporalreverser:restored-toy-toy15"]),
+            "toy16" => RandomVanillaItemRule(AgedDurabilityCost, ["vstemporalreverser:restored-toy-toy16"]),
             _ => null
         };
     }
@@ -1776,6 +1812,10 @@ public class ItemTemporalReverser : Item
                 2,
                 4,
                 lootStyle: BonusLootStyle.TieredMetalJunk,
+                rareBonusEntities: RandomLargeCrateRaccoonEntities,
+                rareBonusEntityChancePercent: 10,
+                rareBonusEntityMinCount: 1,
+                rareBonusEntityMaxCount: 5,
                 attributes: new[] { "type", "wood-{cratewood}", "lidState", "closed", "label", "paper-storage" }),
             "large-metaljunk1" => VanillaAttributedBlockWithBonusAndRareItemsRule(
                 AgedDurabilityCost,
@@ -1784,6 +1824,10 @@ public class ItemTemporalReverser : Item
                 2,
                 4,
                 lootStyle: BonusLootStyle.TieredMetalJunk,
+                rareBonusEntities: RandomLargeCrateRaccoonEntities,
+                rareBonusEntityChancePercent: 10,
+                rareBonusEntityMinCount: 1,
+                rareBonusEntityMaxCount: 5,
                 attributes: new[] { "type", "wood-{cratewood}", "lidState", "closed", "label", "paper-storage" }),
             _ => null
         };
@@ -1840,9 +1884,14 @@ public class ItemTemporalReverser : Item
             int minCount,
             int maxCount,
             int bonusItemMinCount = 1,
-            int bonusItemMaxCount = 1,
-            string[]? rareBonusItems = null,
-            int rareBonusChancePercent = 0,
+        int bonusItemMaxCount = 1,
+        string[]? rareBonusItems = null,
+        int rareBonusChancePercent = 0,
+        string[]? rareBonusEntities = null,
+        string[][]? rareBonusEntityGroups = null,
+        int rareBonusEntityChancePercent = 0,
+        int rareBonusEntityMinCount = 1,
+        int rareBonusEntityMaxCount = 1,
             BonusLootStyle lootStyle = BonusLootStyle.None)
         {
             return VanillaBlockWithBonusAndRareItemsRule(
@@ -1853,16 +1902,41 @@ public class ItemTemporalReverser : Item
                 maxCount,
                 bonusItemMinCount,
                 bonusItemMaxCount,
-                rareBonusItems,
-                rareBonusChancePercent,
-                lootStyle: lootStyle);
+            rareBonusItems,
+            rareBonusChancePercent,
+            rareBonusEntities,
+            rareBonusEntityGroups,
+            rareBonusEntityChancePercent,
+            rareBonusEntityMinCount,
+            rareBonusEntityMaxCount,
+            lootStyle: lootStyle);
         }
 
         static RestorationRule LargeCrateRule(int durabilityCost, string? label = null)
         {
             return label == null
-                ? VanillaAttributedBlockRule(durabilityCost, "game:crate", "type", "wood-{cratewood}", "lidState", "closed")
-                : VanillaAttributedBlockRule(durabilityCost, "game:crate", "type", "wood-{cratewood}", "lidState", "closed", "label", label);
+                ? VanillaAttributedBlockWithBonusAndRareItemsRule(
+                    durabilityCost,
+                "game:crate",
+                Array.Empty<string>(),
+                0,
+                0,
+                rareBonusEntityGroups: RandomCrateCreatureEntityGroups,
+                rareBonusEntityChancePercent: 10,
+                rareBonusEntityMinCount: 1,
+                rareBonusEntityMaxCount: 5,
+                attributes: new[] { "type", "wood-{cratewood}", "lidState", "closed" })
+                : VanillaAttributedBlockWithBonusAndRareItemsRule(
+                    durabilityCost,
+                "game:crate",
+                Array.Empty<string>(),
+                0,
+                0,
+                rareBonusEntityGroups: RandomCrateCreatureEntityGroups,
+                rareBonusEntityChancePercent: 10,
+                rareBonusEntityMinCount: 1,
+                rareBonusEntityMaxCount: 5,
+                attributes: new[] { "type", "wood-{cratewood}", "lidState", "closed", "label", label });
         }
 
         RestorationRule LargeCrateWithBonusRule(
@@ -1871,15 +1945,26 @@ public class ItemTemporalReverser : Item
             int minCount,
             int maxCount,
             string? label = null,
-            int bonusItemMinCount = 1,
-            int bonusItemMaxCount = 1,
+        int bonusItemMinCount = 1,
+        int bonusItemMaxCount = 1,
             string[]? rareBonusItems = null,
             int rareBonusChancePercent = 0,
-            BonusLootStyle lootStyle = BonusLootStyle.None)
+            string[]? rareBonusEntities = null,
+            string[][]? rareBonusEntityGroups = null,
+            int rareBonusEntityChancePercent = 0,
+        int rareBonusEntityMinCount = 1,
+        int rareBonusEntityMaxCount = 1,
+        BonusLootStyle lootStyle = BonusLootStyle.None)
         {
+            rareBonusEntityGroups ??= RandomCrateCreatureEntityGroups;
+            if (rareBonusEntityChancePercent <= 0)
+            {
+                rareBonusEntityChancePercent = 10;
+            }
+
             return label == null
-                ? VanillaAttributedBlockWithBonusAndRareItemsRule(durabilityCost, "game:crate", bonusItems, minCount, maxCount, bonusItemMinCount, bonusItemMaxCount, rareBonusItems, rareBonusChancePercent, lootStyle, "type", "wood-{cratewood}", "lidState", "closed")
-                : VanillaAttributedBlockWithBonusAndRareItemsRule(durabilityCost, "game:crate", bonusItems, minCount, maxCount, bonusItemMinCount, bonusItemMaxCount, rareBonusItems, rareBonusChancePercent, lootStyle, "type", "wood-{cratewood}", "lidState", "closed", "label", label);
+                ? VanillaAttributedBlockWithBonusAndRareItemsRule(durabilityCost, "game:crate", bonusItems, minCount, maxCount, bonusItemMinCount, bonusItemMaxCount, rareBonusItems, rareBonusChancePercent, rareBonusEntities, rareBonusEntityGroups, rareBonusEntityChancePercent, rareBonusEntityMinCount, rareBonusEntityMaxCount, lootStyle, "type", "wood-{cratewood}", "lidState", "closed")
+                : VanillaAttributedBlockWithBonusAndRareItemsRule(durabilityCost, "game:crate", bonusItems, minCount, maxCount, bonusItemMinCount, bonusItemMaxCount, rareBonusItems, rareBonusChancePercent, rareBonusEntities, rareBonusEntityGroups, rareBonusEntityChancePercent, rareBonusEntityMinCount, rareBonusEntityMaxCount, lootStyle, "type", "wood-{cratewood}", "lidState", "closed", "label", label);
         }
 
         static int DecorativeDurabilityCost(string code)
@@ -1892,22 +1977,22 @@ public class ItemTemporalReverser : Item
 
         return normalized switch
         {
-            "chair-aged" => VanillaBlockRule(AgedDurabilityCost, "vstemporalreverser:restored-chair-colored-{chaircolor}-{librarymaterial}"),
-            "chair-ebony" => VanillaBlockRule(AgedDurabilityCost, "vstemporalreverser:restored-chair-ebony"),
-            "chair-back" => VanillaBlockRule(AgedDurabilityCost, "vstemporalreverser:restored-chair-back"),
-            "chair-crude" => VanillaBlockRule(AgedDurabilityCost, "vstemporalreverser:restored-chair-crude"),
-            "chair-long" => VanillaBlockRule(AgedDurabilityCost, "vstemporalreverser:restored-chair-long-{librarymaterial}"),
-            "chair-metal1" => VanillaBlockRule(AgedDurabilityCost, "vstemporalreverser:restored-chair-metal-{lecternmetal}-{chaircolor}"),
-            "chair-metal1-pillow" => VanillaBlockRule(AgedDurabilityCost, "vstemporalreverser:restored-chair-metal-{lecternmetal}-{chaircolor}"),
-            "chair-metal1-ruined1" => VanillaBlockRule(RuinedDurabilityCost, "vstemporalreverser:restored-chair-metal-{lecternmetal}-{chaircolor}"),
-            "chair-metal1-ruined2" => VanillaBlockRule(RuinedDurabilityCost, "vstemporalreverser:restored-chair-metal-{lecternmetal}-{chaircolor}"),
-            "chair-metal1-ruined3" => VanillaBlockRule(RuinedDurabilityCost, "vstemporalreverser:restored-chair-metal-{lecternmetal}-{chaircolor}"),
-            _ when normalized.StartsWith("chair-ruined", StringComparison.OrdinalIgnoreCase) => VanillaBlockRule(RuinedDurabilityCost, "vstemporalreverser:restored-chair-colored-{chaircolor}-{librarymaterial}"),
+            "chair-aged" => VanillaBlockRuleWithCritters(AgedDurabilityCost, "vstemporalreverser:restored-chair-colored-{chaircolor}-{librarymaterial}", new[] { RandomMothCreatureEntities }, 50, new[] { RandomMouseCreatureEntities }, 20),
+            "chair-ebony" => VanillaBlockRuleWithCritters(AgedDurabilityCost, "vstemporalreverser:restored-chair-ebony", new[] { RandomMothCreatureEntities }, 50, new[] { RandomMouseCreatureEntities }, 20),
+            "chair-back" => VanillaBlockRuleWithCritters(AgedDurabilityCost, "vstemporalreverser:restored-chair-back", new[] { RandomMothCreatureEntities }, 50, new[] { RandomMouseCreatureEntities }, 20),
+            "chair-crude" => VanillaBlockRuleWithCritters(AgedDurabilityCost, "vstemporalreverser:restored-chair-crude", new[] { RandomMothCreatureEntities }, 50, new[] { RandomMouseCreatureEntities }, 20),
+            "chair-long" => VanillaBlockRuleWithCritters(AgedDurabilityCost, "vstemporalreverser:restored-chair-long-{librarymaterial}", new[] { RandomMothCreatureEntities }, 50, new[] { RandomMouseCreatureEntities }, 20),
+            "chair-metal1" => VanillaBlockRuleWithCritters(AgedDurabilityCost, "vstemporalreverser:restored-chair-metal-{lecternmetal}-{chaircolor}", new[] { RandomMothCreatureEntities }, 50, new[] { RandomMouseCreatureEntities }, 20),
+            "chair-metal1-pillow" => VanillaBlockRuleWithCritters(AgedDurabilityCost, "vstemporalreverser:restored-chair-metal-{lecternmetal}-{chaircolor}", new[] { RandomMothCreatureEntities }, 50, new[] { RandomMouseCreatureEntities }, 20),
+            "chair-metal1-ruined1" => VanillaBlockRuleWithCritters(RuinedDurabilityCost, "vstemporalreverser:restored-chair-metal-{lecternmetal}-{chaircolor}", new[] { RandomMothCreatureEntities }, 50, new[] { RandomMouseCreatureEntities }, 20),
+            "chair-metal1-ruined2" => VanillaBlockRuleWithCritters(RuinedDurabilityCost, "vstemporalreverser:restored-chair-metal-{lecternmetal}-{chaircolor}", new[] { RandomMothCreatureEntities }, 50, new[] { RandomMouseCreatureEntities }, 20),
+            "chair-metal1-ruined3" => VanillaBlockRuleWithCritters(RuinedDurabilityCost, "vstemporalreverser:restored-chair-metal-{lecternmetal}-{chaircolor}", new[] { RandomMothCreatureEntities }, 50, new[] { RandomMouseCreatureEntities }, 20),
+            _ when normalized.StartsWith("chair-ruined", StringComparison.OrdinalIgnoreCase) => VanillaBlockRuleWithCritters(RuinedDurabilityCost, "vstemporalreverser:restored-chair-colored-{chaircolor}-{librarymaterial}", new[] { RandomMothCreatureEntities }, 50, new[] { RandomMouseCreatureEntities }, 20),
             "crate-large-tools1" => LargeCrateWithBonusRule(RuinedDurabilityCost, RandomRestoredToolItems, 2, 2, "paper-tools"),
-            "crate/crate-medium-books" => RestoredCrateFamilyWithBonusRule(AgedDurabilityCost, "medium", RandomNormalBookItems, 2, 4),
-            "crate/crate-medium-pottery" => RestoredCrateFamilyWithBonusRule(AgedDurabilityCost, "medium", RandomPotteryItems, 1, 1),
-            "crate/crate-medium-pottery-alt" => RestoredCrateFamilyWithBonusRule(AgedDurabilityCost, "medium", RandomPotteryItems, 1, 1),
-            "crate/crate-small-pottery" => RestoredCrateFamilyWithBonusRule(AgedDurabilityCost, "small", RandomPotteryItems, 1, 2),
+            "crate/crate-medium-books" => RestoredCrateFamilyWithBonusRule(AgedDurabilityCost, "medium", RandomNormalBookItems, 2, 4, rareBonusEntityGroups: new[] { RandomCrateCreatureEntityGroups[0], RandomCrateCreatureEntityGroups[1], RandomMothCreatureEntities }, rareBonusEntityChancePercent: 40),
+            "crate/crate-medium-pottery" => RestoredCrateFamilyWithBonusRule(AgedDurabilityCost, "medium", RandomPotteryItems, 1, 1, rareBonusEntityGroups: RandomCrateCreatureEntityGroups, rareBonusEntityChancePercent: 10),
+            "crate/crate-medium-pottery-alt" => RestoredCrateFamilyWithBonusRule(AgedDurabilityCost, "medium", RandomPotteryItems, 1, 1, rareBonusEntityGroups: RandomCrateCreatureEntityGroups, rareBonusEntityChancePercent: 10),
+            "crate/crate-small-pottery" => RestoredCrateFamilyWithBonusRule(AgedDurabilityCost, "small", RandomPotteryItems, 1, 2, rareBonusEntityGroups: RandomCrateCreatureEntityGroups, rareBonusEntityChancePercent: 10),
             "crate/crate-large-pottery" => LargeCrateWithBonusRule(AgedDurabilityCost, RandomPotteryItems, 1, 2, "paper-decoration"),
             "crate/large-pottery1" => LargeCrateWithBonusRule(AgedDurabilityCost, RandomPotteryItems, 1, 2, "paper-decoration"),
             "crate/large-pottery2" => LargeCrateWithBonusRule(AgedDurabilityCost, RandomPotteryItems, 1, 2, "paper-decoration"),
@@ -1925,11 +2010,11 @@ public class ItemTemporalReverser : Item
                 20,
                 40,
                 new[] { "nugget-pentlandite", "nugget-uranium" }),
-            "crate/large-clothing1" => LargeCrateWithBonusRule(AgedDurabilityCost, RandomClothingItems, 2, 4, "paper-decoration", 1, 1, RandomRareClothingItems, 1),
-            "crate/crate-large-junk" => LargeCrateWithBonusRule(AgedDurabilityCost, Array.Empty<string>(), 2, 4, "paper-storage", lootStyle: BonusLootStyle.TieredJunk),
-            "crate/crate-medium-junk" => RestoredCrateFamilyWithBonusRule(AgedDurabilityCost, "medium", Array.Empty<string>(), 1, 2, lootStyle: BonusLootStyle.TieredJunk),
-            "crate/crate-small-junk" => RestoredCrateFamilyWithBonusRule(AgedDurabilityCost, "small", Array.Empty<string>(), 1, 2, lootStyle: BonusLootStyle.TieredJunk),
-            "crate/large-generic-junk1" => LargeCrateWithBonusRule(AgedDurabilityCost, Array.Empty<string>(), 2, 4, "paper-storage", lootStyle: BonusLootStyle.TieredJunk),
+            "crate/large-clothing1" => LargeCrateWithBonusRule(AgedDurabilityCost, RandomClothingItems, 2, 4, "paper-decoration", 1, 1, RandomRareClothingItems, 1, rareBonusEntityGroups: new[] { RandomMothCreatureEntities }, rareBonusEntityChancePercent: 40),
+            "crate/crate-large-junk" => LargeCrateWithBonusRule(AgedDurabilityCost, Array.Empty<string>(), 2, 4, "paper-storage", rareBonusEntityGroups: RandomCrateCreatureEntityGroups, rareBonusEntityChancePercent: 25, rareBonusEntityMinCount: 1, rareBonusEntityMaxCount: 5, lootStyle: BonusLootStyle.TieredJunk),
+            "crate/crate-medium-junk" => RestoredCrateFamilyWithBonusRule(AgedDurabilityCost, "medium", Array.Empty<string>(), 1, 2, rareBonusEntityGroups: RandomCrateCreatureEntityGroups, rareBonusEntityChancePercent: 25, rareBonusEntityMinCount: 1, rareBonusEntityMaxCount: 5, lootStyle: BonusLootStyle.TieredJunk),
+            "crate/crate-small-junk" => RestoredCrateFamilyWithBonusRule(AgedDurabilityCost, "small", Array.Empty<string>(), 1, 2, rareBonusEntityGroups: RandomCrateCreatureEntityGroups, rareBonusEntityChancePercent: 25, rareBonusEntityMinCount: 1, rareBonusEntityMaxCount: 5, lootStyle: BonusLootStyle.TieredJunk),
+            "crate/large-generic-junk1" => LargeCrateWithBonusRule(AgedDurabilityCost, Array.Empty<string>(), 2, 4, "paper-storage", rareBonusEntityGroups: RandomCrateCreatureEntityGroups, rareBonusEntityChancePercent: 25, rareBonusEntityMinCount: 1, rareBonusEntityMaxCount: 5, lootStyle: BonusLootStyle.TieredJunk),
             "crate/large-metaljunk1" => VanillaAttributedBlockWithBonusAndRareItemsRule(
                 AgedDurabilityCost,
                 "game:crate",
@@ -1938,10 +2023,19 @@ public class ItemTemporalReverser : Item
                 4,
                 lootStyle: BonusLootStyle.TieredMetalJunk,
                 attributes: new[] { "type", "wood-{cratewood}", "lidState", "closed", "label", "paper-storage" }),
-            "crate/crate-small-rot" => RestoredCrateFamilyWithBonusRule(AgedDurabilityCost, "small", RandomRotItems, 2, 4),
-            "crate/crate-large-rot" => LargeCrateWithBonusRule(AgedDurabilityCost, RandomRotItems, 4, 6, "paper-ingredients"),
-            "crate/medium-toybox1" => RestoredCrateFamilyWithExactBonusRule(AgedDurabilityCost, "medium", RandomToyBox1Items),
-            "crate/medium-toybox2" => RestoredCrateFamilyWithExactBonusRule(AgedDurabilityCost, "medium", RandomToyBox2Items),
+            "crate/crate-small-rot" => RestoredCrateFamilyWithBonusRule(AgedDurabilityCost, "small", RandomRotItems, 2, 4, rareBonusEntityGroups: RandomCrateCreatureEntityGroups, rareBonusEntityChancePercent: 40, rareBonusEntityMinCount: 1, rareBonusEntityMaxCount: 5),
+            "crate/crate-large-rot" => LargeCrateWithBonusRule(
+                AgedDurabilityCost,
+                RandomRotItems,
+                4,
+                6,
+                "paper-ingredients",
+                rareBonusEntityGroups: new[] { RandomLargeCrateRaccoonEntities, RandomLargeRotCrateMouseEntities },
+                rareBonusEntityChancePercent: 50,
+                rareBonusEntityMinCount: 1,
+                rareBonusEntityMaxCount: 5),
+            "crate/medium-toybox1" => RestoredCrateFamilyWithExactBonusRule(AgedDurabilityCost, "medium", RandomToyBox1Items, rareBonusEntityGroups: RandomCrateCreatureEntityGroups, rareBonusEntityChancePercent: 60),
+            "crate/medium-toybox2" => RestoredCrateFamilyWithExactBonusRule(AgedDurabilityCost, "medium", RandomToyBox2Items, rareBonusEntityGroups: RandomCrateCreatureEntityGroups, rareBonusEntityChancePercent: 60),
             "crate/crate-large-empty" => LargeCrateRule(AgedDurabilityCost, "paper-empty"),
             "crate/crate-medium-empty" => RestoredCrateFamilyRule(AgedDurabilityCost, "medium"),
             "crate/crate-small-empty" => RestoredCrateFamilyRule(AgedDurabilityCost, "small"),
@@ -2115,7 +2209,7 @@ public class ItemTemporalReverser : Item
         serverPlayer.SendMessage(GlobalConstants.GeneralChatGroup, message, EnumChatType.Notification);
     }
 
-    private void WriteRestoreDebugRecord(string sourceCode, RestorationRule rule, IReadOnlyList<ItemStack> spawnedStacks)
+    private void WriteRestoreDebugRecord(string sourceCode, RestorationRule rule, IReadOnlyList<string> spawnedEntries)
     {
         if (!VSTemporalReverserModSystem.Config.EnableDebugLogging)
         {
@@ -2136,7 +2230,7 @@ public class ItemTemporalReverser : Item
                 ["source"] = sourceCode,
                 ["restoredTargetKind"] = rule.TargetKind.ToString(),
                 ["restoredTarget"] = rule.Target,
-                ["drops"] = spawnedStacks.Select(DescribeStackForRecord).ToArray()
+                ["drops"] = spawnedEntries.ToArray()
             };
 
             string line = JsonSerializer.Serialize(record);
@@ -2166,12 +2260,32 @@ public class ItemTemporalReverser : Item
         return new RestorationRule(
             durabilityCost,
             RestorationTargetKind.Block,
-            $"vstemporalreverser:restored-canopy-bed-{style}-{{wood}}-head-north");
+            $"vstemporalreverser:restored-canopy-bed-{style}-{{wood}}-head-north",
+            RareBonusEntityGroups: new[] { RandomMothCreatureEntities },
+            RareBonusEntityChancePercent: 50,
+            RareBonusEntityMinCount: 1,
+            RareBonusEntityMaxCount: 5,
+            SecondaryRareBonusEntityGroups: new[] { RandomMouseCreatureEntities },
+            SecondaryRareBonusEntityChancePercent: 20,
+            SecondaryRareBonusEntityMinCount: 1,
+            SecondaryRareBonusEntityMaxCount: 5);
     }
 
     private static RestorationRule RandomRestoredCanopyBedRule(int durabilityCost, string[] styles)
     {
-        return new RestorationRule(durabilityCost, RestorationTargetKind.RandomRestoredCanopyBed, string.Empty, styles);
+        return new RestorationRule(
+            durabilityCost,
+            RestorationTargetKind.RandomRestoredCanopyBed,
+            string.Empty,
+            styles,
+            RareBonusEntityGroups: new[] { RandomMothCreatureEntities },
+            RareBonusEntityChancePercent: 50,
+            RareBonusEntityMinCount: 1,
+            RareBonusEntityMaxCount: 5,
+            SecondaryRareBonusEntityGroups: new[] { RandomMouseCreatureEntities },
+            SecondaryRareBonusEntityChancePercent: 20,
+            SecondaryRareBonusEntityMinCount: 1,
+            SecondaryRareBonusEntityMaxCount: 5);
     }
 
     private static RestorationRule RestoredShortBedRule(int durabilityCost, string style)
@@ -2179,7 +2293,15 @@ public class ItemTemporalReverser : Item
         return new RestorationRule(
             durabilityCost,
             RestorationTargetKind.Block,
-            $"vstemporalreverser:restored-short-bed-{style}-{{wood}}-head-north");
+            $"vstemporalreverser:restored-short-bed-{style}-{{wood}}-head-north",
+            RareBonusEntityGroups: new[] { RandomMothCreatureEntities },
+            RareBonusEntityChancePercent: 50,
+            RareBonusEntityMinCount: 1,
+            RareBonusEntityMaxCount: 5,
+            SecondaryRareBonusEntityGroups: new[] { RandomMouseCreatureEntities },
+            SecondaryRareBonusEntityChancePercent: 20,
+            SecondaryRareBonusEntityMinCount: 1,
+            SecondaryRareBonusEntityMaxCount: 5);
     }
 
     private static RestorationRule RestoredTableRule(int durabilityCost, string style)
@@ -2187,7 +2309,15 @@ public class ItemTemporalReverser : Item
         return new RestorationRule(
             durabilityCost,
             RestorationTargetKind.Block,
-            $"vstemporalreverser:restored-table-{style}-{{tablewood}}-north");
+            $"vstemporalreverser:restored-table-{style}-{{tablewood}}-north",
+            RareBonusEntityGroups: new[] { RandomMothCreatureEntities },
+            RareBonusEntityChancePercent: 50,
+            RareBonusEntityMinCount: 1,
+            RareBonusEntityMaxCount: 1,
+            SecondaryRareBonusEntityGroups: new[] { RandomMouseCreatureEntities },
+            SecondaryRareBonusEntityChancePercent: 20,
+            SecondaryRareBonusEntityMinCount: 1,
+            SecondaryRareBonusEntityMaxCount: 1);
     }
 
     private static RestorationRule RandomRestoredCenserRule(int durabilityCost, string style, string[] finishes)
@@ -2205,7 +2335,15 @@ public class ItemTemporalReverser : Item
             durabilityCost,
             RestorationTargetKind.Block,
             $"vstemporalreverser:restored-table-{{tablestyle}}-{{tablewood}}-north",
-            styles);
+            styles,
+            RareBonusEntityGroups: new[] { RandomMothCreatureEntities },
+            RareBonusEntityChancePercent: 50,
+            RareBonusEntityMinCount: 1,
+            RareBonusEntityMaxCount: 1,
+            SecondaryRareBonusEntityGroups: new[] { RandomMouseCreatureEntities },
+            SecondaryRareBonusEntityChancePercent: 20,
+            SecondaryRareBonusEntityMinCount: 1,
+            SecondaryRareBonusEntityMaxCount: 1);
     }
 
     private static RestorationRule RandomizedClutterRule(int durabilityCost, string[] clutterTypes, string textureKey, string[] textureOptions)
@@ -2233,6 +2371,28 @@ public class ItemTemporalReverser : Item
             durabilityCost,
             RestorationTargetKind.Block,
             code);
+    }
+
+    private static RestorationRule VanillaBlockRuleWithCritters(
+        int durabilityCost,
+        string code,
+        string[][]? rareBonusEntityGroups,
+        int rareBonusEntityChancePercent,
+        string[][]? secondaryRareBonusEntityGroups,
+        int secondaryRareBonusEntityChancePercent)
+    {
+        return new RestorationRule(
+            durabilityCost,
+            RestorationTargetKind.Block,
+            code,
+            RareBonusEntityGroups: rareBonusEntityGroups,
+            RareBonusEntityChancePercent: rareBonusEntityChancePercent,
+            RareBonusEntityMinCount: 1,
+            RareBonusEntityMaxCount: 1,
+            SecondaryRareBonusEntityGroups: secondaryRareBonusEntityGroups,
+            SecondaryRareBonusEntityChancePercent: secondaryRareBonusEntityChancePercent,
+            SecondaryRareBonusEntityMinCount: 1,
+            SecondaryRareBonusEntityMaxCount: 1);
     }
 
     private static RestorationRule VanillaBlockWithBonusItemsRule(
@@ -2293,6 +2453,11 @@ public class ItemTemporalReverser : Item
         int bonusItemMaxCount = 1,
         string[]? rareBonusItems = null,
         int rareBonusChancePercent = 0,
+        string[]? rareBonusEntities = null,
+        string[][]? rareBonusEntityGroups = null,
+        int rareBonusEntityChancePercent = 0,
+        int rareBonusEntityMinCount = 1,
+        int rareBonusEntityMaxCount = 1,
         BonusLootStyle lootStyle = BonusLootStyle.None)
     {
         return new RestorationRule(
@@ -2309,6 +2474,11 @@ public class ItemTemporalReverser : Item
             BonusItemMaxCount: bonusItemMaxCount,
             RareBonusTargets: rareBonusItems,
             RareBonusChancePercent: rareBonusChancePercent,
+            RareBonusEntityTargets: rareBonusEntities,
+            RareBonusEntityGroups: rareBonusEntityGroups,
+            RareBonusEntityChancePercent: rareBonusEntityChancePercent,
+            RareBonusEntityMinCount: rareBonusEntityMinCount,
+            RareBonusEntityMaxCount: rareBonusEntityMaxCount,
             LootStyle: lootStyle);
     }
 
@@ -2338,8 +2508,14 @@ public class ItemTemporalReverser : Item
         int durabilityCost,
         string size,
         string[] exactItemCodes,
-        int primaryCount = 1)
+        int primaryCount = 1,
+        string[]? rareBonusEntities = null,
+        string[][]? rareBonusEntityGroups = null,
+        int rareBonusEntityChancePercent = 0,
+        int rareBonusEntityMinCount = 1,
+        int rareBonusEntityMaxCount = 1)
     {
+        rareBonusEntityGroups ??= RandomCrateCreatureEntityGroups;
         return new RestorationRule(
             durabilityCost,
             RestorationTargetKind.Block,
@@ -2349,6 +2525,11 @@ public class ItemTemporalReverser : Item
             BonusMaxCount: exactItemCodes.Length,
             BonusItemMinCount: 1,
             BonusItemMaxCount: 1,
+            RareBonusEntityTargets: rareBonusEntities,
+            RareBonusEntityGroups: rareBonusEntityGroups,
+            RareBonusEntityChancePercent: rareBonusEntityChancePercent,
+            RareBonusEntityMinCount: rareBonusEntityMinCount,
+            RareBonusEntityMaxCount: rareBonusEntityMaxCount,
             PrimaryMinCount: primaryCount,
             PrimaryMaxCount: primaryCount,
             LootStyle: BonusLootStyle.ExactListedItems);
@@ -2361,12 +2542,18 @@ public class ItemTemporalReverser : Item
         int bonusMinCount,
         int bonusMaxCount,
         int bonusItemMinCount = 1,
-        int bonusItemMaxCount = 1,
-        string[]? rareBonusItems = null,
-        int rareBonusChancePercent = 0,
-        BonusLootStyle lootStyle = BonusLootStyle.None,
-        params string[] attributes)
+            int bonusItemMaxCount = 1,
+            string[]? rareBonusItems = null,
+            int rareBonusChancePercent = 0,
+            string[]? rareBonusEntities = null,
+            string[][]? rareBonusEntityGroups = null,
+            int rareBonusEntityChancePercent = 0,
+            int rareBonusEntityMinCount = 1,
+            int rareBonusEntityMaxCount = 1,
+            BonusLootStyle lootStyle = BonusLootStyle.None,
+            params string[] attributes)
     {
+        rareBonusEntityGroups ??= RandomCrateCreatureEntityGroups;
         return new RestorationRule(
             durabilityCost,
             RestorationTargetKind.VanillaAttributedBlock,
@@ -2381,6 +2568,11 @@ public class ItemTemporalReverser : Item
             BonusItemMaxCount: bonusItemMaxCount,
             RareBonusTargets: rareBonusItems,
             RareBonusChancePercent: rareBonusChancePercent,
+            RareBonusEntityTargets: rareBonusEntities,
+            RareBonusEntityGroups: rareBonusEntityGroups,
+            RareBonusEntityChancePercent: rareBonusEntityChancePercent,
+            RareBonusEntityMinCount: rareBonusEntityMinCount,
+            RareBonusEntityMaxCount: rareBonusEntityMaxCount,
             LootStyle: lootStyle);
     }
 
@@ -2401,18 +2593,28 @@ public class ItemTemporalReverser : Item
             RestorationTargetKind.RandomVanillaItem,
             string.Empty,
             itemCodes,
-            null,
-            null,
-            null,
-            0,
-            0,
-            1,
-            1,
-            null,
-            0,
-            1,
-            primaryMinCount,
-            primaryMaxCount);
+            TextureKey: null,
+            TextureOptions: null,
+            BonusTargets: null,
+            BonusMinCount: 0,
+            BonusMaxCount: 0,
+            BonusItemMinCount: 1,
+            BonusItemMaxCount: 1,
+            RareBonusTargets: null,
+            RareBonusChancePercent: 0,
+            RareBonusEntityTargets: null,
+            RareBonusEntityGroups: null,
+            RareBonusEntityChancePercent: 0,
+            RareBonusEntityMinCount: 1,
+            RareBonusEntityMaxCount: 1,
+            SecondaryRareBonusEntityTargets: null,
+            SecondaryRareBonusEntityGroups: null,
+            SecondaryRareBonusEntityChancePercent: 0,
+            SecondaryRareBonusEntityMinCount: 1,
+            SecondaryRareBonusEntityMaxCount: 1,
+            RareBonusCount: 1,
+            PrimaryMinCount: primaryMinCount,
+            PrimaryMaxCount: primaryMaxCount);
     }
 
     private static RestorationRule RandomVanillaItemBundleRule(int durabilityCost, string[] itemCodes, int minCount, int maxCount)
@@ -2478,6 +2680,16 @@ public class ItemTemporalReverser : Item
         int BonusItemMaxCount = 1,
         string[]? RareBonusTargets = null,
         int RareBonusChancePercent = 0,
+        string[]? RareBonusEntityTargets = null,
+        string[][]? RareBonusEntityGroups = null,
+        int RareBonusEntityChancePercent = 0,
+        int RareBonusEntityMinCount = 1,
+        int RareBonusEntityMaxCount = 1,
+        string[]? SecondaryRareBonusEntityTargets = null,
+        string[][]? SecondaryRareBonusEntityGroups = null,
+        int SecondaryRareBonusEntityChancePercent = 0,
+        int SecondaryRareBonusEntityMinCount = 1,
+        int SecondaryRareBonusEntityMaxCount = 1,
         int RareBonusCount = 1,
         int PrimaryMinCount = 1,
         int PrimaryMaxCount = 1,
@@ -2501,6 +2713,133 @@ public class ItemTemporalReverser : Item
         string code = stack.Collectible?.Code?.ToString() ?? "<unknown>";
         string? type = stack.Attributes?.GetString("type");
         return string.IsNullOrWhiteSpace(type) ? $"{code} x{stack.StackSize}" : $"{code} [type={type}] x{stack.StackSize}";
+    }
+
+    private static string DescribeEntityForRecord(string entityCode)
+    {
+        return $"{entityCode} x1";
+    }
+
+    private static bool IsRaccoonCreatureGroup(string[] entityCodes)
+    {
+        return entityCodes.Any(code => code.StartsWith("game:raccoon-common", StringComparison.OrdinalIgnoreCase));
+    }
+
+    private static bool IsMouseCreatureGroup(string[] entityCodes)
+    {
+        return entityCodes.Any(code => code.Equals("vstemporalreverser:mouse", StringComparison.OrdinalIgnoreCase));
+    }
+
+    private static bool IsMothCreatureGroup(string[] entityCodes)
+    {
+        return entityCodes.Any(code => code.StartsWith("game:butterfly-", StringComparison.OrdinalIgnoreCase));
+    }
+
+    private static string[][] FilterEnabledCreatureGroups(string[][] groups)
+    {
+        VSTemporalReverserConfig config = VSTemporalReverserModSystem.Config;
+        List<string[]> enabledGroups = [];
+
+        foreach (string[] group in groups)
+        {
+            if (IsRaccoonCreatureGroup(group) && !config.EnableRaccoonCritterSpawns)
+            {
+                continue;
+            }
+
+            if (IsMouseCreatureGroup(group) && !config.EnableMouseCritterSpawns)
+            {
+                continue;
+            }
+
+            if (IsMothCreatureGroup(group) && !config.EnableMothCritterSpawns)
+            {
+                continue;
+            }
+
+            enabledGroups.Add(group);
+        }
+
+        return enabledGroups.Count > 0 ? [.. enabledGroups] : Array.Empty<string[]>();
+    }
+
+    private static bool TrySpawnRestoredEntity(IWorldAccessor world, Vec3d spawnPos, string entityCode)
+    {
+        EntityProperties? type = world.GetEntityType(ToAssetLocation(entityCode));
+        if (type == null)
+        {
+            return false;
+        }
+
+        Entity? entity = world.ClassRegistry.CreateEntity(type);
+        if (entity == null)
+        {
+            return false;
+        }
+
+        entity.Pos.SetPos(spawnPos.X, spawnPos.Y + 0.2, spawnPos.Z);
+        world.SpawnEntity(entity);
+        return true;
+    }
+
+    private static IEnumerable<string> CreateSupplementalRestoredEntities(RestorationRule rule)
+    {
+        foreach (string entityCode in CreateSupplementalRestoredEntities(
+                     rule.RareBonusEntityTargets,
+                     rule.RareBonusEntityGroups,
+                     rule.RareBonusEntityChancePercent,
+                     rule.RareBonusEntityMinCount,
+                     rule.RareBonusEntityMaxCount))
+        {
+            yield return entityCode;
+        }
+
+        foreach (string entityCode in CreateSupplementalRestoredEntities(
+                     rule.SecondaryRareBonusEntityTargets,
+                     rule.SecondaryRareBonusEntityGroups,
+                     rule.SecondaryRareBonusEntityChancePercent,
+                     rule.SecondaryRareBonusEntityMinCount,
+                     rule.SecondaryRareBonusEntityMaxCount))
+        {
+            yield return entityCode;
+        }
+    }
+
+    private static IEnumerable<string> CreateSupplementalRestoredEntities(
+        string[]? entityCodes,
+        string[][]? entityGroups,
+        int chancePercent,
+        int minCount,
+        int maxCount)
+    {
+        entityCodes ??= Array.Empty<string>();
+        if (entityGroups != null && entityGroups.Length > 0)
+        {
+            entityGroups = FilterEnabledCreatureGroups(entityGroups);
+        }
+        if ((entityCodes.Length == 0 && (entityGroups == null || entityGroups.Length == 0)) || chancePercent <= 0)
+        {
+            yield break;
+        }
+
+        if (Random.Shared.Next(100) >= chancePercent)
+        {
+            yield break;
+        }
+
+        if (entityGroups != null && entityGroups.Length > 0)
+        {
+            entityCodes = entityGroups[Random.Shared.Next(entityGroups.Length)];
+        }
+
+        int clampedMin = Math.Max(1, minCount);
+        int clampedMax = Math.Max(clampedMin, maxCount);
+        int spawnCount = clampedMax > clampedMin ? Random.Shared.Next(clampedMin, clampedMax + 1) : clampedMin;
+
+        for (int index = 0; index < spawnCount; index++)
+        {
+            yield return entityCodes[Random.Shared.Next(entityCodes.Length)];
+        }
     }
 
     private static string[] BuildItemCodes(string prefix, string[] finishes)

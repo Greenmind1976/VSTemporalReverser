@@ -1,0 +1,130 @@
+{
+  "code": "mouse",
+  "class": "EntityAgent",
+  "tags": ["animal", "adult", "habitat-land"],
+  "weight": 1,
+  "hitboxSize": {
+    "x": 0.2,
+    "y": 0.15
+  },
+  "deadHitboxSize": {
+    "x": 0.2,
+    "y": 0.08
+  },
+  "eyeHeight": 0.08,
+  "drops": [],
+  "attributes": {
+    "handbook": {
+      "groupcode": "creaturegroup-mouse"
+    }
+  },
+  "client": {
+    "renderer": "Shape",
+    "shape": {
+      "base": "entity/animal/mammal/mouse"
+    },
+    "behaviors": [
+      {
+        "code": "repulseagents"
+      },
+      {
+        "code": "controlledphysics",
+        "stepHeight": 1.1251
+      },
+      {
+        "code": "floatupwhenstuck",
+        "onlyWhenDead": true
+      },
+      {
+        "code": "interpolateposition"
+      },
+      {
+        "code": "despawn",
+        "minPlayerDistance": 8,
+        "belowLightLevel": 8,
+        "minSeconds": 300
+      }
+    ]
+  },
+  "server": {
+    "attributes": {
+      "pathfinder": {
+        "minTurnAnglePerSec": 720,
+        "maxTurnAnglePerSec": 1440
+      }
+    },
+    "behaviors": [
+      {
+        "code": "repulseagents"
+      },
+      {
+        "code": "controlledphysics",
+        "stepHeight": 1.1251
+      },
+      {
+        "code": "despawn",
+        "minPlayerDistance": 8,
+        "belowLightLevel": 8,
+        "minSeconds": 300
+      },
+      {
+        "code": "health",
+        "currenthealth": 1,
+        "maxhealth": 1
+      },
+      {
+        "code": "deaddecay",
+        "hoursToDecay": 96,
+        "decayedBlock": "carcass-tiny"
+      },
+      {
+        "code": "floatupwhenstuck",
+        "onlyWhenDead": true
+      },
+      {
+        "code": "breathe"
+      },
+      {
+        "code": "emotionstates",
+        "states": [
+          {
+            "code": "fleeondamage",
+            "duration": 10,
+            "chance": 1,
+            "slot": 0,
+            "priority": 1,
+            "accumType": "max"
+          }
+        ]
+      },
+      {
+        "code": "taskai",
+        "aiCreatureType": "LandCreature",
+        "aitasks": [
+          {
+            "code": "fleeentity",
+            "entityCodes": ["player"],
+            "priority": 2,
+            "movespeed": 0.06,
+            "seekingRange": 14
+          },
+          {
+            "code": "getoutofwater",
+            "priority": 1.4,
+            "movespeed": 0.015
+          },
+          {
+            "code": "wander",
+            "priority": 1.0,
+            "priorityForCancel": 1.35,
+            "movespeed": 0.02
+          },
+          {
+            "code": "lookaround",
+            "priority": 0.5
+          }
+        ]
+      }
+    ]
+  }
+}
