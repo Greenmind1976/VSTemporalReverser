@@ -45,13 +45,15 @@ public class VSTemporalReverserModSystem : ModSystem
             .Distinct(StringComparer.OrdinalIgnoreCase)
             .ToArray();
 
-        if (Config.EnabledWoodTypes.Count == 0)
+        string[] enabled = Config.GetEnabledWoodTypes();
+
+        if (enabled.Length == 0)
         {
             return fallback;
         }
 
         string[] filtered = fallback
-            .Where(code => Config.EnabledWoodTypes.Contains(code, StringComparer.OrdinalIgnoreCase))
+            .Where(code => enabled.Contains(code, StringComparer.OrdinalIgnoreCase))
             .ToArray();
 
         return filtered.Length > 0 ? filtered : fallback;
@@ -59,7 +61,6 @@ public class VSTemporalReverserModSystem : ModSystem
 
     private void ApplyConfig(ICoreAPI api, VSTemporalReverserConfig config)
     {
-        config.Normalize();
         Config = config;
         api.StoreModConfig(Config, VSTemporalReverserConfig.FileName);
     }

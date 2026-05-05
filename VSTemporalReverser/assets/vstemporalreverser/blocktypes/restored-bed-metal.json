@@ -49,10 +49,10 @@
   },
   "textures": {
     "metal": {
-      "base": "block/metal/lantern/blackbronze"
+      "base": "block/restoredbed/metal/lantern-rotated/blackbronze"
     },
     "mesh2": {
-      "base": "block/metal/mesh2"
+      "base": "block/restoredbed/metal/mesh2"
     },
     "cover": {
       "base": "block/cloth/linen/gray"
@@ -61,7 +61,7 @@
   "texturesbytype": {
     "*-copper-blue": {
       "metal": {
-        "base": "block/metal/lantern/copper"
+        "base": "block/restoredbed/metal/lantern-rotated/copper"
       },
       "cover": {
         "base": "block/cloth/linen/blue"
@@ -69,7 +69,7 @@
     },
     "*-copper-red": {
       "metal": {
-        "base": "block/metal/lantern/copper"
+        "base": "block/restoredbed/metal/lantern-rotated/copper"
       },
       "cover": {
         "base": "block/cloth/linen/red"
@@ -77,7 +77,7 @@
     },
     "*-copper-yellow": {
       "metal": {
-        "base": "block/metal/lantern/copper"
+        "base": "block/restoredbed/metal/lantern-rotated/copper"
       },
       "cover": {
         "base": "block/cloth/linen/yellow"
@@ -85,7 +85,7 @@
     },
     "*-copper-purple": {
       "metal": {
-        "base": "block/metal/lantern/copper"
+        "base": "block/restoredbed/metal/lantern-rotated/copper"
       },
       "cover": {
         "base": "block/cloth/linen/purple"
@@ -93,7 +93,7 @@
     },
     "*-copper-brown": {
       "metal": {
-        "base": "block/metal/lantern/copper"
+        "base": "block/restoredbed/metal/lantern-rotated/copper"
       },
       "cover": {
         "base": "block/cloth/linen/brown"
@@ -101,7 +101,7 @@
     },
     "*-copper-green": {
       "metal": {
-        "base": "block/metal/lantern/copper"
+        "base": "block/restoredbed/metal/lantern-rotated/copper"
       },
       "cover": {
         "base": "block/cloth/linen/green"
@@ -109,7 +109,7 @@
     },
     "*-copper-orange": {
       "metal": {
-        "base": "block/metal/lantern/copper"
+        "base": "block/restoredbed/metal/lantern-rotated/copper"
       },
       "cover": {
         "base": "block/cloth/linen/orange"
@@ -117,7 +117,7 @@
     },
     "*-copper-black": {
       "metal": {
-        "base": "block/metal/lantern/copper"
+        "base": "block/restoredbed/metal/lantern-rotated/copper"
       },
       "cover": {
         "base": "block/cloth/linen/black"
@@ -125,7 +125,7 @@
     },
     "*-copper-gray": {
       "metal": {
-        "base": "block/metal/lantern/copper"
+        "base": "block/restoredbed/metal/lantern-rotated/copper"
       },
       "cover": {
         "base": "block/cloth/linen/gray"
@@ -133,7 +133,7 @@
     },
     "*-copper-pink": {
       "metal": {
-        "base": "block/metal/lantern/copper"
+        "base": "block/restoredbed/metal/lantern-rotated/copper"
       },
       "cover": {
         "base": "block/cloth/linen/pink"
@@ -141,7 +141,7 @@
     },
     "*-copper-white": {
       "metal": {
-        "base": "block/metal/lantern/copper"
+        "base": "block/restoredbed/metal/lantern-rotated/copper"
       },
       "cover": {
         "base": "block/cloth/linen/white"
@@ -149,7 +149,7 @@
     },
     "*-brass-blue": {
       "metal": {
-        "base": "block/metal/lantern/brass"
+        "base": "block/restoredbed/metal/lantern-rotated/brass"
       },
       "cover": {
         "base": "block/cloth/linen/blue"
@@ -157,7 +157,7 @@
     },
     "*-brass-red": {
       "metal": {
-        "base": "block/metal/lantern/brass"
+        "base": "block/restoredbed/metal/lantern-rotated/brass"
       },
       "cover": {
         "base": "block/cloth/linen/red"
@@ -165,7 +165,7 @@
     },
     "*-brass-yellow": {
       "metal": {
-        "base": "block/metal/lantern/brass"
+        "base": "block/restoredbed/metal/lantern-rotated/brass"
       },
       "cover": {
         "base": "block/cloth/linen/yellow"
@@ -173,7 +173,7 @@
     },
     "*-brass-purple": {
       "metal": {
-        "base": "block/metal/lantern/brass"
+        "base": "block/restoredbed/metal/lantern-rotated/brass"
       },
       "cover": {
         "base": "block/cloth/linen/purple"
@@ -181,7 +181,7 @@
     },
     "*-brass-brown": {
       "metal": {
-        "base": "block/metal/lantern/brass"
+        "base": "block/restoredbed/metal/lantern-rotated/brass"
       },
       "cover": {
         "base": "block/cloth/linen/brown"
@@ -189,7 +189,7 @@
     },
     "*-brass-green": {
       "metal": {
-        "base": "block/metal/lantern/brass"
+        "base": "block/restoredbed/metal/lantern-rotated/brass"
       },
       "cover": {
         "base": "block/cloth/linen/green"
@@ -197,7 +197,7 @@
     },
     "*-brass-orange": {
       "metal": {
-        "base": "block/metal/lantern/brass"
+        "base": "block/restoredbed/metal/lantern-rotated/brass"
       },
       "cover": {
         "base": "block/cloth/linen/orange"
@@ -205,7 +205,7 @@
     },
     "*-brass-black": {
       "metal": {
-        "base": "block/metal/lantern/brass"
+        "base": "block/restoredbed/metal/lantern-rotated/brass"
       },
       "cover": {
         "base": "block/cloth/linen/black"
@@ -213,7 +213,7 @@
     },
     "*-brass-gray": {
       "metal": {
-        "base": "block/metal/lantern/brass"
+        "base": "block/restoredbed/metal/lantern-rotated/brass"
       },
       "cover": {
         "base": "block/cloth/linen/gray"
@@ -221,7 +221,7 @@
     },
     "*-brass-pink": {
       "metal": {
-        "base": "block/metal/lantern/brass"
+        "base": "block/restoredbed/metal/lantern-rotated/brass"
       },
       "cover": {
         "base": "block/cloth/linen/pink"
@@ -229,7 +229,7 @@
     },
     "*-brass-white": {
       "metal": {
-        "base": "block/metal/lantern/brass"
+        "base": "block/restoredbed/metal/lantern-rotated/brass"
       },
       "cover": {
         "base": "block/cloth/linen/white"
@@ -237,7 +237,7 @@
     },
     "*-blackbronze-blue": {
       "metal": {
-        "base": "block/metal/lantern/blackbronze"
+        "base": "block/restoredbed/metal/lantern-rotated/blackbronze"
       },
       "cover": {
         "base": "block/cloth/linen/blue"
@@ -245,7 +245,7 @@
     },
     "*-blackbronze-red": {
       "metal": {
-        "base": "block/metal/lantern/blackbronze"
+        "base": "block/restoredbed/metal/lantern-rotated/blackbronze"
       },
       "cover": {
         "base": "block/cloth/linen/red"
@@ -253,7 +253,7 @@
     },
     "*-blackbronze-yellow": {
       "metal": {
-        "base": "block/metal/lantern/blackbronze"
+        "base": "block/restoredbed/metal/lantern-rotated/blackbronze"
       },
       "cover": {
         "base": "block/cloth/linen/yellow"
@@ -261,7 +261,7 @@
     },
     "*-blackbronze-purple": {
       "metal": {
-        "base": "block/metal/lantern/blackbronze"
+        "base": "block/restoredbed/metal/lantern-rotated/blackbronze"
       },
       "cover": {
         "base": "block/cloth/linen/purple"
@@ -269,7 +269,7 @@
     },
     "*-blackbronze-brown": {
       "metal": {
-        "base": "block/metal/lantern/blackbronze"
+        "base": "block/restoredbed/metal/lantern-rotated/blackbronze"
       },
       "cover": {
         "base": "block/cloth/linen/brown"
@@ -277,7 +277,7 @@
     },
     "*-blackbronze-green": {
       "metal": {
-        "base": "block/metal/lantern/blackbronze"
+        "base": "block/restoredbed/metal/lantern-rotated/blackbronze"
       },
       "cover": {
         "base": "block/cloth/linen/green"
@@ -285,7 +285,7 @@
     },
     "*-blackbronze-orange": {
       "metal": {
-        "base": "block/metal/lantern/blackbronze"
+        "base": "block/restoredbed/metal/lantern-rotated/blackbronze"
       },
       "cover": {
         "base": "block/cloth/linen/orange"
@@ -293,7 +293,7 @@
     },
     "*-blackbronze-black": {
       "metal": {
-        "base": "block/metal/lantern/blackbronze"
+        "base": "block/restoredbed/metal/lantern-rotated/blackbronze"
       },
       "cover": {
         "base": "block/cloth/linen/black"
@@ -301,7 +301,7 @@
     },
     "*-blackbronze-gray": {
       "metal": {
-        "base": "block/metal/lantern/blackbronze"
+        "base": "block/restoredbed/metal/lantern-rotated/blackbronze"
       },
       "cover": {
         "base": "block/cloth/linen/gray"
@@ -309,7 +309,7 @@
     },
     "*-blackbronze-pink": {
       "metal": {
-        "base": "block/metal/lantern/blackbronze"
+        "base": "block/restoredbed/metal/lantern-rotated/blackbronze"
       },
       "cover": {
         "base": "block/cloth/linen/pink"
@@ -317,7 +317,7 @@
     },
     "*-blackbronze-white": {
       "metal": {
-        "base": "block/metal/lantern/blackbronze"
+        "base": "block/restoredbed/metal/lantern-rotated/blackbronze"
       },
       "cover": {
         "base": "block/cloth/linen/white"
@@ -325,7 +325,7 @@
     },
     "*-silver-blue": {
       "metal": {
-        "base": "block/metal/lantern/silver"
+        "base": "block/restoredbed/metal/lantern-rotated/silver"
       },
       "cover": {
         "base": "block/cloth/linen/blue"
@@ -333,7 +333,7 @@
     },
     "*-silver-red": {
       "metal": {
-        "base": "block/metal/lantern/silver"
+        "base": "block/restoredbed/metal/lantern-rotated/silver"
       },
       "cover": {
         "base": "block/cloth/linen/red"
@@ -341,7 +341,7 @@
     },
     "*-silver-yellow": {
       "metal": {
-        "base": "block/metal/lantern/silver"
+        "base": "block/restoredbed/metal/lantern-rotated/silver"
       },
       "cover": {
         "base": "block/cloth/linen/yellow"
@@ -349,7 +349,7 @@
     },
     "*-silver-purple": {
       "metal": {
-        "base": "block/metal/lantern/silver"
+        "base": "block/restoredbed/metal/lantern-rotated/silver"
       },
       "cover": {
         "base": "block/cloth/linen/purple"
@@ -357,7 +357,7 @@
     },
     "*-silver-brown": {
       "metal": {
-        "base": "block/metal/lantern/silver"
+        "base": "block/restoredbed/metal/lantern-rotated/silver"
       },
       "cover": {
         "base": "block/cloth/linen/brown"
@@ -365,7 +365,7 @@
     },
     "*-silver-green": {
       "metal": {
-        "base": "block/metal/lantern/silver"
+        "base": "block/restoredbed/metal/lantern-rotated/silver"
       },
       "cover": {
         "base": "block/cloth/linen/green"
@@ -373,7 +373,7 @@
     },
     "*-silver-orange": {
       "metal": {
-        "base": "block/metal/lantern/silver"
+        "base": "block/restoredbed/metal/lantern-rotated/silver"
       },
       "cover": {
         "base": "block/cloth/linen/orange"
@@ -381,7 +381,7 @@
     },
     "*-silver-black": {
       "metal": {
-        "base": "block/metal/lantern/silver"
+        "base": "block/restoredbed/metal/lantern-rotated/silver"
       },
       "cover": {
         "base": "block/cloth/linen/black"
@@ -389,7 +389,7 @@
     },
     "*-silver-gray": {
       "metal": {
-        "base": "block/metal/lantern/silver"
+        "base": "block/restoredbed/metal/lantern-rotated/silver"
       },
       "cover": {
         "base": "block/cloth/linen/gray"
@@ -397,7 +397,7 @@
     },
     "*-silver-pink": {
       "metal": {
-        "base": "block/metal/lantern/silver"
+        "base": "block/restoredbed/metal/lantern-rotated/silver"
       },
       "cover": {
         "base": "block/cloth/linen/pink"
@@ -405,7 +405,7 @@
     },
     "*-silver-white": {
       "metal": {
-        "base": "block/metal/lantern/silver"
+        "base": "block/restoredbed/metal/lantern-rotated/silver"
       },
       "cover": {
         "base": "block/cloth/linen/white"
@@ -413,7 +413,7 @@
     },
     "*-gold-blue": {
       "metal": {
-        "base": "block/metal/lantern/gold"
+        "base": "block/restoredbed/metal/lantern-rotated/gold"
       },
       "cover": {
         "base": "block/cloth/linen/blue"
@@ -421,7 +421,7 @@
     },
     "*-gold-red": {
       "metal": {
-        "base": "block/metal/lantern/gold"
+        "base": "block/restoredbed/metal/lantern-rotated/gold"
       },
       "cover": {
         "base": "block/cloth/linen/red"
@@ -429,7 +429,7 @@
     },
     "*-gold-yellow": {
       "metal": {
-        "base": "block/metal/lantern/gold"
+        "base": "block/restoredbed/metal/lantern-rotated/gold"
       },
       "cover": {
         "base": "block/cloth/linen/yellow"
@@ -437,7 +437,7 @@
     },
     "*-gold-purple": {
       "metal": {
-        "base": "block/metal/lantern/gold"
+        "base": "block/restoredbed/metal/lantern-rotated/gold"
       },
       "cover": {
         "base": "block/cloth/linen/purple"
@@ -445,7 +445,7 @@
     },
     "*-gold-brown": {
       "metal": {
-        "base": "block/metal/lantern/gold"
+        "base": "block/restoredbed/metal/lantern-rotated/gold"
       },
       "cover": {
         "base": "block/cloth/linen/brown"
@@ -453,7 +453,7 @@
     },
     "*-gold-green": {
       "metal": {
-        "base": "block/metal/lantern/gold"
+        "base": "block/restoredbed/metal/lantern-rotated/gold"
       },
       "cover": {
         "base": "block/cloth/linen/green"
@@ -461,7 +461,7 @@
     },
     "*-gold-orange": {
       "metal": {
-        "base": "block/metal/lantern/gold"
+        "base": "block/restoredbed/metal/lantern-rotated/gold"
       },
       "cover": {
         "base": "block/cloth/linen/orange"
@@ -469,7 +469,7 @@
     },
     "*-gold-black": {
       "metal": {
-        "base": "block/metal/lantern/gold"
+        "base": "block/restoredbed/metal/lantern-rotated/gold"
       },
       "cover": {
         "base": "block/cloth/linen/black"
@@ -477,7 +477,7 @@
     },
     "*-gold-gray": {
       "metal": {
-        "base": "block/metal/lantern/gold"
+        "base": "block/restoredbed/metal/lantern-rotated/gold"
       },
       "cover": {
         "base": "block/cloth/linen/gray"
@@ -485,7 +485,7 @@
     },
     "*-gold-pink": {
       "metal": {
-        "base": "block/metal/lantern/gold"
+        "base": "block/restoredbed/metal/lantern-rotated/gold"
       },
       "cover": {
         "base": "block/cloth/linen/pink"
@@ -493,7 +493,7 @@
     },
     "*-gold-white": {
       "metal": {
-        "base": "block/metal/lantern/gold"
+        "base": "block/restoredbed/metal/lantern-rotated/gold"
       },
       "cover": {
         "base": "block/cloth/linen/white"
@@ -501,7 +501,7 @@
     },
     "*-electrum-blue": {
       "metal": {
-        "base": "block/metal/lantern/electrum"
+        "base": "block/restoredbed/metal/lantern-rotated/electrum"
       },
       "cover": {
         "base": "block/cloth/linen/blue"
@@ -509,7 +509,7 @@
     },
     "*-electrum-red": {
       "metal": {
-        "base": "block/metal/lantern/electrum"
+        "base": "block/restoredbed/metal/lantern-rotated/electrum"
       },
       "cover": {
         "base": "block/cloth/linen/red"
@@ -517,7 +517,7 @@
     },
     "*-electrum-yellow": {
       "metal": {
-        "base": "block/metal/lantern/electrum"
+        "base": "block/restoredbed/metal/lantern-rotated/electrum"
       },
       "cover": {
         "base": "block/cloth/linen/yellow"
@@ -525,7 +525,7 @@
     },
     "*-electrum-purple": {
       "metal": {
-        "base": "block/metal/lantern/electrum"
+        "base": "block/restoredbed/metal/lantern-rotated/electrum"
       },
       "cover": {
         "base": "block/cloth/linen/purple"
@@ -533,7 +533,7 @@
     },
     "*-electrum-brown": {
       "metal": {
-        "base": "block/metal/lantern/electrum"
+        "base": "block/restoredbed/metal/lantern-rotated/electrum"
       },
       "cover": {
         "base": "block/cloth/linen/brown"
@@ -541,7 +541,7 @@
     },
     "*-electrum-green": {
       "metal": {
-        "base": "block/metal/lantern/electrum"
+        "base": "block/restoredbed/metal/lantern-rotated/electrum"
       },
       "cover": {
         "base": "block/cloth/linen/green"
@@ -549,7 +549,7 @@
     },
     "*-electrum-orange": {
       "metal": {
-        "base": "block/metal/lantern/electrum"
+        "base": "block/restoredbed/metal/lantern-rotated/electrum"
       },
       "cover": {
         "base": "block/cloth/linen/orange"
@@ -557,7 +557,7 @@
     },
     "*-electrum-black": {
       "metal": {
-        "base": "block/metal/lantern/electrum"
+        "base": "block/restoredbed/metal/lantern-rotated/electrum"
       },
       "cover": {
         "base": "block/cloth/linen/black"
@@ -565,7 +565,7 @@
     },
     "*-electrum-gray": {
       "metal": {
-        "base": "block/metal/lantern/electrum"
+        "base": "block/restoredbed/metal/lantern-rotated/electrum"
       },
       "cover": {
         "base": "block/cloth/linen/gray"
@@ -573,7 +573,7 @@
     },
     "*-electrum-pink": {
       "metal": {
-        "base": "block/metal/lantern/electrum"
+        "base": "block/restoredbed/metal/lantern-rotated/electrum"
       },
       "cover": {
         "base": "block/cloth/linen/pink"
@@ -581,7 +581,7 @@
     },
     "*-electrum-white": {
       "metal": {
-        "base": "block/metal/lantern/electrum"
+        "base": "block/restoredbed/metal/lantern-rotated/electrum"
       },
       "cover": {
         "base": "block/cloth/linen/white"
