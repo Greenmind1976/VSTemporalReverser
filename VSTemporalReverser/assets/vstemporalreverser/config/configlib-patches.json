@@ -1,0 +1,148 @@
+{
+  "version": 10,
+  "file": "VSTemporalReverserConfig.json",
+  "patches": {},
+  "settings": [
+    {
+      "type": "separator",
+      "title": "Wood Restore",
+      "weight": 100
+    },
+    {
+      "code": "Birch",
+      "ingui": "Birch",
+      "type": "boolean",
+      "weight": 89,
+      "default": true
+    },
+    {
+      "code": "Oak",
+      "ingui": "Oak",
+      "type": "boolean",
+      "weight": 88.9,
+      "default": true
+    },
+    {
+      "code": "Maple",
+      "ingui": "Maple",
+      "type": "boolean",
+      "weight": 88.8,
+      "default": true
+    },
+    {
+      "code": "Pine",
+      "ingui": "Pine",
+      "type": "boolean",
+      "weight": 88.7,
+      "default": true
+    },
+    {
+      "code": "Acacia",
+      "ingui": "Acacia",
+      "type": "boolean",
+      "weight": 88.6,
+      "default": true
+    },
+    {
+      "code": "Kapok",
+      "ingui": "Kapok",
+      "type": "boolean",
+      "weight": 88.5,
+      "default": true
+    },
+    {
+      "code": "Redwood",
+      "ingui": "Redwood",
+      "type": "boolean",
+      "weight": 88.4,
+      "default": true
+    },
+    {
+      "code": "BaldCypress",
+      "ingui": "Bald Cypress",
+      "type": "boolean",
+      "weight": 88.3,
+      "default": true
+    },
+    {
+      "code": "Larch",
+      "ingui": "Larch",
+      "type": "boolean",
+      "weight": 88.2,
+      "default": true
+    },
+    {
+      "code": "Ebony",
+      "ingui": "Ebony",
+      "type": "boolean",
+      "weight": 88.1,
+      "default": true
+    },
+    {
+      "code": "Walnut",
+      "ingui": "Walnut",
+      "type": "boolean",
+      "weight": 88.0,
+      "default": true
+    },
+    {
+      "code": "Purpleheart",
+      "ingui": "Purpleheart",
+      "type": "boolean",
+      "weight": 87.9,
+      "default": true
+    },
+    {
+      "code": "AgedWood",
+      "ingui": "Aged Wood",
+      "type": "boolean",
+      "weight": 87.8,
+      "default": true
+    },
+    {
+      "code": "VeryAgedWood",
+      "ingui": "Very Aged Wood",
+      "type": "boolean",
+      "weight": 87.7,
+      "default": true
+    },
+    {
+      "type": "separator",
+      "title": "Critter Spawn",
+      "weight": 90
+    },
+    {
+      "code": "EnableRaccoons",
+      "ingui": "Raccoons",
+      "type": "boolean",
+      "weight": 79.9,
+      "default": true
+    },
+    {
+      "code": "EnableMice",
+      "ingui": "Mice",
+      "type": "boolean",
+      "weight": 79.8,
+      "default": true
+    },
+    {
+      "code": "EnableMoths",
+      "ingui": "Moths",
+      "type": "boolean",
+      "weight": 79.7,
+      "default": true
+    },
+    {
+      "type": "separator",
+      "title": "Debug Mode",
+      "weight": 80
+    },
+    {
+      "code": "EnableDebugMode",
+      "ingui": "Enable debug mode",
+      "type": "boolean",
+      "weight": 69.9,
+      "default": false
+    }
+  ]
+}

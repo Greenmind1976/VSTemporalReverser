@@ -54,6 +54,38 @@ Current junk tiers:
 - `-metaljunk1` rare tier: iron, meteoric iron, silver, and gold ingots and plates, plus iron and meteoric iron armor
 - `-metaljunk1` ultra-rare tier: silver, gold, and steel armor and plates
 
+## Critter Spawns
+
+Some restored crates, beds, chairs, and tables can also spawn bonus critters.
+
+### Crates
+
+| Restored target | Critter chance | Critter spawn |
+|---|---|---|
+| `crate/crate-medium-books` | `40%` | `1` moth or mouse group |
+| `crate/large-clothing1` | `40%` | `1` moth group |
+| `crate/crate-large-junk`, `crate/crate-medium-junk`, `crate/crate-small-junk`, `crate/large-generic-junk1` | `25%` | `1-5` mice or raccoons |
+| `crate/crate-large-rot` | `50%` | `1-5` mice or raccoons |
+| `crate/crate-small-rot` | `40%` | `1-5` mice or raccoons |
+| `crate/medium-toybox1`, `crate/medium-toybox2` | `60%` | `1` mouse or raccoon |
+| large crates and medium book/pottery crates | `10%` | `1` mouse or raccoon |
+
+### Furniture
+
+| Restored target | Critter chance | Critter spawn |
+|---|---|---|
+| beds | `50%` moths, `20%` mice | `1-5` each |
+| chairs | `50%` moths, `20%` mice | `1` each |
+| tables | `50%` moths, `20%` mice | `1` each |
+
+### Critter Toggles
+
+These config settings control the critter families independently:
+
+- `EnableMothCritterSpawns`
+- `EnableMouseCritterSpawns`
+- `EnableRaccoonCritterSpawns`
+
 ## Crate Restorations
 
 These crate clutter targets restore into crate blocks and may also drop bonus loot:

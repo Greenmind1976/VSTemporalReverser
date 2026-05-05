@@ -61,6 +61,14 @@ public class ItemTemporalReverser : Item
         "pink",
         "white"
     ];
+    private static readonly string[] RandomRestoredMetalTableClothColors =
+    [
+        "white",
+        "blue",
+        "green",
+        "purple",
+        "red"
+    ];
     private static readonly string[] RandomRestoredCenserMetalFinishes =
     [
         "copper",
@@ -133,6 +141,10 @@ public class ItemTemporalReverser : Item
         "game:butterfly-madagascansunsetmoth",
         "game:butterfly-oleanderhawkmothmale",
         "game:butterfly-sagebrushgirdlemoth"
+    ];
+    private static readonly string[] RandomTemporalGearItems =
+    [
+        "game:gear-temporal"
     ];
     private static readonly string[][] RandomCrateCreatureEntityGroups =
     [
@@ -924,6 +936,11 @@ public class ItemTemporalReverser : Item
         ["table-long-with-cloth-green"] = RestoredTableRule(AgedDurabilityCost, "scribegreen"),
         ["table-long-with-cloth-purple"] = RestoredTableRule(AgedDurabilityCost, "scribepurple"),
         ["table-long-with-cloth-red"] = RestoredTableRule(AgedDurabilityCost, "scribered"),
+        ["table/metal1"] = RestoredMetalTableRule(AgedDurabilityCost),
+        ["table/metal1-cloth"] = RestoredMetalTableRule(AgedDurabilityCost, "green"),
+        ["table/metal1-ruined1"] = RestoredMetalTableRule(RuinedDurabilityCost),
+        ["table/metal1-ruined2"] = RestoredMetalTableRule(RuinedDurabilityCost),
+        ["table/metal1-ruined3"] = RestoredMetalTableRule(RuinedDurabilityCost),
         ["table-ruined1"] = RandomRestoredTableRule(RuinedDurabilityCost, RandomRestoredAgedTableStyles),
         ["table-ruined2"] = RandomRestoredTableRule(RuinedDurabilityCost, RandomRestoredAgedTableStyles),
         ["table-ruined3"] = RandomRestoredTableRule(RuinedDurabilityCost, RandomRestoredAgedTableStyles),
@@ -1066,6 +1083,10 @@ public class ItemTemporalReverser : Item
                         }
                     }
             }
+            if (matchedRule == null)
+            {
+                matchedRule = TryGetAnvilRule(clutterType);
+            }
             if (matchedRule == null && clutterType != null && BedRules.TryGetValue(clutterType, out RestorationRule clutterRule))
             {
                 matchedRule = clutterRule;
@@ -1109,6 +1130,11 @@ public class ItemTemporalReverser : Item
             {
                 spawnedEntries.Add(DescribeEntityForRecord(entityCode));
             }
+        }
+        foreach (ItemStack gearStack in CreateSupplementalRestoredTemporalGearStacks(world, rule))
+        {
+            spawnedEntries.Add(DescribeStackForRecord(gearStack));
+            world.SpawnItemEntity(gearStack, dropPos);
         }
         DamageItem(world, byEntity, slot, rule.DurabilityCost);
 
@@ -1284,12 +1310,16 @@ public class ItemTemporalReverser : Item
             string torchholderMaterial = RandomTorchholderMaterials[Random.Shared.Next(RandomTorchholderMaterials.Length)];
             string libraryMaterial = enabledLibraryMaterials[Random.Shared.Next(enabledLibraryMaterials.Length)];
             string crateWood = enabledCrateWoodTypes[Random.Shared.Next(enabledCrateWoodTypes.Length)];
+            string tableMetal = RandomLanternMaterials[Random.Shared.Next(RandomLanternMaterials.Length)];
+            string tableClothColor = RandomRestoredMetalTableClothColors[Random.Shared.Next(RandomRestoredMetalTableClothColors.Length)];
             string chairColor = RandomVanillaChairColors[Random.Shared.Next(RandomVanillaChairColors.Length)];
             string targetCode = rule.Target
                 .Replace("{wood}", wood, StringComparison.Ordinal)
                 .Replace("{tablestyle}", tableStyle, StringComparison.Ordinal)
                 .Replace("{tablewood}", tableWood, StringComparison.Ordinal)
                 .Replace("{material}", material, StringComparison.Ordinal)
+                .Replace("{tablemetal}", tableMetal, StringComparison.Ordinal)
+                .Replace("{tableclothcolor}", tableClothColor, StringComparison.Ordinal)
                 .Replace("{lecternmetal}", lecternMetalFinish, StringComparison.Ordinal)
                 .Replace("{librarymaterial}", libraryMaterial, StringComparison.Ordinal)
                 .Replace("{cratewood}", crateWood, StringComparison.Ordinal)
@@ -1446,6 +1476,26 @@ public class ItemTemporalReverser : Item
         }
     }
 
+    private static IEnumerable<ItemStack> CreateSupplementalRestoredTemporalGearStacks(IWorldAccessor world, RestorationRule rule)
+    {
+        if (!IsCrateRestorationRule(rule) && !IsFurnitureRestorationRule(rule))
+        {
+            yield break;
+        }
+
+        if (Random.Shared.Next(100) >= 2)
+        {
+            yield break;
+        }
+
+        int stackCount = Random.Shared.Next(1, 6);
+        ItemStack? gearStack = CreateStackForCode(world, RandomTemporalGearItems[0], stackCount);
+        if (gearStack != null)
+        {
+            yield return gearStack;
+        }
+    }
+
     private static IEnumerable<ItemStack> CreateTieredLootStacks(
         IWorldAccessor world,
         RestorationRule rule,
@@ -1595,6 +1645,41 @@ public class ItemTemporalReverser : Item
         return null;
     }
 
+    private static bool IsCrateRestorationRule(RestorationRule rule)
+    {
+        if (rule.TargetKind == RestorationTargetKind.VanillaAttributedBlock &&
+            string.Equals(rule.Target, "game:crate", StringComparison.OrdinalIgnoreCase))
+        {
+            return true;
+        }
+
+        if (rule.TargetKind == RestorationTargetKind.Block &&
+            !string.IsNullOrWhiteSpace(rule.Target) &&
+            rule.Target.Contains("restored-crate-", StringComparison.OrdinalIgnoreCase))
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    private static bool IsFurnitureRestorationRule(RestorationRule rule)
+    {
+        if (rule.TargetKind != RestorationTargetKind.Block || string.IsNullOrWhiteSpace(rule.Target))
+        {
+            return false;
+        }
+
+        return rule.Target.Contains("restored-chair-", StringComparison.OrdinalIgnoreCase)
+            || rule.Target.Contains("restored-short-bed-", StringComparison.OrdinalIgnoreCase)
+            || rule.Target.Contains("restored-canopy-bed-", StringComparison.OrdinalIgnoreCase)
+            || rule.Target.Contains("restored-table-", StringComparison.OrdinalIgnoreCase)
+            || rule.Target.Contains("restored-metal-table-", StringComparison.OrdinalIgnoreCase)
+            || string.Equals(rule.Target, "vstemporalreverser:restored-table-{tablestyle}-{tablewood}-north", StringComparison.OrdinalIgnoreCase)
+            || string.Equals(rule.Target, "vstemporalreverser:restored-table-{tablestyle}-{tablewood}", StringComparison.OrdinalIgnoreCase)
+            || string.Equals(rule.Target, "vstemporalreverser:restored-table-{tablewood}", StringComparison.OrdinalIgnoreCase);
+    }
+
     private static string DescribeStack(ItemStack stack)
     {
         string code = stack.Collectible?.Code?.ToShortString() ?? "<null>";
@@ -1673,6 +1758,30 @@ public class ItemTemporalReverser : Item
             _ when normalized.StartsWith("metal3-wall", StringComparison.OrdinalIgnoreCase) => RandomRestoredCenserRule(durabilityCost, "metal3", RandomRestoredCenserMetalFinishes),
             _ when normalized.StartsWith("metal3", StringComparison.OrdinalIgnoreCase) => RandomRestoredCenserRule(durabilityCost, "metal3", RandomRestoredCenserMetalFinishes),
             _ when normalized.StartsWith("metal4", StringComparison.OrdinalIgnoreCase) => RandomRestoredCenserRule(durabilityCost, "metal4", RandomRestoredCenserMetalFinishes),
+            _ => null
+        };
+    }
+
+    private static RestorationRule? TryGetAnvilRule(string? clutterType)
+    {
+        if (string.IsNullOrWhiteSpace(clutterType))
+        {
+            return null;
+        }
+
+        string normalized = clutterType.StartsWith("clutter/", StringComparison.OrdinalIgnoreCase)
+            ? clutterType["clutter/".Length..]
+            : clutterType;
+        string simplified = normalized.Replace("/", "-", StringComparison.Ordinal);
+        simplified = simplified.StartsWith("clutter-", StringComparison.OrdinalIgnoreCase)
+            ? simplified["clutter-".Length..]
+            : simplified;
+
+        return simplified switch
+        {
+            "anvil-broken1" => VanillaBlockRule(RuinedDurabilityCost, "game:anvil-copper"),
+            "anvil-broken2" => VanillaBlockRule(RuinedDurabilityCost, "game:anvil-bismuthbronze"),
+            "anvil-broken3" => VanillaBlockRule(RuinedDurabilityCost, "game:anvil-iron"),
             _ => null
         };
     }
@@ -2211,7 +2320,7 @@ public class ItemTemporalReverser : Item
 
     private void WriteRestoreDebugRecord(string sourceCode, RestorationRule rule, IReadOnlyList<string> spawnedEntries)
     {
-        if (!VSTemporalReverserModSystem.Config.EnableDebugLogging)
+        if (!VSTemporalReverserModSystem.Config.EnableDebugMode)
         {
             return;
         }
@@ -2310,6 +2419,24 @@ public class ItemTemporalReverser : Item
             durabilityCost,
             RestorationTargetKind.Block,
             $"vstemporalreverser:restored-table-{style}-{{tablewood}}-north",
+            RareBonusEntityGroups: new[] { RandomMothCreatureEntities },
+            RareBonusEntityChancePercent: 50,
+            RareBonusEntityMinCount: 1,
+            RareBonusEntityMaxCount: 1,
+            SecondaryRareBonusEntityGroups: new[] { RandomMouseCreatureEntities },
+            SecondaryRareBonusEntityChancePercent: 20,
+            SecondaryRareBonusEntityMinCount: 1,
+            SecondaryRareBonusEntityMaxCount: 1);
+    }
+
+    private static RestorationRule RestoredMetalTableRule(int durabilityCost, string? fixedClothColor = null)
+    {
+        string clothColorToken = string.IsNullOrWhiteSpace(fixedClothColor) ? "{tableclothcolor}" : fixedClothColor;
+
+        return new RestorationRule(
+            durabilityCost,
+            RestorationTargetKind.Block,
+            $"vstemporalreverser:restored-metal-table-{clothColorToken}-{{tablemetal}}-north",
             RareBonusEntityGroups: new[] { RandomMothCreatureEntities },
             RareBonusEntityChancePercent: 50,
             RareBonusEntityMinCount: 1,
@@ -2742,17 +2869,17 @@ public class ItemTemporalReverser : Item
 
         foreach (string[] group in groups)
         {
-            if (IsRaccoonCreatureGroup(group) && !config.EnableRaccoonCritterSpawns)
+            if (IsRaccoonCreatureGroup(group) && !config.EnableRaccoons)
             {
                 continue;
             }
 
-            if (IsMouseCreatureGroup(group) && !config.EnableMouseCritterSpawns)
+            if (IsMouseCreatureGroup(group) && !config.EnableMice)
             {
                 continue;
             }
 
-            if (IsMothCreatureGroup(group) && !config.EnableMothCritterSpawns)
+            if (IsMothCreatureGroup(group) && !config.EnableMoths)
             {
                 continue;
             }

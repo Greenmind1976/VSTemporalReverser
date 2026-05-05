@@ -1,0 +1,1016 @@
+{
+  "code": "restored-metal-table",
+  "behaviors": [
+    {
+      "name": "UnstableFalling"
+    }
+  ],
+  "variantgroups": [
+    {
+      "code": "style",
+      "states": [
+        "white",
+        "blue",
+        "green",
+        "purple",
+        "red"
+      ]
+    },
+    {
+      "code": "metal",
+      "states": [
+        "copper",
+        "brass",
+        "blackbronze",
+        "bismuth",
+        "tinbronze",
+        "bismuthbronze",
+        "iron",
+        "molybdochalkos",
+        "silver",
+        "gold",
+        "steel",
+        "meteoriciron",
+        "electrum"
+      ]
+    },
+    {
+      "code": "side",
+      "loadFromProperties": "abstract/horizontalorientation"
+    }
+  ],
+  "attributes": {
+    "humanoidTraversalCost": 100,
+    "pieFormingSurface": true,
+    "handbook": {
+      "groupBy": [
+        "restored-metal-table-*"
+      ]
+    }
+  },
+  "drawtype": "json",
+  "blockmaterial": "Metal",
+  "replaceable": 900,
+  "resistance": 1.5,
+  "lightAbsorption": 1,
+  "sidesolid": {
+    "up": true,
+    "all": false
+  },
+  "sideopaque": {
+    "up": true,
+    "all": false
+  },
+  "shapeinventoryByType": {
+    "*": {
+      "base": "block/restoredmetal/table-metal1-cloth"
+    }
+  },
+  "shapebytype": {
+    "*-*-*-north": {
+      "base": "block/restoredmetal/table-metal1-cloth",
+      "rotateY": 90
+    },
+    "*-*-*-east": {
+      "base": "block/restoredmetal/table-metal1-cloth",
+      "rotateY": 0
+    },
+    "*-*-*-south": {
+      "base": "block/restoredmetal/table-metal1-cloth",
+      "rotateY": 270
+    },
+    "*-*-*-west": {
+      "base": "block/restoredmetal/table-metal1-cloth",
+      "rotateY": 180
+    }
+  },
+  "texturesByType": {
+    "*-white-copper-*": {
+      "metal": {
+        "base": "block/restoredmetal/metal/lantern-rotated/copper"
+      },
+      "top": {
+        "base": "block/restoredmetal/cloth/metaltable/white/cloth-top"
+      },
+      "edge-left": {
+        "base": "block/restoredmetal/cloth/metaltable/white/cloth-side"
+      },
+      "edge-right": {
+        "base": "block/restoredmetal/cloth/metaltable/white/cloth-side"
+      }
+    },
+    "*-white-brass-*": {
+      "metal": {
+        "base": "block/restoredmetal/metal/lantern-rotated/brass"
+      },
+      "top": {
+        "base": "block/restoredmetal/cloth/metaltable/white/cloth-top"
+      },
+      "edge-left": {
+        "base": "block/restoredmetal/cloth/metaltable/white/cloth-side"
+      },
+      "edge-right": {
+        "base": "block/restoredmetal/cloth/metaltable/white/cloth-side"
+      }
+    },
+    "*-white-blackbronze-*": {
+      "metal": {
+        "base": "block/restoredmetal/metal/lantern-rotated/blackbronze"
+      },
+      "top": {
+        "base": "block/restoredmetal/cloth/metaltable/white/cloth-top"
+      },
+      "edge-left": {
+        "base": "block/restoredmetal/cloth/metaltable/white/cloth-side"
+      },
+      "edge-right": {
+        "base": "block/restoredmetal/cloth/metaltable/white/cloth-side"
+      }
+    },
+    "*-white-bismuth-*": {
+      "metal": {
+        "base": "block/restoredmetal/metal/lantern-rotated/bismuth"
+      },
+      "top": {
+        "base": "block/restoredmetal/cloth/metaltable/white/cloth-top"
+      },
+      "edge-left": {
+        "base": "block/restoredmetal/cloth/metaltable/white/cloth-side"
+      },
+      "edge-right": {
+        "base": "block/restoredmetal/cloth/metaltable/white/cloth-side"
+      }
+    },
+    "*-white-tinbronze-*": {
+      "metal": {
+        "base": "block/restoredmetal/metal/lantern-rotated/tinbronze"
+      },
+      "top": {
+        "base": "block/restoredmetal/cloth/metaltable/white/cloth-top"
+      },
+      "edge-left": {
+        "base": "block/restoredmetal/cloth/metaltable/white/cloth-side"
+      },
+      "edge-right": {
+        "base": "block/restoredmetal/cloth/metaltable/white/cloth-side"
+      }
+    },
+    "*-white-bismuthbronze-*": {
+      "metal": {
+        "base": "block/restoredmetal/metal/lantern-rotated/bismuthbronze"
+      },
+      "top": {
+        "base": "block/restoredmetal/cloth/metaltable/white/cloth-top"
+      },
+      "edge-left": {
+        "base": "block/restoredmetal/cloth/metaltable/white/cloth-side"
+      },
+      "edge-right": {
+        "base": "block/restoredmetal/cloth/metaltable/white/cloth-side"
+      }
+    },
+    "*-white-iron-*": {
+      "metal": {
+        "base": "block/restoredmetal/metal/lantern-rotated/iron"
+      },
+      "top": {
+        "base": "block/restoredmetal/cloth/metaltable/white/cloth-top"
+      },
+      "edge-left": {
+        "base": "block/restoredmetal/cloth/metaltable/white/cloth-side"
+      },
+      "edge-right": {
+        "base": "block/restoredmetal/cloth/metaltable/white/cloth-side"
+      }
+    },
+    "*-white-molybdochalkos-*": {
+      "metal": {
+        "base": "block/restoredmetal/metal/lantern-rotated/molybdochalkos"
+      },
+      "top": {
+        "base": "block/restoredmetal/cloth/metaltable/white/cloth-top"
+      },
+      "edge-left": {
+        "base": "block/restoredmetal/cloth/metaltable/white/cloth-side"
+      },
+      "edge-right": {
+        "base": "block/restoredmetal/cloth/metaltable/white/cloth-side"
+      }
+    },
+    "*-white-silver-*": {
+      "metal": {
+        "base": "block/restoredmetal/metal/lantern-rotated/silver"
+      },
+      "top": {
+        "base": "block/restoredmetal/cloth/metaltable/white/cloth-top"
+      },
+      "edge-left": {
+        "base": "block/restoredmetal/cloth/metaltable/white/cloth-side"
+      },
+      "edge-right": {
+        "base": "block/restoredmetal/cloth/metaltable/white/cloth-side"
+      }
+    },
+    "*-white-gold-*": {
+      "metal": {
+        "base": "block/restoredmetal/metal/lantern-rotated/gold"
+      },
+      "top": {
+        "base": "block/restoredmetal/cloth/metaltable/white/cloth-top"
+      },
+      "edge-left": {
+        "base": "block/restoredmetal/cloth/metaltable/white/cloth-side"
+      },
+      "edge-right": {
+        "base": "block/restoredmetal/cloth/metaltable/white/cloth-side"
+      }
+    },
+    "*-white-steel-*": {
+      "metal": {
+        "base": "block/restoredmetal/metal/lantern-rotated/steel"
+      },
+      "top": {
+        "base": "block/restoredmetal/cloth/metaltable/white/cloth-top"
+      },
+      "edge-left": {
+        "base": "block/restoredmetal/cloth/metaltable/white/cloth-side"
+      },
+      "edge-right": {
+        "base": "block/restoredmetal/cloth/metaltable/white/cloth-side"
+      }
+    },
+    "*-white-meteoriciron-*": {
+      "metal": {
+        "base": "block/restoredmetal/metal/lantern-rotated/meteoriciron"
+      },
+      "top": {
+        "base": "block/restoredmetal/cloth/metaltable/white/cloth-top"
+      },
+      "edge-left": {
+        "base": "block/restoredmetal/cloth/metaltable/white/cloth-side"
+      },
+      "edge-right": {
+        "base": "block/restoredmetal/cloth/metaltable/white/cloth-side"
+      }
+    },
+    "*-white-electrum-*": {
+      "metal": {
+        "base": "block/restoredmetal/metal/lantern-rotated/electrum"
+      },
+      "top": {
+        "base": "block/restoredmetal/cloth/metaltable/white/cloth-top"
+      },
+      "edge-left": {
+        "base": "block/restoredmetal/cloth/metaltable/white/cloth-side"
+      },
+      "edge-right": {
+        "base": "block/restoredmetal/cloth/metaltable/white/cloth-side"
+      }
+    },
+    "*-blue-copper-*": {
+      "metal": {
+        "base": "block/restoredmetal/metal/lantern-rotated/copper"
+      },
+      "top": {
+        "base": "block/restoredmetal/cloth/metaltable/blue/cloth-top"
+      },
+      "edge-left": {
+        "base": "block/restoredmetal/cloth/metaltable/blue/cloth-side"
+      },
+      "edge-right": {
+        "base": "block/restoredmetal/cloth/metaltable/blue/cloth-side"
+      }
+    },
+    "*-blue-brass-*": {
+      "metal": {
+        "base": "block/restoredmetal/metal/lantern-rotated/brass"
+      },
+      "top": {
+        "base": "block/restoredmetal/cloth/metaltable/blue/cloth-top"
+      },
+      "edge-left": {
+        "base": "block/restoredmetal/cloth/metaltable/blue/cloth-side"
+      },
+      "edge-right": {
+        "base": "block/restoredmetal/cloth/metaltable/blue/cloth-side"
+      }
+    },
+    "*-blue-blackbronze-*": {
+      "metal": {
+        "base": "block/restoredmetal/metal/lantern-rotated/blackbronze"
+      },
+      "top": {
+        "base": "block/restoredmetal/cloth/metaltable/blue/cloth-top"
+      },
+      "edge-left": {
+        "base": "block/restoredmetal/cloth/metaltable/blue/cloth-side"
+      },
+      "edge-right": {
+        "base": "block/restoredmetal/cloth/metaltable/blue/cloth-side"
+      }
+    },
+    "*-blue-bismuth-*": {
+      "metal": {
+        "base": "block/restoredmetal/metal/lantern-rotated/bismuth"
+      },
+      "top": {
+        "base": "block/restoredmetal/cloth/metaltable/blue/cloth-top"
+      },
+      "edge-left": {
+        "base": "block/restoredmetal/cloth/metaltable/blue/cloth-side"
+      },
+      "edge-right": {
+        "base": "block/restoredmetal/cloth/metaltable/blue/cloth-side"
+      }
+    },
+    "*-blue-tinbronze-*": {
+      "metal": {
+        "base": "block/restoredmetal/metal/lantern-rotated/tinbronze"
+      },
+      "top": {
+        "base": "block/restoredmetal/cloth/metaltable/blue/cloth-top"
+      },
+      "edge-left": {
+        "base": "block/restoredmetal/cloth/metaltable/blue/cloth-side"
+      },
+      "edge-right": {
+        "base": "block/restoredmetal/cloth/metaltable/blue/cloth-side"
+      }
+    },
+    "*-blue-bismuthbronze-*": {
+      "metal": {
+        "base": "block/restoredmetal/metal/lantern-rotated/bismuthbronze"
+      },
+      "top": {
+        "base": "block/restoredmetal/cloth/metaltable/blue/cloth-top"
+      },
+      "edge-left": {
+        "base": "block/restoredmetal/cloth/metaltable/blue/cloth-side"
+      },
+      "edge-right": {
+        "base": "block/restoredmetal/cloth/metaltable/blue/cloth-side"
+      }
+    },
+    "*-blue-iron-*": {
+      "metal": {
+        "base": "block/restoredmetal/metal/lantern-rotated/iron"
+      },
+      "top": {
+        "base": "block/restoredmetal/cloth/metaltable/blue/cloth-top"
+      },
+      "edge-left": {
+        "base": "block/restoredmetal/cloth/metaltable/blue/cloth-side"
+      },
+      "edge-right": {
+        "base": "block/restoredmetal/cloth/metaltable/blue/cloth-side"
+      }
+    },
+    "*-blue-molybdochalkos-*": {
+      "metal": {
+        "base": "block/restoredmetal/metal/lantern-rotated/molybdochalkos"
+      },
+      "top": {
+        "base": "block/restoredmetal/cloth/metaltable/blue/cloth-top"
+      },
+      "edge-left": {
+        "base": "block/restoredmetal/cloth/metaltable/blue/cloth-side"
+      },
+      "edge-right": {
+        "base": "block/restoredmetal/cloth/metaltable/blue/cloth-side"
+      }
+    },
+    "*-blue-silver-*": {
+      "metal": {
+        "base": "block/restoredmetal/metal/lantern-rotated/silver"
+      },
+      "top": {
+        "base": "block/restoredmetal/cloth/metaltable/blue/cloth-top"
+      },
+      "edge-left": {
+        "base": "block/restoredmetal/cloth/metaltable/blue/cloth-side"
+      },
+      "edge-right": {
+        "base": "block/restoredmetal/cloth/metaltable/blue/cloth-side"
+      }
+    },
+    "*-blue-gold-*": {
+      "metal": {
+        "base": "block/restoredmetal/metal/lantern-rotated/gold"
+      },
+      "top": {
+        "base": "block/restoredmetal/cloth/metaltable/blue/cloth-top"
+      },
+      "edge-left": {
+        "base": "block/restoredmetal/cloth/metaltable/blue/cloth-side"
+      },
+      "edge-right": {
+        "base": "block/restoredmetal/cloth/metaltable/blue/cloth-side"
+      }
+    },
+    "*-blue-steel-*": {
+      "metal": {
+        "base": "block/restoredmetal/metal/lantern-rotated/steel"
+      },
+      "top": {
+        "base": "block/restoredmetal/cloth/metaltable/blue/cloth-top"
+      },
+      "edge-left": {
+        "base": "block/restoredmetal/cloth/metaltable/blue/cloth-side"
+      },
+      "edge-right": {
+        "base": "block/restoredmetal/cloth/metaltable/blue/cloth-side"
+      }
+    },
+    "*-blue-meteoriciron-*": {
+      "metal": {
+        "base": "block/restoredmetal/metal/lantern-rotated/meteoriciron"
+      },
+      "top": {
+        "base": "block/restoredmetal/cloth/metaltable/blue/cloth-top"
+      },
+      "edge-left": {
+        "base": "block/restoredmetal/cloth/metaltable/blue/cloth-side"
+      },
+      "edge-right": {
+        "base": "block/restoredmetal/cloth/metaltable/blue/cloth-side"
+      }
+    },
+    "*-blue-electrum-*": {
+      "metal": {
+        "base": "block/restoredmetal/metal/lantern-rotated/electrum"
+      },
+      "top": {
+        "base": "block/restoredmetal/cloth/metaltable/blue/cloth-top"
+      },
+      "edge-left": {
+        "base": "block/restoredmetal/cloth/metaltable/blue/cloth-side"
+      },
+      "edge-right": {
+        "base": "block/restoredmetal/cloth/metaltable/blue/cloth-side"
+      }
+    },
+    "*-green-copper-*": {
+      "metal": {
+        "base": "block/restoredmetal/metal/lantern-rotated/copper"
+      },
+      "top": {
+        "base": "block/restoredmetal/cloth/metaltable/green/cloth-top"
+      },
+      "edge-left": {
+        "base": "block/restoredmetal/cloth/metaltable/green/cloth-side"
+      },
+      "edge-right": {
+        "base": "block/restoredmetal/cloth/metaltable/green/cloth-side"
+      }
+    },
+    "*-green-brass-*": {
+      "metal": {
+        "base": "block/restoredmetal/metal/lantern-rotated/brass"
+      },
+      "top": {
+        "base": "block/restoredmetal/cloth/metaltable/green/cloth-top"
+      },
+      "edge-left": {
+        "base": "block/restoredmetal/cloth/metaltable/green/cloth-side"
+      },
+      "edge-right": {
+        "base": "block/restoredmetal/cloth/metaltable/green/cloth-side"
+      }
+    },
+    "*-green-blackbronze-*": {
+      "metal": {
+        "base": "block/restoredmetal/metal/lantern-rotated/blackbronze"
+      },
+      "top": {
+        "base": "block/restoredmetal/cloth/metaltable/green/cloth-top"
+      },
+      "edge-left": {
+        "base": "block/restoredmetal/cloth/metaltable/green/cloth-side"
+      },
+      "edge-right": {
+        "base": "block/restoredmetal/cloth/metaltable/green/cloth-side"
+      }
+    },
+    "*-green-bismuth-*": {
+      "metal": {
+        "base": "block/restoredmetal/metal/lantern-rotated/bismuth"
+      },
+      "top": {
+        "base": "block/restoredmetal/cloth/metaltable/green/cloth-top"
+      },
+      "edge-left": {
+        "base": "block/restoredmetal/cloth/metaltable/green/cloth-side"
+      },
+      "edge-right": {
+        "base": "block/restoredmetal/cloth/metaltable/green/cloth-side"
+      }
+    },
+    "*-green-tinbronze-*": {
+      "metal": {
+        "base": "block/restoredmetal/metal/lantern-rotated/tinbronze"
+      },
+      "top": {
+        "base": "block/restoredmetal/cloth/metaltable/green/cloth-top"
+      },
+      "edge-left": {
+        "base": "block/restoredmetal/cloth/metaltable/green/cloth-side"
+      },
+      "edge-right": {
+        "base": "block/restoredmetal/cloth/metaltable/green/cloth-side"
+      }
+    },
+    "*-green-bismuthbronze-*": {
+      "metal": {
+        "base": "block/restoredmetal/metal/lantern-rotated/bismuthbronze"
+      },
+      "top": {
+        "base": "block/restoredmetal/cloth/metaltable/green/cloth-top"
+      },
+      "edge-left": {
+        "base": "block/restoredmetal/cloth/metaltable/green/cloth-side"
+      },
+      "edge-right": {
+        "base": "block/restoredmetal/cloth/metaltable/green/cloth-side"
+      }
+    },
+    "*-green-iron-*": {
+      "metal": {
+        "base": "block/restoredmetal/metal/lantern-rotated/iron"
+      },
+      "top": {
+        "base": "block/restoredmetal/cloth/metaltable/green/cloth-top"
+      },
+      "edge-left": {
+        "base": "block/restoredmetal/cloth/metaltable/green/cloth-side"
+      },
+      "edge-right": {
+        "base": "block/restoredmetal/cloth/metaltable/green/cloth-side"
+      }
+    },
+    "*-green-molybdochalkos-*": {
+      "metal": {
+        "base": "block/restoredmetal/metal/lantern-rotated/molybdochalkos"
+      },
+      "top": {
+        "base": "block/restoredmetal/cloth/metaltable/green/cloth-top"
+      },
+      "edge-left": {
+        "base": "block/restoredmetal/cloth/metaltable/green/cloth-side"
+      },
+      "edge-right": {
+        "base": "block/restoredmetal/cloth/metaltable/green/cloth-side"
+      }
+    },
+    "*-green-silver-*": {
+      "metal": {
+        "base": "block/restoredmetal/metal/lantern-rotated/silver"
+      },
+      "top": {
+        "base": "block/restoredmetal/cloth/metaltable/green/cloth-top"
+      },
+      "edge-left": {
+        "base": "block/restoredmetal/cloth/metaltable/green/cloth-side"
+      },
+      "edge-right": {
+        "base": "block/restoredmetal/cloth/metaltable/green/cloth-side"
+      }
+    },
+    "*-green-gold-*": {
+      "metal": {
+        "base": "block/restoredmetal/metal/lantern-rotated/gold"
+      },
+      "top": {
+        "base": "block/restoredmetal/cloth/metaltable/green/cloth-top"
+      },
+      "edge-left": {
+        "base": "block/restoredmetal/cloth/metaltable/green/cloth-side"
+      },
+      "edge-right": {
+        "base": "block/restoredmetal/cloth/metaltable/green/cloth-side"
+      }
+    },
+    "*-green-steel-*": {
+      "metal": {
+        "base": "block/restoredmetal/metal/lantern-rotated/steel"
+      },
+      "top": {
+        "base": "block/restoredmetal/cloth/metaltable/green/cloth-top"
+      },
+      "edge-left": {
+        "base": "block/restoredmetal/cloth/metaltable/green/cloth-side"
+      },
+      "edge-right": {
+        "base": "block/restoredmetal/cloth/metaltable/green/cloth-side"
+      }
+    },
+    "*-green-meteoriciron-*": {
+      "metal": {
+        "base": "block/restoredmetal/metal/lantern-rotated/meteoriciron"
+      },
+      "top": {
+        "base": "block/restoredmetal/cloth/metaltable/green/cloth-top"
+      },
+      "edge-left": {
+        "base": "block/restoredmetal/cloth/metaltable/green/cloth-side"
+      },
+      "edge-right": {
+        "base": "block/restoredmetal/cloth/metaltable/green/cloth-side"
+      }
+    },
+    "*-green-electrum-*": {
+      "metal": {
+        "base": "block/restoredmetal/metal/lantern-rotated/electrum"
+      },
+      "top": {
+        "base": "block/restoredmetal/cloth/metaltable/green/cloth-top"
+      },
+      "edge-left": {
+        "base": "block/restoredmetal/cloth/metaltable/green/cloth-side"
+      },
+      "edge-right": {
+        "base": "block/restoredmetal/cloth/metaltable/green/cloth-side"
+      }
+    },
+    "*-purple-copper-*": {
+      "metal": {
+        "base": "block/restoredmetal/metal/lantern-rotated/copper"
+      },
+      "top": {
+        "base": "block/restoredmetal/cloth/metaltable/purple/cloth-top"
+      },
+      "edge-left": {
+        "base": "block/restoredmetal/cloth/metaltable/purple/cloth-side"
+      },
+      "edge-right": {
+        "base": "block/restoredmetal/cloth/metaltable/purple/cloth-side"
+      }
+    },
+    "*-purple-brass-*": {
+      "metal": {
+        "base": "block/restoredmetal/metal/lantern-rotated/brass"
+      },
+      "top": {
+        "base": "block/restoredmetal/cloth/metaltable/purple/cloth-top"
+      },
+      "edge-left": {
+        "base": "block/restoredmetal/cloth/metaltable/purple/cloth-side"
+      },
+      "edge-right": {
+        "base": "block/restoredmetal/cloth/metaltable/purple/cloth-side"
+      }
+    },
+    "*-purple-blackbronze-*": {
+      "metal": {
+        "base": "block/restoredmetal/metal/lantern-rotated/blackbronze"
+      },
+      "top": {
+        "base": "block/restoredmetal/cloth/metaltable/purple/cloth-top"
+      },
+      "edge-left": {
+        "base": "block/restoredmetal/cloth/metaltable/purple/cloth-side"
+      },
+      "edge-right": {
+        "base": "block/restoredmetal/cloth/metaltable/purple/cloth-side"
+      }
+    },
+    "*-purple-bismuth-*": {
+      "metal": {
+        "base": "block/restoredmetal/metal/lantern-rotated/bismuth"
+      },
+      "top": {
+        "base": "block/restoredmetal/cloth/metaltable/purple/cloth-top"
+      },
+      "edge-left": {
+        "base": "block/restoredmetal/cloth/metaltable/purple/cloth-side"
+      },
+      "edge-right": {
+        "base": "block/restoredmetal/cloth/metaltable/purple/cloth-side"
+      }
+    },
+    "*-purple-tinbronze-*": {
+      "metal": {
+        "base": "block/restoredmetal/metal/lantern-rotated/tinbronze"
+      },
+      "top": {
+        "base": "block/restoredmetal/cloth/metaltable/purple/cloth-top"
+      },
+      "edge-left": {
+        "base": "block/restoredmetal/cloth/metaltable/purple/cloth-side"
+      },
+      "edge-right": {
+        "base": "block/restoredmetal/cloth/metaltable/purple/cloth-side"
+      }
+    },
+    "*-purple-bismuthbronze-*": {
+      "metal": {
+        "base": "block/restoredmetal/metal/lantern-rotated/bismuthbronze"
+      },
+      "top": {
+        "base": "block/restoredmetal/cloth/metaltable/purple/cloth-top"
+      },
+      "edge-left": {
+        "base": "block/restoredmetal/cloth/metaltable/purple/cloth-side"
+      },
+      "edge-right": {
+        "base": "block/restoredmetal/cloth/metaltable/purple/cloth-side"
+      }
+    },
+    "*-purple-iron-*": {
+      "metal": {
+        "base": "block/restoredmetal/metal/lantern-rotated/iron"
+      },
+      "top": {
+        "base": "block/restoredmetal/cloth/metaltable/purple/cloth-top"
+      },
+      "edge-left": {
+        "base": "block/restoredmetal/cloth/metaltable/purple/cloth-side"
+      },
+      "edge-right": {
+        "base": "block/restoredmetal/cloth/metaltable/purple/cloth-side"
+      }
+    },
+    "*-purple-molybdochalkos-*": {
+      "metal": {
+        "base": "block/restoredmetal/metal/lantern-rotated/molybdochalkos"
+      },
+      "top": {
+        "base": "block/restoredmetal/cloth/metaltable/purple/cloth-top"
+      },
+      "edge-left": {
+        "base": "block/restoredmetal/cloth/metaltable/purple/cloth-side"
+      },
+      "edge-right": {
+        "base": "block/restoredmetal/cloth/metaltable/purple/cloth-side"
+      }
+    },
+    "*-purple-silver-*": {
+      "metal": {
+        "base": "block/restoredmetal/metal/lantern-rotated/silver"
+      },
+      "top": {
+        "base": "block/restoredmetal/cloth/metaltable/purple/cloth-top"
+      },
+      "edge-left": {
+        "base": "block/restoredmetal/cloth/metaltable/purple/cloth-side"
+      },
+      "edge-right": {
+        "base": "block/restoredmetal/cloth/metaltable/purple/cloth-side"
+      }
+    },
+    "*-purple-gold-*": {
+      "metal": {
+        "base": "block/restoredmetal/metal/lantern-rotated/gold"
+      },
+      "top": {
+        "base": "block/restoredmetal/cloth/metaltable/purple/cloth-top"
+      },
+      "edge-left": {
+        "base": "block/restoredmetal/cloth/metaltable/purple/cloth-side"
+      },
+      "edge-right": {
+        "base": "block/restoredmetal/cloth/metaltable/purple/cloth-side"
+      }
+    },
+    "*-purple-steel-*": {
+      "metal": {
+        "base": "block/restoredmetal/metal/lantern-rotated/steel"
+      },
+      "top": {
+        "base": "block/restoredmetal/cloth/metaltable/purple/cloth-top"
+      },
+      "edge-left": {
+        "base": "block/restoredmetal/cloth/metaltable/purple/cloth-side"
+      },
+      "edge-right": {
+        "base": "block/restoredmetal/cloth/metaltable/purple/cloth-side"
+      }
+    },
+    "*-purple-meteoriciron-*": {
+      "metal": {
+        "base": "block/restoredmetal/metal/lantern-rotated/meteoriciron"
+      },
+      "top": {
+        "base": "block/restoredmetal/cloth/metaltable/purple/cloth-top"
+      },
+      "edge-left": {
+        "base": "block/restoredmetal/cloth/metaltable/purple/cloth-side"
+      },
+      "edge-right": {
+        "base": "block/restoredmetal/cloth/metaltable/purple/cloth-side"
+      }
+    },
+    "*-purple-electrum-*": {
+      "metal": {
+        "base": "block/restoredmetal/metal/lantern-rotated/electrum"
+      },
+      "top": {
+        "base": "block/restoredmetal/cloth/metaltable/purple/cloth-top"
+      },
+      "edge-left": {
+        "base": "block/restoredmetal/cloth/metaltable/purple/cloth-side"
+      },
+      "edge-right": {
+        "base": "block/restoredmetal/cloth/metaltable/purple/cloth-side"
+      }
+    },
+    "*-red-copper-*": {
+      "metal": {
+        "base": "block/restoredmetal/metal/lantern-rotated/copper"
+      },
+      "top": {
+        "base": "block/restoredmetal/cloth/metaltable/red/cloth-top"
+      },
+      "edge-left": {
+        "base": "block/restoredmetal/cloth/metaltable/red/cloth-side"
+      },
+      "edge-right": {
+        "base": "block/restoredmetal/cloth/metaltable/red/cloth-side"
+      }
+    },
+    "*-red-brass-*": {
+      "metal": {
+        "base": "block/restoredmetal/metal/lantern-rotated/brass"
+      },
+      "top": {
+        "base": "block/restoredmetal/cloth/metaltable/red/cloth-top"
+      },
+      "edge-left": {
+        "base": "block/restoredmetal/cloth/metaltable/red/cloth-side"
+      },
+      "edge-right": {
+        "base": "block/restoredmetal/cloth/metaltable/red/cloth-side"
+      }
+    },
+    "*-red-blackbronze-*": {
+      "metal": {
+        "base": "block/restoredmetal/metal/lantern-rotated/blackbronze"
+      },
+      "top": {
+        "base": "block/restoredmetal/cloth/metaltable/red/cloth-top"
+      },
+      "edge-left": {
+        "base": "block/restoredmetal/cloth/metaltable/red/cloth-side"
+      },
+      "edge-right": {
+        "base": "block/restoredmetal/cloth/metaltable/red/cloth-side"
+      }
+    },
+    "*-red-bismuth-*": {
+      "metal": {
+        "base": "block/restoredmetal/metal/lantern-rotated/bismuth"
+      },
+      "top": {
+        "base": "block/restoredmetal/cloth/metaltable/red/cloth-top"
+      },
+      "edge-left": {
+        "base": "block/restoredmetal/cloth/metaltable/red/cloth-side"
+      },
+      "edge-right": {
+        "base": "block/restoredmetal/cloth/metaltable/red/cloth-side"
+      }
+    },
+    "*-red-tinbronze-*": {
+      "metal": {
+        "base": "block/restoredmetal/metal/lantern-rotated/tinbronze"
+      },
+      "top": {
+        "base": "block/restoredmetal/cloth/metaltable/red/cloth-top"
+      },
+      "edge-left": {
+        "base": "block/restoredmetal/cloth/metaltable/red/cloth-side"
+      },
+      "edge-right": {
+        "base": "block/restoredmetal/cloth/metaltable/red/cloth-side"
+      }
+    },
+    "*-red-bismuthbronze-*": {
+      "metal": {
+        "base": "block/restoredmetal/metal/lantern-rotated/bismuthbronze"
+      },
+      "top": {
+        "base": "block/restoredmetal/cloth/metaltable/red/cloth-top"
+      },
+      "edge-left": {
+        "base": "block/restoredmetal/cloth/metaltable/red/cloth-side"
+      },
+      "edge-right": {
+        "base": "block/restoredmetal/cloth/metaltable/red/cloth-side"
+      }
+    },
+    "*-red-iron-*": {
+      "metal": {
+        "base": "block/restoredmetal/metal/lantern-rotated/iron"
+      },
+      "top": {
+        "base": "block/restoredmetal/cloth/metaltable/red/cloth-top"
+      },
+      "edge-left": {
+        "base": "block/restoredmetal/cloth/metaltable/red/cloth-side"
+      },
+      "edge-right": {
+        "base": "block/restoredmetal/cloth/metaltable/red/cloth-side"
+      }
+    },
+    "*-red-molybdochalkos-*": {
+      "metal": {
+        "base": "block/restoredmetal/metal/lantern-rotated/molybdochalkos"
+      },
+      "top": {
+        "base": "block/restoredmetal/cloth/metaltable/red/cloth-top"
+      },
+      "edge-left": {
+        "base": "block/restoredmetal/cloth/metaltable/red/cloth-side"
+      },
+      "edge-right": {
+        "base": "block/restoredmetal/cloth/metaltable/red/cloth-side"
+      }
+    },
+    "*-red-silver-*": {
+      "metal": {
+        "base": "block/restoredmetal/metal/lantern-rotated/silver"
+      },
+      "top": {
+        "base": "block/restoredmetal/cloth/metaltable/red/cloth-top"
+      },
+      "edge-left": {
+        "base": "block/restoredmetal/cloth/metaltable/red/cloth-side"
+      },
+      "edge-right": {
+        "base": "block/restoredmetal/cloth/metaltable/red/cloth-side"
+      }
+    },
+    "*-red-gold-*": {
+      "metal": {
+        "base": "block/restoredmetal/metal/lantern-rotated/gold"
+      },
+      "top": {
+        "base": "block/restoredmetal/cloth/metaltable/red/cloth-top"
+      },
+      "edge-left": {
+        "base": "block/restoredmetal/cloth/metaltable/red/cloth-side"
+      },
+      "edge-right": {
+        "base": "block/restoredmetal/cloth/metaltable/red/cloth-side"
+      }
+    },
+    "*-red-steel-*": {
+      "metal": {
+        "base": "block/restoredmetal/metal/lantern-rotated/steel"
+      },
+      "top": {
+        "base": "block/restoredmetal/cloth/metaltable/red/cloth-top"
+      },
+      "edge-left": {
+        "base": "block/restoredmetal/cloth/metaltable/red/cloth-side"
+      },
+      "edge-right": {
+        "base": "block/restoredmetal/cloth/metaltable/red/cloth-side"
+      }
+    },
+    "*-red-meteoriciron-*": {
+      "metal": {
+        "base": "block/restoredmetal/metal/lantern-rotated/meteoriciron"
+      },
+      "top": {
+        "base": "block/restoredmetal/cloth/metaltable/red/cloth-top"
+      },
+      "edge-left": {
+        "base": "block/restoredmetal/cloth/metaltable/red/cloth-side"
+      },
+      "edge-right": {
+        "base": "block/restoredmetal/cloth/metaltable/red/cloth-side"
+      }
+    },
+    "*-red-electrum-*": {
+      "metal": {
+        "base": "block/restoredmetal/metal/lantern-rotated/electrum"
+      },
+      "top": {
+        "base": "block/restoredmetal/cloth/metaltable/red/cloth-top"
+      },
+      "edge-left": {
+        "base": "block/restoredmetal/cloth/metaltable/red/cloth-side"
+      },
+      "edge-right": {
+        "base": "block/restoredmetal/cloth/metaltable/red/cloth-side"
+      }
+    }
+  },
+  "textures": {
+    "mesh1": {
+      "base": "block/restoredmetal/metal/mesh1"
+    },
+    "metal": {
+      "base": "block/restoredmetal/metal/lantern-rotated/blackbronze"
+    },
+    "top": {
+      "base": "block/restoredmetal/cloth/metaltable/white/cloth-top"
+    },
+    "edge-left": {
+      "base": "block/restoredmetal/cloth/metaltable/white/cloth-side"
+    },
+    "edge-right": {
+      "base": "block/restoredmetal/cloth/metaltable/white/cloth-side"
+    }
+  }
+}
