@@ -12,7 +12,7 @@
 		"edge-right": "vstemporalreverser:block/restoredmetal/cloth/metaltable/white/cloth-side",
 		"top": "vstemporalreverser:block/restoredmetal/cloth/metaltable/white/cloth-top",
 		"mesh1": "vstemporalreverser:block/restoredmetal/metal/mesh1",
-		"metal": "vstemporalreverser:block/restoredmetal/metal/lantern/blackbronze"
+		"metal": "vstemporalreverser:block/restored-metal/blackbronze"
 	},
 	"elements": [
 		{

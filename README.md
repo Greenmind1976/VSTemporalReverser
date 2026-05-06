@@ -197,10 +197,9 @@ The randomized loot pools behind the crate families are:
 
 ## Configuration
 
-- `VSTemporalReverserConfig.json` lets players control which wood textures are eligible for restored wood-based outputs.
-- `EnableDebugLogging` is off by default and writes restore events to `~/Library/Application Support/VintagestoryData/Logs/VSTemporalReverser/restore-debug.jsonl` on macOS, or the equivalent `VintagestoryData/Logs/VSTemporalReverser/restore-debug.jsonl` path on other platforms.
-- If `configlib` and your GUI config mod are installed, each supported wood type is exposed as its own checkbox.
-- The legacy `EnabledWoodTypes` list is still supported for manual JSON editing or older configs.
+- `VSTemporalReverserConfig.json` stores the mod's settings for restored wood outputs, critter spawns, and debug mode.
+- `EnableDebugMode` is off by default and writes restore events to `~/Library/Application Support/VintagestoryData/Logs/VSTemporalReverser/restore-debug.jsonl` on macOS, or the equivalent `VintagestoryData/Logs/VSTemporalReverser/restore-debug.jsonl` path on other platforms.
+- If `configlib` and your GUI config mod are installed, the config screen is grouped into `Global`, `Wood Restore`, and `Critter Spawns` sections.
 
 ## Layout
 

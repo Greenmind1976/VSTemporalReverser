@@ -7,7 +7,7 @@
   "textureHeight": 16,
   "textureSizes": {},
   "textures": {
-    "iron4": "game:block/metal/plate/iron",
+    "iron4": "block/restored-metal/iron",
     "flammable-lit": "game:block/wood/torch/flammable-lit"
   },
   "elements": [

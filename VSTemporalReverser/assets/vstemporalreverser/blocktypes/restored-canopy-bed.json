@@ -109,52 +109,52 @@
   "drawtype": "json",
   "shapeinventoryByType": {
     "*-morningstaropen-*-*": {
-      "base": "block/clutter/bed/bed-fancy-open"
+      "base": "block/bed/icon/restored-canopy-bed-open-inventory"
     },
     "*-morningstaropened-*-*": {
-      "base": "block/clutter/bed/bed-fancy-drapes-opened"
+      "base": "block/bed/icon/restored-canopy-bed-opened-inventory"
     },
     "*-morningstarclosed-*-*": {
-      "base": "block/clutter/bed/bed-fancy-drapes-closed"
+      "base": "block/bed/icon/restored-canopy-bed-closed-inventory"
     },
     "*-blueplaidopen-*-*": {
-      "base": "block/clutter/bed/bed-fancy-open"
+      "base": "block/bed/icon/restored-canopy-bed-open-inventory"
     },
     "*-blueplaidopened-*-*": {
-      "base": "block/clutter/bed/bed-fancy-drapes-opened"
+      "base": "block/bed/icon/restored-canopy-bed-opened-inventory"
     },
     "*-blueplaidclosed-*-*": {
-      "base": "block/clutter/bed/bed-fancy-drapes-closed"
+      "base": "block/bed/icon/restored-canopy-bed-closed-inventory"
     },
     "*-greenplaidopen-*-*": {
-      "base": "block/clutter/bed/bed-fancy-open"
+      "base": "block/bed/icon/restored-canopy-bed-open-inventory"
     },
     "*-greenplaidopened-*-*": {
-      "base": "block/clutter/bed/bed-fancy-drapes-opened"
+      "base": "block/bed/icon/restored-canopy-bed-opened-inventory"
     },
     "*-greenplaidclosed-*-*": {
-      "base": "block/clutter/bed/bed-fancy-drapes-closed"
+      "base": "block/bed/icon/restored-canopy-bed-closed-inventory"
     },
     "*-redplaidopen-*-*": {
-      "base": "block/clutter/bed/bed-fancy-open"
+      "base": "block/bed/icon/restored-canopy-bed-open-inventory"
     },
     "*-redplaidopened-*-*": {
-      "base": "block/clutter/bed/bed-fancy-drapes-opened"
+      "base": "block/bed/icon/restored-canopy-bed-opened-inventory"
     },
     "*-redplaidclosed-*-*": {
-      "base": "block/clutter/bed/bed-fancy-drapes-closed"
+      "base": "block/bed/icon/restored-canopy-bed-closed-inventory"
     },
     "*-honeycombopen-*-*": {
-      "base": "block/clutter/bed/bed-fancy-open"
+      "base": "block/bed/icon/restored-canopy-bed-open-inventory"
     },
     "*-honeycombopened-*-*": {
-      "base": "block/clutter/bed/bed-fancy-drapes-opened"
+      "base": "block/bed/icon/restored-canopy-bed-opened-inventory"
     },
     "*-honeycombclosed-*-*": {
-      "base": "block/clutter/bed/bed-fancy-drapes-closed"
+      "base": "block/bed/icon/restored-canopy-bed-closed-inventory"
     },
     "*": {
-      "base": "block/clutter/bed/bed-fancy-open"
+      "base": "block/bed/icon/restored-canopy-bed-open-inventory"
     }
   },
   "shapebytype": {
@@ -9651,22 +9651,6 @@
   },
   "lightAbsorption": 0,
   "maxStackSize": 2,
-  "collisionbox": {
-    "x1": 0,
-    "y1": 0,
-    "z1": 0,
-    "x2": 1,
-    "y2": 0.5,
-    "z2": 1
-  },
-  "selectionbox": {
-    "x1": 0,
-    "y1": 0,
-    "z1": 0,
-    "x2": 1,
-    "y2": 0.5,
-    "z2": 1
-  },
   "sounds": {
     "walk": "walk/wood",
     "place": "block/planks",
@@ -9688,5 +9672,21 @@
   "heldTpIdleAnimation": "holdbothhandslarge",
   "heldRightReadyAnimation": "heldblockready",
   "heldTpUseAnimation": "twohandplaceblock",
-  "shapeByType": {}
+  "shapeByType": {},
+  "selectionbox": {
+    "x1": 0,
+    "y1": 0,
+    "z1": 0,
+    "x2": 1,
+    "y2": 0.5,
+    "z2": 1
+  },
+  "collisionbox": {
+    "x1": 0,
+    "y1": 0,
+    "z1": 0,
+    "x2": 1,
+    "y2": 0.5,
+    "z2": 1
+  }
 }

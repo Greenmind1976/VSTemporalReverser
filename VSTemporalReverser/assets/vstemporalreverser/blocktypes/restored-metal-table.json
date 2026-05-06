@@ -87,7 +87,7 @@
   "texturesByType": {
     "*-white-copper-*": {
       "metal": {
-        "base": "block/restoredmetal/metal/lantern-rotated/copper"
+        "base": "block/restored-metal/copper"
       },
       "top": {
         "base": "block/restoredmetal/cloth/metaltable/white/cloth-top"
@@ -101,7 +101,7 @@
     },
     "*-white-brass-*": {
       "metal": {
-        "base": "block/restoredmetal/metal/lantern-rotated/brass"
+        "base": "block/restored-metal/brass"
       },
       "top": {
         "base": "block/restoredmetal/cloth/metaltable/white/cloth-top"
@@ -115,7 +115,7 @@
     },
     "*-white-blackbronze-*": {
       "metal": {
-        "base": "block/restoredmetal/metal/lantern-rotated/blackbronze"
+        "base": "block/restored-metal/blackbronze"
       },
       "top": {
         "base": "block/restoredmetal/cloth/metaltable/white/cloth-top"
@@ -129,7 +129,7 @@
     },
     "*-white-bismuth-*": {
       "metal": {
-        "base": "block/restoredmetal/metal/lantern-rotated/bismuth"
+        "base": "block/restored-metal/bismuth"
       },
       "top": {
         "base": "block/restoredmetal/cloth/metaltable/white/cloth-top"
@@ -143,7 +143,7 @@
     },
     "*-white-tinbronze-*": {
       "metal": {
-        "base": "block/restoredmetal/metal/lantern-rotated/tinbronze"
+        "base": "block/restored-metal/tinbronze"
       },
       "top": {
         "base": "block/restoredmetal/cloth/metaltable/white/cloth-top"
@@ -157,7 +157,7 @@
     },
     "*-white-bismuthbronze-*": {
       "metal": {
-        "base": "block/restoredmetal/metal/lantern-rotated/bismuthbronze"
+        "base": "block/restored-metal/bismuthbronze"
       },
       "top": {
         "base": "block/restoredmetal/cloth/metaltable/white/cloth-top"
@@ -171,7 +171,7 @@
     },
     "*-white-iron-*": {
       "metal": {
-        "base": "block/restoredmetal/metal/lantern-rotated/iron"
+        "base": "block/restored-metal/iron"
       },
       "top": {
         "base": "block/restoredmetal/cloth/metaltable/white/cloth-top"
@@ -185,7 +185,7 @@
     },
     "*-white-molybdochalkos-*": {
       "metal": {
-        "base": "block/restoredmetal/metal/lantern-rotated/molybdochalkos"
+        "base": "block/restored-metal/molybdochalkos"
       },
       "top": {
         "base": "block/restoredmetal/cloth/metaltable/white/cloth-top"
@@ -199,7 +199,7 @@
     },
     "*-white-silver-*": {
       "metal": {
-        "base": "block/restoredmetal/metal/lantern-rotated/silver"
+        "base": "block/restored-metal/silver"
       },
       "top": {
         "base": "block/restoredmetal/cloth/metaltable/white/cloth-top"
@@ -213,7 +213,7 @@
     },
     "*-white-gold-*": {
       "metal": {
-        "base": "block/restoredmetal/metal/lantern-rotated/gold"
+        "base": "block/restored-metal/gold"
       },
       "top": {
         "base": "block/restoredmetal/cloth/metaltable/white/cloth-top"
@@ -227,7 +227,7 @@
     },
     "*-white-steel-*": {
       "metal": {
-        "base": "block/restoredmetal/metal/lantern-rotated/steel"
+        "base": "block/restored-metal/steel"
       },
       "top": {
         "base": "block/restoredmetal/cloth/metaltable/white/cloth-top"
@@ -241,7 +241,7 @@
     },
     "*-white-meteoriciron-*": {
       "metal": {
-        "base": "block/restoredmetal/metal/lantern-rotated/meteoriciron"
+        "base": "block/restored-metal/meteoriciron"
       },
       "top": {
         "base": "block/restoredmetal/cloth/metaltable/white/cloth-top"
@@ -255,7 +255,7 @@
     },
     "*-white-electrum-*": {
       "metal": {
-        "base": "block/restoredmetal/metal/lantern-rotated/electrum"
+        "base": "block/restored-metal/electrum"
       },
       "top": {
         "base": "block/restoredmetal/cloth/metaltable/white/cloth-top"
@@ -269,7 +269,7 @@
     },
     "*-blue-copper-*": {
       "metal": {
-        "base": "block/restoredmetal/metal/lantern-rotated/copper"
+        "base": "block/restored-metal/copper"
       },
       "top": {
         "base": "block/restoredmetal/cloth/metaltable/blue/cloth-top"
@@ -283,7 +283,7 @@
     },
     "*-blue-brass-*": {
       "metal": {
-        "base": "block/restoredmetal/metal/lantern-rotated/brass"
+        "base": "block/restored-metal/brass"
       },
       "top": {
         "base": "block/restoredmetal/cloth/metaltable/blue/cloth-top"
@@ -297,7 +297,7 @@
     },
     "*-blue-blackbronze-*": {
       "metal": {
-        "base": "block/restoredmetal/metal/lantern-rotated/blackbronze"
+        "base": "block/restored-metal/blackbronze"
       },
       "top": {
         "base": "block/restoredmetal/cloth/metaltable/blue/cloth-top"
@@ -311,7 +311,7 @@
     },
     "*-blue-bismuth-*": {
       "metal": {
-        "base": "block/restoredmetal/metal/lantern-rotated/bismuth"
+        "base": "block/restored-metal/bismuth"
       },
       "top": {
         "base": "block/restoredmetal/cloth/metaltable/blue/cloth-top"
@@ -325,7 +325,7 @@
     },
     "*-blue-tinbronze-*": {
       "metal": {
-        "base": "block/restoredmetal/metal/lantern-rotated/tinbronze"
+        "base": "block/restored-metal/tinbronze"
       },
       "top": {
         "base": "block/restoredmetal/cloth/metaltable/blue/cloth-top"
@@ -339,7 +339,7 @@
     },
     "*-blue-bismuthbronze-*": {
       "metal": {
-        "base": "block/restoredmetal/metal/lantern-rotated/bismuthbronze"
+        "base": "block/restored-metal/bismuthbronze"
       },
       "top": {
         "base": "block/restoredmetal/cloth/metaltable/blue/cloth-top"
@@ -353,7 +353,7 @@
     },
     "*-blue-iron-*": {
       "metal": {
-        "base": "block/restoredmetal/metal/lantern-rotated/iron"
+        "base": "block/restored-metal/iron"
       },
       "top": {
         "base": "block/restoredmetal/cloth/metaltable/blue/cloth-top"
@@ -367,7 +367,7 @@
     },
     "*-blue-molybdochalkos-*": {
       "metal": {
-        "base": "block/restoredmetal/metal/lantern-rotated/molybdochalkos"
+        "base": "block/restored-metal/molybdochalkos"
       },
       "top": {
         "base": "block/restoredmetal/cloth/metaltable/blue/cloth-top"
@@ -381,7 +381,7 @@
     },
     "*-blue-silver-*": {
       "metal": {
-        "base": "block/restoredmetal/metal/lantern-rotated/silver"
+        "base": "block/restored-metal/silver"
       },
       "top": {
         "base": "block/restoredmetal/cloth/metaltable/blue/cloth-top"
@@ -395,7 +395,7 @@
     },
     "*-blue-gold-*": {
       "metal": {
-        "base": "block/restoredmetal/metal/lantern-rotated/gold"
+        "base": "block/restored-metal/gold"
       },
       "top": {
         "base": "block/restoredmetal/cloth/metaltable/blue/cloth-top"
@@ -409,7 +409,7 @@
     },
     "*-blue-steel-*": {
       "metal": {
-        "base": "block/restoredmetal/metal/lantern-rotated/steel"
+        "base": "block/restored-metal/steel"
       },
       "top": {
         "base": "block/restoredmetal/cloth/metaltable/blue/cloth-top"
@@ -423,7 +423,7 @@
     },
     "*-blue-meteoriciron-*": {
       "metal": {
-        "base": "block/restoredmetal/metal/lantern-rotated/meteoriciron"
+        "base": "block/restored-metal/meteoriciron"
       },
       "top": {
         "base": "block/restoredmetal/cloth/metaltable/blue/cloth-top"
@@ -437,7 +437,7 @@
     },
     "*-blue-electrum-*": {
       "metal": {
-        "base": "block/restoredmetal/metal/lantern-rotated/electrum"
+        "base": "block/restored-metal/electrum"
       },
       "top": {
         "base": "block/restoredmetal/cloth/metaltable/blue/cloth-top"
@@ -451,7 +451,7 @@
     },
     "*-green-copper-*": {
       "metal": {
-        "base": "block/restoredmetal/metal/lantern-rotated/copper"
+        "base": "block/restored-metal/copper"
       },
       "top": {
         "base": "block/restoredmetal/cloth/metaltable/green/cloth-top"
@@ -465,7 +465,7 @@
     },
     "*-green-brass-*": {
       "metal": {
-        "base": "block/restoredmetal/metal/lantern-rotated/brass"
+        "base": "block/restored-metal/brass"
       },
       "top": {
         "base": "block/restoredmetal/cloth/metaltable/green/cloth-top"
@@ -479,7 +479,7 @@
     },
     "*-green-blackbronze-*": {
       "metal": {
-        "base": "block/restoredmetal/metal/lantern-rotated/blackbronze"
+        "base": "block/restored-metal/blackbronze"
       },
       "top": {
         "base": "block/restoredmetal/cloth/metaltable/green/cloth-top"
@@ -493,7 +493,7 @@
     },
     "*-green-bismuth-*": {
       "metal": {
-        "base": "block/restoredmetal/metal/lantern-rotated/bismuth"
+        "base": "block/restored-metal/bismuth"
       },
       "top": {
         "base": "block/restoredmetal/cloth/metaltable/green/cloth-top"
@@ -507,7 +507,7 @@
     },
     "*-green-tinbronze-*": {
       "metal": {
-        "base": "block/restoredmetal/metal/lantern-rotated/tinbronze"
+        "base": "block/restored-metal/tinbronze"
       },
       "top": {
         "base": "block/restoredmetal/cloth/metaltable/green/cloth-top"
@@ -521,7 +521,7 @@
     },
     "*-green-bismuthbronze-*": {
       "metal": {
-        "base": "block/restoredmetal/metal/lantern-rotated/bismuthbronze"
+        "base": "block/restored-metal/bismuthbronze"
       },
       "top": {
         "base": "block/restoredmetal/cloth/metaltable/green/cloth-top"
@@ -535,7 +535,7 @@
     },
     "*-green-iron-*": {
       "metal": {
-        "base": "block/restoredmetal/metal/lantern-rotated/iron"
+        "base": "block/restored-metal/iron"
       },
       "top": {
         "base": "block/restoredmetal/cloth/metaltable/green/cloth-top"
@@ -549,7 +549,7 @@
     },
     "*-green-molybdochalkos-*": {
       "metal": {
-        "base": "block/restoredmetal/metal/lantern-rotated/molybdochalkos"
+        "base": "block/restored-metal/molybdochalkos"
       },
       "top": {
         "base": "block/restoredmetal/cloth/metaltable/green/cloth-top"
@@ -563,7 +563,7 @@
     },
     "*-green-silver-*": {
       "metal": {
-        "base": "block/restoredmetal/metal/lantern-rotated/silver"
+        "base": "block/restored-metal/silver"
       },
       "top": {
         "base": "block/restoredmetal/cloth/metaltable/green/cloth-top"
@@ -577,7 +577,7 @@
     },
     "*-green-gold-*": {
       "metal": {
-        "base": "block/restoredmetal/metal/lantern-rotated/gold"
+        "base": "block/restored-metal/gold"
       },
       "top": {
         "base": "block/restoredmetal/cloth/metaltable/green/cloth-top"
@@ -591,7 +591,7 @@
     },
     "*-green-steel-*": {
       "metal": {
-        "base": "block/restoredmetal/metal/lantern-rotated/steel"
+        "base": "block/restored-metal/steel"
       },
       "top": {
         "base": "block/restoredmetal/cloth/metaltable/green/cloth-top"
@@ -605,7 +605,7 @@
     },
     "*-green-meteoriciron-*": {
       "metal": {
-        "base": "block/restoredmetal/metal/lantern-rotated/meteoriciron"
+        "base": "block/restored-metal/meteoriciron"
       },
       "top": {
         "base": "block/restoredmetal/cloth/metaltable/green/cloth-top"
@@ -619,7 +619,7 @@
     },
     "*-green-electrum-*": {
       "metal": {
-        "base": "block/restoredmetal/metal/lantern-rotated/electrum"
+        "base": "block/restored-metal/electrum"
       },
       "top": {
         "base": "block/restoredmetal/cloth/metaltable/green/cloth-top"
@@ -633,7 +633,7 @@
     },
     "*-purple-copper-*": {
       "metal": {
-        "base": "block/restoredmetal/metal/lantern-rotated/copper"
+        "base": "block/restored-metal/copper"
       },
       "top": {
         "base": "block/restoredmetal/cloth/metaltable/purple/cloth-top"
@@ -647,7 +647,7 @@
     },
     "*-purple-brass-*": {
       "metal": {
-        "base": "block/restoredmetal/metal/lantern-rotated/brass"
+        "base": "block/restored-metal/brass"
       },
       "top": {
         "base": "block/restoredmetal/cloth/metaltable/purple/cloth-top"
@@ -661,7 +661,7 @@
     },
     "*-purple-blackbronze-*": {
       "metal": {
-        "base": "block/restoredmetal/metal/lantern-rotated/blackbronze"
+        "base": "block/restored-metal/blackbronze"
       },
       "top": {
         "base": "block/restoredmetal/cloth/metaltable/purple/cloth-top"
@@ -675,7 +675,7 @@
     },
     "*-purple-bismuth-*": {
       "metal": {
-        "base": "block/restoredmetal/metal/lantern-rotated/bismuth"
+        "base": "block/restored-metal/bismuth"
       },
       "top": {
         "base": "block/restoredmetal/cloth/metaltable/purple/cloth-top"
@@ -689,7 +689,7 @@
     },
     "*-purple-tinbronze-*": {
       "metal": {
-        "base": "block/restoredmetal/metal/lantern-rotated/tinbronze"
+        "base": "block/restored-metal/tinbronze"
       },
       "top": {
         "base": "block/restoredmetal/cloth/metaltable/purple/cloth-top"
@@ -703,7 +703,7 @@
     },
     "*-purple-bismuthbronze-*": {
       "metal": {
-        "base": "block/restoredmetal/metal/lantern-rotated/bismuthbronze"
+        "base": "block/restored-metal/bismuthbronze"
       },
       "top": {
         "base": "block/restoredmetal/cloth/metaltable/purple/cloth-top"
@@ -717,7 +717,7 @@
     },
     "*-purple-iron-*": {
       "metal": {
-        "base": "block/restoredmetal/metal/lantern-rotated/iron"
+        "base": "block/restored-metal/iron"
       },
       "top": {
         "base": "block/restoredmetal/cloth/metaltable/purple/cloth-top"
@@ -731,7 +731,7 @@
     },
     "*-purple-molybdochalkos-*": {
       "metal": {
-        "base": "block/restoredmetal/metal/lantern-rotated/molybdochalkos"
+        "base": "block/restored-metal/molybdochalkos"
       },
       "top": {
         "base": "block/restoredmetal/cloth/metaltable/purple/cloth-top"
@@ -745,7 +745,7 @@
     },
     "*-purple-silver-*": {
       "metal": {
-        "base": "block/restoredmetal/metal/lantern-rotated/silver"
+        "base": "block/restored-metal/silver"
       },
       "top": {
         "base": "block/restoredmetal/cloth/metaltable/purple/cloth-top"
@@ -759,7 +759,7 @@
     },
     "*-purple-gold-*": {
       "metal": {
-        "base": "block/restoredmetal/metal/lantern-rotated/gold"
+        "base": "block/restored-metal/gold"
       },
       "top": {
         "base": "block/restoredmetal/cloth/metaltable/purple/cloth-top"
@@ -773,7 +773,7 @@
     },
     "*-purple-steel-*": {
       "metal": {
-        "base": "block/restoredmetal/metal/lantern-rotated/steel"
+        "base": "block/restored-metal/steel"
       },
       "top": {
         "base": "block/restoredmetal/cloth/metaltable/purple/cloth-top"
@@ -787,7 +787,7 @@
     },
     "*-purple-meteoriciron-*": {
       "metal": {
-        "base": "block/restoredmetal/metal/lantern-rotated/meteoriciron"
+        "base": "block/restored-metal/meteoriciron"
       },
       "top": {
         "base": "block/restoredmetal/cloth/metaltable/purple/cloth-top"
@@ -801,7 +801,7 @@
     },
     "*-purple-electrum-*": {
       "metal": {
-        "base": "block/restoredmetal/metal/lantern-rotated/electrum"
+        "base": "block/restored-metal/electrum"
       },
       "top": {
         "base": "block/restoredmetal/cloth/metaltable/purple/cloth-top"
@@ -815,7 +815,7 @@
     },
     "*-red-copper-*": {
       "metal": {
-        "base": "block/restoredmetal/metal/lantern-rotated/copper"
+        "base": "block/restored-metal/copper"
       },
       "top": {
         "base": "block/restoredmetal/cloth/metaltable/red/cloth-top"
@@ -829,7 +829,7 @@
     },
     "*-red-brass-*": {
       "metal": {
-        "base": "block/restoredmetal/metal/lantern-rotated/brass"
+        "base": "block/restored-metal/brass"
       },
       "top": {
         "base": "block/restoredmetal/cloth/metaltable/red/cloth-top"
@@ -843,7 +843,7 @@
     },
     "*-red-blackbronze-*": {
       "metal": {
-        "base": "block/restoredmetal/metal/lantern-rotated/blackbronze"
+        "base": "block/restored-metal/blackbronze"
       },
       "top": {
         "base": "block/restoredmetal/cloth/metaltable/red/cloth-top"
@@ -857,7 +857,7 @@
     },
     "*-red-bismuth-*": {
       "metal": {
-        "base": "block/restoredmetal/metal/lantern-rotated/bismuth"
+        "base": "block/restored-metal/bismuth"
       },
       "top": {
         "base": "block/restoredmetal/cloth/metaltable/red/cloth-top"
@@ -871,7 +871,7 @@
     },
     "*-red-tinbronze-*": {
       "metal": {
-        "base": "block/restoredmetal/metal/lantern-rotated/tinbronze"
+        "base": "block/restored-metal/tinbronze"
       },
       "top": {
         "base": "block/restoredmetal/cloth/metaltable/red/cloth-top"
@@ -885,7 +885,7 @@
     },
     "*-red-bismuthbronze-*": {
       "metal": {
-        "base": "block/restoredmetal/metal/lantern-rotated/bismuthbronze"
+        "base": "block/restored-metal/bismuthbronze"
       },
       "top": {
         "base": "block/restoredmetal/cloth/metaltable/red/cloth-top"
@@ -899,7 +899,7 @@
     },
     "*-red-iron-*": {
       "metal": {
-        "base": "block/restoredmetal/metal/lantern-rotated/iron"
+        "base": "block/restored-metal/iron"
       },
       "top": {
         "base": "block/restoredmetal/cloth/metaltable/red/cloth-top"
@@ -913,7 +913,7 @@
     },
     "*-red-molybdochalkos-*": {
       "metal": {
-        "base": "block/restoredmetal/metal/lantern-rotated/molybdochalkos"
+        "base": "block/restored-metal/molybdochalkos"
       },
       "top": {
         "base": "block/restoredmetal/cloth/metaltable/red/cloth-top"
@@ -927,7 +927,7 @@
     },
     "*-red-silver-*": {
       "metal": {
-        "base": "block/restoredmetal/metal/lantern-rotated/silver"
+        "base": "block/restored-metal/silver"
       },
       "top": {
         "base": "block/restoredmetal/cloth/metaltable/red/cloth-top"
@@ -941,7 +941,7 @@
     },
     "*-red-gold-*": {
       "metal": {
-        "base": "block/restoredmetal/metal/lantern-rotated/gold"
+        "base": "block/restored-metal/gold"
       },
       "top": {
         "base": "block/restoredmetal/cloth/metaltable/red/cloth-top"
@@ -955,7 +955,7 @@
     },
     "*-red-steel-*": {
       "metal": {
-        "base": "block/restoredmetal/metal/lantern-rotated/steel"
+        "base": "block/restored-metal/steel"
       },
       "top": {
         "base": "block/restoredmetal/cloth/metaltable/red/cloth-top"
@@ -969,7 +969,7 @@
     },
     "*-red-meteoriciron-*": {
       "metal": {
-        "base": "block/restoredmetal/metal/lantern-rotated/meteoriciron"
+        "base": "block/restored-metal/meteoriciron"
       },
       "top": {
         "base": "block/restoredmetal/cloth/metaltable/red/cloth-top"
@@ -983,7 +983,7 @@
     },
     "*-red-electrum-*": {
       "metal": {
-        "base": "block/restoredmetal/metal/lantern-rotated/electrum"
+        "base": "block/restored-metal/electrum"
       },
       "top": {
         "base": "block/restoredmetal/cloth/metaltable/red/cloth-top"
@@ -1001,7 +1001,7 @@
       "base": "block/restoredmetal/metal/mesh1"
     },
     "metal": {
-      "base": "block/restoredmetal/metal/lantern-rotated/blackbronze"
+      "base": "block/restored-metal/blackbronze"
     },
     "top": {
       "base": "block/restoredmetal/cloth/metaltable/white/cloth-top"

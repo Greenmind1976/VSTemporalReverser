@@ -45,6 +45,14 @@ public sealed class VSTemporalReverserConfig
 
     public bool EnableDebugMode { get; set; } = false;
 
+    public void EnsureDefaults()
+    {
+        if (SchemaVersion < 2)
+        {
+            SchemaVersion = 2;
+        }
+    }
+
     public string[] GetEnabledWoodTypes()
     {
         List<string> woods = [];

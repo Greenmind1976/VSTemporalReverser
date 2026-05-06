@@ -7,7 +7,7 @@
 	"textureHeight": 16,
 	"textures": {
 		"candle": "game:block/candle",
-		"blackbronze": "block/metal/lantern/blackbronze"
+		"blackbronze": "block/restored-metal/blackbronze"
 	},
 	"elements": [
 		{

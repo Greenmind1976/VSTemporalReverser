@@ -42,11 +42,6 @@ public class ItemTemporalReverser : Item
         "gold",
         "electrum"
     ];
-    private static readonly string[] RandomTorchholderMaterials =
-    [
-        "aged",
-        "brass"
-    ];
     private static readonly string[] RandomVanillaChairColors =
     [
         "blue",
@@ -77,6 +72,12 @@ public class ItemTemporalReverser : Item
         "silver",
         "gold",
         "electrum"
+    ];
+    private static readonly string[] RandomRestoredBedTopMetals =
+    [
+        "bismuth",
+        "blackbronze",
+        "molybdochalkos"
     ];
     private static readonly string[] RandomRestoredCenserCeramicFinishes =
     [
@@ -917,18 +918,18 @@ public class ItemTemporalReverser : Item
         ["bed/bed-ruined4"] = VanillaBedRule(RuinedDurabilityCost, "game:bed-woodaged-head-north"),
         ["bed/bed-ruined5"] = VanillaBedRule(RuinedDurabilityCost, "game:bed-woodaged-head-north"),
         ["bed/bed-ruined6"] = VanillaBedRule(RuinedDurabilityCost, "game:bed-woodaged-head-north"),
-        ["bed/bed-metal"] = VanillaBlockRule(AgedDurabilityCost, "vstemporalreverser:restored-bed-metal-{lecternmetal}-{chaircolor}"),
-        ["bed/bed-metal-ruined1"] = VanillaBlockRule(RuinedDurabilityCost, "vstemporalreverser:restored-bed-metal-{lecternmetal}-{chaircolor}"),
-        ["bed/bed-metal-ruined2"] = VanillaBlockRule(RuinedDurabilityCost, "vstemporalreverser:restored-bed-metal-{lecternmetal}-{chaircolor}"),
-        ["bed/bed-metal-ruined3"] = VanillaBlockRule(RuinedDurabilityCost, "vstemporalreverser:restored-bed-metal-{lecternmetal}-{chaircolor}"),
-        ["bed/metal2"] = VanillaBlockRule(AgedDurabilityCost, "vstemporalreverser:restored-bed-metal-{lecternmetal}-{chaircolor}"),
-        ["bed/metal2-mattress"] = VanillaBlockRule(AgedDurabilityCost, "vstemporalreverser:restored-bed-metal-{lecternmetal}-{chaircolor}"),
-        ["bed/metal2-pillow"] = VanillaBlockRule(AgedDurabilityCost, "vstemporalreverser:restored-bed-metal-{lecternmetal}-{chaircolor}"),
-        ["bed/metal2-ruined1"] = VanillaBlockRule(RuinedDurabilityCost, "vstemporalreverser:restored-bed-metal-{lecternmetal}-{chaircolor}"),
-        ["bed/metal2-ruined2"] = VanillaBlockRule(RuinedDurabilityCost, "vstemporalreverser:restored-bed-metal-{lecternmetal}-{chaircolor}"),
-        ["bed/metal2-ruined3"] = VanillaBlockRule(RuinedDurabilityCost, "vstemporalreverser:restored-bed-metal-{lecternmetal}-{chaircolor}"),
-        ["bed/metal1-evaporating"] = VanillaBlockRule(RuinedDurabilityCost, "vstemporalreverser:restored-bed-metal-{lecternmetal}-{chaircolor}"),
-        ["bed/metal2-evaporating"] = VanillaBlockRule(RuinedDurabilityCost, "vstemporalreverser:restored-bed-metal-{lecternmetal}-{chaircolor}"),
+        ["bed/bed-metal"] = VanillaBlockRule(AgedDurabilityCost, "vstemporalreverser:restored-metal-table-low-{lecternmetal}-{bedtopmetal}"),
+        ["bed/bed-metal-ruined1"] = VanillaBlockRule(RuinedDurabilityCost, "vstemporalreverser:restored-metal-table-low-{lecternmetal}-{bedtopmetal}"),
+        ["bed/bed-metal-ruined2"] = VanillaBlockRule(RuinedDurabilityCost, "vstemporalreverser:restored-metal-table-low-{lecternmetal}-{bedtopmetal}"),
+        ["bed/bed-metal-ruined3"] = VanillaBlockRule(RuinedDurabilityCost, "vstemporalreverser:restored-metal-table-low-{lecternmetal}-{bedtopmetal}"),
+        ["bed/metal2"] = VanillaBlockRule(AgedDurabilityCost, "vstemporalreverser:restored-metal-bed-high-{lecternmetal}-{chaircolor}-head-north"),
+        ["bed/metal2-mattress"] = VanillaBlockRule(AgedDurabilityCost, "vstemporalreverser:restored-metal-bed-high-{lecternmetal}-{chaircolor}-head-north"),
+        ["bed/metal2-pillow"] = VanillaBlockRule(AgedDurabilityCost, "vstemporalreverser:restored-metal-bed-high-{lecternmetal}-{chaircolor}-head-north"),
+        ["bed/metal2-ruined1"] = VanillaBlockRule(RuinedDurabilityCost, "vstemporalreverser:restored-metal-bed-high-{lecternmetal}-{chaircolor}-head-north"),
+        ["bed/metal2-ruined2"] = VanillaBlockRule(RuinedDurabilityCost, "vstemporalreverser:restored-metal-bed-high-{lecternmetal}-{chaircolor}-head-north"),
+        ["bed/metal2-ruined3"] = VanillaBlockRule(RuinedDurabilityCost, "vstemporalreverser:restored-metal-bed-high-{lecternmetal}-{chaircolor}-head-north"),
+        ["bed/metal1-evaporating"] = VanillaBlockRule(RuinedDurabilityCost, "vstemporalreverser:restored-metal-bed-high-{lecternmetal}-{chaircolor}-head-north"),
+        ["bed/metal2-evaporating"] = VanillaBlockRule(RuinedDurabilityCost, "vstemporalreverser:restored-metal-bed-high-{lecternmetal}-{chaircolor}-head-north"),
         ["table-aged"] = RestoredTableRule(AgedDurabilityCost, "agedwhite"),
         ["table-long"] = RestoredTableRule(AgedDurabilityCost, "scribe"),
         ["table-long-with-accessories"] = RestoredTableRule(AgedDurabilityCost, "scribeaccessories"),
@@ -947,9 +948,9 @@ public class ItemTemporalReverser : Item
         ["table-ruined4"] = RandomRestoredTableRule(RuinedDurabilityCost, RandomRestoredAgedTableStyles),
         ["table-ruined5"] = RandomRestoredTableRule(RuinedDurabilityCost, RandomRestoredAgedTableStyles),
         ["table-ruined6"] = RandomRestoredTableRule(RuinedDurabilityCost, RandomRestoredAgedTableStyles),
-        ["brazier3"] = VanillaBlockRule(RuinedDurabilityCost, "vstemporalreverser:restored-brazier-lit"),
-        ["brazier4"] = VanillaBlockRule(RuinedDurabilityCost, "vstemporalreverser:restored-brazier-lit"),
-        ["brazier-evaporating"] = VanillaBlockRule(RuinedDurabilityCost, "vstemporalreverser:restored-brazier-lit"),
+        ["brazier3"] = VanillaBlockRule(RuinedDurabilityCost, "vstemporalreverser:restored-brazier-{material}"),
+        ["brazier4"] = VanillaBlockRule(RuinedDurabilityCost, "vstemporalreverser:restored-brazier-{material}"),
+        ["brazier-evaporating"] = VanillaBlockRule(RuinedDurabilityCost, "vstemporalreverser:restored-brazier-{material}"),
         ["lantern/ground1"] = RandomVanillaLanternRule(AgedDurabilityCost),
         ["lantern/ground2"] = RandomVanillaLanternRule(AgedDurabilityCost),
         ["lantern/ground3"] = RandomVanillaLanternRule(AgedDurabilityCost),
@@ -977,14 +978,22 @@ public class ItemTemporalReverser : Item
         ["bellows-east"] = VanillaBlockRule(RuinedDurabilityCost, "game:bellows-east"),
         ["bellows-south"] = VanillaBlockRule(RuinedDurabilityCost, "game:bellows-south"),
         ["bellows-west"] = VanillaBlockRule(RuinedDurabilityCost, "game:bellows-west"),
-        ["torchholder-ruined-empty-north"] = VanillaBlockRule(RuinedDurabilityCost, "game:torchholder-{torchholdermaterial}-empty-north"),
-        ["torchholder-ruined-empty-east"] = VanillaBlockRule(RuinedDurabilityCost, "game:torchholder-{torchholdermaterial}-empty-east"),
-        ["torchholder-ruined-empty-south"] = VanillaBlockRule(RuinedDurabilityCost, "game:torchholder-{torchholdermaterial}-empty-south"),
-        ["torchholder-ruined-empty-west"] = VanillaBlockRule(RuinedDurabilityCost, "game:torchholder-{torchholdermaterial}-empty-west"),
-        ["torchholder-ruined-filled-north"] = VanillaBlockRule(RuinedDurabilityCost, "game:torchholder-{torchholdermaterial}-empty-north"),
-        ["torchholder-ruined-filled-east"] = VanillaBlockRule(RuinedDurabilityCost, "game:torchholder-{torchholdermaterial}-empty-east"),
-        ["torchholder-ruined-filled-south"] = VanillaBlockRule(RuinedDurabilityCost, "game:torchholder-{torchholdermaterial}-empty-south"),
-        ["torchholder-ruined-filled-west"] = VanillaBlockRule(RuinedDurabilityCost, "game:torchholder-{torchholdermaterial}-empty-west")
+        ["torchholder-aged-empty-north"] = VanillaBlockRule(AgedDurabilityCost, "vstemporalreverser:torchholder-{material}-empty-north"),
+        ["torchholder-aged-empty-east"] = VanillaBlockRule(AgedDurabilityCost, "vstemporalreverser:torchholder-{material}-empty-east"),
+        ["torchholder-aged-empty-south"] = VanillaBlockRule(AgedDurabilityCost, "vstemporalreverser:torchholder-{material}-empty-south"),
+        ["torchholder-aged-empty-west"] = VanillaBlockRule(AgedDurabilityCost, "vstemporalreverser:torchholder-{material}-empty-west"),
+        ["torchholder-aged-filled-north"] = VanillaBlockRule(AgedDurabilityCost, "vstemporalreverser:torchholder-{material}-empty-north"),
+        ["torchholder-aged-filled-east"] = VanillaBlockRule(AgedDurabilityCost, "vstemporalreverser:torchholder-{material}-empty-east"),
+        ["torchholder-aged-filled-south"] = VanillaBlockRule(AgedDurabilityCost, "vstemporalreverser:torchholder-{material}-empty-south"),
+        ["torchholder-aged-filled-west"] = VanillaBlockRule(AgedDurabilityCost, "vstemporalreverser:torchholder-{material}-empty-west"),
+        ["torchholder-ruined-empty-north"] = VanillaBlockRule(RuinedDurabilityCost, "vstemporalreverser:torchholder-{material}-empty-north"),
+        ["torchholder-ruined-empty-east"] = VanillaBlockRule(RuinedDurabilityCost, "vstemporalreverser:torchholder-{material}-empty-east"),
+        ["torchholder-ruined-empty-south"] = VanillaBlockRule(RuinedDurabilityCost, "vstemporalreverser:torchholder-{material}-empty-south"),
+        ["torchholder-ruined-empty-west"] = VanillaBlockRule(RuinedDurabilityCost, "vstemporalreverser:torchholder-{material}-empty-west"),
+        ["torchholder-ruined-filled-north"] = VanillaBlockRule(RuinedDurabilityCost, "vstemporalreverser:torchholder-{material}-empty-north"),
+        ["torchholder-ruined-filled-east"] = VanillaBlockRule(RuinedDurabilityCost, "vstemporalreverser:torchholder-{material}-empty-east"),
+        ["torchholder-ruined-filled-south"] = VanillaBlockRule(RuinedDurabilityCost, "vstemporalreverser:torchholder-{material}-empty-south"),
+        ["torchholder-ruined-filled-west"] = VanillaBlockRule(RuinedDurabilityCost, "vstemporalreverser:torchholder-{material}-empty-west")
     };
 
     public override void GetHeldItemInfo(ItemSlot inSlot, StringBuilder dsc, IWorldAccessor world, bool withDebugInfo)
@@ -1307,7 +1316,7 @@ public class ItemTemporalReverser : Item
                 : string.Empty;
             string material = RandomLanternMaterials[Random.Shared.Next(RandomLanternMaterials.Length)];
             string lecternMetalFinish = RandomRestoredCenserMetalFinishes[Random.Shared.Next(RandomRestoredCenserMetalFinishes.Length)];
-            string torchholderMaterial = RandomTorchholderMaterials[Random.Shared.Next(RandomTorchholderMaterials.Length)];
+            string bedTopMetal = RandomRestoredBedTopMetals[Random.Shared.Next(RandomRestoredBedTopMetals.Length)];
             string libraryMaterial = enabledLibraryMaterials[Random.Shared.Next(enabledLibraryMaterials.Length)];
             string crateWood = enabledCrateWoodTypes[Random.Shared.Next(enabledCrateWoodTypes.Length)];
             string tableMetal = RandomLanternMaterials[Random.Shared.Next(RandomLanternMaterials.Length)];
@@ -1321,10 +1330,10 @@ public class ItemTemporalReverser : Item
                 .Replace("{tablemetal}", tableMetal, StringComparison.Ordinal)
                 .Replace("{tableclothcolor}", tableClothColor, StringComparison.Ordinal)
                 .Replace("{lecternmetal}", lecternMetalFinish, StringComparison.Ordinal)
+                .Replace("{bedtopmetal}", bedTopMetal, StringComparison.Ordinal)
                 .Replace("{librarymaterial}", libraryMaterial, StringComparison.Ordinal)
                 .Replace("{cratewood}", crateWood, StringComparison.Ordinal)
                 .Replace("{chaircolor}", chairColor, StringComparison.Ordinal);
-            targetCode = targetCode.Replace("{torchholdermaterial}", torchholderMaterial, StringComparison.Ordinal);
             Block? block = world.GetBlock(ToAssetLocation(targetCode));
             if (block == null)
             {
@@ -2369,7 +2378,7 @@ public class ItemTemporalReverser : Item
         return new RestorationRule(
             durabilityCost,
             RestorationTargetKind.Block,
-            $"vstemporalreverser:restored-canopy-bed-{style}-{{wood}}-head-north",
+            $"vstemporalreverser:restored-canopy-bed-{style}-{{wood}}-feet-north",
             RareBonusEntityGroups: new[] { RandomMothCreatureEntities },
             RareBonusEntityChancePercent: 50,
             RareBonusEntityMinCount: 1,
@@ -2402,7 +2411,7 @@ public class ItemTemporalReverser : Item
         return new RestorationRule(
             durabilityCost,
             RestorationTargetKind.Block,
-            $"vstemporalreverser:restored-short-bed-{style}-{{wood}}-head-north",
+            $"vstemporalreverser:restored-short-bed-{style}-{{wood}}-feet-north",
             RareBonusEntityGroups: new[] { RandomMothCreatureEntities },
             RareBonusEntityChancePercent: 50,
             RareBonusEntityMinCount: 1,
