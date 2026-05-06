@@ -1,5 +1,6 @@
 {
   "code": "restored-metal-table",
+  "class": "BlockRestoredMetalTable",
   "behaviors": [
     {
       "name": "UnstableFalling"
@@ -61,6 +62,32 @@
     "up": true,
     "all": false
   },
+  "selectionbox": {
+    "x1": 0,
+    "y1": 0,
+    "z1": 0,
+    "x2": 1,
+    "y2": 1,
+    "z2": 1
+  },
+  "collisionbox": {
+    "x1": 0,
+    "y1": 0,
+    "z1": 0,
+    "x2": 1,
+    "y2": 1,
+    "z2": 1
+  },
+  "collisionSelectionBoxes": [
+    {
+      "x1": 0,
+      "y1": 0,
+      "z1": 0,
+      "x2": 1,
+      "y2": 1,
+      "z2": 1
+    }
+  ],
   "shapeinventoryByType": {
     "*": {
       "base": "block/restoredmetal/table-metal1-cloth"

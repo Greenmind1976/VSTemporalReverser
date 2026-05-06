@@ -1,5 +1,6 @@
 {
   "code": "restored-metal-table-low",
+  "class": "BlockRestoredMetalTableLow",
   "attributes": {
     "handbook": {
       "groupBy": [
@@ -198,9 +199,11 @@
   "resistance": 1.5,
   "lightAbsorption": 0,
   "sidesolid": {
+    "up": true,
     "all": false
   },
   "sideopaque": {
+    "up": true,
     "all": false
   },
   "emitSideAo": {
@@ -217,7 +220,7 @@
     "y1": 0,
     "z1": 0,
     "x2": 1,
-    "y2": 0.42,
+    "y2": 1,
     "z2": 1
   },
   "collisionbox": {
@@ -225,7 +228,7 @@
     "y1": 0,
     "z1": 0,
     "x2": 1,
-    "y2": 0.42,
+    "y2": 1,
     "z2": 1
   },
   "collisionSelectionBoxes": [
@@ -234,7 +237,7 @@
       "y1": 0,
       "z1": 0,
       "x2": 1,
-      "y2": 0.42,
+      "y2": 1,
       "z2": 1
     }
   ],

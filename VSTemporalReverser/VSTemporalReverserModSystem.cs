@@ -25,6 +25,10 @@ public class VSTemporalReverserModSystem : ModSystem
         api.RegisterItemClass("ItemRestoredToy", typeof(ItemRestoredToy));
         api.RegisterBlockClass("BlockRestoredBed", typeof(BlockRestoredBed));
         api.RegisterBlockClass("BlockRestoredCanopyBed", typeof(BlockRestoredCanopyBed));
+        api.RegisterBlockClass("BlockRestoredMetalTable", typeof(BlockRestoredMetalTable));
+        api.RegisterBlockClass("BlockRestoredMetalTableExtension", typeof(BlockRestoredMetalTableExtension));
+        api.RegisterBlockClass("BlockRestoredMetalTableLow", typeof(BlockRestoredMetalTableLow));
+        api.RegisterBlockClass("BlockRestoredMetalTableLowExtension", typeof(BlockRestoredMetalTableLowExtension));
         api.RegisterBlockClass("BlockRestoredBookSurface", typeof(BlockRestoredBookSurface));
         api.RegisterBlockEntityClass("RestoredBookSurface", typeof(BlockEntityRestoredBookSurface));
         TrySubscribeToConfigLib(api);

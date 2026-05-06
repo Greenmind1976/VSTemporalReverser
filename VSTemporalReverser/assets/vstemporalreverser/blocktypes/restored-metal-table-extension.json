@@ -1,0 +1,114 @@
+{
+  "code": "restored-metal-table-extension",
+  "class": "BlockRestoredMetalTableExtension",
+  "variantgroups": [
+    {
+      "code": "style",
+      "states": [
+        "white",
+        "blue",
+        "green",
+        "purple",
+        "red"
+      ]
+    },
+    {
+      "code": "metal",
+      "states": [
+        "copper",
+        "brass",
+        "blackbronze",
+        "bismuth",
+        "tinbronze",
+        "bismuthbronze",
+        "iron",
+        "molybdochalkos",
+        "silver",
+        "gold",
+        "steel",
+        "meteoriciron",
+        "electrum"
+      ]
+    },
+    {
+      "code": "side",
+      "loadFromProperties": "abstract/horizontalorientation"
+    }
+  ],
+  "drawtype": "json",
+  "shapebytype": {
+    "*-*-north": {
+      "base": "block/restoredmetal/table-metal1-cloth-extension",
+      "rotateY": 90
+    },
+    "*-*-east": {
+      "base": "block/restoredmetal/table-metal1-cloth-extension",
+      "rotateY": 0
+    },
+    "*-*-south": {
+      "base": "block/restoredmetal/table-metal1-cloth-extension",
+      "rotateY": 270
+    },
+    "*-*-west": {
+      "base": "block/restoredmetal/table-metal1-cloth-extension",
+      "rotateY": 180
+    }
+  },
+  "texturesByType": {
+    "*-*-*": {
+      "metal": {
+        "base": "block/restored-metal/{metal}"
+      },
+      "top": {
+        "base": "block/restoredmetal/cloth/metaltable/{style}/cloth-top"
+      },
+      "edge-left": {
+        "base": "block/restoredmetal/cloth/metaltable/{style}/cloth-side"
+      },
+      "edge-right": {
+        "base": "block/restoredmetal/cloth/metaltable/{style}/cloth-side"
+      },
+      "mesh1": {
+        "base": "block/restoredmetal/metal/mesh1"
+      }
+    }
+  },
+  "blockmaterial": "Metal",
+  "replaceable": 900,
+  "resistance": 1.5,
+  "lightAbsorption": 1,
+  "sidesolid": {
+    "up": true,
+    "all": false
+  },
+  "sideopaque": {
+    "up": true,
+    "all": false
+  },
+  "selectionbox": {
+    "x1": 0,
+    "y1": 0,
+    "z1": 0,
+    "x2": 1,
+    "y2": 1,
+    "z2": 1
+  },
+  "collisionbox": {
+    "x1": 0,
+    "y1": 0,
+    "z1": 0,
+    "x2": 1,
+    "y2": 1,
+    "z2": 1
+  },
+  "collisionSelectionBoxes": [
+    {
+      "x1": 0,
+      "y1": 0,
+      "z1": 0,
+      "x2": 1,
+      "y2": 1,
+      "z2": 1
+    }
+  ]
+}
