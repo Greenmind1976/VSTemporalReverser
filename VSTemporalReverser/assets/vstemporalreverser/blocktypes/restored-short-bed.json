@@ -3717,22 +3717,6 @@
   },
   "lightAbsorption": 0,
   "maxStackSize": 2,
-  "collisionbox": {
-    "x1": 0,
-    "y1": 0,
-    "z1": 0,
-    "x2": 1,
-    "y2": 1,
-    "z2": 1
-  },
-  "selectionbox": {
-    "x1": 0,
-    "y1": 0,
-    "z1": 0,
-    "x2": 1,
-    "y2": 1,
-    "z2": 1
-  },
   "heldTpIdleAnimation": "holdbothhandslarge",
   "heldRightTpIdleAnimation": "holdbothhandslarge",
   "heldLeftTpIdleAnimation": "holdbothhandslarge",
@@ -3745,7 +3729,23 @@
   },
   "shapeinventoryByType": {
     "*": {
-      "base": "block/clutter/bed/bed-short-open"
+      "base": "block/bed/icon/restored-short-bed-inventory"
     }
+  },
+  "selectionbox": {
+    "x1": 0,
+    "y1": 0,
+    "z1": 0,
+    "x2": 1,
+    "y2": 1,
+    "z2": 1
+  },
+  "collisionbox": {
+    "x1": 0,
+    "y1": 0,
+    "z1": 0,
+    "x2": 1,
+    "y2": 1,
+    "z2": 1
   }
 }

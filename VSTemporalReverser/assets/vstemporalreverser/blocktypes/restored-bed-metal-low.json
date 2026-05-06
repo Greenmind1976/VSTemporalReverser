@@ -1,0 +1,262 @@
+{
+  "code": "restored-metal-table-low",
+  "attributes": {
+    "handbook": {
+      "groupBy": [
+        "restored-metal-table-low-*-*"
+      ]
+    }
+  },
+  "variantgroups": [
+    {
+      "code": "metal",
+      "states": [
+        "copper",
+        "brass",
+        "blackbronze",
+        "silver",
+        "gold",
+        "electrum"
+      ]
+    },
+    {
+      "code": "topmetal",
+      "states": [
+        "bismuth",
+        "blackbronze",
+        "molybdochalkos"
+      ]
+    }
+  ],
+  "drawtype": "json",
+  "shapebytype": {
+    "*": {
+      "base": "block/restoredmetal/bed-metal-low"
+    }
+  },
+  "shapeinventoryByType": {
+    "*": {
+      "base": "block/restoredmetal/bed-metal-low"
+    }
+  },
+  "textures": {
+    "tinbronze": {
+      "base": "block/restored-metal/blackbronze"
+    },
+    "copper": {
+      "base": "block/restored-metal/bismuth"
+    }
+  },
+  "texturesByType": {
+    "*-copper-bismuth": {
+      "tinbronze": {
+        "base": "block/restored-metal/copper"
+      },
+      "copper": {
+        "base": "block/restored-metal/bismuth"
+      }
+    },
+    "*-copper-blackbronze": {
+      "tinbronze": {
+        "base": "block/restored-metal/copper"
+      },
+      "copper": {
+        "base": "block/restored-metal/blackbronze"
+      }
+    },
+    "*-copper-molybdochalkos": {
+      "tinbronze": {
+        "base": "block/restored-metal/copper"
+      },
+      "copper": {
+        "base": "block/restored-metal/molybdochalkos"
+      }
+    },
+    "*-brass-bismuth": {
+      "tinbronze": {
+        "base": "block/restored-metal/brass"
+      },
+      "copper": {
+        "base": "block/restored-metal/bismuth"
+      }
+    },
+    "*-brass-blackbronze": {
+      "tinbronze": {
+        "base": "block/restored-metal/brass"
+      },
+      "copper": {
+        "base": "block/restored-metal/blackbronze"
+      }
+    },
+    "*-brass-molybdochalkos": {
+      "tinbronze": {
+        "base": "block/restored-metal/brass"
+      },
+      "copper": {
+        "base": "block/restored-metal/molybdochalkos"
+      }
+    },
+    "*-blackbronze-bismuth": {
+      "tinbronze": {
+        "base": "block/restored-metal/blackbronze"
+      },
+      "copper": {
+        "base": "block/restored-metal/bismuth"
+      }
+    },
+    "*-blackbronze-blackbronze": {
+      "tinbronze": {
+        "base": "block/restored-metal/blackbronze"
+      },
+      "copper": {
+        "base": "block/restored-metal/blackbronze"
+      }
+    },
+    "*-blackbronze-molybdochalkos": {
+      "tinbronze": {
+        "base": "block/restored-metal/blackbronze"
+      },
+      "copper": {
+        "base": "block/restored-metal/molybdochalkos"
+      }
+    },
+    "*-silver-bismuth": {
+      "tinbronze": {
+        "base": "block/restored-metal/silver"
+      },
+      "copper": {
+        "base": "block/restored-metal/bismuth"
+      }
+    },
+    "*-silver-blackbronze": {
+      "tinbronze": {
+        "base": "block/restored-metal/silver"
+      },
+      "copper": {
+        "base": "block/restored-metal/blackbronze"
+      }
+    },
+    "*-silver-molybdochalkos": {
+      "tinbronze": {
+        "base": "block/restored-metal/silver"
+      },
+      "copper": {
+        "base": "block/restored-metal/molybdochalkos"
+      }
+    },
+    "*-gold-bismuth": {
+      "tinbronze": {
+        "base": "block/restored-metal/gold"
+      },
+      "copper": {
+        "base": "block/restored-metal/bismuth"
+      }
+    },
+    "*-gold-blackbronze": {
+      "tinbronze": {
+        "base": "block/restored-metal/gold"
+      },
+      "copper": {
+        "base": "block/restored-metal/blackbronze"
+      }
+    },
+    "*-gold-molybdochalkos": {
+      "tinbronze": {
+        "base": "block/restored-metal/gold"
+      },
+      "copper": {
+        "base": "block/restored-metal/molybdochalkos"
+      }
+    },
+    "*-electrum-bismuth": {
+      "tinbronze": {
+        "base": "block/restored-metal/electrum"
+      },
+      "copper": {
+        "base": "block/restored-metal/bismuth"
+      }
+    },
+    "*-electrum-blackbronze": {
+      "tinbronze": {
+        "base": "block/restored-metal/electrum"
+      },
+      "copper": {
+        "base": "block/restored-metal/blackbronze"
+      }
+    },
+    "*-electrum-molybdochalkos": {
+      "tinbronze": {
+        "base": "block/restored-metal/electrum"
+      },
+      "copper": {
+        "base": "block/restored-metal/molybdochalkos"
+      }
+    }
+  },
+  "blockmaterial": "Metal",
+  "replaceable": 900,
+  "resistance": 1.5,
+  "lightAbsorption": 0,
+  "sidesolid": {
+    "all": false
+  },
+  "sideopaque": {
+    "all": false
+  },
+  "emitSideAo": {
+    "all": false
+  },
+  "sounds": {
+    "place": "block/anvil",
+    "break": "block/anvil",
+    "hit": "block/anvil",
+    "walk": "walk/metalore"
+  },
+  "selectionbox": {
+    "x1": 0,
+    "y1": 0,
+    "z1": 0,
+    "x2": 1,
+    "y2": 0.42,
+    "z2": 1
+  },
+  "collisionbox": {
+    "x1": 0,
+    "y1": 0,
+    "z1": 0,
+    "x2": 1,
+    "y2": 0.42,
+    "z2": 1
+  },
+  "collisionSelectionBoxes": [
+    {
+      "x1": 0,
+      "y1": 0,
+      "z1": 0,
+      "x2": 1,
+      "y2": 0.42,
+      "z2": 1
+    }
+  ],
+  "guiTransform": {
+    "origin": {
+      "x": -0.1,
+      "y": 0.5,
+      "z": 0.5
+    },
+    "scale": 0.87
+  },
+  "tpHandTransform": {
+    "translation": {
+      "x": -1.4,
+      "y": -0.5,
+      "z": -0.8
+    },
+    "rotation": {
+      "x": -74,
+      "y": -16,
+      "z": 12
+    },
+    "scale": 0.53
+  }
+}

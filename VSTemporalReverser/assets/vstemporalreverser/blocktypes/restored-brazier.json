@@ -1,10 +1,83 @@
 {
-  "code": "restored-brazier-lit",
-  "shape": {
-    "base": "block/restoredbrazier/restored-brazier-lit"
+  "code": "restored-brazier",
+  "variantgroups": [
+    {
+      "code": "material",
+      "states": [
+        "copper",
+        "brass",
+        "blackbronze",
+        "bismuth",
+        "tinbronze",
+        "bismuthbronze",
+        "iron",
+        "molybdochalkos",
+        "silver",
+        "gold",
+        "steel",
+        "meteoriciron",
+        "electrum"
+      ]
+    }
+  ],
+  "shapebytype": {
+    "*": {
+      "base": "block/restoredbrazier/restored-brazier-lit"
+    }
   },
-  "shapeInventory": {
-    "base": "block/restoredbrazier/restored-brazier-lit"
+  "shapeinventorybytype": {
+    "*": {
+      "base": "block/restoredbrazier/restored-brazier-lit"
+    }
+  },
+  "textures": {
+    "iron4": {
+      "base": "block/restored-metal/iron"
+    },
+    "flammable-lit": {
+      "base": "game:block/wood/torch/flammable-lit"
+    }
+  },
+  "texturesbytype": {
+    "*-copper": {
+      "iron4": { "base": "block/restored-metal/copper" }
+    },
+    "*-brass": {
+      "iron4": { "base": "block/restored-metal/brass" }
+    },
+    "*-blackbronze": {
+      "iron4": { "base": "block/restored-metal/blackbronze" }
+    },
+    "*-bismuth": {
+      "iron4": { "base": "block/restored-metal/bismuth" }
+    },
+    "*-tinbronze": {
+      "iron4": { "base": "block/restored-metal/tinbronze" }
+    },
+    "*-bismuthbronze": {
+      "iron4": { "base": "block/restored-metal/bismuthbronze" }
+    },
+    "*-iron": {
+      "iron4": { "base": "block/restored-metal/iron" }
+    },
+    "*-molybdochalkos": {
+      "iron4": { "base": "block/restored-metal/molybdochalkos" }
+    },
+    "*-silver": {
+      "iron4": { "base": "block/restored-metal/silver" }
+    },
+    "*-gold": {
+      "iron4": { "base": "block/restored-metal/gold" }
+    },
+    "*-steel": {
+      "iron4": { "base": "block/restored-metal/steel" }
+    },
+    "*-meteoriciron": {
+      "iron4": { "base": "block/restored-metal/meteoriciron" }
+    },
+    "*-electrum": {
+      "iron4": { "base": "block/restored-metal/electrum" }
+    }
   },
   "drawtype": "json",
   "blockmaterial": "Metal",
@@ -111,10 +184,34 @@
   },
   "creativeinventory": {
     "general": [
-      "*"
+      "*-copper",
+      "*-brass",
+      "*-blackbronze",
+      "*-bismuth",
+      "*-tinbronze",
+      "*-bismuthbronze",
+      "*-iron",
+      "*-molybdochalkos",
+      "*-silver",
+      "*-gold",
+      "*-steel",
+      "*-meteoriciron",
+      "*-electrum"
     ],
     "decorative": [
-      "*"
+      "*-copper",
+      "*-brass",
+      "*-blackbronze",
+      "*-bismuth",
+      "*-tinbronze",
+      "*-bismuthbronze",
+      "*-iron",
+      "*-molybdochalkos",
+      "*-silver",
+      "*-gold",
+      "*-steel",
+      "*-meteoriciron",
+      "*-electrum"
     ]
   },
   "sounds": {

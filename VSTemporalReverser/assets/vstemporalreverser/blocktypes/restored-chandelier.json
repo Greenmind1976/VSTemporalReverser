@@ -60,7 +60,7 @@
     "*-candle8": { "base": "block/metal/chandelier/candle8" }
   },
   "textures": {
-    "blackbronze": { "base": "block/metal/lantern/{material}" },
+    "blackbronze": { "base": "block/restored-metal/{material}" },
     "candle": { "base": "block/candle" }
   },
   "creativeinventory": {

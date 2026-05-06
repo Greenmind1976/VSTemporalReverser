@@ -12,16 +12,14 @@ public class VSTemporalReverserModSystem : ModSystem
     public static VSTemporalReverserConfig Config { get; private set; } = new();
     private object? configLibModSystem;
     private bool configLibSubscribed;
-    private bool configLibRegistered;
     private Delegate? configLibSettingChangedHandler;
     private Delegate? configLibConfigsLoadedHandler;
-    private ICoreAPI? api;
 
     public override void Start(ICoreAPI api)
     {
         base.Start(api);
-        this.api = api;
         Config = api.LoadModConfig<VSTemporalReverserConfig>(VSTemporalReverserConfig.FileName) ?? new VSTemporalReverserConfig();
+        Config.EnsureDefaults();
         ApplyConfig(api, Config);
         api.RegisterItemClass("ItemTemporalReverser", typeof(ItemTemporalReverser));
         api.RegisterItemClass("ItemRestoredToy", typeof(ItemRestoredToy));
@@ -74,7 +72,6 @@ public class VSTemporalReverserModSystem : ModSystem
         if (configLibModSystem == null) return;
 
         Type systemType = configLibModSystem.GetType();
-        TryRegisterManagedConfig(systemType);
 
         EventInfo? settingChangedEvent = systemType.GetEvent("SettingChanged");
         if (settingChangedEvent != null)
@@ -101,68 +98,10 @@ public class VSTemporalReverserModSystem : ModSystem
         configLibSubscribed = true;
     }
 
-    private void TryRegisterManagedConfig(Type systemType)
-    {
-        if (configLibRegistered || configLibModSystem == null || api == null) return;
-
-        try
-        {
-            MethodInfo? registerManagedConfig = systemType.GetMethod(
-                "RegisterCustomManagedConfig",
-                [
-                    typeof(string),
-                    typeof(object),
-                    typeof(string),
-                    typeof(Action),
-                    typeof(Action<string>),
-                    typeof(Action)
-                ]);
-
-            if (registerManagedConfig == null) return;
-
-            string configPath = VSTemporalReverserConfig.FileName;
-
-            registerManagedConfig.Invoke(
-                configLibModSystem,
-                [
-                    Domain,
-                    Config,
-                    configPath,
-                    (Action)OnConfigLibSyncedFromServer,
-                    (Action<string>)OnConfigLibManagedSettingChanged,
-                    (Action)OnConfigLibConfigSaved
-                ]);
-
-            configLibRegistered = true;
-        }
-        catch
-        {
-        }
-    }
-
-    private void OnConfigLibSyncedFromServer()
-    {
-        if (api == null) return;
-        ApplyConfig(api, Config);
-    }
-
-    private void OnConfigLibManagedSettingChanged(string _settingCode)
-    {
-        if (api == null) return;
-        ApplyConfig(api, Config);
-    }
-
-    private void OnConfigLibConfigSaved()
-    {
-        if (api == null) return;
-        ApplyConfig(api, Config);
-    }
-
 #pragma warning disable IDE0060
     private void OnConfigLibSettingChanged(string domain, object _config, object setting)
     {
         if (!string.Equals(domain, Domain, StringComparison.OrdinalIgnoreCase)) return;
-        if (api == null) return;
 
         try
         {
@@ -173,14 +112,12 @@ public class VSTemporalReverserModSystem : ModSystem
         {
         }
 
-        ApplyConfig(api, Config);
+        Config.EnsureDefaults();
     }
 #pragma warning restore IDE0060
 
     private void OnConfigLibConfigsLoaded()
     {
-        if (api == null) return;
-
         try
         {
             if (configLibModSystem == null) return;
@@ -197,6 +134,6 @@ public class VSTemporalReverserModSystem : ModSystem
         {
         }
 
-        ApplyConfig(api, Config);
+        Config.EnsureDefaults();
     }
 }

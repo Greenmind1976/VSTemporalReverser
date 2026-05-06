@@ -5,144 +5,162 @@
   "settings": [
     {
       "type": "separator",
-      "title": "Wood Restore",
+      "title": "Global",
       "weight": 100
+    },
+    {
+      "code": "EnableDebugMode",
+      "ingui": "Enable debug mode",
+      "type": "boolean",
+      "weight": 99,
+      "comment": "Enable Temporal Reverser debug logging and any debug-only behavior tied to the mod.",
+      "default": false
+    },
+    {
+      "type": "separator",
+      "title": "Wood Restore",
+      "weight": 98
     },
     {
       "code": "Birch",
       "ingui": "Birch",
       "type": "boolean",
-      "weight": 89,
+      "weight": 97.9,
+      "comment": "Allow birch as a valid wood output for restored wood-based items and blocks.",
       "default": true
     },
     {
       "code": "Oak",
       "ingui": "Oak",
       "type": "boolean",
-      "weight": 88.9,
+      "weight": 97.8,
+      "comment": "Allow oak as a valid wood output for restored wood-based items and blocks.",
       "default": true
     },
     {
       "code": "Maple",
       "ingui": "Maple",
       "type": "boolean",
-      "weight": 88.8,
+      "weight": 97.7,
+      "comment": "Allow maple as a valid wood output for restored wood-based items and blocks.",
       "default": true
     },
     {
       "code": "Pine",
       "ingui": "Pine",
       "type": "boolean",
-      "weight": 88.7,
+      "weight": 97.6,
+      "comment": "Allow pine as a valid wood output for restored wood-based items and blocks.",
       "default": true
     },
     {
       "code": "Acacia",
       "ingui": "Acacia",
       "type": "boolean",
-      "weight": 88.6,
+      "weight": 97.5,
+      "comment": "Allow acacia as a valid wood output for restored wood-based items and blocks.",
       "default": true
     },
     {
       "code": "Kapok",
       "ingui": "Kapok",
       "type": "boolean",
-      "weight": 88.5,
+      "weight": 97.4,
+      "comment": "Allow kapok as a valid wood output for restored wood-based items and blocks.",
       "default": true
     },
     {
       "code": "Redwood",
       "ingui": "Redwood",
       "type": "boolean",
-      "weight": 88.4,
+      "weight": 97.3,
+      "comment": "Allow redwood as a valid wood output for restored wood-based items and blocks.",
       "default": true
     },
     {
       "code": "BaldCypress",
       "ingui": "Bald Cypress",
       "type": "boolean",
-      "weight": 88.3,
+      "weight": 97.2,
+      "comment": "Allow bald cypress as a valid wood output for restored wood-based items and blocks.",
       "default": true
     },
     {
       "code": "Larch",
       "ingui": "Larch",
       "type": "boolean",
-      "weight": 88.2,
+      "weight": 97.1,
+      "comment": "Allow larch as a valid wood output for restored wood-based items and blocks.",
       "default": true
     },
     {
       "code": "Ebony",
       "ingui": "Ebony",
       "type": "boolean",
-      "weight": 88.1,
+      "weight": 97.0,
+      "comment": "Allow ebony as a valid wood output for restored wood-based items and blocks.",
       "default": true
     },
     {
       "code": "Walnut",
       "ingui": "Walnut",
       "type": "boolean",
-      "weight": 88.0,
+      "weight": 96.9,
+      "comment": "Allow walnut as a valid wood output for restored wood-based items and blocks.",
       "default": true
     },
     {
       "code": "Purpleheart",
       "ingui": "Purpleheart",
       "type": "boolean",
-      "weight": 87.9,
+      "weight": 96.8,
+      "comment": "Allow purpleheart as a valid wood output for restored wood-based items and blocks.",
       "default": true
     },
     {
       "code": "AgedWood",
       "ingui": "Aged Wood",
       "type": "boolean",
-      "weight": 87.8,
+      "weight": 96.7,
+      "comment": "Allow aged wood as a valid wood output for restored wood-based items and blocks.",
       "default": true
     },
     {
       "code": "VeryAgedWood",
       "ingui": "Very Aged Wood",
       "type": "boolean",
-      "weight": 87.7,
+      "weight": 96.6,
+      "comment": "Allow very aged wood as a valid wood output for restored wood-based items and blocks.",
       "default": true
     },
     {
       "type": "separator",
-      "title": "Critter Spawn",
-      "weight": 90
+      "title": "Critter Spawns",
+      "weight": 96.5
     },
     {
       "code": "EnableRaccoons",
       "ingui": "Raccoons",
       "type": "boolean",
-      "weight": 79.9,
+      "weight": 96.4,
+      "comment": "Allow raccoons to appear when the Temporal Reverser restores eligible clutter or spawn content.",
       "default": true
     },
     {
       "code": "EnableMice",
       "ingui": "Mice",
       "type": "boolean",
-      "weight": 79.8,
+      "weight": 96.3,
+      "comment": "Allow mice to appear when the Temporal Reverser restores eligible clutter or spawn content.",
       "default": true
     },
     {
       "code": "EnableMoths",
       "ingui": "Moths",
       "type": "boolean",
-      "weight": 79.7,
+      "weight": 96.2,
+      "comment": "Allow moths to appear when the Temporal Reverser restores eligible clutter or spawn content.",
       "default": true
-    },
-    {
-      "type": "separator",
-      "title": "Debug Mode",
-      "weight": 80
-    },
-    {
-      "code": "EnableDebugMode",
-      "ingui": "Enable debug mode",
-      "type": "boolean",
-      "weight": 69.9,
-      "default": false
     }
   ]
 }

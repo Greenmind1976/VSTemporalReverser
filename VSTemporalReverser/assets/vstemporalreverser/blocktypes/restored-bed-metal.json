@@ -1,9 +1,16 @@
 {
-  "code": "restored-bed-metal",
+  "code": "restored-metal-bed-high",
+  "class": "BlockRestoredBed",
+  "entityClassByType": {
+    "*-head-*": "Bed"
+  },
   "attributes": {
+    "sleepEfficiencyByType": {
+      "*": 0.79166666
+    },
     "handbook": {
       "groupBy": [
-        "restored-bed-metal-*-*"
+        "restored-metal-bed-high-*-*-*"
       ]
     }
   },
@@ -34,554 +41,596 @@
         "pink",
         "white"
       ]
+    },
+    {
+      "code": "part",
+      "states": [
+        "head",
+        "feet"
+      ]
+    },
+    {
+      "code": "side",
+      "loadFromProperties": "abstract/horizontalorientation"
     }
   ],
   "drawtype": "json",
   "shapebytype": {
-    "*": {
+    "*-head-north": {
+      "base": "block/restoredmetal/bed-metal2-mattress",
+      "rotateY": 90
+    },
+    "*-head-east": {
       "base": "block/restoredmetal/bed-metal2-mattress"
+    },
+    "*-head-south": {
+      "base": "block/restoredmetal/bed-metal2-mattress",
+      "rotateY": 270
+    },
+    "*-head-west": {
+      "base": "block/restoredmetal/bed-metal2-mattress",
+      "rotateY": 180
+    },
+    "*-feet-north": {
+      "base": "block/bed/restored-canopy-bed-feet-empty",
+      "rotateY": 90
+    },
+    "*-feet-east": {
+      "base": "block/bed/restored-canopy-bed-feet-empty",
+      "rotateY": 0
+    },
+    "*-feet-south": {
+      "base": "block/bed/restored-canopy-bed-feet-empty",
+      "rotateY": 270
+    },
+    "*-feet-west": {
+      "base": "block/bed/restored-canopy-bed-feet-empty",
+      "rotateY": 180
     }
   },
-  "shapeinventorybytype": {
+  "shapeinventoryByType": {
     "*": {
-      "base": "block/restoredmetal/bed-metal2-mattress"
+      "base": "block/bed/icon/restored-metal-bed-high-inventory"
     }
   },
   "textures": {
     "metal": {
-      "base": "block/restoredbed/metal/lantern-rotated/blackbronze"
+      "base": "block/restored-metal/blackbronze"
     },
     "mesh2": {
       "base": "block/restoredbed/metal/mesh2"
+    },
+    "pillow": {
+      "base": "block/cloth/linen/white"
     },
     "cover": {
       "base": "block/cloth/linen/gray"
     }
   },
-  "texturesbytype": {
-    "*-copper-blue": {
+  "texturesByType": {
+    "*-copper-blue-*-*": {
       "metal": {
-        "base": "block/restoredbed/metal/lantern-rotated/copper"
+        "base": "block/restored-metal/copper"
       },
       "cover": {
         "base": "block/cloth/linen/blue"
       }
     },
-    "*-copper-red": {
+    "*-copper-red-*-*": {
       "metal": {
-        "base": "block/restoredbed/metal/lantern-rotated/copper"
+        "base": "block/restored-metal/copper"
       },
       "cover": {
         "base": "block/cloth/linen/red"
       }
     },
-    "*-copper-yellow": {
+    "*-copper-yellow-*-*": {
       "metal": {
-        "base": "block/restoredbed/metal/lantern-rotated/copper"
+        "base": "block/restored-metal/copper"
       },
       "cover": {
         "base": "block/cloth/linen/yellow"
       }
     },
-    "*-copper-purple": {
+    "*-copper-purple-*-*": {
       "metal": {
-        "base": "block/restoredbed/metal/lantern-rotated/copper"
+        "base": "block/restored-metal/copper"
       },
       "cover": {
         "base": "block/cloth/linen/purple"
       }
     },
-    "*-copper-brown": {
+    "*-copper-brown-*-*": {
       "metal": {
-        "base": "block/restoredbed/metal/lantern-rotated/copper"
+        "base": "block/restored-metal/copper"
       },
       "cover": {
         "base": "block/cloth/linen/brown"
       }
     },
-    "*-copper-green": {
+    "*-copper-green-*-*": {
       "metal": {
-        "base": "block/restoredbed/metal/lantern-rotated/copper"
+        "base": "block/restored-metal/copper"
       },
       "cover": {
         "base": "block/cloth/linen/green"
       }
     },
-    "*-copper-orange": {
+    "*-copper-orange-*-*": {
       "metal": {
-        "base": "block/restoredbed/metal/lantern-rotated/copper"
+        "base": "block/restored-metal/copper"
       },
       "cover": {
         "base": "block/cloth/linen/orange"
       }
     },
-    "*-copper-black": {
+    "*-copper-black-*-*": {
       "metal": {
-        "base": "block/restoredbed/metal/lantern-rotated/copper"
+        "base": "block/restored-metal/copper"
       },
       "cover": {
         "base": "block/cloth/linen/black"
       }
     },
-    "*-copper-gray": {
+    "*-copper-gray-*-*": {
       "metal": {
-        "base": "block/restoredbed/metal/lantern-rotated/copper"
+        "base": "block/restored-metal/copper"
       },
       "cover": {
         "base": "block/cloth/linen/gray"
       }
     },
-    "*-copper-pink": {
+    "*-copper-pink-*-*": {
       "metal": {
-        "base": "block/restoredbed/metal/lantern-rotated/copper"
+        "base": "block/restored-metal/copper"
       },
       "cover": {
         "base": "block/cloth/linen/pink"
       }
     },
-    "*-copper-white": {
+    "*-copper-white-*-*": {
       "metal": {
-        "base": "block/restoredbed/metal/lantern-rotated/copper"
+        "base": "block/restored-metal/copper"
       },
       "cover": {
         "base": "block/cloth/linen/white"
       }
     },
-    "*-brass-blue": {
+    "*-brass-blue-*-*": {
       "metal": {
-        "base": "block/restoredbed/metal/lantern-rotated/brass"
+        "base": "block/restored-metal/brass"
       },
       "cover": {
         "base": "block/cloth/linen/blue"
       }
     },
-    "*-brass-red": {
+    "*-brass-red-*-*": {
       "metal": {
-        "base": "block/restoredbed/metal/lantern-rotated/brass"
+        "base": "block/restored-metal/brass"
       },
       "cover": {
         "base": "block/cloth/linen/red"
       }
     },
-    "*-brass-yellow": {
+    "*-brass-yellow-*-*": {
       "metal": {
-        "base": "block/restoredbed/metal/lantern-rotated/brass"
+        "base": "block/restored-metal/brass"
       },
       "cover": {
         "base": "block/cloth/linen/yellow"
       }
     },
-    "*-brass-purple": {
+    "*-brass-purple-*-*": {
       "metal": {
-        "base": "block/restoredbed/metal/lantern-rotated/brass"
+        "base": "block/restored-metal/brass"
       },
       "cover": {
         "base": "block/cloth/linen/purple"
       }
     },
-    "*-brass-brown": {
+    "*-brass-brown-*-*": {
       "metal": {
-        "base": "block/restoredbed/metal/lantern-rotated/brass"
+        "base": "block/restored-metal/brass"
       },
       "cover": {
         "base": "block/cloth/linen/brown"
       }
     },
-    "*-brass-green": {
+    "*-brass-green-*-*": {
       "metal": {
-        "base": "block/restoredbed/metal/lantern-rotated/brass"
+        "base": "block/restored-metal/brass"
       },
       "cover": {
         "base": "block/cloth/linen/green"
       }
     },
-    "*-brass-orange": {
+    "*-brass-orange-*-*": {
       "metal": {
-        "base": "block/restoredbed/metal/lantern-rotated/brass"
+        "base": "block/restored-metal/brass"
       },
       "cover": {
         "base": "block/cloth/linen/orange"
       }
     },
-    "*-brass-black": {
+    "*-brass-black-*-*": {
       "metal": {
-        "base": "block/restoredbed/metal/lantern-rotated/brass"
+        "base": "block/restored-metal/brass"
       },
       "cover": {
         "base": "block/cloth/linen/black"
       }
     },
-    "*-brass-gray": {
+    "*-brass-gray-*-*": {
       "metal": {
-        "base": "block/restoredbed/metal/lantern-rotated/brass"
+        "base": "block/restored-metal/brass"
       },
       "cover": {
         "base": "block/cloth/linen/gray"
       }
     },
-    "*-brass-pink": {
+    "*-brass-pink-*-*": {
       "metal": {
-        "base": "block/restoredbed/metal/lantern-rotated/brass"
+        "base": "block/restored-metal/brass"
       },
       "cover": {
         "base": "block/cloth/linen/pink"
       }
     },
-    "*-brass-white": {
+    "*-brass-white-*-*": {
       "metal": {
-        "base": "block/restoredbed/metal/lantern-rotated/brass"
+        "base": "block/restored-metal/brass"
       },
       "cover": {
         "base": "block/cloth/linen/white"
       }
     },
-    "*-blackbronze-blue": {
+    "*-blackbronze-blue-*-*": {
       "metal": {
-        "base": "block/restoredbed/metal/lantern-rotated/blackbronze"
+        "base": "block/restored-metal/blackbronze"
       },
       "cover": {
         "base": "block/cloth/linen/blue"
       }
     },
-    "*-blackbronze-red": {
+    "*-blackbronze-red-*-*": {
       "metal": {
-        "base": "block/restoredbed/metal/lantern-rotated/blackbronze"
+        "base": "block/restored-metal/blackbronze"
       },
       "cover": {
         "base": "block/cloth/linen/red"
       }
     },
-    "*-blackbronze-yellow": {
+    "*-blackbronze-yellow-*-*": {
       "metal": {
-        "base": "block/restoredbed/metal/lantern-rotated/blackbronze"
+        "base": "block/restored-metal/blackbronze"
       },
       "cover": {
         "base": "block/cloth/linen/yellow"
       }
     },
-    "*-blackbronze-purple": {
+    "*-blackbronze-purple-*-*": {
       "metal": {
-        "base": "block/restoredbed/metal/lantern-rotated/blackbronze"
+        "base": "block/restored-metal/blackbronze"
       },
       "cover": {
         "base": "block/cloth/linen/purple"
       }
     },
-    "*-blackbronze-brown": {
+    "*-blackbronze-brown-*-*": {
       "metal": {
-        "base": "block/restoredbed/metal/lantern-rotated/blackbronze"
+        "base": "block/restored-metal/blackbronze"
       },
       "cover": {
         "base": "block/cloth/linen/brown"
       }
     },
-    "*-blackbronze-green": {
+    "*-blackbronze-green-*-*": {
       "metal": {
-        "base": "block/restoredbed/metal/lantern-rotated/blackbronze"
+        "base": "block/restored-metal/blackbronze"
       },
       "cover": {
         "base": "block/cloth/linen/green"
       }
     },
-    "*-blackbronze-orange": {
+    "*-blackbronze-orange-*-*": {
       "metal": {
-        "base": "block/restoredbed/metal/lantern-rotated/blackbronze"
+        "base": "block/restored-metal/blackbronze"
       },
       "cover": {
         "base": "block/cloth/linen/orange"
       }
     },
-    "*-blackbronze-black": {
+    "*-blackbronze-black-*-*": {
       "metal": {
-        "base": "block/restoredbed/metal/lantern-rotated/blackbronze"
+        "base": "block/restored-metal/blackbronze"
       },
       "cover": {
         "base": "block/cloth/linen/black"
       }
     },
-    "*-blackbronze-gray": {
+    "*-blackbronze-gray-*-*": {
       "metal": {
-        "base": "block/restoredbed/metal/lantern-rotated/blackbronze"
+        "base": "block/restored-metal/blackbronze"
       },
       "cover": {
         "base": "block/cloth/linen/gray"
       }
     },
-    "*-blackbronze-pink": {
+    "*-blackbronze-pink-*-*": {
       "metal": {
-        "base": "block/restoredbed/metal/lantern-rotated/blackbronze"
+        "base": "block/restored-metal/blackbronze"
       },
       "cover": {
         "base": "block/cloth/linen/pink"
       }
     },
-    "*-blackbronze-white": {
+    "*-blackbronze-white-*-*": {
       "metal": {
-        "base": "block/restoredbed/metal/lantern-rotated/blackbronze"
+        "base": "block/restored-metal/blackbronze"
       },
       "cover": {
         "base": "block/cloth/linen/white"
       }
     },
-    "*-silver-blue": {
+    "*-silver-blue-*-*": {
       "metal": {
-        "base": "block/restoredbed/metal/lantern-rotated/silver"
+        "base": "block/restored-metal/silver"
       },
       "cover": {
         "base": "block/cloth/linen/blue"
       }
     },
-    "*-silver-red": {
+    "*-silver-red-*-*": {
       "metal": {
-        "base": "block/restoredbed/metal/lantern-rotated/silver"
+        "base": "block/restored-metal/silver"
       },
       "cover": {
         "base": "block/cloth/linen/red"
       }
     },
-    "*-silver-yellow": {
+    "*-silver-yellow-*-*": {
       "metal": {
-        "base": "block/restoredbed/metal/lantern-rotated/silver"
+        "base": "block/restored-metal/silver"
       },
       "cover": {
         "base": "block/cloth/linen/yellow"
       }
     },
-    "*-silver-purple": {
+    "*-silver-purple-*-*": {
       "metal": {
-        "base": "block/restoredbed/metal/lantern-rotated/silver"
+        "base": "block/restored-metal/silver"
       },
       "cover": {
         "base": "block/cloth/linen/purple"
       }
     },
-    "*-silver-brown": {
+    "*-silver-brown-*-*": {
       "metal": {
-        "base": "block/restoredbed/metal/lantern-rotated/silver"
+        "base": "block/restored-metal/silver"
       },
       "cover": {
         "base": "block/cloth/linen/brown"
       }
     },
-    "*-silver-green": {
+    "*-silver-green-*-*": {
       "metal": {
-        "base": "block/restoredbed/metal/lantern-rotated/silver"
+        "base": "block/restored-metal/silver"
       },
       "cover": {
         "base": "block/cloth/linen/green"
       }
     },
-    "*-silver-orange": {
+    "*-silver-orange-*-*": {
       "metal": {
-        "base": "block/restoredbed/metal/lantern-rotated/silver"
+        "base": "block/restored-metal/silver"
       },
       "cover": {
         "base": "block/cloth/linen/orange"
       }
     },
-    "*-silver-black": {
+    "*-silver-black-*-*": {
       "metal": {
-        "base": "block/restoredbed/metal/lantern-rotated/silver"
+        "base": "block/restored-metal/silver"
       },
       "cover": {
         "base": "block/cloth/linen/black"
       }
     },
-    "*-silver-gray": {
+    "*-silver-gray-*-*": {
       "metal": {
-        "base": "block/restoredbed/metal/lantern-rotated/silver"
+        "base": "block/restored-metal/silver"
       },
       "cover": {
         "base": "block/cloth/linen/gray"
       }
     },
-    "*-silver-pink": {
+    "*-silver-pink-*-*": {
       "metal": {
-        "base": "block/restoredbed/metal/lantern-rotated/silver"
+        "base": "block/restored-metal/silver"
       },
       "cover": {
         "base": "block/cloth/linen/pink"
       }
     },
-    "*-silver-white": {
+    "*-silver-white-*-*": {
       "metal": {
-        "base": "block/restoredbed/metal/lantern-rotated/silver"
+        "base": "block/restored-metal/silver"
       },
       "cover": {
         "base": "block/cloth/linen/white"
       }
     },
-    "*-gold-blue": {
+    "*-gold-blue-*-*": {
       "metal": {
-        "base": "block/restoredbed/metal/lantern-rotated/gold"
+        "base": "block/restored-metal/gold"
       },
       "cover": {
         "base": "block/cloth/linen/blue"
       }
     },
-    "*-gold-red": {
+    "*-gold-red-*-*": {
       "metal": {
-        "base": "block/restoredbed/metal/lantern-rotated/gold"
+        "base": "block/restored-metal/gold"
       },
       "cover": {
         "base": "block/cloth/linen/red"
       }
     },
-    "*-gold-yellow": {
+    "*-gold-yellow-*-*": {
       "metal": {
-        "base": "block/restoredbed/metal/lantern-rotated/gold"
+        "base": "block/restored-metal/gold"
       },
       "cover": {
         "base": "block/cloth/linen/yellow"
       }
     },
-    "*-gold-purple": {
+    "*-gold-purple-*-*": {
       "metal": {
-        "base": "block/restoredbed/metal/lantern-rotated/gold"
+        "base": "block/restored-metal/gold"
       },
       "cover": {
         "base": "block/cloth/linen/purple"
       }
     },
-    "*-gold-brown": {
+    "*-gold-brown-*-*": {
       "metal": {
-        "base": "block/restoredbed/metal/lantern-rotated/gold"
+        "base": "block/restored-metal/gold"
       },
       "cover": {
         "base": "block/cloth/linen/brown"
       }
     },
-    "*-gold-green": {
+    "*-gold-green-*-*": {
       "metal": {
-        "base": "block/restoredbed/metal/lantern-rotated/gold"
+        "base": "block/restored-metal/gold"
       },
       "cover": {
         "base": "block/cloth/linen/green"
       }
     },
-    "*-gold-orange": {
+    "*-gold-orange-*-*": {
       "metal": {
-        "base": "block/restoredbed/metal/lantern-rotated/gold"
+        "base": "block/restored-metal/gold"
       },
       "cover": {
         "base": "block/cloth/linen/orange"
       }
     },
-    "*-gold-black": {
+    "*-gold-black-*-*": {
       "metal": {
-        "base": "block/restoredbed/metal/lantern-rotated/gold"
+        "base": "block/restored-metal/gold"
       },
       "cover": {
         "base": "block/cloth/linen/black"
       }
     },
-    "*-gold-gray": {
+    "*-gold-gray-*-*": {
       "metal": {
-        "base": "block/restoredbed/metal/lantern-rotated/gold"
+        "base": "block/restored-metal/gold"
       },
       "cover": {
         "base": "block/cloth/linen/gray"
       }
     },
-    "*-gold-pink": {
+    "*-gold-pink-*-*": {
       "metal": {
-        "base": "block/restoredbed/metal/lantern-rotated/gold"
+        "base": "block/restored-metal/gold"
       },
       "cover": {
         "base": "block/cloth/linen/pink"
       }
     },
-    "*-gold-white": {
+    "*-gold-white-*-*": {
       "metal": {
-        "base": "block/restoredbed/metal/lantern-rotated/gold"
+        "base": "block/restored-metal/gold"
       },
       "cover": {
         "base": "block/cloth/linen/white"
       }
     },
-    "*-electrum-blue": {
+    "*-electrum-blue-*-*": {
       "metal": {
-        "base": "block/restoredbed/metal/lantern-rotated/electrum"
+        "base": "block/restored-metal/electrum"
       },
       "cover": {
         "base": "block/cloth/linen/blue"
       }
     },
-    "*-electrum-red": {
+    "*-electrum-red-*-*": {
       "metal": {
-        "base": "block/restoredbed/metal/lantern-rotated/electrum"
+        "base": "block/restored-metal/electrum"
       },
       "cover": {
         "base": "block/cloth/linen/red"
       }
     },
-    "*-electrum-yellow": {
+    "*-electrum-yellow-*-*": {
       "metal": {
-        "base": "block/restoredbed/metal/lantern-rotated/electrum"
+        "base": "block/restored-metal/electrum"
       },
       "cover": {
         "base": "block/cloth/linen/yellow"
       }
     },
-    "*-electrum-purple": {
+    "*-electrum-purple-*-*": {
       "metal": {
-        "base": "block/restoredbed/metal/lantern-rotated/electrum"
+        "base": "block/restored-metal/electrum"
       },
       "cover": {
         "base": "block/cloth/linen/purple"
       }
     },
-    "*-electrum-brown": {
+    "*-electrum-brown-*-*": {
       "metal": {
-        "base": "block/restoredbed/metal/lantern-rotated/electrum"
+        "base": "block/restored-metal/electrum"
       },
       "cover": {
         "base": "block/cloth/linen/brown"
       }
     },
-    "*-electrum-green": {
+    "*-electrum-green-*-*": {
       "metal": {
-        "base": "block/restoredbed/metal/lantern-rotated/electrum"
+        "base": "block/restored-metal/electrum"
       },
       "cover": {
         "base": "block/cloth/linen/green"
       }
     },
-    "*-electrum-orange": {
+    "*-electrum-orange-*-*": {
       "metal": {
-        "base": "block/restoredbed/metal/lantern-rotated/electrum"
+        "base": "block/restored-metal/electrum"
       },
       "cover": {
         "base": "block/cloth/linen/orange"
       }
     },
-    "*-electrum-black": {
+    "*-electrum-black-*-*": {
       "metal": {
-        "base": "block/restoredbed/metal/lantern-rotated/electrum"
+        "base": "block/restored-metal/electrum"
       },
       "cover": {
         "base": "block/cloth/linen/black"
       }
     },
-    "*-electrum-gray": {
+    "*-electrum-gray-*-*": {
       "metal": {
-        "base": "block/restoredbed/metal/lantern-rotated/electrum"
+        "base": "block/restored-metal/electrum"
       },
       "cover": {
         "base": "block/cloth/linen/gray"
       }
     },
-    "*-electrum-pink": {
+    "*-electrum-pink-*-*": {
       "metal": {
-        "base": "block/restoredbed/metal/lantern-rotated/electrum"
+        "base": "block/restored-metal/electrum"
       },
       "cover": {
         "base": "block/cloth/linen/pink"
       }
     },
-    "*-electrum-white": {
+    "*-electrum-white-*-*": {
       "metal": {
-        "base": "block/restoredbed/metal/lantern-rotated/electrum"
+        "base": "block/restored-metal/electrum"
       },
       "cover": {
         "base": "block/cloth/linen/white"
@@ -610,6 +659,45 @@
     "walk": "walk/stone"
   },
   "materialDensity": 400,
+  "guiTransform": {
+    "origin": {
+      "x": -0.1,
+      "y": 0.5,
+      "z": 0.5
+    },
+    "scale": 0.87
+  },
+  "groundTransform": {
+    "scale": 1.1
+  },
+  "creativeinventory": {
+    "general": [
+      "*-copper-blue-head-north"
+    ],
+    "decorative": [
+      "*-copper-blue-head-north"
+    ]
+  },
+  "tpHandTransform": {
+    "translation": {
+      "x": -1.4,
+      "y": -0.5,
+      "z": -0.8
+    },
+    "rotation": {
+      "x": -74,
+      "y": -16,
+      "z": 12
+    },
+    "scale": 0.53
+  },
+  "heldTpIdleAnimation": "holdbothhandslarge",
+  "heldRightTpIdleAnimation": "holdbothhandslarge",
+  "heldLeftTpIdleAnimation": "holdbothhandslarge",
+  "heldTpUseAnimation": "interactstatic",
+  "heldRightReadyAnimation": "helditemready",
+  "heldLeftReadyAnimation": "helditemready",
+  "heldTpHitAnimation": "breakhand",
   "selectionbox": {
     "x1": 0,
     "y1": 0,
@@ -625,29 +713,5 @@
     "x2": 1,
     "y2": 0.42,
     "z2": 1
-  },
-  "guiTransform": {
-    "origin": {
-      "x": -0.1,
-      "y": 0.5,
-      "z": 0.5
-    },
-    "scale": 0.87
-  },
-  "groundTransform": {
-    "scale": 1.1
-  },
-  "tpHandTransform": {
-    "translation": {
-      "x": -1.4,
-      "y": -0.5,
-      "z": -0.8
-    },
-    "rotation": {
-      "x": -74,
-      "y": -16,
-      "z": 12
-    },
-    "scale": 0.53
   }
 }

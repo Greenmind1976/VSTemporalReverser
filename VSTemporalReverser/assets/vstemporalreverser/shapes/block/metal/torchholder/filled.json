@@ -6,7 +6,7 @@
 	"textureWidth": 16,
 	"textureHeight": 16,
 	"textures": {
-		"material": "block/metal/lantern/brass",
+		"material": "block/restored-metal/brass",
 		"flammable-lit": "game:block/wood/torch/flammable-lit",
 		"flammable": "game:block/wood/torch/flammable",
 		"wood": "game:block/wood/torch/wood"
