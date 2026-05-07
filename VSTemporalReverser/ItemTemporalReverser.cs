@@ -18,7 +18,10 @@ public class ItemTemporalReverser : Item
     private static readonly object DebugLogLock = new();
     private const int AgedDurabilityCost = 1;
     private const int RuinedDurabilityCost = 2;
+    private const long RustWardPulseIntervalMs = 350;
+    private const float RustWardDamage = 0.25f;
     private static string? DebugLogPath;
+    private static readonly Dictionary<long, long> LastRustWardPulseByEntityId = [];
     private static readonly string[] RandomLanternMaterials =
     [
         "copper",
@@ -1005,6 +1008,36 @@ public class ItemTemporalReverser : Item
         dsc.AppendLine("Current targets include beds, tables, braziers, censers, lanterns, chandeliers, bellows, torch holders, toys, and some tools/weapons.");
     }
 
+    public override void OnHeldIdle(ItemSlot slot, EntityAgent byEntity)
+    {
+        base.OnHeldIdle(slot, byEntity);
+
+        if (slot?.Itemstack == null || byEntity.World.Side != EnumAppSide.Server)
+        {
+            return;
+        }
+
+        if (byEntity is not EntityPlayer player || player.RightHandItemSlot?.Itemstack != slot.Itemstack)
+        {
+            return;
+        }
+
+        if (!HasQualifyingOffhandLight(player))
+        {
+            return;
+        }
+
+        long nowMs = byEntity.World.ElapsedMilliseconds;
+        if (LastRustWardPulseByEntityId.TryGetValue(byEntity.EntityId, out long lastPulseMs)
+            && nowMs - lastPulseMs < RustWardPulseIntervalMs)
+        {
+            return;
+        }
+
+        LastRustWardPulseByEntityId[byEntity.EntityId] = nowMs;
+        PulseRustWard(player);
+    }
+
     public override void OnHeldInteractStart(
         ItemSlot slot,
         EntityAgent byEntity,
@@ -1108,7 +1141,15 @@ public class ItemTemporalReverser : Item
 
         if (matchedRule == null)
         {
-            SendNotification(byEntity, "The reverser hums, but finds no restorable pattern.");
+            if (clutterType != null)
+            {
+                SendNotification(byEntity, "This object no longer remembers its former state.");
+            }
+            else
+            {
+                SendNotification(byEntity, "The reverser hums, but finds no restorable pattern.");
+            }
+
             handling = EnumHandHandling.PreventDefault;
             return;
         }
@@ -1156,6 +1197,76 @@ public class ItemTemporalReverser : Item
         SendNotification(byEntity, "The restored item drops free in a usable shape.");
 
         handling = EnumHandHandling.PreventDefault;
+    }
+
+    private void PulseRustWard(EntityPlayer player)
+    {
+        Vec3d center = player.Pos.XYZ;
+        IWorldAccessor world = player.World;
+        VSTemporalReverserConfig config = VSTemporalReverserModSystem.Config;
+        bool dealDamage = config.EnableRustWardDamage;
+        float wardDamageAmount = Math.Max(0f, config.RustWardDamage);
+        float wardRadius = Math.Clamp(config.RustWardRadius, 2f, 6f);
+        float wardPushback = Math.Clamp(config.RustWardPushback, 0.5f, 3f);
+        DamageSource wardDamage = new()
+        {
+            Source = EnumDamageSource.Internal,
+            SourceEntity = player,
+            KnockbackStrength = wardPushback
+        };
+
+        world.GetEntitiesAround(center, wardRadius, wardRadius, entity =>
+        {
+            if (entity == player || !entity.Alive || !IsRustCreature(entity))
+            {
+                return true;
+            }
+
+            Vec3d motion = entity.Pos.Motion;
+            double dx = entity.Pos.X - player.Pos.X;
+            double dz = entity.Pos.Z - player.Pos.Z;
+            double length = Math.Sqrt(dx * dx + dz * dz);
+
+            if (length > 0.001)
+            {
+                double pushX = dx / length * wardPushback;
+                double pushZ = dz / length * wardPushback;
+                motion.X += pushX;
+                motion.Z += pushZ;
+            }
+
+            if (dealDamage && wardDamageAmount > 0)
+            {
+                entity.ReceiveDamage(wardDamage, wardDamageAmount);
+            }
+
+            return true;
+        });
+    }
+
+    private bool HasQualifyingOffhandLight(EntityPlayer player)
+    {
+        ItemStack? offhandStack = player.LeftHandItemSlot?.Itemstack;
+        if (offhandStack?.Collectible == null)
+        {
+            return false;
+        }
+
+        if (offhandStack.Collectible.Code?.Equals(Code) == true)
+        {
+            return false;
+        }
+
+        byte[]? lightHsv = offhandStack.Collectible.GetLightHsv(player.World.BlockAccessor, player.Pos.AsBlockPos, offhandStack);
+        return lightHsv != null && lightHsv.Length >= 3 && lightHsv[2] > 0;
+    }
+
+    private static bool IsRustCreature(Entity entity)
+    {
+        string path = entity.Code?.Path ?? string.Empty;
+        return path.StartsWith("drifter", StringComparison.OrdinalIgnoreCase)
+            || path.StartsWith("shiver", StringComparison.OrdinalIgnoreCase)
+            || path.StartsWith("bowtorn", StringComparison.OrdinalIgnoreCase);
     }
 
     private static ItemStack? CreateRestoredStack(IWorldAccessor world, RestorationRule rule)
