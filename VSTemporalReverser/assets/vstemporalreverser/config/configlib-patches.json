@@ -18,6 +18,55 @@
     },
     {
       "type": "separator",
+      "title": "Rust Ward",
+      "weight": 98.5
+    },
+    {
+      "code": "EnableRustWardDamage",
+      "ingui": "Ward deals damage",
+      "type": "boolean",
+      "weight": 98.4,
+      "comment": "If enabled, the Temporal Reverser's rust ward lightly damages rust creatures while repelling them. If disabled, the ward still repels but deals no damage.",
+      "default": true
+    },
+    {
+      "code": "RustWardDamage",
+      "ingui": "Ward damage",
+      "type": "float",
+      "weight": 98.3,
+      "comment": "Damage applied by each rust ward pulse when ward damage is enabled.",
+      "default": 0.25,
+      "range": {
+        "min": 0.0,
+        "max": 10.0
+      }
+    },
+    {
+      "code": "RustWardRadius",
+      "ingui": "Ward radius",
+      "type": "float",
+      "weight": 98.2,
+      "comment": "Radius in blocks within which the rust ward repels rust creatures when the reverser is paired with an offhand light source.",
+      "default": 4.0,
+      "range": {
+        "min": 2.0,
+        "max": 6.0
+      }
+    },
+    {
+      "code": "RustWardPushback",
+      "ingui": "Ward pushback",
+      "type": "float",
+      "weight": 98.1,
+      "comment": "How strongly the rust ward pushes back rust creatures when active.",
+      "default": 0.5,
+      "range": {
+        "min": 0.5,
+        "max": 3.0
+      }
+    },
+    {
+      "type": "separator",
       "title": "Wood Restore",
       "weight": 98
     },

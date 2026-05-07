@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -7,7 +8,7 @@ public sealed class VSTemporalReverserConfig
 {
     public const string FileName = "VSTemporalReverserConfig.json";
 
-    public int SchemaVersion { get; set; } = 2;
+    public int SchemaVersion { get; set; } = 3;
 
     public bool Birch { get; set; } = true;
 
@@ -43,14 +44,27 @@ public sealed class VSTemporalReverserConfig
 
     public bool EnableMoths { get; set; } = true;
 
+    public bool EnableRustWardDamage { get; set; } = true;
+
+    public float RustWardDamage { get; set; } = 0.25f;
+
+    public float RustWardRadius { get; set; } = 4f;
+
+    public float RustWardPushback { get; set; } = 0.5f;
+
     public bool EnableDebugMode { get; set; } = false;
 
     public void EnsureDefaults()
     {
-        if (SchemaVersion < 2)
+        if (SchemaVersion < 3)
         {
-            SchemaVersion = 2;
+            SchemaVersion = 3;
         }
+
+        RustWardDamage = Math.Clamp(RustWardDamage, 0f, 10f);
+
+        RustWardRadius = Math.Clamp(RustWardRadius, 2f, 6f);
+        RustWardPushback = Math.Clamp(RustWardPushback, 0.5f, 3f);
     }
 
     public string[] GetEnabledWoodTypes()

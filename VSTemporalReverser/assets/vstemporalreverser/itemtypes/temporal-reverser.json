@@ -11,54 +11,44 @@
   },
   "maxstacksize": 1,
   "durability": 2000,
+  "lightHsv": [32, 5, 31],
   "shape": {
-    "base": "game:item/tool/wrench"
-  },
-  "textures": {
-    "metal": {
-      "base": "game:block/metal/sheet/copper"
-    },
-    "wood": {
-      "base": "game:block/wood/debarked/oak"
-    },
-    "default": {
-      "base": "game:item/resource/temporalgear"
-    }
+    "base": "vstemporalreverser:item/temporal-reverser"
   },
   "guiTransform": {
     "translation": {
       "x": 0,
-      "y": 0,
+      "y": -0.5,
       "z": 0
     },
     "rotation": {
-      "x": 0,
-      "y": 0,
-      "z": -35
+      "x": 18,
+      "y": -38,
+      "z": -10
     },
     "origin": {
       "x": 0.5,
-      "y": 0.5,
+      "y": 0.2,
       "z": 0.5
     },
-    "scale": 2.4
+    "scale": 3.1
   },
   "groundTransform": {
     "translation": {
       "x": 0,
-      "y": 0,
+      "y": 0.05,
       "z": 0
     },
     "rotation": {
-      "x": 90,
-      "y": 0,
+      "x": 0,
+      "y": 22,
       "z": 0
     },
     "origin": {
       "x": 0.5,
-      "y": 0.5,
+      "y": 0.1,
       "z": 0.5
     },
-    "scale": 2.5
+    "scale": 3.2
   }
 }
