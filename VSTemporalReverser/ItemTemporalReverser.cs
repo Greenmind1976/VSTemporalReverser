@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
+using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Config;
@@ -18,8 +19,12 @@ public class ItemTemporalReverser : Item
     private static readonly object DebugLogLock = new();
     private const bool DefaultBonusLootEnabled = true;
     private const bool DefaultRustWardEnabled = true;
+    private const bool DefaultSalvageEnabled = false;
     private const string DefaultMetalRestriction = "full";
     private const string CopperMetalRestriction = "copper";
+    private const string ToolModeAttribute = "vstemporalreverser:toolMode";
+    private const int RestoreToolMode = 0;
+    private const int SalvageToolMode = 1;
     private const int AgedDurabilityCost = 1;
     private const int DefaultRestoreSpawnDelayMs = 175;
     private const long DefaultRestoreCooldownMs = 1500;
@@ -29,6 +34,7 @@ public class ItemTemporalReverser : Item
     private static string? DebugLogPath;
     private static readonly Dictionary<long, long> LastRestoreUseByEntityId = [];
     private static readonly Dictionary<long, long> LastRustWardPulseByEntityId = [];
+    private SkillItem[]? toolModes;
     private static readonly string[] RandomLanternMaterials =
     [
         "copper",
@@ -183,6 +189,29 @@ public class ItemTemporalReverser : Item
         "ornategold",
         "ornatesilver"
     ];
+    private static readonly string[] RandomSalvageIngotMetals =
+    [
+        "copper",
+        "tinbronze",
+        "bismuthbronze",
+        "blackbronze",
+        "silver",
+        "gold",
+        "iron",
+        "meteoriciron",
+        "steel"
+    ];
+    private static readonly string[] RandomSalvageNailMetals =
+    [
+        "copper",
+        "tinbronze",
+        "bismuthbronze",
+        "blackbronze",
+        "iron",
+        "meteoriciron",
+        "steel"
+    ];
+    private static readonly string[] RandomSalvageClothItems = BuildItemCodes("cloth-", ["plain", "blue", "red", "yellow", "green", "purple", "brown", "gray", "black", "white"]);
     private static readonly string[] RandomRestoredAxeItems = BuildItemCodes("axe-felling-", RandomRestoredCommonMetals);
     private static readonly string[] RandomRestoredHammerItems = BuildItemCodes("hammer-", RandomRestoredCommonMetals);
     private static readonly string[] RandomRestoredHoeItems = BuildItemCodes("hoe-", RandomRestoredCommonMetals);
@@ -1006,6 +1035,67 @@ public class ItemTemporalReverser : Item
         ["torchholder-ruined-filled-west"] = VanillaBlockRule(RuinedDurabilityCost, "vstemporalreverser:torchholder-{material}-empty-west")
     };
 
+    public override void OnLoaded(ICoreAPI api)
+    {
+        base.OnLoaded(api);
+
+        if (api is not ICoreClientAPI)
+        {
+            return;
+        }
+
+        toolModes =
+        [
+            new SkillItem { Code = new AssetLocation("restore"), Name = "Restore" },
+            new SkillItem { Code = new AssetLocation("salvage"), Name = "Salvage" }
+        ];
+    }
+
+    public override void OnUnloaded(ICoreAPI api)
+    {
+        base.OnUnloaded(api);
+
+        if (toolModes == null)
+        {
+            return;
+        }
+
+        foreach (SkillItem toolMode in toolModes)
+        {
+            toolMode.Dispose();
+        }
+
+        toolModes = null;
+    }
+
+    public override SkillItem[]? GetToolModes(ItemSlot slot, IClientPlayer forPlayer, BlockSelection blockSel)
+    {
+        return IsSalvageEnabled(slot?.Itemstack) ? toolModes : null;
+    }
+
+    public override int GetToolMode(ItemSlot slot, IPlayer byPlayer, BlockSelection blockSelection)
+    {
+        ItemStack? stack = slot?.Itemstack;
+        if (!IsSalvageEnabled(stack))
+        {
+            return RestoreToolMode;
+        }
+
+        int selectedMode = stack?.Attributes.GetInt(ToolModeAttribute, RestoreToolMode) ?? RestoreToolMode;
+        return GameMath.Clamp(selectedMode, RestoreToolMode, SalvageToolMode);
+    }
+
+    public override void SetToolMode(ItemSlot slot, IPlayer byPlayer, BlockSelection blockSelection, int toolMode)
+    {
+        if (slot.Itemstack == null || !IsSalvageEnabled(slot.Itemstack))
+        {
+            return;
+        }
+
+        slot.Itemstack.Attributes.SetInt(ToolModeAttribute, GameMath.Clamp(toolMode, RestoreToolMode, SalvageToolMode));
+        slot.MarkDirty();
+    }
+
     public override void GetHeldItemInfo(ItemSlot inSlot, StringBuilder dsc, IWorldAccessor world, bool withDebugInfo)
     {
         base.GetHeldItemInfo(inSlot, dsc, world, withDebugInfo);
@@ -1013,6 +1103,7 @@ public class ItemTemporalReverser : Item
         dsc.AppendLine("Restores selected aged or ruined clutter into usable furnishings.");
         dsc.AppendLine("Aged targets cost 1 durability. Ruined targets cost 2 durability.");
         dsc.AppendLine("Current targets include beds, tables, braziers, censers, lanterns, chandeliers, bellows, torch holders, toys, and some tools/weapons.");
+        dsc.AppendLine($"Mode: {GetToolModeName(GetSelectedToolMode(inSlot?.Itemstack))}");
 
         if (IsRustWardEnabled(inSlot?.Itemstack))
         {
@@ -1027,6 +1118,11 @@ public class ItemTemporalReverser : Item
         if (UsesCopperOnlyRestoration(inSlot?.Itemstack))
         {
             dsc.AppendLine("Its restoration field can only stabilize copper-grade metal outputs.");
+        }
+
+        if (IsSalvageEnabled(inSlot?.Itemstack))
+        {
+            dsc.AppendLine("Press F to switch between Restore and Salvage. Salvage costs double durability.");
         }
     }
 
@@ -1094,6 +1190,7 @@ public class ItemTemporalReverser : Item
 
         RestorationRule? matchedRule = null;
         string? clutterType = null;
+        List<ItemStack>? fallbackSalvageStacks = null;
         if (block.Code.Path == "clutter"
             || block.Code.Path.StartsWith("clutteredbookshelf", StringComparison.OrdinalIgnoreCase))
         {
@@ -1113,6 +1210,13 @@ public class ItemTemporalReverser : Item
                 }
                 else
                 {
+                    RestorationRule? candleRule = TryGetCandleRule(clutterType);
+                    if (candleRule != null)
+                    {
+                        matchedRule = candleRule;
+                    }
+                    else
+                    {
                     RestorationRule? chairOrLibraryRule = TryGetChairOrLibraryRule(clutterType);
                     if (chairOrLibraryRule != null)
                     {
@@ -1151,6 +1255,7 @@ public class ItemTemporalReverser : Item
                             }
                         }
                     }
+                    }
             }
             if (matchedRule == null)
             {
@@ -1168,9 +1273,31 @@ public class ItemTemporalReverser : Item
 
         if (matchedRule == null)
         {
+            bool isSalvageModeWithoutRule = GetSelectedToolMode(slot.Itemstack) == SalvageToolMode && IsSalvageEnabled(slot.Itemstack);
+            if (clutterType != null && isSalvageModeWithoutRule)
+            {
+                fallbackSalvageStacks = CreateFallbackClutterSalvageStacks(world, pos, clutterType, slot.Itemstack).ToList();
+                if (fallbackSalvageStacks.Count > 0)
+                {
+                    matchedRule = new RestorationRule(GetFallbackSalvageDurabilityCost(clutterType), RestorationTargetKind.ClutterType, clutterType);
+                }
+            }
+
+            if (matchedRule != null)
+            {
+                goto MatchedRuleResolved;
+            }
+
             if (clutterType != null)
             {
-                SendNotification(byEntity, "This object no longer remembers its former state.");
+                if (CreateFallbackClutterSalvageStacks(world, pos, clutterType, slot.Itemstack).Any())
+                {
+                    SendNotification(byEntity, "This object no longer remembers its former state. It may be salvagable.");
+                }
+                else
+                {
+                    SendNotification(byEntity, "The object's former state was lost in time.");
+                }
             }
             else
             {
@@ -1181,7 +1308,10 @@ public class ItemTemporalReverser : Item
             return;
         }
 
+MatchedRuleResolved:
         RestorationRule rule = matchedRule.Value;
+        string sourceCode = clutterType ?? block.Code.Path;
+        bool isSalvageMode = GetSelectedToolMode(slot.Itemstack) == SalvageToolMode && IsSalvageEnabled(slot.Itemstack);
         long restoreCooldownMs = GetRestoreCooldownMs(slot.Itemstack);
         long nowMs = world.ElapsedMilliseconds;
 
@@ -1193,36 +1323,62 @@ public class ItemTemporalReverser : Item
             return;
         }
 
-        ItemStack? restoredStack = CreateRestoredStack(world, rule, slot.Itemstack);
-        if (restoredStack == null)
+        List<ItemStack> primaryAndExtraStacks;
+        List<string> entityCodes;
+        List<ItemStack> gearStacks;
+        int durabilityCost;
+        string successMessage;
+
+        if (isSalvageMode)
         {
-            SendNotification(byEntity, $"Could not find restored target {rule.Target}.");
+            primaryAndExtraStacks = fallbackSalvageStacks ?? CreateSalvageStacks(world, sourceCode, rule, slot.Itemstack).ToList();
+            primaryAndExtraStacks.AddRange(CreateSupplementalRestoredStacks(world, rule, slot.Itemstack));
+            entityCodes = CreateSupplementalRestoredEntities(rule).ToList();
+            gearStacks = CreateSupplementalRestoredTemporalGearStacks(world, rule, slot.Itemstack).ToList();
+            durabilityCost = Math.Max(1, rule.DurabilityCost * 2);
+            successMessage = "Salvaged materials spill free from the unraveling pattern.";
+        }
+        else
+        {
+            ItemStack? restoredStack = CreateRestoredStack(world, rule, slot.Itemstack);
+            if (restoredStack == null)
+            {
+                SendNotification(byEntity, $"Could not find restored target {rule.Target}.");
+                handling = EnumHandHandling.PreventDefault;
+                return;
+            }
+
+            primaryAndExtraStacks = [restoredStack];
+            primaryAndExtraStacks.AddRange(CreateSupplementalRestoredStacks(world, rule, slot.Itemstack));
+            entityCodes = CreateSupplementalRestoredEntities(rule).ToList();
+            gearStacks = CreateSupplementalRestoredTemporalGearStacks(world, rule, slot.Itemstack).ToList();
+            durabilityCost = rule.DurabilityCost;
+            successMessage = "The restored item drops free in a usable shape.";
+        }
+
+        if (primaryAndExtraStacks.Count == 0)
+        {
+            SendNotification(byEntity, "The reverser cannot salvage anything useful from this pattern.");
             handling = EnumHandHandling.PreventDefault;
             return;
         }
 
         Vec3d dropPos = pos.ToVec3d().Add(0.5, 0.25, 0.5);
-        List<string> spawnedEntries = [DescribeStackForRecord(restoredStack)];
-        List<ItemStack> extraStacks = CreateSupplementalRestoredStacks(world, rule, slot.Itemstack).ToList();
-        List<string> entityCodes = CreateSupplementalRestoredEntities(rule).ToList();
-        List<ItemStack> gearStacks = CreateSupplementalRestoredTemporalGearStacks(world, rule, slot.Itemstack).ToList();
+        List<string> spawnedEntries = primaryAndExtraStacks.Select(DescribeStackForRecord).ToList();
 
         world.BlockAccessor.SetBlock(0, pos);
         LastRestoreUseByEntityId[byEntity.EntityId] = nowMs;
-        DamageItem(world, byEntity, slot, rule.DurabilityCost);
+        DamageItem(world, byEntity, slot, durabilityCost);
 
         world.PlaySoundAt(GetRestoreSoundLocation(slot.Itemstack), pos.X + 0.5, pos.Y + 0.5, pos.Z + 0.5);
         SpawnTemporalSmoke(world, dropPos);
         int restoreSpawnDelayMs = GetRestoreSpawnDelayMs(slot.Itemstack);
-        string sourceCode = clutterType ?? block.Code.Path;
 
         world.RegisterCallback(_ =>
         {
-            world.SpawnItemEntity(restoredStack, dropPos);
-            foreach (ItemStack extraStack in extraStacks)
+            foreach (ItemStack stackToSpawn in primaryAndExtraStacks)
             {
-                spawnedEntries.Add(DescribeStackForRecord(extraStack));
-                world.SpawnItemEntity(extraStack, dropPos);
+                world.SpawnItemEntity(stackToSpawn, dropPos);
             }
 
             foreach (string entityCode in entityCodes)
@@ -1240,7 +1396,7 @@ public class ItemTemporalReverser : Item
             }
 
             WriteRestoreDebugRecord(sourceCode, rule, spawnedEntries);
-            SendNotification(byEntity, "The restored item drops free in a usable shape.");
+            SendNotification(byEntity, successMessage);
         }, restoreSpawnDelayMs);
 
         handling = EnumHandHandling.PreventDefault;
@@ -1311,6 +1467,27 @@ public class ItemTemporalReverser : Item
     private bool IsRustWardEnabled(ItemStack? stack)
     {
         return stack?.Collectible?.Attributes?["rustWardEnabled"].AsBool(DefaultRustWardEnabled) ?? DefaultRustWardEnabled;
+    }
+
+    private static bool IsSalvageEnabled(ItemStack? stack)
+    {
+        return stack?.Collectible?.Attributes?["salvageEnabled"].AsBool(DefaultSalvageEnabled) ?? DefaultSalvageEnabled;
+    }
+
+    private static int GetSelectedToolMode(ItemStack? stack)
+    {
+        if (!IsSalvageEnabled(stack))
+        {
+            return RestoreToolMode;
+        }
+
+        int selectedMode = stack?.Attributes.GetInt(ToolModeAttribute, RestoreToolMode) ?? RestoreToolMode;
+        return GameMath.Clamp(selectedMode, RestoreToolMode, SalvageToolMode);
+    }
+
+    private static string GetToolModeName(int toolMode)
+    {
+        return toolMode == SalvageToolMode ? "Salvage" : "Restore";
     }
 
     private static bool IsRustCreature(Entity entity)
@@ -1551,6 +1728,314 @@ public class ItemTemporalReverser : Item
         return stack;
     }
 
+    private static IEnumerable<ItemStack> CreateSalvageStacks(IWorldAccessor world, string sourceCode, RestorationRule rule, ItemStack? reverserStack)
+    {
+        string normalizedSource = sourceCode.ToLowerInvariant();
+        bool copperOnly = UsesCopperOnlyRestoration(reverserStack);
+        string plankCode = PickRandomPlankCode();
+        string clothCode = PickRandomClothCode();
+
+        if (normalizedSource.StartsWith("lantern/", StringComparison.OrdinalIgnoreCase)
+            || rule.TargetKind == RestorationTargetKind.RandomVanillaLantern)
+        {
+            ItemStack? glassStack = CreateStackForCode(world, "glass-plain", 1);
+            ItemStack? metalStack = CreateStackForCode(world, $"ingot-{PickRandomMetal(RandomLanternMaterials, copperOnly)}", 1);
+            ItemStack? waxStack = CreateStackForCode(world, "beeswax", 1);
+
+            if (glassStack != null)
+            {
+                yield return glassStack;
+            }
+
+            if (metalStack != null)
+            {
+                yield return metalStack;
+            }
+
+            if (waxStack != null)
+            {
+                yield return waxStack;
+            }
+
+            yield break;
+        }
+
+        if (normalizedSource.StartsWith("candlestub", StringComparison.OrdinalIgnoreCase))
+        {
+            foreach (ItemStack itemStack in YieldIfNotNull(CreateStackForCode(world, "beeswax", GetCandleCountForClutter(normalizedSource))))
+            {
+                yield return itemStack;
+            }
+
+            yield break;
+        }
+
+        if (normalizedSource.Contains("anvil-broken", StringComparison.OrdinalIgnoreCase)
+            || rule.Target.StartsWith("game:anvil-", StringComparison.OrdinalIgnoreCase))
+        {
+            string anvilMetal = GetAnvilMetalCode(rule);
+            foreach (ItemStack itemStack in YieldIfNotNull(CreateStackForCode(world, $"ingot-{anvilMetal}", 5)))
+            {
+                yield return itemStack;
+            }
+
+            yield break;
+        }
+
+        if (IsToolOrWeaponSource(normalizedSource))
+        {
+            ItemStack? ingotStack = CreateStackForCode(world, $"ingot-{PickRandomMetal(RandomSalvageIngotMetals, copperOnly)}", 1);
+            ItemStack? stickStack = CreateStackForCode(world, "stick", 1);
+
+            if (ingotStack != null)
+            {
+                yield return ingotStack;
+            }
+
+            if (stickStack != null)
+            {
+                yield return stickStack;
+            }
+
+            yield break;
+        }
+
+        if (IsBedSource(normalizedSource, rule))
+        {
+            int plankCount = 3;
+            int nailCount = 0;
+            string clothDropCode = clothCode;
+            int clothCount = Random.Shared.Next(1, 3);
+
+            if (IsCanopyBedSource(normalizedSource, rule))
+            {
+                plankCount = 10;
+                nailCount = 10;
+                clothDropCode = "cloth-white";
+                clothCount = 6;
+            }
+            else if (IsShortBedSource(normalizedSource, rule))
+            {
+                plankCount = 5;
+                nailCount = 5;
+                clothDropCode = "cloth-white";
+                clothCount = 3;
+            }
+
+            foreach (ItemStack itemStack in YieldIfNotNull(CreateStackForCode(world, plankCode, plankCount)))
+            {
+                yield return itemStack;
+            }
+
+            if (nailCount > 0)
+            {
+                foreach (ItemStack itemStack in YieldIfNotNull(CreateStackForCode(world, PickRandomNailCode(copperOnly), nailCount)))
+                {
+                    yield return itemStack;
+                }
+            }
+
+            foreach (ItemStack itemStack in YieldIfNotNull(CreateStackForCode(world, clothDropCode, clothCount)))
+            {
+                yield return itemStack;
+            }
+
+            if (normalizedSource.Contains("metal", StringComparison.OrdinalIgnoreCase) || rule.Target.Contains("metal", StringComparison.OrdinalIgnoreCase))
+            {
+                foreach (ItemStack itemStack in YieldIfNotNull(CreateStackForCode(world, $"ingot-{PickRandomMetal(RandomLanternMaterials, copperOnly)}", 1)))
+                {
+                    yield return itemStack;
+                }
+            }
+
+            yield break;
+        }
+
+        if (IsLibrarySource(normalizedSource))
+        {
+            int metalIngotCount = GetSalvageMetalIngotCount(rule);
+            if (metalIngotCount > 0)
+            {
+                foreach (ItemStack itemStack in CreateMetalSalvageStacks(world, metalIngotCount, copperOnly))
+                {
+                    yield return itemStack;
+                }
+            }
+            else
+            {
+                foreach (ItemStack itemStack in CreateWoodSalvageStacks(world, plankCode, 5, copperOnly, 5))
+                {
+                    yield return itemStack;
+                }
+            }
+
+            int parchmentCount = CountLibraryParchmentDrops(normalizedSource);
+            if (parchmentCount > 0)
+            {
+                foreach (ItemStack itemStack in YieldIfNotNull(CreateStackForCode(world, "paper-parchment", parchmentCount)))
+                {
+                    yield return itemStack;
+                }
+            }
+
+            yield break;
+        }
+
+        if (IsCrateSource(normalizedSource, rule))
+        {
+            foreach (ItemStack itemStack in CreateWoodSalvageStacks(world, plankCode, 5, copperOnly, 5))
+            {
+                yield return itemStack;
+            }
+
+            if (normalizedSource.Contains("books", StringComparison.OrdinalIgnoreCase)
+                || normalizedSource.Contains("label", StringComparison.OrdinalIgnoreCase)
+                || normalizedSource.Contains("toybox", StringComparison.OrdinalIgnoreCase))
+            {
+                foreach (ItemStack itemStack in YieldIfNotNull(CreateStackForCode(world, "paper-parchment", 1)))
+                {
+                    yield return itemStack;
+                }
+            }
+
+            yield break;
+        }
+
+        if (IsChairOrTableSource(normalizedSource, rule))
+        {
+            int metalIngotCount = GetSalvageMetalIngotCount(rule);
+            if (metalIngotCount > 0)
+            {
+                foreach (ItemStack itemStack in CreateMetalSalvageStacks(world, metalIngotCount, copperOnly))
+                {
+                    yield return itemStack;
+                }
+            }
+            else
+            {
+                foreach (ItemStack itemStack in CreateWoodSalvageStacks(world, plankCode, 5, copperOnly, 5))
+                {
+                    yield return itemStack;
+                }
+            }
+
+            if (UsesMordantClothSalvage(normalizedSource, rule))
+            {
+                foreach (ItemStack itemStack in YieldIfNotNull(CreateStackForCode(world, "cloth-mordant", 3)))
+                {
+                    yield return itemStack;
+                }
+            }
+
+            if (normalizedSource.Contains("table-long-with-accessories", StringComparison.OrdinalIgnoreCase))
+            {
+                foreach (ItemStack itemStack in YieldIfNotNull(CreateStackForCode(world, "candle", 5)))
+                {
+                    yield return itemStack;
+                }
+            }
+
+            yield break;
+        }
+
+        int genericMetalIngotCount = GetSalvageMetalIngotCount(rule);
+        if (genericMetalIngotCount > 0)
+        {
+            foreach (ItemStack itemStack in CreateMetalSalvageStacks(world, genericMetalIngotCount, copperOnly))
+            {
+                yield return itemStack;
+            }
+
+            if (UsesMordantClothSalvage(normalizedSource, rule))
+            {
+                foreach (ItemStack itemStack in YieldIfNotNull(CreateStackForCode(world, "cloth-mordant", 3)))
+                {
+                    yield return itemStack;
+                }
+            }
+        }
+    }
+
+    private static IEnumerable<ItemStack> CreateFallbackClutterSalvageStacks(IWorldAccessor world, BlockPos pos, string clutterType, ItemStack? reverserStack)
+    {
+        string normalizedSource = clutterType.ToLowerInvariant();
+        bool copperOnly = UsesCopperOnlyRestoration(reverserStack);
+        List<string> hints = GetClutterTextureHints(world, pos)
+            .Select(hint => hint.ToLowerInvariant())
+            .ToList();
+        hints.Add(normalizedSource);
+
+        bool hasWood = hints.Any(IsWoodHint);
+        bool hasCloth = hints.Any(IsClothHint);
+        bool hasGlass = hints.Any(IsGlassHint);
+        bool hasCeramic = hints.Any(IsCeramicHint);
+        int metalHintCount = CountDistinctMetalHints(hints);
+
+        if (hasCeramic)
+        {
+            string clayCode = GetFallbackClayCode(hints);
+            foreach (ItemStack itemStack in YieldIfNotNull(CreateStackForCode(world, clayCode, 1)))
+            {
+                yield return itemStack;
+            }
+
+            yield break;
+        }
+
+        if (hasGlass)
+        {
+            foreach (ItemStack itemStack in YieldIfNotNull(CreateStackForCode(world, "glass-plain", 1)))
+            {
+                yield return itemStack;
+            }
+
+            yield break;
+        }
+
+        if (metalHintCount >= 2)
+        {
+            foreach (ItemStack itemStack in CreateMetalSalvageStacks(world, 2, copperOnly))
+            {
+                yield return itemStack;
+            }
+
+            yield break;
+        }
+
+        if (metalHintCount == 1)
+        {
+            foreach (ItemStack itemStack in CreateMetalSalvageStacks(world, 1, copperOnly))
+            {
+                yield return itemStack;
+            }
+
+            yield break;
+        }
+
+        if (hasWood && hasCloth)
+        {
+            foreach (ItemStack itemStack in CreateWoodSalvageStacks(world, PickRandomPlankCode(), 2, copperOnly, 2))
+            {
+                yield return itemStack;
+            }
+
+            foreach (ItemStack itemStack in YieldIfNotNull(CreateStackForCode(world, "cloth-mordant", 1)))
+            {
+                yield return itemStack;
+            }
+
+            yield break;
+        }
+
+        if (hasWood)
+        {
+            foreach (ItemStack itemStack in CreateWoodSalvageStacks(world, PickRandomPlankCode(), 2, copperOnly, 2))
+            {
+                yield return itemStack;
+            }
+        }
+    }
+
     private static IEnumerable<ItemStack> CreateSupplementalRestoredStacks(IWorldAccessor world, RestorationRule rule, ItemStack? reverserStack)
     {
         if (!AreBonusRestorationDropsEnabled(reverserStack))
@@ -1771,6 +2256,437 @@ public class ItemTemporalReverser : Item
         ItemStack blockStack = new(block, stackCount);
         blockStack.ResolveBlockOrItem(world);
         return blockStack;
+    }
+
+    private static IEnumerable<ItemStack> YieldIfNotNull(ItemStack? itemStack)
+    {
+        if (itemStack != null)
+        {
+            yield return itemStack;
+        }
+    }
+
+    private static IEnumerable<ItemStack> CreateWoodSalvageStacks(IWorldAccessor world, string plankCode, int plankCount, bool copperOnly, int nailCount)
+    {
+        foreach (ItemStack itemStack in YieldIfNotNull(CreateStackForCode(world, plankCode, plankCount)))
+        {
+            yield return itemStack;
+        }
+
+        foreach (ItemStack itemStack in YieldIfNotNull(CreateStackForCode(world, PickRandomNailCode(copperOnly), nailCount)))
+        {
+            yield return itemStack;
+        }
+    }
+
+    private static IEnumerable<ItemStack> CreateMetalSalvageStacks(IWorldAccessor world, int ingotCount, bool copperOnly)
+    {
+        foreach (ItemStack itemStack in YieldIfNotNull(CreateStackForCode(world, $"ingot-{PickRandomMetal(RandomSalvageIngotMetals, copperOnly)}", ingotCount)))
+        {
+            yield return itemStack;
+        }
+    }
+
+    private static string PickRandomPlankCode()
+    {
+        string[] enabledWoodTypes = VSTemporalReverserModSystem.GetEnabledWoodTypes(RandomRestoredWoodTypes);
+        string woodType = enabledWoodTypes[Random.Shared.Next(enabledWoodTypes.Length)];
+        return $"plank-{woodType}";
+    }
+
+    private static string PickRandomClothCode()
+    {
+        return RandomSalvageClothItems[Random.Shared.Next(RandomSalvageClothItems.Length)];
+    }
+
+    private static string PickRandomNailCode(bool copperOnly)
+    {
+        return $"metalnailsandstrips-{PickRandomMetal(RandomSalvageNailMetals, copperOnly)}";
+    }
+
+    private static int GetFallbackSalvageDurabilityCost(string clutterType)
+    {
+        return clutterType.Contains("ruined", StringComparison.OrdinalIgnoreCase)
+            || clutterType.Contains("evaporating", StringComparison.OrdinalIgnoreCase)
+            || clutterType.Contains("broken", StringComparison.OrdinalIgnoreCase)
+            ? RuinedDurabilityCost
+            : AgedDurabilityCost;
+    }
+
+    private static string GetAnvilMetalCode(RestorationRule rule)
+    {
+        if (rule.Target.EndsWith("-copper", StringComparison.OrdinalIgnoreCase))
+        {
+            return "copper";
+        }
+
+        if (rule.Target.EndsWith("-bismuthbronze", StringComparison.OrdinalIgnoreCase))
+        {
+            return "bismuthbronze";
+        }
+
+        if (rule.Target.EndsWith("-iron", StringComparison.OrdinalIgnoreCase))
+        {
+            return "iron";
+        }
+
+        return "iron";
+    }
+
+    private static string PickRandomMetal(string[] sourcePool, bool copperOnly)
+    {
+        string[] filteredPool = SelectMetalRestrictedPool(sourcePool, copperOnly);
+        return filteredPool[Random.Shared.Next(filteredPool.Length)];
+    }
+
+    private static List<string> GetClutterTextureHints(IWorldAccessor world, BlockPos pos)
+    {
+        List<string> results = [];
+        BlockEntity? blockEntity = world.BlockAccessor.GetBlockEntity(pos);
+        if (blockEntity == null)
+        {
+            return results;
+        }
+
+        TreeAttribute tree = new();
+        blockEntity.ToTreeAttributes(tree);
+        CollectTextureHintsFromKnownTrees(tree, results);
+        return results;
+    }
+
+    private static void CollectTextureHintsFromKnownTrees(ITreeAttribute? tree, List<string> results)
+    {
+        if (tree == null)
+        {
+            return;
+        }
+
+        AppendKnownTextureValues(tree, results);
+        AppendKnownTextureValues(tree.GetTreeAttribute("textures"), results);
+        AppendKnownTextureValues(tree.GetTreeAttribute("collectedTextures"), results);
+
+        ITreeAttribute? typeAttributes = tree.GetTreeAttribute("typeAttributes");
+        AppendKnownTextureValues(typeAttributes, results);
+        AppendKnownTextureValues(typeAttributes?.GetTreeAttribute("textures"), results);
+
+        ITreeAttribute? attributes = tree.GetTreeAttribute("attributes");
+        AppendKnownTextureValues(attributes, results);
+        AppendKnownTextureValues(attributes?.GetTreeAttribute("textures"), results);
+        AppendKnownTextureValues(attributes?.GetTreeAttribute("collectedTextures"), results);
+
+        ITreeAttribute? nestedTypeAttributes = attributes?.GetTreeAttribute("typeAttributes");
+        AppendKnownTextureValues(nestedTypeAttributes, results);
+        AppendKnownTextureValues(nestedTypeAttributes?.GetTreeAttribute("textures"), results);
+
+        ITreeAttribute? stack = tree.GetTreeAttribute("stack");
+        AppendKnownTextureValues(stack, results);
+        AppendKnownTextureValues(stack?.GetTreeAttribute("textures"), results);
+    }
+
+    private static void AppendKnownTextureValues(ITreeAttribute? tree, List<string> results)
+    {
+        if (tree == null)
+        {
+            return;
+        }
+
+        string[] keys =
+        [
+            "metal",
+            "cover",
+            "cloth",
+            "cloth-top",
+            "cloth-side",
+            "mordant",
+            "pillow",
+            "wood",
+            "bottom",
+            "oak",
+            "charred",
+            "glass",
+            "iron",
+            "mesh1",
+            "mesh2",
+            "texture",
+            "type",
+            "variant",
+            "layout",
+            "code"
+        ];
+
+        foreach (string key in keys)
+        {
+            string? value = ReadNonEmptyString(tree, key);
+            if (!string.IsNullOrWhiteSpace(value))
+            {
+                results.Add(value);
+            }
+        }
+    }
+
+    private static bool IsWoodHint(string hint)
+    {
+        return hint.Contains("wood", StringComparison.OrdinalIgnoreCase)
+            || hint.Contains("debarked", StringComparison.OrdinalIgnoreCase)
+            || hint.Contains("plank", StringComparison.OrdinalIgnoreCase);
+    }
+
+    private static bool IsClothHint(string hint)
+    {
+        return hint.Contains("cloth", StringComparison.OrdinalIgnoreCase)
+            || hint.Contains("linen", StringComparison.OrdinalIgnoreCase)
+            || hint.Contains("cover", StringComparison.OrdinalIgnoreCase)
+            || hint.Contains("pillow", StringComparison.OrdinalIgnoreCase);
+    }
+
+    private static bool IsGlassHint(string hint)
+    {
+        return hint.Contains("glass", StringComparison.OrdinalIgnoreCase)
+            || hint.Contains("quartz", StringComparison.OrdinalIgnoreCase);
+    }
+
+    private static bool IsCeramicHint(string hint)
+    {
+        return hint.Contains("ceramic", StringComparison.OrdinalIgnoreCase)
+            || hint.Contains("pottery", StringComparison.OrdinalIgnoreCase)
+            || hint.Contains("clay", StringComparison.OrdinalIgnoreCase)
+            || hint.Contains("bowl", StringComparison.OrdinalIgnoreCase)
+            || hint.Contains("crock", StringComparison.OrdinalIgnoreCase)
+            || hint.Contains("crucible", StringComparison.OrdinalIgnoreCase)
+            || hint.Contains("jug", StringComparison.OrdinalIgnoreCase)
+            || hint.Contains("planter", StringComparison.OrdinalIgnoreCase)
+            || hint.Contains("flowerpot", StringComparison.OrdinalIgnoreCase)
+            || hint.Contains("storagevessel", StringComparison.OrdinalIgnoreCase);
+    }
+
+    private static int CountDistinctMetalHints(IEnumerable<string> hints)
+    {
+        HashSet<string> metals = [];
+
+        foreach (string hint in hints)
+        {
+            string? metal = ExtractMetalHint(hint);
+            if (metal != null)
+            {
+                metals.Add(metal);
+            }
+        }
+
+        return metals.Count;
+    }
+
+    private static string? ExtractMetalHint(string hint)
+    {
+        string[] knownMetals =
+        [
+            "copper",
+            "brass",
+            "blackbronze",
+            "bismuthbronze",
+            "tinbronze",
+            "silver",
+            "gold",
+            "electrum",
+            "iron",
+            "meteoriciron",
+            "steel",
+            "molybdochalkos",
+            "bismuth"
+        ];
+
+        string? explicitMetal = knownMetals.FirstOrDefault(metal => hint.Contains(metal, StringComparison.OrdinalIgnoreCase));
+        if (explicitMetal != null)
+        {
+            return explicitMetal;
+        }
+
+        if (hint.Contains("chain", StringComparison.OrdinalIgnoreCase)
+            || hint.Contains("shackle", StringComparison.OrdinalIgnoreCase)
+            || hint.Contains("manacle", StringComparison.OrdinalIgnoreCase)
+            || hint.Contains("fetter", StringComparison.OrdinalIgnoreCase))
+        {
+            return "iron";
+        }
+
+        return null;
+    }
+
+    private static string GetFallbackClayCode(IEnumerable<string> hints)
+    {
+        foreach (string hint in hints)
+        {
+            if (hint.Contains("blue", StringComparison.OrdinalIgnoreCase))
+            {
+                return "clay-blue";
+            }
+
+            if (hint.Contains("brown", StringComparison.OrdinalIgnoreCase))
+            {
+                return "clay-brown";
+            }
+
+            if (hint.Contains("cream", StringComparison.OrdinalIgnoreCase))
+            {
+                return "clay-fire";
+            }
+
+            if (hint.Contains("red", StringComparison.OrdinalIgnoreCase))
+            {
+                return "clay-red";
+            }
+        }
+
+        return "clay-blue";
+    }
+
+    private static int GetCandleCountForClutter(string normalizedSource)
+    {
+        if (normalizedSource.Contains("candlestub-single", StringComparison.OrdinalIgnoreCase))
+        {
+            return 1;
+        }
+
+        if (normalizedSource.Contains("candlestubs-bunch1", StringComparison.OrdinalIgnoreCase))
+        {
+            return 3;
+        }
+
+        if (normalizedSource.Contains("candlestubs-bunch2", StringComparison.OrdinalIgnoreCase))
+        {
+            return 5;
+        }
+
+        if (normalizedSource.Contains("candlestubs-bunch3", StringComparison.OrdinalIgnoreCase))
+        {
+            return 7;
+        }
+
+        if (normalizedSource.Contains("candlestubs-bunch4", StringComparison.OrdinalIgnoreCase))
+        {
+            return 9;
+        }
+
+        return 0;
+    }
+
+    private static bool IsToolOrWeaponSource(string normalizedSource)
+    {
+        return normalizedSource.Contains("tool-", StringComparison.OrdinalIgnoreCase)
+            || normalizedSource.Contains("pile-weapon", StringComparison.OrdinalIgnoreCase)
+            || normalizedSource.Contains("pile-tools", StringComparison.OrdinalIgnoreCase)
+            || normalizedSource.Contains("woodworkingtools", StringComparison.OrdinalIgnoreCase)
+            || normalizedSource.Contains("precisiontools", StringComparison.OrdinalIgnoreCase)
+            || normalizedSource.Contains("shelf-tools", StringComparison.OrdinalIgnoreCase);
+    }
+
+    private static bool IsLibrarySource(string normalizedSource)
+    {
+        return normalizedSource.StartsWith("bookshelves/", StringComparison.OrdinalIgnoreCase)
+            || normalizedSource.StartsWith("lecturn-", StringComparison.OrdinalIgnoreCase)
+            || normalizedSource.Equals("full", StringComparison.OrdinalIgnoreCase)
+            || normalizedSource.StartsWith("half", StringComparison.OrdinalIgnoreCase)
+            || normalizedSource.StartsWith("doublesided", StringComparison.OrdinalIgnoreCase)
+            || normalizedSource.Contains("bookshelf", StringComparison.OrdinalIgnoreCase)
+            || normalizedSource.Contains("scrollrack", StringComparison.OrdinalIgnoreCase)
+            || normalizedSource.Contains("bookstand", StringComparison.OrdinalIgnoreCase)
+            || normalizedSource.Contains("bookpile", StringComparison.OrdinalIgnoreCase)
+            || normalizedSource.Contains("bookstack", StringComparison.OrdinalIgnoreCase)
+            || normalizedSource.Contains("bookrow", StringComparison.OrdinalIgnoreCase)
+            || normalizedSource.Contains("large-book", StringComparison.OrdinalIgnoreCase)
+            || normalizedSource.Contains("cartography-book", StringComparison.OrdinalIgnoreCase);
+    }
+
+    private static int CountLibraryParchmentDrops(string normalizedSource)
+    {
+        if (normalizedSource.Contains("full", StringComparison.OrdinalIgnoreCase)
+            || normalizedSource.Contains("book", StringComparison.OrdinalIgnoreCase)
+            || normalizedSource.Contains("scrollrack", StringComparison.OrdinalIgnoreCase)
+            || normalizedSource.StartsWith("doublesidednew", StringComparison.OrdinalIgnoreCase))
+        {
+            return Random.Shared.Next(1, 4);
+        }
+
+        return 0;
+    }
+
+    private static bool IsCrateSource(string normalizedSource, RestorationRule rule)
+    {
+        return normalizedSource.StartsWith("crate/", StringComparison.OrdinalIgnoreCase)
+            || IsCrateRestorationRule(rule);
+    }
+
+    private static bool IsChairOrTableSource(string normalizedSource, RestorationRule rule)
+    {
+        return normalizedSource.StartsWith("chair", StringComparison.OrdinalIgnoreCase)
+            || normalizedSource.StartsWith("table", StringComparison.OrdinalIgnoreCase)
+            || rule.Target.Contains("restored-chair-", StringComparison.OrdinalIgnoreCase)
+            || rule.Target.Contains("restored-table-", StringComparison.OrdinalIgnoreCase)
+            || rule.Target.Contains("restored-metal-table-", StringComparison.OrdinalIgnoreCase);
+    }
+
+    private static bool UsesMordantClothSalvage(string normalizedSource, RestorationRule rule)
+    {
+        return normalizedSource.Contains("cloth", StringComparison.OrdinalIgnoreCase)
+            || normalizedSource.Contains("pillow", StringComparison.OrdinalIgnoreCase)
+            || rule.Target.Contains("restored-table-", StringComparison.OrdinalIgnoreCase)
+            || rule.Target.Contains("restored-chair-colored", StringComparison.OrdinalIgnoreCase)
+            || rule.Target.Contains("restored-chair-metal", StringComparison.OrdinalIgnoreCase)
+            || rule.Target.Contains("restored-metal-table-", StringComparison.OrdinalIgnoreCase);
+    }
+
+    private static bool IsBedSource(string normalizedSource, RestorationRule rule)
+    {
+        return normalizedSource.StartsWith("bed", StringComparison.OrdinalIgnoreCase)
+            || normalizedSource.Contains("fancy-bed", StringComparison.OrdinalIgnoreCase)
+            || normalizedSource.Contains("bed-short", StringComparison.OrdinalIgnoreCase)
+            || rule.Target.Contains("restored-short-bed-", StringComparison.OrdinalIgnoreCase)
+            || rule.Target.Contains("restored-canopy-bed-", StringComparison.OrdinalIgnoreCase)
+            || rule.Target.Contains("bed-woodaged", StringComparison.OrdinalIgnoreCase)
+            || rule.Target.Contains("metal-bed-high", StringComparison.OrdinalIgnoreCase);
+    }
+
+    private static bool IsCanopyBedSource(string normalizedSource, RestorationRule rule)
+    {
+        return normalizedSource.Contains("fancy-bed", StringComparison.OrdinalIgnoreCase)
+            || normalizedSource.Contains("bed-fancy", StringComparison.OrdinalIgnoreCase)
+            || rule.Target.Contains("restored-canopy-bed-", StringComparison.OrdinalIgnoreCase);
+    }
+
+    private static bool IsShortBedSource(string normalizedSource, RestorationRule rule)
+    {
+        return normalizedSource.Contains("bed-short", StringComparison.OrdinalIgnoreCase)
+            || rule.Target.Contains("restored-short-bed-", StringComparison.OrdinalIgnoreCase);
+    }
+
+    private static int GetSalvageMetalIngotCount(RestorationRule rule)
+    {
+        if (rule.TargetKind == RestorationTargetKind.RandomVanillaLantern)
+        {
+            return 1;
+        }
+
+        if (rule.TargetKind == RestorationTargetKind.RandomRestoredCenser)
+        {
+            return rule.Target.StartsWith("metal", StringComparison.OrdinalIgnoreCase) ? 1 : 0;
+        }
+
+        if (rule.Target.Contains("restored-chair-metal", StringComparison.OrdinalIgnoreCase)
+            || rule.Target.Contains("restored-metal-bed-high", StringComparison.OrdinalIgnoreCase)
+            || rule.Target.Contains("restored-metal-table-low", StringComparison.OrdinalIgnoreCase))
+        {
+            return 2;
+        }
+
+        if (rule.Target.Contains("restored-metal-table-", StringComparison.OrdinalIgnoreCase)
+            || rule.Target.Contains("restored-brazier-", StringComparison.OrdinalIgnoreCase)
+            || rule.Target.Contains("restored-chandelier-", StringComparison.OrdinalIgnoreCase)
+            || rule.Target.Contains("restored-lectern-metal-", StringComparison.OrdinalIgnoreCase)
+            || rule.Target.Contains("torchholder-", StringComparison.OrdinalIgnoreCase))
+        {
+            return 1;
+        }
+
+        return 0;
     }
 
     private static int GetBonusStackCount(RestorationRule rule)
@@ -2077,6 +2993,30 @@ public class ItemTemporalReverser : Item
             "anvil-broken3" => VanillaBlockRule(RuinedDurabilityCost, "game:anvil-iron"),
             _ => null
         };
+    }
+
+    private static RestorationRule? TryGetCandleRule(string? clutterType)
+    {
+        if (string.IsNullOrWhiteSpace(clutterType))
+        {
+            return null;
+        }
+
+        string normalized = clutterType.StartsWith("clutter/", StringComparison.OrdinalIgnoreCase)
+            ? clutterType["clutter/".Length..]
+            : clutterType;
+
+        int candleCount = GetCandleCountForClutter(normalized);
+        if (candleCount <= 0)
+        {
+            return null;
+        }
+
+        int durabilityCost = normalized.Contains("ruined", StringComparison.OrdinalIgnoreCase)
+            ? RuinedDurabilityCost
+            : AgedDurabilityCost;
+
+        return RandomVanillaItemRule(durabilityCost, ["candle"], candleCount, candleCount);
     }
 
     private static RestorationRule? TryGetToolOrWeaponRule(string? clutterType)

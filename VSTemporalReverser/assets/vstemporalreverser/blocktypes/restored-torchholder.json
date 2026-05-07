@@ -106,7 +106,7 @@
   "maxStackSize": 8,
   "lightAbsorption": 0,
   "lightHsvByType": {
-    "*-filled-*": [4, 4, 14]
+    "*-filled-*": [7, 3, 16]
   },
   "dropsByType": {
     "*-empty-*": [

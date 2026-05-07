@@ -51,7 +51,7 @@ Everything else is ignored by the ward.
 | --- | --- | ---: | --- | --- | --- | --- |
 | Unstable | `vstemporalreverser:temporal-reverser-unstable` | `20` | `lightHsv [32, 5, 9]` | No | No | Copper-only for randomized metal outputs |
 | Stabilized | `vstemporalreverser:temporal-reverser-stabilized` | `50` | `lightHsv [32, 5, 19]` | No | Yes | Full metal pool |
-| Perfected | `vstemporalreverser:temporal-reverser` | `100` | `lightHsv [32, 5, 31]` | Yes | Yes | Full metal pool |
+| Perfected | `vstemporalreverser:temporal-reverser` | `100` | `lightHsv [32, 5, 31]` | Yes | Yes | Full metal pool, plus `Restore` and `Salvage` modes |
 
 Tier notes:
 
@@ -59,6 +59,21 @@ Tier notes:
 - `Stabilized` uses an iron housing and keeps the safer non-ward behavior.
 - `Perfected` uses the cupronickel housing and is the only tier that can use the rust ward when paired with an offhand light source.
 - `Unstable` still restores the same target families, but when the restored result is chosen from a random metal pool it is restricted to copper, and it cannot pull bonus loot or bonus temporal gears out of restored furniture or crates.
+- `Perfected` can switch tool mode with `F`. `Restore` works as before. `Salvage` breaks a supported target down into materials and costs double the normal durability.
+
+## Salvage Mode
+
+`Salvage` is currently available on the perfected reverser only.
+
+General salvage patterns:
+
+- book furniture such as bookshelves, bookstands, lecterns, and scrollracks drop planks, nails, and parchment when they clearly contain books or scrolls
+- wooden crates, tables, and chairs drop planks and nails
+- beds drop planks plus random cloth, and metal bed variants can also return an ingot
+- tool and weapon clutter drops a random ingot and a stick
+- lantern clutter drops `glass-plain` and a random metal ingot
+
+Salvage costs `2x` the durability of the normal restore cost for the same source object.
 
 ## Beds, Tables, Lighting, And Heat
 
