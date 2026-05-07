@@ -4,6 +4,8 @@ Vintage Story mod experiment for restoring selected ruined or aged vanilla objec
 
 The mod currently adds a creative-only `Temporal Reverser` item. When used on supported vanilla clutter or ruined decor, it removes the original block and drops a usable restored block variant.
 
+For a full player-facing reference of supported targets, durability costs, rust ward targets, and restored output IDs, see [docs/temporal-reverser-reference.md](/Users/garretcoffman/Documents/VSMods/VSTemporalReverser/docs/temporal-reverser-reference.md).
+
 ## Current Restoration Rules
 
 - Aged or old targets cost `1` durability.

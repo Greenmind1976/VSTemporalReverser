@@ -1,24 +1,26 @@
 {
-  "code": "temporal-reverser",
+  "code": "temporal-reverser-unstable",
   "class": "ItemTemporalReverser",
   "creativeinventory": {
     "general": [
-      "*"
+      "temporal-reverser-unstable"
     ],
     "items": [
-      "*"
+      "temporal-reverser-unstable"
     ]
   },
   "maxstacksize": 1,
-  "durability": 100,
-  "lightHsv": [32, 5, 31],
+  "durability": 20,
+  "lightHsv": [32, 5, 9],
   "attributes": {
-    "rustWardEnabled": true,
+    "rustWardEnabled": false,
+    "bonusRestorationDropsEnabled": false,
+    "restorationMetalRestriction": "copper",
     "restoreSound": "vstemporalreverser:sounds/phaser",
     "restoreCooldownMs": 1500
   },
   "shape": {
-    "base": "vstemporalreverser:item/temporal-reverser"
+    "base": "vstemporalreverser:item/temporal-reverser-unstable"
   },
   "guiTransform": {
     "translation": {
