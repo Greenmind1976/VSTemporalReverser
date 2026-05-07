@@ -16,11 +16,18 @@ namespace VSTemporalReverser;
 public class ItemTemporalReverser : Item
 {
     private static readonly object DebugLogLock = new();
+    private const bool DefaultBonusLootEnabled = true;
+    private const bool DefaultRustWardEnabled = true;
+    private const string DefaultMetalRestriction = "full";
+    private const string CopperMetalRestriction = "copper";
     private const int AgedDurabilityCost = 1;
+    private const int DefaultRestoreSpawnDelayMs = 175;
+    private const long DefaultRestoreCooldownMs = 1500;
     private const int RuinedDurabilityCost = 2;
     private const long RustWardPulseIntervalMs = 350;
     private const float RustWardDamage = 0.25f;
     private static string? DebugLogPath;
+    private static readonly Dictionary<long, long> LastRestoreUseByEntityId = [];
     private static readonly Dictionary<long, long> LastRustWardPulseByEntityId = [];
     private static readonly string[] RandomLanternMaterials =
     [
@@ -1006,6 +1013,21 @@ public class ItemTemporalReverser : Item
         dsc.AppendLine("Restores selected aged or ruined clutter into usable furnishings.");
         dsc.AppendLine("Aged targets cost 1 durability. Ruined targets cost 2 durability.");
         dsc.AppendLine("Current targets include beds, tables, braziers, censers, lanterns, chandeliers, bellows, torch holders, toys, and some tools/weapons.");
+
+        if (IsRustWardEnabled(inSlot?.Itemstack))
+        {
+            dsc.AppendLine("When paired with an offhand light source, its glow pushes back nearby rust creatures.");
+        }
+
+        if (!AreBonusRestorationDropsEnabled(inSlot?.Itemstack))
+        {
+            dsc.AppendLine("Its unstable field cannot pull bonus loot free from restored containers.");
+        }
+
+        if (UsesCopperOnlyRestoration(inSlot?.Itemstack))
+        {
+            dsc.AppendLine("Its restoration field can only stabilize copper-grade metal outputs.");
+        }
     }
 
     public override void OnHeldIdle(ItemSlot slot, EntityAgent byEntity)
@@ -1018,6 +1040,11 @@ public class ItemTemporalReverser : Item
         }
 
         if (byEntity is not EntityPlayer player || player.RightHandItemSlot?.Itemstack != slot.Itemstack)
+        {
+            return;
+        }
+
+        if (!IsRustWardEnabled(slot.Itemstack))
         {
             return;
         }
@@ -1155,8 +1182,18 @@ public class ItemTemporalReverser : Item
         }
 
         RestorationRule rule = matchedRule.Value;
+        long restoreCooldownMs = GetRestoreCooldownMs(slot.Itemstack);
+        long nowMs = world.ElapsedMilliseconds;
 
-        ItemStack? restoredStack = CreateRestoredStack(world, rule);
+        if (LastRestoreUseByEntityId.TryGetValue(byEntity.EntityId, out long lastRestoreUseMs)
+            && nowMs - lastRestoreUseMs < restoreCooldownMs)
+        {
+            SendNotification(byEntity, "The reverser needs a moment to recharge.");
+            handling = EnumHandHandling.PreventDefault;
+            return;
+        }
+
+        ItemStack? restoredStack = CreateRestoredStack(world, rule, slot.Itemstack);
         if (restoredStack == null)
         {
             SendNotification(byEntity, $"Could not find restored target {rule.Target}.");
@@ -1166,35 +1203,45 @@ public class ItemTemporalReverser : Item
 
         Vec3d dropPos = pos.ToVec3d().Add(0.5, 0.25, 0.5);
         List<string> spawnedEntries = [DescribeStackForRecord(restoredStack)];
+        List<ItemStack> extraStacks = CreateSupplementalRestoredStacks(world, rule, slot.Itemstack).ToList();
+        List<string> entityCodes = CreateSupplementalRestoredEntities(rule).ToList();
+        List<ItemStack> gearStacks = CreateSupplementalRestoredTemporalGearStacks(world, rule, slot.Itemstack).ToList();
 
         world.BlockAccessor.SetBlock(0, pos);
-        world.SpawnItemEntity(restoredStack, dropPos);
-        foreach (ItemStack extraStack in CreateSupplementalRestoredStacks(world, rule))
-        {
-            spawnedEntries.Add(DescribeStackForRecord(extraStack));
-            world.SpawnItemEntity(extraStack, dropPos);
-        }
-        foreach (string entityCode in CreateSupplementalRestoredEntities(rule))
-        {
-            if (TrySpawnRestoredEntity(world, dropPos, entityCode))
-            {
-                spawnedEntries.Add(DescribeEntityForRecord(entityCode));
-            }
-        }
-        foreach (ItemStack gearStack in CreateSupplementalRestoredTemporalGearStacks(world, rule))
-        {
-            spawnedEntries.Add(DescribeStackForRecord(gearStack));
-            world.SpawnItemEntity(gearStack, dropPos);
-        }
+        LastRestoreUseByEntityId[byEntity.EntityId] = nowMs;
         DamageItem(world, byEntity, slot, rule.DurabilityCost);
 
-        WriteRestoreDebugRecord(
-            clutterType ?? block.Code.Path,
-            rule,
-            spawnedEntries);
+        world.PlaySoundAt(GetRestoreSoundLocation(slot.Itemstack), pos.X + 0.5, pos.Y + 0.5, pos.Z + 0.5);
+        SpawnTemporalSmoke(world, dropPos);
+        int restoreSpawnDelayMs = GetRestoreSpawnDelayMs(slot.Itemstack);
+        string sourceCode = clutterType ?? block.Code.Path;
 
-        world.PlaySoundAt(new AssetLocation("game", "sounds/effect/translocate"), pos.X + 0.5, pos.Y + 0.5, pos.Z + 0.5);
-        SendNotification(byEntity, "The restored item drops free in a usable shape.");
+        world.RegisterCallback(_ =>
+        {
+            world.SpawnItemEntity(restoredStack, dropPos);
+            foreach (ItemStack extraStack in extraStacks)
+            {
+                spawnedEntries.Add(DescribeStackForRecord(extraStack));
+                world.SpawnItemEntity(extraStack, dropPos);
+            }
+
+            foreach (string entityCode in entityCodes)
+            {
+                if (TrySpawnRestoredEntity(world, dropPos, entityCode))
+                {
+                    spawnedEntries.Add(DescribeEntityForRecord(entityCode));
+                }
+            }
+
+            foreach (ItemStack gearStack in gearStacks)
+            {
+                spawnedEntries.Add(DescribeStackForRecord(gearStack));
+                world.SpawnItemEntity(gearStack, dropPos);
+            }
+
+            WriteRestoreDebugRecord(sourceCode, rule, spawnedEntries);
+            SendNotification(byEntity, "The restored item drops free in a usable shape.");
+        }, restoreSpawnDelayMs);
 
         handling = EnumHandHandling.PreventDefault;
     }
@@ -1252,13 +1299,18 @@ public class ItemTemporalReverser : Item
             return false;
         }
 
-        if (offhandStack.Collectible.Code?.Equals(Code) == true)
+        if (offhandStack.Collectible is ItemTemporalReverser)
         {
             return false;
         }
 
         byte[]? lightHsv = offhandStack.Collectible.GetLightHsv(player.World.BlockAccessor, player.Pos.AsBlockPos, offhandStack);
         return lightHsv != null && lightHsv.Length >= 3 && lightHsv[2] > 0;
+    }
+
+    private bool IsRustWardEnabled(ItemStack? stack)
+    {
+        return stack?.Collectible?.Attributes?["rustWardEnabled"].AsBool(DefaultRustWardEnabled) ?? DefaultRustWardEnabled;
     }
 
     private static bool IsRustCreature(Entity entity)
@@ -1269,12 +1321,13 @@ public class ItemTemporalReverser : Item
             || path.StartsWith("bowtorn", StringComparison.OrdinalIgnoreCase);
     }
 
-    private static ItemStack? CreateRestoredStack(IWorldAccessor world, RestorationRule rule)
+    private static ItemStack? CreateRestoredStack(IWorldAccessor world, RestorationRule rule, ItemStack? reverserStack)
     {
         string[] enabledRestoredWoodTypes = VSTemporalReverserModSystem.GetEnabledWoodTypes(RandomRestoredWoodTypes);
         string[] enabledRestoredTableWoodTypes = VSTemporalReverserModSystem.GetEnabledWoodTypes(RandomRestoredTableWoodTypes);
         string[] enabledLibraryMaterials = VSTemporalReverserModSystem.GetEnabledWoodTypes(RandomRestoredLibraryMaterials);
         string[] enabledCrateWoodTypes = VSTemporalReverserModSystem.GetEnabledWoodTypes(RandomCrateWoodTypes);
+        bool copperOnly = UsesCopperOnlyRestoration(reverserStack);
 
         if (rule.TargetKind == RestorationTargetKind.RandomRestoredCanopyBed)
         {
@@ -1306,7 +1359,7 @@ public class ItemTemporalReverser : Item
 
         if (rule.TargetKind == RestorationTargetKind.RandomRestoredCenser)
         {
-            string[] finishes = rule.Targets ?? Array.Empty<string>();
+            string[] finishes = SelectMetalRestrictedPool(rule.Targets ?? Array.Empty<string>(), copperOnly);
             if (string.IsNullOrWhiteSpace(rule.Target) || finishes.Length == 0)
             {
                 return null;
@@ -1338,7 +1391,8 @@ public class ItemTemporalReverser : Item
             }
 
             ItemStack lanternStack = new(lanternBlock, 1);
-            lanternStack.Attributes.SetString("material", RandomLanternMaterials[Random.Shared.Next(RandomLanternMaterials.Length)]);
+            string[] lanternMaterials = SelectMetalRestrictedPool(RandomLanternMaterials, copperOnly);
+            lanternStack.Attributes.SetString("material", lanternMaterials[Random.Shared.Next(lanternMaterials.Length)]);
             lanternStack.Attributes.SetString("lining", RandomLanternLinings[Random.Shared.Next(RandomLanternLinings.Length)]);
             lanternStack.Attributes.SetString("glass", "quartz");
             lanternStack.ResolveBlockOrItem(world);
@@ -1396,7 +1450,7 @@ public class ItemTemporalReverser : Item
 
         if (rule.TargetKind == RestorationTargetKind.RandomVanillaItem)
         {
-            string[] itemCodes = rule.Targets ?? Array.Empty<string>();
+            string[] itemCodes = SelectItemCodePool(rule.Targets ?? Array.Empty<string>(), copperOnly);
             if (itemCodes.Length == 0)
             {
                 return null;
@@ -1425,12 +1479,14 @@ public class ItemTemporalReverser : Item
             string tableStyle = rule.Targets != null && rule.Targets.Length > 0
                 ? rule.Targets[Random.Shared.Next(rule.Targets.Length)]
                 : string.Empty;
-            string material = RandomLanternMaterials[Random.Shared.Next(RandomLanternMaterials.Length)];
-            string lecternMetalFinish = RandomRestoredCenserMetalFinishes[Random.Shared.Next(RandomRestoredCenserMetalFinishes.Length)];
+            string[] lanternMaterials = SelectMetalRestrictedPool(RandomLanternMaterials, copperOnly);
+            string[] lecternMetalFinishes = SelectMetalRestrictedPool(RandomRestoredCenserMetalFinishes, copperOnly);
+            string material = lanternMaterials[Random.Shared.Next(lanternMaterials.Length)];
+            string lecternMetalFinish = lecternMetalFinishes[Random.Shared.Next(lecternMetalFinishes.Length)];
             string bedTopMetal = RandomRestoredBedTopMetals[Random.Shared.Next(RandomRestoredBedTopMetals.Length)];
             string libraryMaterial = enabledLibraryMaterials[Random.Shared.Next(enabledLibraryMaterials.Length)];
             string crateWood = enabledCrateWoodTypes[Random.Shared.Next(enabledCrateWoodTypes.Length)];
-            string tableMetal = RandomLanternMaterials[Random.Shared.Next(RandomLanternMaterials.Length)];
+            string tableMetal = lanternMaterials[Random.Shared.Next(lanternMaterials.Length)];
             string tableClothColor = RandomRestoredMetalTableClothColors[Random.Shared.Next(RandomRestoredMetalTableClothColors.Length)];
             string chairColor = RandomVanillaChairColors[Random.Shared.Next(RandomVanillaChairColors.Length)];
             string targetCode = rule.Target
@@ -1495,8 +1551,13 @@ public class ItemTemporalReverser : Item
         return stack;
     }
 
-    private static IEnumerable<ItemStack> CreateSupplementalRestoredStacks(IWorldAccessor world, RestorationRule rule)
+    private static IEnumerable<ItemStack> CreateSupplementalRestoredStacks(IWorldAccessor world, RestorationRule rule, ItemStack? reverserStack)
     {
+        if (!AreBonusRestorationDropsEnabled(reverserStack))
+        {
+            yield break;
+        }
+
         if (rule.LootStyle == BonusLootStyle.TieredJunk)
         {
             foreach (ItemStack itemStack in CreateTieredLootStacks(world, rule, PickTieredJunkItemCode))
@@ -1596,8 +1657,13 @@ public class ItemTemporalReverser : Item
         }
     }
 
-    private static IEnumerable<ItemStack> CreateSupplementalRestoredTemporalGearStacks(IWorldAccessor world, RestorationRule rule)
+    private static IEnumerable<ItemStack> CreateSupplementalRestoredTemporalGearStacks(IWorldAccessor world, RestorationRule rule, ItemStack? reverserStack)
     {
+        if (!AreBonusRestorationDropsEnabled(reverserStack))
+        {
+            yield break;
+        }
+
         if (!IsCrateRestorationRule(rule) && !IsFurnitureRestorationRule(rule))
         {
             yield break;
@@ -1834,6 +1900,113 @@ public class ItemTemporalReverser : Item
         }
 
         return null;
+    }
+
+    private static bool AreBonusRestorationDropsEnabled(ItemStack? stack)
+    {
+        return stack?.Collectible?.Attributes?["bonusRestorationDropsEnabled"].AsBool(DefaultBonusLootEnabled) ?? DefaultBonusLootEnabled;
+    }
+
+    private static long GetRestoreCooldownMs(ItemStack? stack)
+    {
+        return Math.Max(0, stack?.Collectible?.Attributes?["restoreCooldownMs"].AsInt((int)DefaultRestoreCooldownMs) ?? (int)DefaultRestoreCooldownMs);
+    }
+
+    private static int GetRestoreSpawnDelayMs(ItemStack? stack)
+    {
+        return Math.Max(0, stack?.Collectible?.Attributes?["restoreSpawnDelayMs"].AsInt(DefaultRestoreSpawnDelayMs) ?? DefaultRestoreSpawnDelayMs);
+    }
+
+    private static AssetLocation GetRestoreSoundLocation(ItemStack? stack)
+    {
+        string soundCode = stack?.Collectible?.Attributes?["restoreSound"].AsString("game:sounds/effect/translocate")
+            ?? "game:sounds/effect/translocate";
+        return ToAssetLocation(soundCode);
+    }
+
+    private static void SpawnTemporalSmoke(IWorldAccessor world, Vec3d center)
+    {
+        world.SpawnParticles(
+            18f,
+            unchecked((int)0xD8C8F4FF),
+            center.AddCopy(-0.75, -0.08, -0.75),
+            center.AddCopy(0.75, 0.42, 0.75),
+            new Vec3f(-0.75f, 0.04f, -0.75f),
+            new Vec3f(0.75f, 1.15f, 0.75f),
+            0.08f,
+            0f,
+            0.72f,
+            EnumParticleModel.Quad,
+            null
+        );
+
+        world.SpawnParticles(
+            14f,
+            unchecked((int)0xD25AB4FF),
+            center.AddCopy(-0.9, -0.08, -0.9),
+            center.AddCopy(0.9, 0.35, 0.9),
+            new Vec3f(-0.55f, 0.06f, -0.55f),
+            new Vec3f(0.55f, 0.55f, 0.55f),
+            0.52f,
+            -0.005f,
+            0.16f,
+            EnumParticleModel.Quad,
+            null
+        );
+
+        world.RegisterCallback(_ =>
+        {
+            world.SpawnParticles(
+                18f,
+                unchecked((int)0xC84AA8FF),
+                center.AddCopy(-1.15, -0.06, -1.15),
+                center.AddCopy(1.15, 0.4, 1.15),
+                new Vec3f(-0.42f, 0.03f, -0.42f),
+                new Vec3f(0.42f, 0.28f, 0.42f),
+                0.82f,
+                -0.008f,
+                0.14f,
+                EnumParticleModel.Quad,
+                null
+            );
+        }, 70);
+    }
+
+    private static bool UsesCopperOnlyRestoration(ItemStack? stack)
+    {
+        string restriction = stack?.Collectible?.Attributes?["restorationMetalRestriction"].AsString(DefaultMetalRestriction)
+            ?? DefaultMetalRestriction;
+        return string.Equals(restriction, CopperMetalRestriction, StringComparison.OrdinalIgnoreCase);
+    }
+
+    private static string[] SelectMetalRestrictedPool(string[] sourcePool, bool copperOnly)
+    {
+        if (!copperOnly || sourcePool.Length == 0)
+        {
+            return sourcePool;
+        }
+
+        string[] filtered = sourcePool
+            .Where(code => string.Equals(code, "copper", StringComparison.OrdinalIgnoreCase))
+            .ToArray();
+
+        return filtered.Length > 0 ? filtered : sourcePool;
+    }
+
+    private static string[] SelectItemCodePool(string[] sourcePool, bool copperOnly)
+    {
+        if (!copperOnly || sourcePool.Length == 0)
+        {
+            return sourcePool;
+        }
+
+        string[] filtered = sourcePool
+            .Where(code =>
+                code.EndsWith("-copper", StringComparison.OrdinalIgnoreCase)
+                || string.Equals(code, "tongs", StringComparison.OrdinalIgnoreCase))
+            .ToArray();
+
+        return filtered.Length > 0 ? filtered : sourcePool;
     }
 
     private static RestorationRule? TryGetCenserRule(string? clutterType)
