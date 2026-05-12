@@ -13,6 +13,8 @@
   "durability": 100,
   "lightHsv": [32, 5, 31],
   "attributes": {
+    "iconItemCode": "temporal-reverser-icon",
+    "depletedItemCode": "vstemporalreverser:temporal-reverser-depleted",
     "rustWardEnabled": true,
     "salvageEnabled": true,
     "restoreSound": "vstemporalreverser:sounds/phaser",

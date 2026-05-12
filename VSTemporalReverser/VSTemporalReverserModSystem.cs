@@ -9,6 +9,7 @@ namespace VSTemporalReverser;
 public class VSTemporalReverserModSystem : ModSystem
 {
     private const string Domain = "vstemporalreverser";
+    private const int TemporalGearMaxStackSize = 64;
     public static VSTemporalReverserConfig Config { get; private set; } = new();
     private object? configLibModSystem;
     private bool configLibSubscribed;
@@ -40,6 +41,12 @@ public class VSTemporalReverserModSystem : ModSystem
         TrySubscribeToConfigLib(api);
     }
 
+    public override void AssetsFinalize(ICoreAPI api)
+    {
+        base.AssetsFinalize(api);
+        SetTemporalGearStackSize(api);
+    }
+
     public static string[] GetEnabledWoodTypes(IEnumerable<string> fallbackPool)
     {
         string[] fallback = fallbackPool
@@ -65,6 +72,15 @@ public class VSTemporalReverserModSystem : ModSystem
     {
         Config = config;
         api.StoreModConfig(Config, VSTemporalReverserConfig.FileName);
+    }
+
+    private static void SetTemporalGearStackSize(ICoreAPI api)
+    {
+        Item? temporalGear = api.World?.GetItem(new AssetLocation("game", "gear-temporal"));
+        if (temporalGear != null)
+        {
+            temporalGear.MaxStackSize = TemporalGearMaxStackSize;
+        }
     }
 
     private void TrySubscribeToConfigLib(ICoreAPI api)

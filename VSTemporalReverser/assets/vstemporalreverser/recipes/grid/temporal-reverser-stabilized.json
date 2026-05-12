@@ -1,0 +1,14 @@
+{
+  "ingredientPattern": "Q__,G__,P__",
+  "ingredients": {
+    "G": { "type": "item", "code": "gear-temporal", "quantity": 5 },
+    "Q": { "type": "block", "code": "glass-plain" },
+    "P": { "type": "item", "code": "metalplate-iron" }
+  },
+  "width": 3,
+  "height": 3,
+  "output": {
+    "type": "item",
+    "code": "vstemporalreverser:temporal-reverser-stabilized"
+  }
+}

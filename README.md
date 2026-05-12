@@ -2,7 +2,7 @@
 
 Vintage Story mod experiment for restoring selected ruined or aged vanilla objects into usable forms.
 
-The mod currently adds a creative-only `Temporal Reverser` item. When used on supported vanilla clutter or ruined decor, it removes the original block and drops a usable restored block variant.
+The mod currently adds three `Temporal Reverser` tiers. When used on supported vanilla clutter or ruined decor, the device removes the original block and drops a usable restored block variant.
 
 For a full player-facing reference of supported targets, durability costs, rust ward targets, and restored output IDs, see [docs/temporal-reverser-reference.md](/Users/garretcoffman/Documents/VSMods/VSTemporalReverser/docs/temporal-reverser-reference.md).
 
@@ -11,6 +11,15 @@ For a full player-facing reference of supported targets, durability costs, rust 
 - Aged or old targets cost `1` durability.
 - Ruined targets cost `2` durability.
 - Restorations currently produce a mix of vanilla usable blocks and modded restored blocks depending on the furniture family.
+
+## Crafting And Recharge
+
+- `Unstable Temporal Reverser` can be crafted from `2` clear quartz, `1` copper plate, and `1` temporal gear.
+- `Stabilized Temporal Reverser` can be crafted from `1` plain glass block, `1` iron plate, and `5` temporal gears.
+- `Perfected Temporal Reverser` can be crafted from a `Reverser Casing`, `1` temporal alignment node, `1` flux gap connector, `1` finely balanced oscillator, and `5` temporal gears.
+- When a reverser runs out of durability, it becomes a depleted version instead of being destroyed.
+- Depleted reversers can be recharged in the crafting grid using the depleted device plus their original temporal gear cost.
+- To support these recipes, the mod raises vanilla `temporal gears` to a stack size of `64` while the mod is loaded.
 
 ## Current Supported Families
 

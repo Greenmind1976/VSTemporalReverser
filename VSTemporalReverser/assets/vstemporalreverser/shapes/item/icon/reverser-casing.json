@@ -1,0 +1,190 @@
+{
+  "editor": {
+    "allAngles": false,
+    "entityTextureMode": false
+  },
+  "textureWidth": 16,
+  "textureHeight": 16,
+  "textureSizes": {
+    "housing": [
+      16,
+      16
+    ]
+  },
+  "textures": {
+    "housing": "block/metal/sheet/cupronickel1"
+  },
+  "elements": [
+    {
+      "name": "origin",
+      "from": [
+        8,
+        0,
+        8
+      ],
+      "to": [
+        8,
+        0,
+        8
+      ],
+      "rotationOrigin": [
+        8,
+        0,
+        8
+      ],
+      "rotationX": 180,
+      "faces": {
+        "north": {
+          "texture": "#housing",
+          "uv": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "enabled": false
+        },
+        "east": {
+          "texture": "#housing",
+          "uv": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "enabled": false
+        },
+        "south": {
+          "texture": "#housing",
+          "uv": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "enabled": false
+        },
+        "west": {
+          "texture": "#housing",
+          "uv": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "enabled": false
+        },
+        "up": {
+          "texture": "#housing",
+          "uv": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "enabled": false
+        },
+        "down": {
+          "texture": "#housing",
+          "uv": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "enabled": false
+        }
+      },
+      "children": [
+        {
+          "name": "body_geo",
+          "from": [
+            -5,
+            0,
+            -5
+          ],
+          "to": [
+            5,
+            2,
+            5
+          ],
+          "rotationOrigin": [
+            -5,
+            0,
+            -5
+          ],
+          "faces": {
+            "north": {
+              "texture": "#housing",
+              "uv": [
+                0,
+                5,
+                10,
+                10
+              ],
+              "autoUv": false,
+              "snapUv": false
+            },
+            "east": {
+              "texture": "#housing",
+              "uv": [
+                0,
+                5,
+                10,
+                10
+              ],
+              "autoUv": false,
+              "snapUv": false
+            },
+            "south": {
+              "texture": "#housing",
+              "uv": [
+                0,
+                5,
+                10,
+                10
+              ],
+              "autoUv": false,
+              "snapUv": false
+            },
+            "west": {
+              "texture": "#housing",
+              "uv": [
+                0,
+                5,
+                10,
+                10
+              ],
+              "autoUv": false,
+              "snapUv": false
+            },
+            "up": {
+              "texture": "#housing",
+              "uv": [
+                3,
+                3,
+                13,
+                13
+              ],
+              "autoUv": false,
+              "snapUv": false
+            },
+            "down": {
+              "texture": "#housing",
+              "uv": [
+                3,
+                3,
+                13,
+                13
+              ],
+              "rotation": 180,
+              "autoUv": false,
+              "snapUv": false
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "animations": []
+}

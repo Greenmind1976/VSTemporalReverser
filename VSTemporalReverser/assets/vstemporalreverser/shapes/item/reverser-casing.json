@@ -1,0 +1,107 @@
+{
+  "editor": {
+    "allAngles": true,
+    "singleTexture": false
+  },
+  "textureWidth": 16,
+  "textureHeight": 16,
+  "textureSizes": {
+    "housing": [
+      16,
+      16
+    ]
+  },
+  "textures": {
+    "housing": "block/metal/sheet/cupronickel1"
+  },
+  "elements": [
+    {
+      "name": "body_geo",
+      "from": [
+        3,
+        0,
+        3
+      ],
+      "to": [
+        13,
+        2,
+        13
+      ],
+      "rotationOrigin": [
+        3,
+        0,
+        3
+      ],
+      "faces": {
+        "north": {
+          "texture": "#housing",
+          "uv": [
+            0,
+            5,
+            10,
+            10
+          ],
+          "autoUv": false,
+          "snapUv": false
+        },
+        "east": {
+          "texture": "#housing",
+          "uv": [
+            0,
+            5,
+            10,
+            10
+          ],
+          "autoUv": false,
+          "snapUv": false
+        },
+        "south": {
+          "texture": "#housing",
+          "uv": [
+            0,
+            5,
+            10,
+            10
+          ],
+          "autoUv": false,
+          "snapUv": false
+        },
+        "west": {
+          "texture": "#housing",
+          "uv": [
+            0,
+            5,
+            10,
+            10
+          ],
+          "autoUv": false,
+          "snapUv": false
+        },
+        "up": {
+          "texture": "#housing",
+          "uv": [
+            3,
+            3,
+            13,
+            13
+          ],
+          "autoUv": false,
+          "snapUv": false
+        },
+        "down": {
+          "texture": "#housing",
+          "uv": [
+            3,
+            3,
+            13,
+            13
+          ],
+          "rotation": 180,
+          "autoUv": false,
+          "snapUv": false
+        }
+      }
+    }
+  ],
+  "animations": []
+}

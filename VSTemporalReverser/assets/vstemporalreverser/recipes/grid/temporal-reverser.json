@@ -1,0 +1,32 @@
+{
+  "ingredientPattern": "CF_,GO_,T__",
+  "ingredients": {
+    "C": {
+      "type": "item",
+      "code": "vstemporalreverser:reverser-casing"
+    },
+    "F": {
+      "type": "item",
+      "code": "jonasparts-connector01"
+    },
+    "G": {
+      "type": "item",
+      "code": "gear-temporal",
+      "quantity": 5
+    },
+    "O": {
+      "type": "item",
+      "code": "jonasframes-oscillator01"
+    },
+    "T": {
+      "type": "item",
+      "code": "jonasparts-cylinder02"
+    }
+  },
+  "width": 3,
+  "height": 3,
+  "output": {
+    "type": "item",
+    "code": "vstemporalreverser:temporal-reverser"
+  }
+}

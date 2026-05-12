@@ -1,0 +1,40 @@
+{
+  "code": "reverser-casing-icon",
+  "maxstacksize": 1,
+  "shape": {
+    "base": "vstemporalreverser:item/icon/reverser-casing"
+  },
+  "guiTransform": {
+    "rotate": true,
+    "translation": {
+      "x": 0.05,
+      "y": -0.04,
+      "z": 0
+    },
+    "rotation": {
+      "x": -22,
+      "y": -138,
+      "z": 0
+    },
+    "origin": {
+      "x": 0.523,
+      "y": -0.016,
+      "z": 0.462
+    },
+    "scale": 1.83
+  },
+  "groundTransform": {
+    "rotation": {
+      "x": 0,
+      "y": 22,
+      "z": 0
+    },
+    "origin": {
+      "x": 0.5,
+      "y": 0.1,
+      "z": 0.5
+    },
+    "scale": 3.2
+  },
+  "creativeinventory": {}
+}
