@@ -1,0 +1,20 @@
+{
+  "ingredientPattern": "D__,G__,___",
+  "ingredients": {
+    "D": {
+      "type": "item",
+      "code": "vstemporalreverser:temporal-reverser-stabilized-depleted"
+    },
+    "G": {
+      "type": "item",
+      "code": "gear-temporal",
+      "quantity": 5
+    }
+  },
+  "width": 3,
+  "height": 3,
+  "output": {
+    "type": "item",
+    "code": "vstemporalreverser:temporal-reverser-stabilized"
+  }
+}

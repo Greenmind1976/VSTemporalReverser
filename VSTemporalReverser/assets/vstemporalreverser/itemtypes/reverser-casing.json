@@ -1,0 +1,47 @@
+{
+  "code": "reverser-casing",
+  "class": "ItemRestoredToy",
+  "maxstacksize": 16,
+  "attributes": {
+    "displaycaseable": true,
+    "shelvable": true,
+    "iconItemCode": "reverser-casing-icon"
+  },
+  "shape": {
+    "base": "vstemporalreverser:item/reverser-casing"
+  },
+  "guiTransform": {
+    "rotation": {
+      "x": -22,
+      "y": -138,
+      "z": 0
+    },
+    "origin": {
+      "x": 0.5,
+      "y": 0.15,
+      "z": 0.5
+    },
+    "scale": 2.2
+  },
+  "groundTransform": {
+    "rotation": {
+      "x": 0,
+      "y": 22,
+      "z": 0
+    },
+    "origin": {
+      "x": 0.5,
+      "y": 0.1,
+      "z": 0.5
+    },
+    "scale": 3.2
+  },
+  "creativeinventory": {
+    "general": [
+      "reverser-casing"
+    ],
+    "items": [
+      "reverser-casing"
+    ]
+  }
+}

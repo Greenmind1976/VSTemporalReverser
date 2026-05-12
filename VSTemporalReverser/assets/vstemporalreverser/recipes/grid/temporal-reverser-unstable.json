@@ -1,0 +1,14 @@
+{
+  "ingredientPattern": "C__,G__,P__",
+  "ingredients": {
+    "C": { "type": "item", "code": "clearquartz", "quantity": 2 },
+    "G": { "type": "item", "code": "gear-temporal", "quantity": 1 },
+    "P": { "type": "item", "code": "metalplate-copper" }
+  },
+  "width": 3,
+  "height": 3,
+  "output": {
+    "type": "item",
+    "code": "vstemporalreverser:temporal-reverser-unstable"
+  }
+}

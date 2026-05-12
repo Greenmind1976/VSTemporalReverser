@@ -1,0 +1,22 @@
+{
+  "ingredientPattern": "I__,H__,___",
+  "ingredients": {
+    "I": {
+      "type": "item",
+      "code": "ingot-cupronickel"
+    },
+    "H": {
+      "type": "item",
+      "code": "hammer-*",
+      "name": "metal",
+      "isTool": true,
+      "toolDurabilityCost": 1
+    }
+  },
+  "width": 3,
+  "height": 3,
+  "output": {
+    "type": "item",
+    "code": "vstemporalreverser:reverser-casing"
+  }
+}
