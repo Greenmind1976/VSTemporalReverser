@@ -7,55 +7,55 @@
   "textureHeight": 16,
   "textureSizes": {},
   "textures": {
-    "bottom": "block/wood/debarked/material"
+    "bottom": "vstemporalreverser:block/wood/debarked/material"
   },
   "elements": [
     {
       "name": "origin",
       "from": [
-        8.0,
-        0.0,
-        8.0
+        8,
+        0,
+        8
       ],
       "to": [
-        8.0,
-        0.0,
-        8.0
+        8,
+        0,
+        8
       ],
       "rotationOrigin": [
-        8.0,
-        0.0,
-        8.0
+        8,
+        0,
+        8
       ],
-      "rotationY": -90.0,
+      "rotationY": -90,
       "faces": {},
       "children": [
         {
           "name": "rest",
           "from": [
-            -1.0,
-            5.0,
-            -6.0
+            -1,
+            5,
+            -6
           ],
           "to": [
-            7.0,
-            6.0,
-            6.0
+            7,
+            6,
+            6
           ],
           "rotationOrigin": [
-            0.0,
-            5.0,
-            0.0
+            0,
+            5,
+            0
           ],
-          "rotationZ": -45.0,
+          "rotationZ": -45,
           "faces": {
             "north": {
               "texture": "#bottom",
               "uv": [
-                14.0,
-                2.0,
-                15.0,
-                10.0
+                14,
+                2,
+                15,
+                10
               ],
               "rotation": 90,
               "windMode": [
@@ -75,9 +75,9 @@
               "texture": "#bottom",
               "uv": [
                 1.5,
-                5.0,
+                5,
                 13.5,
-                6.0
+                6
               ],
               "windMode": [
                 -1,
@@ -111,9 +111,9 @@
             "west": {
               "texture": "#bottom",
               "uv": [
-                2.0,
+                2,
                 6.5,
-                14.0,
+                14,
                 7.5
               ],
               "windMode": [
@@ -133,18 +133,18 @@
               "texture": "#bottom",
               "uv": [
                 2.5,
-                4.0,
+                4,
                 14.5,
-                12.0
+                12
               ],
               "rotation": 90
             },
             "down": {
               "texture": "#bottom",
               "uv": [
-                2.0,
+                2,
                 4.5,
-                14.0,
+                14,
                 12.5
               ],
               "rotation": 90,
@@ -166,27 +166,27 @@
             {
               "name": "rest-edge",
               "from": [
-                7.0,
-                1.0,
-                1.0
+                7,
+                1,
+                1
               ],
               "to": [
-                8.0,
+                8,
                 2.5,
-                11.0
+                11
               ],
               "rotationOrigin": [
-                7.0,
-                0.0,
-                6.0
+                7,
+                0,
+                6
               ],
               "faces": {
                 "north": {
                   "texture": "#bottom",
                   "uv": [
-                    0.0,
-                    0.0,
-                    1.0,
+                    0,
+                    0,
+                    1,
                     1.5
                   ]
                 },
@@ -194,7 +194,7 @@
                   "texture": "#bottom",
                   "uv": [
                     1.5,
-                    0.0,
+                    0,
                     11.5,
                     1.5
                   ]
@@ -202,9 +202,9 @@
                 "south": {
                   "texture": "#bottom",
                   "uv": [
-                    0.0,
-                    0.0,
-                    1.0,
+                    0,
+                    0,
+                    1,
                     1.5
                   ]
                 },
@@ -212,7 +212,7 @@
                   "texture": "#bottom",
                   "uv": [
                     3.5,
-                    0.0,
+                    0,
                     13.5,
                     1.5
                   ]
@@ -232,23 +232,23 @@
             {
               "name": "rest-back",
               "from": [
-                0.0,
-                -7.0,
-                0.0
+                0,
+                -7,
+                0
               ],
               "to": [
-                1.0,
-                0.0,
-                12.0
+                1,
+                0,
+                12
               ],
               "faces": {
                 "north": {
                   "texture": "#bottom",
                   "uv": [
                     0.5,
-                    6.0,
+                    6,
                     1.5,
-                    13.0
+                    13
                   ],
                   "windMode": [
                     -1,
@@ -266,10 +266,10 @@
                 "east": {
                   "texture": "#bottom",
                   "uv": [
-                    2.0,
-                    5.0,
-                    14.0,
-                    12.0
+                    2,
+                    5,
+                    14,
+                    12
                   ],
                   "windMode": [
                     -1,
@@ -288,9 +288,9 @@
                   "texture": "#bottom",
                   "uv": [
                     0.5,
-                    3.0,
+                    3,
                     1.5,
-                    10.0
+                    10
                   ],
                   "windMode": [
                     -1,
@@ -308,9 +308,9 @@
                 "west": {
                   "texture": "#bottom",
                   "uv": [
-                    2.0,
+                    2,
                     4.5,
-                    14.0,
+                    14,
                     11.5
                   ],
                   "windMode": [
@@ -329,10 +329,10 @@
                 "down": {
                   "texture": "#bottom",
                   "uv": [
-                    0.0,
-                    0.0,
-                    1.0,
-                    12.0
+                    0,
+                    0,
+                    1,
+                    12
                   ],
                   "windMode": [
                     -1,
@@ -348,73 +348,73 @@
         {
           "name": "base",
           "from": [
-            -5.0,
-            0.0,
+            -5,
+            0,
             -6.1
           ],
           "to": [
-            5.0,
-            1.0,
+            5,
+            1,
             6.1
           ],
           "rotationOrigin": [
-            -1.0,
-            0.0,
-            0.0
+            -1,
+            0,
+            0
           ],
           "faces": {
             "north": {
               "texture": "#bottom",
               "uv": [
-                0.0,
-                0.0,
-                10.0,
-                1.0
+                0,
+                0,
+                10,
+                1
               ]
             },
             "east": {
               "texture": "#bottom",
               "uv": [
-                0.0,
-                0.0,
-                12.0,
-                1.0
+                0,
+                0,
+                12,
+                1
               ]
             },
             "south": {
               "texture": "#bottom",
               "uv": [
                 2.5,
-                0.0,
+                0,
                 12.5,
-                1.0
+                1
               ]
             },
             "west": {
               "texture": "#bottom",
               "uv": [
                 1.5,
-                0.0,
+                0,
                 13.5,
-                1.0
+                1
               ]
             },
             "up": {
               "texture": "#bottom",
               "uv": [
                 3.5,
-                2.0,
+                2,
                 13.5,
-                14.0
+                14
               ]
             },
             "down": {
               "texture": "#bottom",
               "uv": [
                 3.5,
-                2.0,
+                2,
                 13.5,
-                14.0
+                14
               ]
             }
           }

@@ -20,9 +20,9 @@
     ]
   },
   "textures": {
-    "housing": "block/metal/sheet/cupronickel1",
-    "gear": "block/machine/statictranslocator/statictranslocator_glass",
-    "glass": "block/machine/statictranslocator/statictranslocator_glass"
+    "housing": "vstemporalreverser:block/metal/sheet/cupronickel1",
+    "gear": "vstemporalreverser:block/machine/statictranslocator/statictranslocator_glass",
+    "glass": "vstemporalreverser:block/machine/statictranslocator/statictranslocator_glass"
   },
   "elements": [
     {

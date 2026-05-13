@@ -7,91 +7,91 @@
   "textureHeight": 16,
   "textureSizes": {},
   "textures": {
-    "ebony": "block/wood/debarked/material",
-    "ebony-ornate": "block/wood/debarked/material"
+    "ebony": "vstemporalreverser:block/wood/debarked/material",
+    "ebony-ornate": "vstemporalreverser:block/wood/debarked/material"
   },
   "elements": [
     {
       "name": "origin",
       "from": [
-        8.0,
-        0.0,
-        8.0
+        8,
+        0,
+        8
       ],
       "to": [
-        8.0,
-        0.0,
-        8.0
+        8,
+        0,
+        8
       ],
       "rotationOrigin": [
-        8.0,
-        0.0,
-        8.0
+        8,
+        0,
+        8
       ],
-      "rotationY": -90.0,
+      "rotationY": -90,
       "faces": {},
       "children": [
         {
           "name": "stand",
           "from": [
             -1.5,
-            1.0,
+            1,
             -1.5
           ],
           "to": [
             1.5,
-            17.0,
+            17,
             1.5
           ],
           "rotationOrigin": [
             -0.5,
-            2.0,
+            2,
             -0.5
           ],
           "faces": {
             "north": {
               "texture": "#ebony-ornate",
               "uv": [
-                0.0,
-                0.0,
-                3.0,
-                16.0
+                0,
+                0,
+                3,
+                16
               ]
             },
             "east": {
               "texture": "#ebony-ornate",
               "uv": [
-                6.0,
-                0.0,
-                9.0,
-                16.0
+                6,
+                0,
+                9,
+                16
               ]
             },
             "south": {
               "texture": "#ebony-ornate",
               "uv": [
-                2.0,
-                0.0,
-                5.0,
-                16.0
+                2,
+                0,
+                5,
+                16
               ]
             },
             "west": {
               "texture": "#ebony-ornate",
               "uv": [
-                4.0,
-                0.0,
-                7.0,
-                16.0
+                4,
+                0,
+                7,
+                16
               ]
             },
             "down": {
               "texture": "#ebony-ornate",
               "uv": [
-                10.0,
-                4.0,
-                13.0,
-                7.0
+                10,
+                4,
+                13,
+                7
               ]
             }
           }
@@ -105,21 +105,21 @@
           ],
           "to": [
             0.5,
-            1.0,
-            4.0
+            1,
+            4
           ],
           "rotationOrigin": [
-            0.0,
-            1.0,
-            4.0
+            0,
+            1,
+            4
           ],
           "rotationX": 67.5,
           "faces": {
             "east": {
               "texture": "#ebony-ornate",
               "uv": [
-                11.0,
-                6.0,
+                11,
+                6,
                 11.5,
                 12.5
               ],
@@ -128,28 +128,28 @@
             "west": {
               "texture": "#ebony-ornate",
               "uv": [
-                13.0,
+                13,
                 6.5,
                 13.5,
-                13.0
+                13
               ],
               "rotation": 90
             },
             "up": {
               "texture": "#ebony-ornate",
               "uv": [
-                13.0,
+                13,
                 1.5,
-                14.0,
-                8.0
+                14,
+                8
               ]
             },
             "down": {
               "texture": "#ebony-ornate",
               "uv": [
-                12.0,
-                2.0,
-                13.0,
+                12,
+                2,
+                13,
                 8.5
               ]
             }
@@ -160,17 +160,17 @@
           "from": [
             -0.5,
             0.5,
-            -4.0
+            -4
           ],
           "to": [
             0.5,
-            1.0,
+            1,
             2.5
           ],
           "rotationOrigin": [
-            0.0,
-            1.0,
-            -4.0
+            0,
+            1,
+            -4
           ],
           "rotationX": -67.5,
           "faces": {
@@ -178,8 +178,8 @@
               "texture": "#ebony-ornate",
               "uv": [
                 14.5,
-                3.0,
-                15.0,
+                3,
+                15,
                 9.5
               ],
               "rotation": 90
@@ -187,10 +187,10 @@
             "west": {
               "texture": "#ebony-ornate",
               "uv": [
-                13.0,
+                13,
                 7.5,
                 13.5,
-                14.0
+                14
               ],
               "rotation": 90
             },
@@ -198,7 +198,7 @@
               "texture": "#ebony-ornate",
               "uv": [
                 12.5,
-                7.0,
+                7,
                 13.5,
                 13.5
               ]
@@ -207,7 +207,7 @@
               "texture": "#ebony-ornate",
               "uv": [
                 11.5,
-                4.0,
+                4,
                 12.5,
                 10.5
               ]
@@ -228,17 +228,17 @@
           ],
           "rotationOrigin": [
             -0.5,
-            4.0,
-            0.0
+            4,
+            0
           ],
-          "rotationZ": 45.0,
+          "rotationZ": 45,
           "faces": {
             "north": {
               "texture": "#ebony-ornate",
               "uv": [
-                13.0,
+                13,
                 6.5,
-                14.0,
+                14,
                 11.5
               ],
               "rotation": 90,
@@ -252,9 +252,9 @@
             "south": {
               "texture": "#ebony-ornate",
               "uv": [
-                10.0,
+                10,
                 4.5,
-                11.0,
+                11,
                 9.5
               ],
               "rotation": 90
@@ -263,19 +263,19 @@
               "texture": "#ebony-ornate",
               "uv": [
                 9.5,
-                6.0,
+                6,
                 10.5,
-                11.0
+                11
               ],
               "rotation": 90
             },
             "down": {
               "texture": "#ebony-ornate",
               "uv": [
-                11.0,
-                9.0,
-                12.0,
-                14.0
+                11,
+                9,
+                12,
+                14
               ],
               "rotation": 90
             }
@@ -284,27 +284,27 @@
         {
           "name": "footN",
           "from": [
-            -1.0,
-            0.0,
-            -5.0
+            -1,
+            0,
+            -5
           ],
           "to": [
-            1.0,
-            1.0,
-            5.0
+            1,
+            1,
+            5
           ],
           "rotationOrigin": [
-            0.0,
-            0.0,
-            -2.0
+            0,
+            0,
+            -2
           ],
           "faces": {
             "north": {
               "texture": "#ebony",
               "uv": [
-                3.0,
+                3,
                 9.5,
-                4.0,
+                4,
                 11.5
               ],
               "rotation": 90
@@ -321,39 +321,39 @@
             "south": {
               "texture": "#ebony",
               "uv": [
-                5.0,
-                4.0,
-                6.0,
-                6.0
+                5,
+                4,
+                6,
+                6
               ],
               "rotation": 90
             },
             "west": {
               "texture": "#ebony",
               "uv": [
-                3.0,
-                4.0,
-                13.0,
-                5.0
+                3,
+                4,
+                13,
+                5
               ]
             },
             "up": {
               "texture": "#ebony",
               "uv": [
-                2.0,
-                2.0,
-                12.0,
-                4.0
+                2,
+                2,
+                12,
+                4
               ],
               "rotation": 90
             },
             "down": {
               "texture": "#ebony",
               "uv": [
-                3.0,
-                5.0,
-                13.0,
-                7.0
+                3,
+                5,
+                13,
+                7
               ],
               "rotation": 90
             }
@@ -362,36 +362,36 @@
         {
           "name": "footW",
           "from": [
-            -5.0,
-            0.0,
-            -1.0
+            -5,
+            0,
+            -1
           ],
           "to": [
-            5.0,
-            1.0,
-            1.0
+            5,
+            1,
+            1
           ],
           "rotationOrigin": [
-            -2.0,
-            0.0,
-            0.0
+            -2,
+            0,
+            0
           ],
           "faces": {
             "north": {
               "texture": "#ebony",
               "uv": [
-                4.0,
+                4,
                 2.5,
-                14.0,
+                14,
                 3.5
               ]
             },
             "east": {
               "texture": "#ebony",
               "uv": [
-                7.0,
+                7,
                 10.5,
-                8.0,
+                8,
                 12.5
               ],
               "rotation": 90
@@ -399,18 +399,18 @@
             "south": {
               "texture": "#ebony",
               "uv": [
-                4.0,
+                4,
                 2.5,
-                14.0,
+                14,
                 3.5
               ]
             },
             "west": {
               "texture": "#ebony",
               "uv": [
-                9.0,
+                9,
                 7.5,
-                10.0,
+                10,
                 9.5
               ],
               "rotation": 90
@@ -418,18 +418,18 @@
             "up": {
               "texture": "#ebony",
               "uv": [
-                4.0,
+                4,
                 10.5,
-                14.0,
+                14,
                 12.5
               ]
             },
             "down": {
               "texture": "#ebony",
               "uv": [
-                3.0,
+                3,
                 5.5,
-                13.0,
+                13,
                 7.5
               ]
             }
@@ -438,29 +438,29 @@
         {
           "name": "rest",
           "from": [
-            -4.0,
-            20.0,
+            -4,
+            20,
             -5.5
           ],
           "to": [
-            5.0,
-            21.0,
+            5,
+            21,
             5.5
           ],
           "rotationOrigin": [
-            -2.0,
-            20.0,
+            -2,
+            20,
             -0.5
           ],
-          "rotationZ": -45.0,
+          "rotationZ": -45,
           "faces": {
             "north": {
               "texture": "#ebony",
               "uv": [
                 7.5,
-                6.0,
+                6,
                 8.5,
-                15.0
+                15
               ],
               "rotation": 90
             },
@@ -478,9 +478,9 @@
               "texture": "#ebony",
               "uv": [
                 1.5,
-                3.0,
+                3,
                 12.5,
-                4.0
+                4
               ]
             },
             "up": {
@@ -496,10 +496,10 @@
             "down": {
               "texture": "#ebony",
               "uv": [
-                0.0,
-                0.0,
-                11.0,
-                9.0
+                0,
+                0,
+                11,
+                9
               ],
               "rotation": 90
             }
@@ -509,56 +509,56 @@
               "name": "joint",
               "from": [
                 3.2,
-                -2.0,
+                -2,
                 3.5
               ],
               "to": [
                 8.2,
-                0.0,
+                0,
                 7.5
               ],
               "rotationOrigin": [
                 4.7,
-                -2.0,
-                5.0
+                -2,
+                5
               ],
               "faces": {
                 "north": {
                   "texture": "#ebony-ornate",
                   "uv": [
-                    11.0,
-                    11.0,
-                    13.0,
-                    16.0
+                    11,
+                    11,
+                    13,
+                    16
                   ],
                   "rotation": 90
                 },
                 "east": {
                   "texture": "#ebony-ornate",
                   "uv": [
-                    9.0,
-                    3.0,
-                    11.0,
-                    7.0
+                    9,
+                    3,
+                    11,
+                    7
                   ],
                   "rotation": 90
                 },
                 "south": {
                   "texture": "#ebony-ornate",
                   "uv": [
-                    10.0,
-                    7.0,
-                    12.0,
-                    12.0
+                    10,
+                    7,
+                    12,
+                    12
                   ],
                   "rotation": 90
                 },
                 "west": {
                   "texture": "#ebony-ornate",
                   "uv": [
-                    11.0,
+                    11,
                     5.5,
-                    13.0,
+                    13,
                     9.5
                   ],
                   "rotation": 90
@@ -566,10 +566,10 @@
                 "down": {
                   "texture": "#ebony",
                   "uv": [
-                    0.0,
-                    3.0,
-                    5.0,
-                    7.0
+                    0,
+                    3,
+                    5,
+                    7
                   ]
                 }
               }
@@ -577,19 +577,19 @@
             {
               "name": "rest-edge",
               "from": [
-                8.0,
+                8,
                 -0.5,
-                -1.0
+                -1
               ],
               "to": [
-                9.0,
-                2.0,
-                12.0
+                9,
+                2,
+                12
               ],
               "rotationOrigin": [
-                8.0,
-                0.0,
-                4.0
+                8,
+                0,
+                4
               ],
               "faces": {
                 "north": {
@@ -597,7 +597,7 @@
                   "uv": [
                     12.5,
                     0.5,
-                    15.0,
+                    15,
                     1.5
                   ],
                   "rotation": 90
@@ -606,7 +606,7 @@
                   "texture": "#ebony",
                   "uv": [
                     2.5,
-                    13.0,
+                    13,
                     15.5,
                     15.5
                   ]
@@ -615,9 +615,9 @@
                   "texture": "#ebony",
                   "uv": [
                     11.5,
-                    13.0,
-                    14.0,
-                    14.0
+                    13,
+                    14,
+                    14
                   ],
                   "rotation": 90
                 },
@@ -625,7 +625,7 @@
                   "texture": "#ebony",
                   "uv": [
                     2.5,
-                    3.0,
+                    3,
                     15.5,
                     5.5
                   ]
@@ -633,9 +633,9 @@
                 "up": {
                   "texture": "#ebony",
                   "uv": [
-                    3.0,
+                    3,
                     11.5,
-                    16.0,
+                    16,
                     12.5
                   ],
                   "rotation": 90
@@ -643,10 +643,10 @@
                 "down": {
                   "texture": "#ebony",
                   "uv": [
-                    0.0,
-                    2.0,
-                    13.0,
-                    3.0
+                    0,
+                    2,
+                    13,
+                    3
                   ],
                   "rotation": 90
                 }
@@ -656,7 +656,7 @@
               "name": "Cube1",
               "from": [
                 -0.1,
-                0.0,
+                0,
                 10.4
               ],
               "to": [
@@ -666,7 +666,7 @@
               ],
               "rotationOrigin": [
                 -0.1,
-                0.0,
+                0,
                 10.4
               ],
               "faces": {
@@ -674,8 +674,8 @@
                   "texture": "#ebony-ornate",
                   "uv": [
                     14.5,
-                    0.0,
-                    16.0,
+                    0,
+                    16,
                     8.5
                   ],
                   "rotation": 90
@@ -683,28 +683,28 @@
                 "south": {
                   "texture": "#ebony-ornate",
                   "uv": [
-                    12.0,
+                    12,
                     2.5,
                     13.5,
-                    11.0
+                    11
                   ],
                   "rotation": 90
                 },
                 "west": {
                   "texture": "#ebony-ornate",
                   "uv": [
-                    12.0,
+                    12,
                     7.5,
                     12.5,
-                    9.0
+                    9
                   ]
                 },
                 "up": {
                   "texture": "#ebony-ornate",
                   "uv": [
                     14.5,
-                    0.0,
-                    15.0,
+                    0,
+                    15,
                     8.5
                   ],
                   "rotation": 90
@@ -715,7 +715,7 @@
               "name": "Cube18",
               "from": [
                 -0.1,
-                0.0,
+                0,
                 0.1
               ],
               "to": [
@@ -725,7 +725,7 @@
               ],
               "rotationOrigin": [
                 -0.1,
-                0.0,
+                0,
                 0.1
               ],
               "faces": {
@@ -733,8 +733,8 @@
                   "texture": "#ebony-ornate",
                   "uv": [
                     14.5,
-                    0.0,
-                    16.0,
+                    0,
+                    16,
                     8.5
                   ],
                   "rotation": 90
@@ -742,28 +742,28 @@
                 "south": {
                   "texture": "#ebony-ornate",
                   "uv": [
-                    12.0,
+                    12,
                     2.5,
                     13.5,
-                    11.0
+                    11
                   ],
                   "rotation": 90
                 },
                 "west": {
                   "texture": "#ebony-ornate",
                   "uv": [
-                    12.0,
+                    12,
                     7.5,
                     12.5,
-                    9.0
+                    9
                   ]
                 },
                 "up": {
                   "texture": "#ebony-ornate",
                   "uv": [
                     14.5,
-                    0.0,
-                    15.0,
+                    0,
+                    15,
                     8.5
                   ],
                   "rotation": 90

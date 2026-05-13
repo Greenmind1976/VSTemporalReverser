@@ -12,7 +12,7 @@
     ]
   },
   "textures": {
-    "housing": "block/metal/sheet/cupronickel1"
+    "housing": "vstemporalreverser:block/metal/sheet/cupronickel1"
   },
   "elements": [
     {
