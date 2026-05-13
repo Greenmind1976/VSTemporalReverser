@@ -35,7 +35,9 @@ public class ItemTemporalReverser : Item
     private static string? DebugLogPath;
     private static readonly Dictionary<long, long> LastRestoreUseByEntityId = [];
     private static readonly Dictionary<long, long> LastRustWardPulseByEntityId = [];
+    private readonly Dictionary<string, LoadedTexture> toolModeTextures = [];
     private ItemSlot? iconSlot;
+    private ICoreClientAPI? capi;
     private SkillItem[]? toolModes;
     private static readonly string[] RandomLanternMaterials =
     [
@@ -1068,16 +1070,20 @@ public class ItemTemporalReverser : Item
     {
         base.OnLoaded(api);
 
-        if (api is not ICoreClientAPI)
+        if (api is not ICoreClientAPI clientApi)
         {
             return;
         }
+
+        capi = clientApi;
 
         toolModes =
         [
             new SkillItem { Code = new AssetLocation("restore"), Name = "Restore" },
             new SkillItem { Code = new AssetLocation("salvage"), Name = "Salvage" }
         ];
+
+        AttachToolModeIcons(toolModes);
     }
 
     public override void OnUnloaded(ICoreAPI api)
@@ -1094,7 +1100,14 @@ public class ItemTemporalReverser : Item
             toolMode.Dispose();
         }
 
+        foreach (LoadedTexture texture in toolModeTextures.Values)
+        {
+            texture.Dispose();
+        }
+
+        toolModeTextures.Clear();
         toolModes = null;
+        capi = null;
     }
 
     public override SkillItem[]? GetToolModes(ItemSlot slot, IClientPlayer forPlayer, BlockSelection blockSel)
@@ -1561,6 +1574,49 @@ MatchedRuleResolved:
     private static string GetToolModeName(int toolMode)
     {
         return toolMode == SalvageToolMode ? "Salvage" : "Restore";
+    }
+
+    private void AttachToolModeIcons(SkillItem[] modes)
+    {
+        if (capi == null)
+        {
+            return;
+        }
+
+        for (int i = 0; i < modes.Length; i++)
+        {
+            string iconKey = i == SalvageToolMode ? "recycle" : "restore";
+            LoadedTexture? texture = GetToolModeTexture(iconKey);
+            if (texture != null)
+            {
+                modes[i].WithIcon(capi, texture);
+            }
+        }
+    }
+
+    private LoadedTexture? GetToolModeTexture(string iconKey)
+    {
+        if (capi == null)
+        {
+            return null;
+        }
+
+        if (toolModeTextures.TryGetValue(iconKey, out LoadedTexture? texture))
+        {
+            return texture;
+        }
+
+        AssetLocation location = new($"vstemporalreverser:textures/gui/toolmodes/{iconKey}.png");
+        var loadedTexture = new LoadedTexture(capi);
+        capi.Render.GetOrLoadTexture(location, ref loadedTexture);
+        if (loadedTexture.TextureId <= 0)
+        {
+            loadedTexture.Dispose();
+            return null;
+        }
+
+        toolModeTextures[iconKey] = loadedTexture;
+        return loadedTexture;
     }
 
     private static bool IsRustCreature(Entity entity)

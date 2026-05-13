@@ -3,11 +3,11 @@
   "ingredients": {
     "I": {
       "type": "item",
-      "code": "ingot-cupronickel"
+      "code": "game:ingot-cupronickel"
     },
     "H": {
       "type": "item",
-      "code": "hammer-*",
+      "code": "game:hammer-*",
       "name": "metal",
       "isTool": true,
       "toolDurabilityCost": 1

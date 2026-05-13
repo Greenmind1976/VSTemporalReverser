@@ -7,20 +7,20 @@
     },
     "F": {
       "type": "item",
-      "code": "jonasparts-connector01"
+      "code": "game:jonasparts-connector01"
     },
     "G": {
       "type": "item",
-      "code": "gear-temporal",
+      "code": "game:gear-temporal",
       "quantity": 5
     },
     "O": {
       "type": "item",
-      "code": "jonasframes-oscillator01"
+      "code": "game:jonasframes-oscillator01"
     },
     "T": {
       "type": "item",
-      "code": "jonasparts-cylinder02"
+      "code": "game:jonasparts-cylinder02"
     }
   },
   "width": 3,

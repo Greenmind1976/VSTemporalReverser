@@ -7,7 +7,7 @@
     },
     "G": {
       "type": "item",
-      "code": "gear-temporal",
+      "code": "game:gear-temporal",
       "quantity": 1
     }
   },
