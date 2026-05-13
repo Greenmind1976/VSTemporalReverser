@@ -393,6 +393,180 @@ public class ItemTemporalReverser : Item
         "wateringcan-cream-fired",
         "wateringcan-red-fired"
     ];
+    private static readonly string[] RandomMedicalSupplyItems =
+    [
+        "bandage-clean",
+        "bandage-alcoholed"
+    ];
+    private static readonly string[] RandomShelfLabJonasItems =
+    [
+        "jonasparts-pumphead",
+        "jonasparts-tank01",
+        "jonasparts-tank02",
+        "jonasparts-valve01",
+        "jonasparts-connector01",
+        "jonasparts-cylinder01",
+        "jonasparts-cylinder02",
+        "jonasframes-gearbox01",
+        "jonasframes-gearbox02",
+        "jonasframes-oscillator01",
+        "jonasframes-spring01",
+        "jonasframes-joint01",
+        "jonasframes-gears01",
+        "jonasframes-gears02"
+    ];
+    private static readonly string[] RandomShelfFlaskItems =
+    [
+        "glass-green",
+        "glass-blue",
+        "glass-violet",
+        "glass-red",
+        "glass-yellow",
+        "glass-brown",
+        "glass-vintage",
+        "glass-plain",
+        "glass-quartz"
+    ];
+    private static readonly string[] RandomShelfLampItems =
+    [
+        "oillamp-genie-earthyorange-fired"
+    ];
+    private static readonly string[] RandomShelfLabItems = RandomShelfLabJonasItems;
+    private static readonly string[] RandomShelfAlchemyItems =
+    [
+        "clutter-art/bottle",
+        "measuringrope",
+        "clothes-face-glasses",
+        "clothes-face-glasses-clockmaker",
+        "paper-parchment"
+    ];
+    private static readonly string[] RandomShelfMiscItems =
+    [
+        "paper-parchment",
+        "candle",
+        "beeswax",
+        "clutter-art/bottle"
+    ];
+    private static readonly string[] RandomShelfClothingItems =
+    [
+        "clothes-upperbody-farmhand",
+        "clothes-upperbody-popinjay",
+        "clothes-upperbody-centurion",
+        "clothes-upperbody-midsummer",
+        "clothes-upperbody-ruralhunter",
+        "clothes-upperbody-ruralfarmer",
+        "clothes-upperbody-warrior",
+        "clothes-upperbody-wanderer",
+        "clothes-upperbody-beggar",
+        "clothes-upperbody-clockmaker-shirt",
+        "clothes-upperbodyover-clockmaker-tunic",
+        "clothes-shoulder-clockmaker-apron",
+        "clothes-lowerbody-farmhand",
+        "clothes-lowerbody-popinjay",
+        "clothes-lowerbody-centurion",
+        "clothes-lowerbody-warrior",
+        "clothes-lowerbody-wanderer",
+        "clothes-lowerbody-beggar",
+        "clothes-head-ruralhunter",
+        "clothes-head-popinjay",
+        "clothes-head-midsummer",
+        "clothes-hand-commoner-gloves",
+        "clothes-hand-tailor-gloves",
+        "clothes-hand-clockmaker-wristguard",
+        "clothes-waist-farmhand",
+        "clothes-waist-popinjay",
+        "clothes-waist-centurion",
+        "clothes-waist-midsummer",
+        "clothes-waist-ruralfarmer",
+        "clothes-waist-ruralhunter",
+        "clothes-waist-warrior",
+        "clothes-waist-wanderer",
+        "clothes-waist-beggar",
+        "clothes-shoulder-wanderer",
+        "clothes-shoulder-patchwork",
+        "clothes-shoulder-ruralhunter"
+    ];
+    private static readonly string[] RandomShoeItems =
+    [
+        "clothes-foot-leather",
+        "clothes-foot-worn-leather-boots",
+        "clothes-foot-wool-lined-knee-high-boots",
+        "clothes-foot-tigh-high-boots",
+        "clothes-foot-temptress-velvet-shoes",
+        "clothes-foot-nomad-boots",
+        "clothes-foot-squire-boots",
+        "clothes-foot-soldier-boots",
+        "clothes-foot-shepherd-sandals",
+        "clothes-foot-prisoner-binds",
+        "clothes-foot-prince-boots",
+        "clothes-foot-peasent-slippers",
+        "clothes-foot-noble-shoes",
+        "clothes-foot-minstrel-boots",
+        "clothes-foot-metalcap-boots",
+        "clothes-foot-messenger-shoes",
+        "clothes-foot-merchant-shoes",
+        "clothes-foot-lackey-shoes",
+        "clothes-foot-knee-high-fur-boots",
+        "clothes-foot-jailor-boots",
+        "clothes-foot-high-leather-boots",
+        "clothes-foot-fur-lined-reindeer-herder-shoes",
+        "clothes-foot-great-steppe-boots",
+        "clothes-foot-aristocrat-shoes",
+        "clothes-foot-blackguard-shoes",
+        "clothes-foot-clockmaker-shoes",
+        "clothes-foot-hunter-boots",
+        "clothes-foot-malefactor-boots",
+        "clothes-foot-forlorn-shoes",
+        "clothes-foot-commoner-boots",
+        "clothes-foot-tailor-shoes",
+        "clothes-foot-marketeer",
+        "clothes-foot-rotwalker",
+        "clothes-foot-rottenking",
+        "clothes-foot-king",
+        "clothes-foot-surgeon",
+        "clothes-foot-miner",
+        "clothes-foot-alchemist",
+        "clothes-foot-forgotten",
+        "clothes-foot-survivor",
+        "clothes-foot-scribe",
+        "clothes-nadiya-foot-alchemist",
+        "clothes-nadiya-foot-barber",
+        "clothes-nadiya-foot-beekeeper",
+        "clothes-nadiya-foot-blacksmith",
+        "clothes-nadiya-foot-fisher",
+        "clothes-nadiya-foot-guard",
+        "clothes-nadiya-foot-hunter",
+        "clothes-nadiya-foot-innkeeper",
+        "clothes-nadiya-foot-miner-clean",
+        "clothes-nadiya-foot-miner",
+        "clothes-nadiya-foot-musician",
+        "clothes-nadiya-foot-peasantbeige",
+        "clothes-nadiya-foot-peasantblue",
+        "clothes-nadiya-foot-peasantbrown",
+        "clothes-nadiya-foot-peasantwhite",
+        "clothes-nadiya-foot-shepherd",
+        "clothes-nadiya-foot-tailor",
+        "clothes-nadiya-foot-winter1",
+        "clothes-nadiya-foot-winter2",
+        "clothes-foot-embroideredfur",
+        "clothes-foot-strawsandals",
+        "clothes-foot-emeraldreindeerherder",
+        "clothes-foot-jester",
+        "clothes-foot-arcticfisher",
+        "clothes-foot-hobnailboots",
+        "clothes-foot-arctichunter",
+        "clothes-foot-acrobat",
+        "clothes-foot-fortuneteller",
+        "clothes-foot-farmhand",
+        "clothes-foot-popinjay",
+        "clothes-foot-centurion",
+        "clothes-foot-midsummer",
+        "clothes-foot-ruralhunter",
+        "clothes-foot-ruralfarmer",
+        "clothes-foot-wanderer",
+        "clothes-foot-warrior",
+        "clothes-foot-beggar"
+    ];
     private static readonly string[] RandomRestoredToyItems =
     [
         "vstemporalreverser:restored-toy-toy4",
@@ -479,6 +653,11 @@ public class ItemTemporalReverser : Item
         "linen-offset-down",
         "linen-diamond-down",
         "linen-square-down"
+    ];
+    private static readonly string[] RandomClothingCrateItems =
+    [
+        .. RandomClothingItems,
+        .. RandomShelfClothingItems
     ];
     private static readonly string[] RandomRotItems =
     [
@@ -1018,6 +1197,8 @@ public class ItemTemporalReverser : Item
         ["table-ruined4"] = RandomRestoredTableRule(RuinedDurabilityCost, RandomRestoredAgedTableStyles),
         ["table-ruined5"] = RandomRestoredTableRule(RuinedDurabilityCost, RandomRestoredAgedTableStyles),
         ["table-ruined6"] = RandomRestoredTableRule(RuinedDurabilityCost, RandomRestoredAgedTableStyles),
+        ["brazier1"] = VanillaBlockRule(RuinedDurabilityCost, "vstemporalreverser:restored-brazier-{material}"),
+        ["brazier2"] = VanillaBlockRule(RuinedDurabilityCost, "vstemporalreverser:restored-brazier-{material}"),
         ["brazier3"] = VanillaBlockRule(RuinedDurabilityCost, "vstemporalreverser:restored-brazier-{material}"),
         ["brazier4"] = VanillaBlockRule(RuinedDurabilityCost, "vstemporalreverser:restored-brazier-{material}"),
         ["brazier-evaporating"] = VanillaBlockRule(RuinedDurabilityCost, "vstemporalreverser:restored-brazier-{material}"),
@@ -1297,11 +1478,19 @@ public class ItemTemporalReverser : Item
                                     }
                                     else
                                     {
-                            RestorationRule? crateJunkRule = TryGetCrateJunkRule(clutterType);
-                            if (crateJunkRule != null)
-                            {
-                                matchedRule = crateJunkRule;
-                            }
+                                        RestorationRule? shelfRule = TryGetShelfRule(clutterType);
+                                        if (shelfRule != null)
+                                        {
+                                            matchedRule = shelfRule;
+                                        }
+                                        else
+                                        {
+                                            RestorationRule? crateJunkRule = TryGetCrateJunkRule(clutterType);
+                                            if (crateJunkRule != null)
+                                            {
+                                                matchedRule = crateJunkRule;
+                                            }
+                                        }
                                     }
                                 }
                             }
@@ -2263,17 +2452,20 @@ MatchedRuleResolved:
         {
             string rareItemCode = rareItemCodes[Random.Shared.Next(rareItemCodes.Length)];
             AssetLocation rareCode = ToAssetLocation(rareItemCode);
+            int rareStackCount = rule.RareBonusCount <= 0 && string.Equals(rareItemCode, RandomTemporalGearItems[0], StringComparison.OrdinalIgnoreCase)
+                ? Random.Shared.Next(1, 3)
+                : Math.Max(1, rule.RareBonusCount);
             Item? rareItem = world.GetItem(rareCode);
             if (rareItem != null)
             {
-                yield return new ItemStack(rareItem, Math.Max(1, rule.RareBonusCount));
+                yield return new ItemStack(rareItem, rareStackCount);
                 yield break;
             }
 
             Block? rareBlock = world.GetBlock(rareCode);
             if (rareBlock != null)
             {
-                yield return new ItemStack(rareBlock, Math.Max(1, rule.RareBonusCount));
+                yield return new ItemStack(rareBlock, rareStackCount);
             }
         }
     }
@@ -2285,22 +2477,38 @@ MatchedRuleResolved:
             yield break;
         }
 
-        if (!IsCrateRestorationRule(rule) && !IsFurnitureRestorationRule(rule))
+        int bonusChancePercent = GetTemporalGearBonusChancePercent(reverserStack);
+        if (bonusChancePercent <= 0 || Random.Shared.Next(100) >= bonusChancePercent)
         {
             yield break;
         }
 
-        if (Random.Shared.Next(100) >= 5)
-        {
-            yield break;
-        }
-
-        int stackCount = Random.Shared.Next(1, 6);
-        ItemStack? gearStack = CreateStackForCode(world, RandomTemporalGearItems[0], stackCount);
+        ItemStack? gearStack = CreateStackForCode(world, RandomTemporalGearItems[0], 1);
         if (gearStack != null)
         {
             yield return gearStack;
         }
+    }
+
+    private static int GetTemporalGearBonusChancePercent(ItemStack? reverserStack)
+    {
+        string? itemCode = reverserStack?.Collectible?.Code?.Path;
+        if (string.IsNullOrWhiteSpace(itemCode))
+        {
+            return 5;
+        }
+
+        if (itemCode.Contains("unstable", StringComparison.OrdinalIgnoreCase))
+        {
+            return 5;
+        }
+
+        if (itemCode.Contains("stabilized", StringComparison.OrdinalIgnoreCase))
+        {
+            return 10;
+        }
+
+        return 10;
     }
 
     private static IEnumerable<ItemStack> CreateTieredLootStacks(
@@ -2875,13 +3083,14 @@ MatchedRuleResolved:
             || normalizedSource.Contains("pile-weapon", StringComparison.OrdinalIgnoreCase)
             || normalizedSource.Contains("pile-tools", StringComparison.OrdinalIgnoreCase)
             || normalizedSource.Contains("woodworkingtools", StringComparison.OrdinalIgnoreCase)
-            || normalizedSource.Contains("precisiontools", StringComparison.OrdinalIgnoreCase)
-            || normalizedSource.Contains("shelf-tools", StringComparison.OrdinalIgnoreCase);
+            || normalizedSource.Contains("precisiontools", StringComparison.OrdinalIgnoreCase);
     }
 
     private static bool IsLibrarySource(string normalizedSource)
     {
         return normalizedSource.StartsWith("bookshelves/", StringComparison.OrdinalIgnoreCase)
+            || normalizedSource.StartsWith("shelf-", StringComparison.OrdinalIgnoreCase)
+            || normalizedSource.StartsWith("shelf/", StringComparison.OrdinalIgnoreCase)
             || normalizedSource.StartsWith("lecturn-", StringComparison.OrdinalIgnoreCase)
             || normalizedSource.Equals("full", StringComparison.OrdinalIgnoreCase)
             || normalizedSource.StartsWith("half", StringComparison.OrdinalIgnoreCase)
@@ -3125,7 +3334,9 @@ MatchedRuleResolved:
 
     private static long GetRestoreCooldownMs(ItemStack? stack)
     {
-        return Math.Max(0, stack?.Collectible?.Attributes?["restoreCooldownMs"].AsInt((int)DefaultRestoreCooldownMs) ?? (int)DefaultRestoreCooldownMs);
+        float configuredSeconds = VSTemporalReverserModSystem.Config.RestoreCooldownSeconds;
+        float clampedSeconds = Math.Clamp(configuredSeconds, 0f, 3f);
+        return (long)Math.Round(clampedSeconds * 1000f);
     }
 
     private static int GetRestoreSpawnDelayMs(ItemStack? stack)
@@ -3392,9 +3603,10 @@ MatchedRuleResolved:
                     || simplified.Contains("shards", StringComparison.OrdinalIgnoreCase)) => RandomVanillaItemRule(AgedDurabilityCost, RandomPotteryItems, 1, 1),
             _ when simplified.Contains("trash", StringComparison.OrdinalIgnoreCase) && simplified.Contains("oldore", StringComparison.OrdinalIgnoreCase) => RandomVanillaItemRule(AgedDurabilityCost, RandomOreNuggetItems, 6, 12),
             _ when simplified.Contains("trash", StringComparison.OrdinalIgnoreCase) && simplified.Contains("scrap", StringComparison.OrdinalIgnoreCase) => TieredJunkItemRule(AgedDurabilityCost, 1, 1, 1, 3),
-            "shelf-tools" => RandomVanillaItemRule(RuinedDurabilityCost, RandomRestoredToolItems),
-            _ when normalized.Contains("precisiontools", StringComparison.OrdinalIgnoreCase) => RandomVanillaItemRule(RuinedDurabilityCost, RandomRestoredPrecisionToolItems),
-            _ when normalized.Contains("woodworkingtools", StringComparison.OrdinalIgnoreCase) => RandomVanillaItemRule(RuinedDurabilityCost, RandomRestoredWoodworkingToolItems),
+            _ when normalized.Contains("precisiontools", StringComparison.OrdinalIgnoreCase)
+                && !normalized.StartsWith("shelf", StringComparison.OrdinalIgnoreCase) => RandomVanillaItemRule(RuinedDurabilityCost, RandomRestoredPrecisionToolItems),
+            _ when normalized.Contains("woodworkingtools", StringComparison.OrdinalIgnoreCase)
+                && !normalized.StartsWith("shelf", StringComparison.OrdinalIgnoreCase) => RandomVanillaItemRule(RuinedDurabilityCost, RandomRestoredWoodworkingToolItems),
             "crate-large-tools1" => VanillaAttributedBlockWithBonusItemsRule(
                 AgedDurabilityCost,
                 "game:crate",
@@ -3407,6 +3619,92 @@ MatchedRuleResolved:
                 "closed",
                 "label",
                 "paper-tools"),
+            _ => null
+        };
+    }
+
+    private static RestorationRule? TryGetShelfRule(string? clutterType)
+    {
+        if (string.IsNullOrWhiteSpace(clutterType))
+        {
+            return null;
+        }
+
+        string normalized = clutterType.StartsWith("clutter/", StringComparison.OrdinalIgnoreCase)
+            ? clutterType["clutter/".Length..]
+            : clutterType;
+        string simplified = normalized.Replace("/", "-", StringComparison.Ordinal);
+        simplified = simplified.StartsWith("clutter-", StringComparison.OrdinalIgnoreCase)
+            ? simplified["clutter-".Length..]
+            : simplified;
+
+        RestorationRule ShelfRule(int durabilityCost)
+        {
+            return VanillaBlockRule(
+                durabilityCost,
+                "game:shelf-normal-east");
+        }
+
+        RestorationRule ShelfRuleWithBonus(
+            int durabilityCost,
+            string[] bonusItems,
+            int bonusMinCount = 1,
+            int bonusMaxCount = 1,
+            int bonusItemMinCount = 1,
+            int bonusItemMaxCount = 1)
+        {
+            return VanillaBlockWithBonusAndRareItemsRule(
+                durabilityCost,
+                "game:shelf-normal-east",
+                bonusItems,
+                bonusMinCount,
+                bonusMaxCount,
+                bonusItemMinCount,
+                bonusItemMaxCount);
+        }
+
+        RestorationRule ShelfRuleWithBonusAndRare(
+            int durabilityCost,
+            string[] bonusItems,
+            int bonusMinCount,
+            int bonusMaxCount,
+            int rareBonusChancePercent,
+            string[] rareBonusItems,
+            int bonusItemMinCount = 1,
+            int bonusItemMaxCount = 1,
+            int rareBonusCount = 1)
+        {
+            return VanillaBlockWithBonusAndRareItemsRule(
+                durabilityCost,
+                "game:shelf-normal-east",
+                bonusItems,
+                bonusMinCount,
+                bonusMaxCount,
+                bonusItemMinCount,
+                bonusItemMaxCount,
+                rareBonusItems,
+                rareBonusChancePercent,
+                rareBonusCount: rareBonusCount);
+        }
+
+        return simplified switch
+        {
+            "shelf-medical" => ShelfRuleWithBonus(RuinedDurabilityCost, RandomMedicalSupplyItems, 1, 1, 4, 6),
+            _ when simplified.StartsWith("shelf-shoes", StringComparison.OrdinalIgnoreCase) => ShelfRuleWithBonus(RuinedDurabilityCost, RandomShoeItems),
+            _ when simplified.StartsWith("shelf-clothing", StringComparison.OrdinalIgnoreCase) => ShelfRuleWithBonus(RuinedDurabilityCost, RandomShelfClothingItems, 2, 2),
+            _ when simplified.StartsWith("shelf-flasks", StringComparison.OrdinalIgnoreCase) => ShelfRuleWithBonus(RuinedDurabilityCost, RandomShelfFlaskItems, 1, 2),
+            "shelf-lab-equipment" => ShelfRuleWithBonusAndRare(RuinedDurabilityCost, RandomShelfLabItems, 1, 1, 50, RandomTemporalGearItems, 1, 1, 0),
+            "shelf-lamp" => ShelfRuleWithBonus(RuinedDurabilityCost, RandomShelfLampItems),
+            "shelf-tools" => ShelfRuleWithBonus(RuinedDurabilityCost, RandomRestoredToolItems),
+            "shelf-woodworkingtools" => ShelfRuleWithBonus(RuinedDurabilityCost, RandomRestoredWoodworkingToolItems),
+            "shelf-drafting-instrument" => ShelfRuleWithBonus(RuinedDurabilityCost, RandomRestoredPrecisionToolItems),
+            _ when simplified.StartsWith("shelf-shelf-precisiontools", StringComparison.OrdinalIgnoreCase) => ShelfRuleWithBonus(AgedDurabilityCost, RandomRestoredPrecisionToolItems),
+            _ when simplified.StartsWith("shelf-shelf-drafting-instrument", StringComparison.OrdinalIgnoreCase) => ShelfRuleWithBonus(AgedDurabilityCost, RandomRestoredPrecisionToolItems),
+            _ when simplified.StartsWith("shelf-shelf-lab-equipment", StringComparison.OrdinalIgnoreCase) => ShelfRuleWithBonusAndRare(AgedDurabilityCost, RandomShelfLabItems, 1, 1, 50, RandomTemporalGearItems, 1, 1, 0),
+            _ when simplified.StartsWith("shelf-shelf-alchemy", StringComparison.OrdinalIgnoreCase) => ShelfRuleWithBonus(AgedDurabilityCost, RandomShelfAlchemyItems, 2, 3),
+            _ when simplified.StartsWith("shelf-shelf-reagents", StringComparison.OrdinalIgnoreCase) => ShelfRuleWithBonus(AgedDurabilityCost, RandomShelfAlchemyItems, 2, 3),
+            _ when simplified.StartsWith("shelf-shelf-stuff", StringComparison.OrdinalIgnoreCase) => ShelfRuleWithBonus(AgedDurabilityCost, RandomShelfMiscItems, 1, 3),
+            _ when simplified.StartsWith("shelf-", StringComparison.OrdinalIgnoreCase) => ShelfRule(RuinedDurabilityCost),
             _ => null
         };
     }
@@ -3639,8 +3937,8 @@ MatchedRuleResolved:
             }
 
             return label == null
-                ? VanillaAttributedBlockWithBonusAndRareItemsRule(durabilityCost, "game:crate", bonusItems, minCount, maxCount, bonusItemMinCount, bonusItemMaxCount, rareBonusItems, rareBonusChancePercent, rareBonusEntities, rareBonusEntityGroups, rareBonusEntityChancePercent, rareBonusEntityMinCount, rareBonusEntityMaxCount, lootStyle, "type", "wood-{cratewood}", "lidState", "closed")
-                : VanillaAttributedBlockWithBonusAndRareItemsRule(durabilityCost, "game:crate", bonusItems, minCount, maxCount, bonusItemMinCount, bonusItemMaxCount, rareBonusItems, rareBonusChancePercent, rareBonusEntities, rareBonusEntityGroups, rareBonusEntityChancePercent, rareBonusEntityMinCount, rareBonusEntityMaxCount, lootStyle, "type", "wood-{cratewood}", "lidState", "closed", "label", label);
+                ? VanillaAttributedBlockWithBonusAndRareItemsRule(durabilityCost, "game:crate", bonusItems, minCount, maxCount, bonusItemMinCount, bonusItemMaxCount, rareBonusItems, rareBonusChancePercent, rareBonusEntities, rareBonusEntityGroups, rareBonusEntityChancePercent, rareBonusEntityMinCount, rareBonusEntityMaxCount, lootStyle: lootStyle, attributes: ["type", "wood-{cratewood}", "lidState", "closed"])
+                : VanillaAttributedBlockWithBonusAndRareItemsRule(durabilityCost, "game:crate", bonusItems, minCount, maxCount, bonusItemMinCount, bonusItemMaxCount, rareBonusItems, rareBonusChancePercent, rareBonusEntities, rareBonusEntityGroups, rareBonusEntityChancePercent, rareBonusEntityMinCount, rareBonusEntityMaxCount, lootStyle: lootStyle, attributes: ["type", "wood-{cratewood}", "lidState", "closed", "label", label]);
         }
 
         static int DecorativeDurabilityCost(string code)
@@ -3686,7 +3984,7 @@ MatchedRuleResolved:
                 20,
                 40,
                 new[] { "nugget-pentlandite", "nugget-uranium" }),
-            "crate/large-clothing1" => LargeCrateWithBonusRule(AgedDurabilityCost, RandomClothingItems, 2, 4, "paper-decoration", 1, 1, RandomRareClothingItems, 1, rareBonusEntityGroups: new[] { RandomMothCreatureEntities }, rareBonusEntityChancePercent: 40),
+            "crate/large-clothing1" => LargeCrateWithBonusRule(AgedDurabilityCost, RandomShelfClothingItems, 4, 4, "paper-decoration", 1, 1, RandomRareClothingItems, 1, rareBonusEntityGroups: new[] { RandomMothCreatureEntities }, rareBonusEntityChancePercent: 40),
             "crate/crate-large-junk" => LargeCrateWithBonusRule(AgedDurabilityCost, Array.Empty<string>(), 2, 4, "paper-storage", rareBonusEntityGroups: RandomCrateCreatureEntityGroups, rareBonusEntityChancePercent: 25, rareBonusEntityMinCount: 1, rareBonusEntityMaxCount: 5, lootStyle: BonusLootStyle.TieredJunk),
             "crate/crate-medium-junk" => RestoredCrateFamilyWithBonusRule(AgedDurabilityCost, "medium", Array.Empty<string>(), 1, 2, rareBonusEntityGroups: RandomCrateCreatureEntityGroups, rareBonusEntityChancePercent: 25, rareBonusEntityMinCount: 1, rareBonusEntityMaxCount: 5, lootStyle: BonusLootStyle.TieredJunk),
             "crate/crate-small-junk" => RestoredCrateFamilyWithBonusRule(AgedDurabilityCost, "small", Array.Empty<string>(), 1, 2, rareBonusEntityGroups: RandomCrateCreatureEntityGroups, rareBonusEntityChancePercent: 25, rareBonusEntityMinCount: 1, rareBonusEntityMaxCount: 5, lootStyle: BonusLootStyle.TieredJunk),
@@ -4190,6 +4488,7 @@ MatchedRuleResolved:
         int rareBonusEntityChancePercent = 0,
         int rareBonusEntityMinCount = 1,
         int rareBonusEntityMaxCount = 1,
+        int rareBonusCount = 1,
         BonusLootStyle lootStyle = BonusLootStyle.None)
     {
         return new RestorationRule(
@@ -4211,6 +4510,7 @@ MatchedRuleResolved:
             RareBonusEntityChancePercent: rareBonusEntityChancePercent,
             RareBonusEntityMinCount: rareBonusEntityMinCount,
             RareBonusEntityMaxCount: rareBonusEntityMaxCount,
+            RareBonusCount: rareBonusCount,
             LootStyle: lootStyle);
     }
 
@@ -4282,6 +4582,7 @@ MatchedRuleResolved:
             int rareBonusEntityChancePercent = 0,
             int rareBonusEntityMinCount = 1,
             int rareBonusEntityMaxCount = 1,
+            int rareBonusCount = 1,
             BonusLootStyle lootStyle = BonusLootStyle.None,
             params string[] attributes)
     {
@@ -4305,6 +4606,7 @@ MatchedRuleResolved:
             RareBonusEntityChancePercent: rareBonusEntityChancePercent,
             RareBonusEntityMinCount: rareBonusEntityMinCount,
             RareBonusEntityMaxCount: rareBonusEntityMaxCount,
+            RareBonusCount: rareBonusCount,
             LootStyle: lootStyle);
     }
 
@@ -4591,6 +4893,68 @@ MatchedRuleResolved:
     private static string[] BuildItemCodes(string prefix, string[] finishes)
     {
         return finishes.Select(finish => $"{prefix}{finish}").ToArray();
+    }
+
+    private static string[] BuildCategoryWeightedPool(params (string[]? pool, int weight)[] weightedPools)
+    {
+        List<(string[] pool, int weight)> usablePools = new();
+
+        foreach ((string[]? pool, int weight) in weightedPools)
+        {
+            if (pool == null || pool.Length == 0 || weight <= 0)
+            {
+                continue;
+            }
+
+            usablePools.Add((pool, weight));
+        }
+
+        if (usablePools.Count == 0)
+        {
+            return [];
+        }
+
+        int commonMultiple = usablePools[0].pool.Length;
+        for (int index = 1; index < usablePools.Count; index++)
+        {
+            commonMultiple = LeastCommonMultiple(commonMultiple, usablePools[index].pool.Length);
+        }
+
+        List<string> combined = new();
+
+        foreach ((string[] pool, int weight) in usablePools)
+        {
+            int repeats = (commonMultiple / pool.Length) * weight;
+            for (int repeat = 0; repeat < repeats; repeat++)
+            {
+                combined.AddRange(pool);
+            }
+        }
+
+        return combined.ToArray();
+    }
+
+    private static int GreatestCommonDivisor(int left, int right)
+    {
+        left = Math.Abs(left);
+        right = Math.Abs(right);
+
+        while (right != 0)
+        {
+            (left, right) = (right, left % right);
+        }
+
+        return Math.Max(1, left);
+    }
+
+    private static int LeastCommonMultiple(int left, int right)
+    {
+        if (left == 0 || right == 0)
+        {
+            return 0;
+        }
+
+        return Math.Abs(left / GreatestCommonDivisor(left, right) * right);
     }
 
     private static void ApplyToyTextureAttributes(ItemStack stack, string[] enabledRestoredWoodTypes)

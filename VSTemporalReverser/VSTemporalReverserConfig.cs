@@ -8,7 +8,7 @@ public sealed class VSTemporalReverserConfig
 {
     public const string FileName = "VSTemporalReverserConfig.json";
 
-    public int SchemaVersion { get; set; } = 3;
+    public int SchemaVersion { get; set; } = 4;
 
     public bool Birch { get; set; } = true;
 
@@ -52,19 +52,22 @@ public sealed class VSTemporalReverserConfig
 
     public float RustWardPushback { get; set; } = 0.5f;
 
+    public float RestoreCooldownSeconds { get; set; } = 1.5f;
+
     public bool EnableDebugMode { get; set; } = false;
 
     public void EnsureDefaults()
     {
-        if (SchemaVersion < 3)
+        if (SchemaVersion < 4)
         {
-            SchemaVersion = 3;
+            SchemaVersion = 4;
         }
 
         RustWardDamage = Math.Clamp(RustWardDamage, 0f, 10f);
 
         RustWardRadius = Math.Clamp(RustWardRadius, 2f, 6f);
         RustWardPushback = Math.Clamp(RustWardPushback, 0.5f, 3f);
+        RestoreCooldownSeconds = Math.Clamp(RestoreCooldownSeconds, 0f, 3f);
     }
 
     public string[] GetEnabledWoodTypes()

@@ -17,6 +17,18 @@
       "default": false
     },
     {
+      "code": "RestoreCooldownSeconds",
+      "ingui": "Restore cooldown",
+      "type": "float",
+      "weight": 98.9,
+      "comment": "Cooldown in seconds between Temporal Reverser uses.",
+      "default": 1.5,
+      "range": {
+        "min": 0.0,
+        "max": 3.0
+      }
+    },
+    {
       "type": "separator",
       "title": "Rust Ward",
       "weight": 98.5
