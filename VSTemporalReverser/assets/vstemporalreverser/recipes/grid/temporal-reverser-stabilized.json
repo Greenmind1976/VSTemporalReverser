@@ -1,9 +1,9 @@
 {
   "ingredientPattern": "Q__,G__,P__",
   "ingredients": {
-    "G": { "type": "item", "code": "gear-temporal", "quantity": 5 },
-    "Q": { "type": "block", "code": "glass-plain" },
-    "P": { "type": "item", "code": "metalplate-iron" }
+    "G": { "type": "item", "code": "game:gear-temporal", "quantity": 5 },
+    "Q": { "type": "block", "code": "game:glass-plain" },
+    "P": { "type": "item", "code": "game:metalplate-iron" }
   },
   "width": 3,
   "height": 3,

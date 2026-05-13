@@ -1,9 +1,9 @@
 {
   "ingredientPattern": "C__,G__,P__",
   "ingredients": {
-    "C": { "type": "item", "code": "clearquartz", "quantity": 2 },
-    "G": { "type": "item", "code": "gear-temporal", "quantity": 1 },
-    "P": { "type": "item", "code": "metalplate-copper" }
+    "C": { "type": "item", "code": "game:clearquartz", "quantity": 2 },
+    "G": { "type": "item", "code": "game:gear-temporal", "quantity": 1 },
+    "P": { "type": "item", "code": "game:metalplate-copper" }
   },
   "width": 3,
   "height": 3,
