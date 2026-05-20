@@ -1,0 +1,147 @@
+{
+  "code": "temporal-reconstruction-device",
+  "class": "BlockTemporalReconstructionDevice",
+  "entityClass": "TemporalReconstructionDevice",
+  "behaviors": [
+    {
+      "name": "Lockable"
+    },
+    {
+      "name": "Container"
+    }
+  ],
+  "drawtype": "json",
+  "variantgroups": [
+    {
+      "code": "state",
+      "states": [
+        "idle",
+        "running"
+      ]
+    },
+    {
+      "code": "side",
+      "loadFromProperties": "abstract/horizontalorientation"
+    }
+  ],
+  "attributes": {
+    "reinforcable": true,
+    "height": 0.5,
+    "inventoryClassName": "temporalreconstructiondevice",
+    "quantitySlots": 21,
+    "dialogTitleLangCode": "vstemporalreverser:temporalreconstructiondevice"
+  },
+  "shapeInventoryByType": {
+    "*": {
+      "base": "game:block/wood/chest/normal",
+      "rotateY": 270
+    }
+  },
+  "shapeByType": {
+    "*-idle-north": {
+      "base": "vstemporalreverser:block/machine/temporal-reconstruction-device-running",
+      "rotateY": 90
+    },
+    "*-idle-east": {
+      "base": "vstemporalreverser:block/machine/temporal-reconstruction-device-running",
+      "rotateY": 0
+    },
+    "*-idle-south": {
+      "base": "vstemporalreverser:block/machine/temporal-reconstruction-device-running",
+      "rotateY": 270
+    },
+    "*-idle-west": {
+      "base": "vstemporalreverser:block/machine/temporal-reconstruction-device-running",
+      "rotateY": 180
+    },
+    "*-running-north": {
+      "base": "vstemporalreverser:block/machine/temporal-reconstruction-device-running",
+      "rotateY": 90
+    },
+    "*-running-east": {
+      "base": "vstemporalreverser:block/machine/temporal-reconstruction-device-running",
+      "rotateY": 0
+    },
+    "*-running-south": {
+      "base": "vstemporalreverser:block/machine/temporal-reconstruction-device-running",
+      "rotateY": 270
+    },
+    "*-running-west": {
+      "base": "vstemporalreverser:block/machine/temporal-reconstruction-device-running",
+      "rotateY": 180
+    }
+  },
+  "textures": {
+    "sides2": {
+      "base": "vstemporalreverser:block/metal/sheet/cupronickel1"
+    },
+    "lid": {
+      "base": "vstemporalreverser:block/metal/sheet/cupronickel1"
+    },
+    "accessories": {
+      "base": "vstemporalreverser:block/machine/temporalgear_opaque"
+    },
+    "gear": {
+      "base": "vstemporalreverser:block/machine/temporalgear_opaque"
+    },
+    "housing": {
+      "base": "vstemporalreverser:block/metal/sheet/cupronickel1"
+    },
+    "panelicon": {
+      "base": "vstemporalreverser:block/machine/restore-panel-running"
+    }
+  },
+  "texturesByType": {
+    "*-idle-*": {
+      "accessories": {
+        "base": "vstemporalreverser:block/machine/statictranslocator/statictranslocator_glass_idle"
+      },
+      "gear": {
+        "base": "vstemporalreverser:block/machine/statictranslocator/statictranslocator_glass_idle"
+      },
+      "panelicon": {
+        "base": "vstemporalreverser:block/machine/restore-panel-idle"
+      }
+    }
+  },
+  "creativeinventory": {
+    "general": [
+      "*-idle-east"
+    ]
+  },
+  "lightHsvByType": {
+    "*-running-*": [
+      32,
+      3,
+      15
+    ]
+  },
+  "blockmaterial": "Wood",
+  "replaceable": 900,
+  "resistance": 3,
+  "lightAbsorption": 0,
+  "sideAo": {
+    "all": false
+  },
+  "sidesolid": {
+    "all": false
+  },
+  "sideopaque": {
+    "all": false
+  },
+  "collisionSelectionBox": {
+    "x1": 0.1,
+    "y1": 0,
+    "z1": 0.1,
+    "x2": 0.9,
+    "y2": 0.9,
+    "z2": 0.9
+  },
+  "sounds": {
+    "place": "block/planks",
+    "hit": "block/planks",
+    "break": "block/planks",
+    "walk": "walk/wood"
+  },
+  "heldTpIdleAnimation": "holdunderarm"
+}

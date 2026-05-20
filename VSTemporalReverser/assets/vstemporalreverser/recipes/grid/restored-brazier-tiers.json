@@ -1,0 +1,46 @@
+[
+  {
+    "ingredientPattern": "BS",
+    "ingredients": {
+      "B": { "type": "block", "code": "vstemporalreverser:restored-brazier-{material}", "name": "material" },
+      "S": { "type": "item", "tags": ["tool-shovel"], "isTool": true, "toolDurabilityCost": 1 }
+    },
+    "shapeless": true,
+    "width": 2,
+    "height": 1,
+    "output": { "type": "block", "code": "restored-normal-brazier-{material}" }
+  },
+  {
+    "ingredientPattern": "BF",
+    "ingredients": {
+      "B": { "type": "block", "code": "vstemporalreverser:restored-normal-brazier-{material}", "name": "material" },
+      "F": { "type": "item", "code": "game:firewood", "quantity": 1 }
+    },
+    "shapeless": true,
+    "width": 2,
+    "height": 1,
+    "output": { "type": "block", "code": "restored-brazier-{material}" }
+  },
+  {
+    "ingredientPattern": "BS",
+    "ingredients": {
+      "B": { "type": "block", "code": "vstemporalreverser:restored-normal-brazier-{material}", "name": "material" },
+      "S": { "type": "item", "tags": ["tool-shovel"], "isTool": true, "toolDurabilityCost": 1 }
+    },
+    "shapeless": true,
+    "width": 2,
+    "height": 1,
+    "output": { "type": "block", "code": "restored-dim-brazier-{material}" }
+  },
+  {
+    "ingredientPattern": "BF",
+    "ingredients": {
+      "B": { "type": "block", "code": "vstemporalreverser:restored-dim-brazier-{material}", "name": "material" },
+      "F": { "type": "item", "code": "game:firewood", "quantity": 1 }
+    },
+    "shapeless": true,
+    "width": 2,
+    "height": 1,
+    "output": { "type": "block", "code": "restored-normal-brazier-{material}" }
+  }
+]

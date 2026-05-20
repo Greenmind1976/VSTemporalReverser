@@ -7,8 +7,9 @@ namespace VSTemporalReverser;
 public sealed class VSTemporalReverserConfig
 {
     public const string FileName = "VSTemporalReverserConfig.json";
+    private static readonly int[] AllowedRawMaterialStackSizes = [64, 128, 256];
 
-    public int SchemaVersion { get; set; } = 4;
+    public int SchemaVersion { get; set; } = 9;
 
     public bool Birch { get; set; } = true;
 
@@ -56,11 +57,17 @@ public sealed class VSTemporalReverserConfig
 
     public bool EnableDebugMode { get; set; } = false;
 
+    public bool EnableCustomRawMaterialStackSizes { get; set; } = false;
+
+    public int RawMaterialStackSize { get; set; } = 64;
+
+    public bool AllowClosedCanopyBedSleepWhenNotTired { get; set; } = true;
+
     public void EnsureDefaults()
     {
-        if (SchemaVersion < 4)
+        if (SchemaVersion < 9)
         {
-            SchemaVersion = 4;
+            SchemaVersion = 9;
         }
 
         RustWardDamage = Math.Clamp(RustWardDamage, 0f, 10f);
@@ -68,6 +75,15 @@ public sealed class VSTemporalReverserConfig
         RustWardRadius = Math.Clamp(RustWardRadius, 2f, 6f);
         RustWardPushback = Math.Clamp(RustWardPushback, 0.5f, 3f);
         RestoreCooldownSeconds = Math.Clamp(RestoreCooldownSeconds, 0f, 3f);
+        RawMaterialStackSize = NormalizeRawMaterialStackSize(RawMaterialStackSize);
+    }
+
+    private static int NormalizeRawMaterialStackSize(int requestedSize)
+    {
+        return AllowedRawMaterialStackSizes
+            .OrderBy(size => Math.Abs(size - requestedSize))
+            .ThenBy(size => size)
+            .First();
     }
 
     public string[] GetEnabledWoodTypes()

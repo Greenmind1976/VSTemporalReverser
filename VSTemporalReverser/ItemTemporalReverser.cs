@@ -163,9 +163,9 @@ public class ItemTemporalReverser : Item
         "game:butterfly-oleanderhawkmothmale",
         "game:butterfly-sagebrushgirdlemoth"
     ];
-    private static readonly string[] RandomTemporalGearItems =
+    private static readonly string[] RandomTemporalDustItems =
     [
-        "game:gear-temporal"
+        "vstemporalreverser:temporal-dust"
     ];
     private static readonly string[][] RandomCrateCreatureEntityGroups =
     [
@@ -1576,7 +1576,7 @@ MatchedRuleResolved:
             primaryAndExtraStacks = fallbackSalvageStacks ?? CreateSalvageStacks(world, sourceCode, rule, slot.Itemstack).ToList();
             primaryAndExtraStacks.AddRange(CreateSupplementalRestoredStacks(world, rule, slot.Itemstack));
             entityCodes = CreateSupplementalRestoredEntities(rule).ToList();
-            gearStacks = CreateSupplementalRestoredTemporalGearStacks(world, rule, slot.Itemstack).ToList();
+            gearStacks = CreateSupplementalRestoredTemporalDustStacks(world, rule, slot.Itemstack).ToList();
             durabilityCost = Math.Max(1, rule.DurabilityCost * 2);
             successMessage = "Salvaged materials spill free from the unraveling pattern.";
         }
@@ -1594,7 +1594,7 @@ MatchedRuleResolved:
             primaryAndExtraStacks = [restoredStack];
             primaryAndExtraStacks.AddRange(CreateSupplementalRestoredStacks(world, rule, slot.Itemstack));
             entityCodes = CreateSupplementalRestoredEntities(rule).ToList();
-            gearStacks = CreateSupplementalRestoredTemporalGearStacks(world, rule, slot.Itemstack).ToList();
+            gearStacks = CreateSupplementalRestoredTemporalDustStacks(world, rule, slot.Itemstack).ToList();
             durabilityCost = rule.DurabilityCost;
             successMessage = "The restored item drops free in a usable shape.";
         }
@@ -1956,7 +1956,7 @@ MatchedRuleResolved:
             int maxCount = Math.Max(minCount, rule.PrimaryMaxCount);
             int stackSize = maxCount > minCount ? Random.Shared.Next(minCount, maxCount + 1) : minCount;
 
-            return CreateStackForCode(world, itemCode, stackSize);
+            return CreateStackForCode(world, itemCode, stackSize, reverserStack);
         }
 
         if (rule.TargetKind == RestorationTargetKind.TieredJunkItem)
@@ -1966,7 +1966,7 @@ MatchedRuleResolved:
             int maxCount = Math.Max(minCount, rule.PrimaryMaxCount);
             int stackSize = maxCount > minCount ? Random.Shared.Next(minCount, maxCount + 1) : minCount;
 
-            return CreateStackForCode(world, itemCode, stackSize);
+            return CreateStackForCode(world, itemCode, stackSize, reverserStack);
         }
 
         if (rule.TargetKind == RestorationTargetKind.Block)
@@ -2396,7 +2396,10 @@ MatchedRuleResolved:
                 Item? item = world.GetItem(code);
                 if (item != null)
                 {
-                    yield return new ItemStack(item, GetBonusStackCount(rule));
+                    ItemStack itemStack = new(item, GetBonusStackCount(rule));
+                    itemStack.ResolveBlockOrItem(world);
+                    ApplyRestoredWearableCondition(itemStack, reverserStack);
+                    yield return itemStack;
                     continue;
                 }
 
@@ -2431,6 +2434,7 @@ MatchedRuleResolved:
                 int stackCount = GetBonusStackCount(rule);
                 ItemStack itemStack = new(item, stackCount);
                 itemStack.ResolveBlockOrItem(world);
+                ApplyRestoredWearableCondition(itemStack, reverserStack);
                 yield return itemStack;
                 continue;
             }
@@ -2452,13 +2456,16 @@ MatchedRuleResolved:
         {
             string rareItemCode = rareItemCodes[Random.Shared.Next(rareItemCodes.Length)];
             AssetLocation rareCode = ToAssetLocation(rareItemCode);
-            int rareStackCount = rule.RareBonusCount <= 0 && string.Equals(rareItemCode, RandomTemporalGearItems[0], StringComparison.OrdinalIgnoreCase)
-                ? Random.Shared.Next(1, 3)
+            int rareStackCount = string.Equals(rareItemCode, RandomTemporalDustItems[0], StringComparison.OrdinalIgnoreCase)
+                ? GetTemporalDustRareDropCount(rule, reverserStack)
                 : Math.Max(1, rule.RareBonusCount);
             Item? rareItem = world.GetItem(rareCode);
             if (rareItem != null)
             {
-                yield return new ItemStack(rareItem, rareStackCount);
+                ItemStack itemStack = new(rareItem, rareStackCount);
+                itemStack.ResolveBlockOrItem(world);
+                ApplyRestoredWearableCondition(itemStack, reverserStack);
+                yield return itemStack;
                 yield break;
             }
 
@@ -2470,51 +2477,106 @@ MatchedRuleResolved:
         }
     }
 
-    private static IEnumerable<ItemStack> CreateSupplementalRestoredTemporalGearStacks(IWorldAccessor world, RestorationRule rule, ItemStack? reverserStack)
+    private static IEnumerable<ItemStack> CreateSupplementalRestoredTemporalDustStacks(IWorldAccessor world, RestorationRule rule, ItemStack? reverserStack)
     {
         if (!AreBonusRestorationDropsEnabled(reverserStack))
         {
             yield break;
         }
 
-        int bonusChancePercent = GetTemporalGearBonusChancePercent(reverserStack);
-        if (bonusChancePercent <= 0 || Random.Shared.Next(100) >= bonusChancePercent)
+        int dustCount = GetGuaranteedTemporalDustDropCount(reverserStack);
+        int bonusChancePercent = GetTemporalDustBonusChancePercent(reverserStack);
+        if (bonusChancePercent > 0 && Random.Shared.Next(100) < bonusChancePercent)
         {
-            yield break;
+            dustCount += GetBonusTemporalDustDropCount(reverserStack);
         }
 
-        ItemStack? gearStack = CreateStackForCode(world, RandomTemporalGearItems[0], 1);
-        if (gearStack != null)
+        ItemStack? dustStack = CreateStackForCode(world, RandomTemporalDustItems[0], dustCount);
+        if (dustStack != null)
         {
-            yield return gearStack;
+            yield return dustStack;
         }
     }
 
-    private static int GetTemporalGearBonusChancePercent(ItemStack? reverserStack)
+    private static int GetTemporalDustBonusChancePercent(ItemStack? reverserStack)
     {
         string? itemCode = reverserStack?.Collectible?.Code?.Path;
         if (string.IsNullOrWhiteSpace(itemCode))
         {
-            return 5;
+            return 15;
         }
 
         if (itemCode.Contains("unstable", StringComparison.OrdinalIgnoreCase))
         {
-            return 5;
+            return 15;
         }
 
         if (itemCode.Contains("stabilized", StringComparison.OrdinalIgnoreCase))
         {
-            return 10;
+            return 25;
         }
 
-        return 10;
+        return 35;
+    }
+
+    private static int GetGuaranteedTemporalDustDropCount(ItemStack? reverserStack)
+    {
+        string? itemCode = reverserStack?.Collectible?.Code?.Path;
+        if (string.IsNullOrWhiteSpace(itemCode) || itemCode.Contains("unstable", StringComparison.OrdinalIgnoreCase))
+        {
+            return Random.Shared.Next(1, 3);
+        }
+
+        if (itemCode.Contains("stabilized", StringComparison.OrdinalIgnoreCase))
+        {
+            return Random.Shared.Next(1, 3);
+        }
+
+        return Random.Shared.Next(2, 4);
+    }
+
+    private static int GetBonusTemporalDustDropCount(ItemStack? reverserStack)
+    {
+        string? itemCode = reverserStack?.Collectible?.Code?.Path;
+        if (string.IsNullOrWhiteSpace(itemCode) || itemCode.Contains("unstable", StringComparison.OrdinalIgnoreCase))
+        {
+            return Random.Shared.Next(1, 3);
+        }
+
+        if (itemCode.Contains("stabilized", StringComparison.OrdinalIgnoreCase))
+        {
+            return Random.Shared.Next(2, 4);
+        }
+
+        return Random.Shared.Next(3, 6);
+    }
+
+    private static int GetTemporalDustRareDropCount(RestorationRule rule, ItemStack? reverserStack)
+    {
+        if (rule.RareBonusCount > 0)
+        {
+            return Math.Max(1, rule.RareBonusCount);
+        }
+
+        string? itemCode = reverserStack?.Collectible?.Code?.Path;
+        if (string.IsNullOrWhiteSpace(itemCode) || itemCode.Contains("unstable", StringComparison.OrdinalIgnoreCase))
+        {
+            return Random.Shared.Next(3, 6);
+        }
+
+        if (itemCode.Contains("stabilized", StringComparison.OrdinalIgnoreCase))
+        {
+            return Random.Shared.Next(5, 8);
+        }
+
+        return Random.Shared.Next(6, 10);
     }
 
     private static IEnumerable<ItemStack> CreateTieredLootStacks(
         IWorldAccessor world,
         RestorationRule rule,
-        Func<string> picker)
+        Func<string> picker,
+        ItemStack? reverserStack = null)
     {
         int minCount = Math.Max(1, rule.BonusMinCount);
         int maxCount = Math.Max(minCount, rule.BonusMaxCount);
@@ -2525,7 +2587,7 @@ MatchedRuleResolved:
             string itemCode = picker();
             int stackCount = itemCode.StartsWith("metalnailsandstrips-", StringComparison.OrdinalIgnoreCase) ? 4 :
                 itemCode.StartsWith("metalbit-", StringComparison.OrdinalIgnoreCase) ? 10 : 1;
-            ItemStack? itemStack = CreateStackForCode(world, itemCode, stackCount);
+            ItemStack? itemStack = CreateStackForCode(world, itemCode, stackCount, reverserStack);
             if (itemStack != null)
             {
                 yield return itemStack;
@@ -2744,7 +2806,7 @@ MatchedRuleResolved:
         return PickFilteredTieredJunkCode(ultraRarePool, rarePool, uncommonPool, commonPool);
     }
 
-    private static ItemStack? CreateStackForCode(IWorldAccessor world, string itemCode, int stackCount)
+    private static ItemStack? CreateStackForCode(IWorldAccessor world, string itemCode, int stackCount, ItemStack? reverserStack = null)
     {
         AssetLocation code = ToAssetLocation(itemCode);
         Item? item = world.GetItem(code);
@@ -2752,6 +2814,7 @@ MatchedRuleResolved:
         {
             ItemStack itemStack = new(item, stackCount);
             itemStack.ResolveBlockOrItem(world);
+            ApplyRestoredWearableCondition(itemStack, reverserStack);
             return itemStack;
         }
 
@@ -2764,6 +2827,42 @@ MatchedRuleResolved:
         ItemStack blockStack = new(block, stackCount);
         blockStack.ResolveBlockOrItem(world);
         return blockStack;
+    }
+
+    private static void ApplyRestoredWearableCondition(ItemStack itemStack, ItemStack? reverserStack)
+    {
+        string? itemCode = itemStack.Collectible?.Code?.Path;
+        if (string.IsNullOrWhiteSpace(itemCode) || !itemCode.StartsWith("clothes-", StringComparison.OrdinalIgnoreCase))
+        {
+            return;
+        }
+
+        float? condition = GetRestoredWearableCondition(reverserStack);
+        if (condition.HasValue)
+        {
+            itemStack.Attributes.SetFloat("condition", condition.Value);
+        }
+    }
+
+    private static float? GetRestoredWearableCondition(ItemStack? reverserStack)
+    {
+        string? itemCode = reverserStack?.Collectible?.Code?.Path;
+        if (string.IsNullOrWhiteSpace(itemCode))
+        {
+            return null;
+        }
+
+        if (itemCode.Contains("unstable", StringComparison.OrdinalIgnoreCase))
+        {
+            return null;
+        }
+
+        if (itemCode.Contains("stabilized", StringComparison.OrdinalIgnoreCase))
+        {
+            return 0.5f;
+        }
+
+        return 1.0f;
     }
 
     private static IEnumerable<ItemStack> YieldIfNotNull(ItemStack? itemStack)
@@ -3354,49 +3453,46 @@ MatchedRuleResolved:
     private static void SpawnTemporalSmoke(IWorldAccessor world, Vec3d center)
     {
         world.SpawnParticles(
-            18f,
-            unchecked((int)0xD8C8F4FF),
-            center.AddCopy(-0.75, -0.08, -0.75),
-            center.AddCopy(0.75, 0.42, 0.75),
-            new Vec3f(-0.75f, 0.04f, -0.75f),
-            new Vec3f(0.75f, 1.15f, 0.75f),
-            0.08f,
+            14f,
+            unchecked((int)0xD817C693),
+            center.AddCopy(-0.24, -0.02, -0.24),
+            center.AddCopy(0.24, 0.12, 0.24),
+            new Vec3f(-0.42f, 0.01f, -0.42f),
+            new Vec3f(0.42f, 0.12f, 0.42f),
+            1.25f,
             0f,
-            0.72f,
+            0.132f,
             EnumParticleModel.Quad,
             null
         );
 
         world.SpawnParticles(
-            14f,
-            unchecked((int)0xD25AB4FF),
-            center.AddCopy(-0.9, -0.08, -0.9),
-            center.AddCopy(0.9, 0.35, 0.9),
-            new Vec3f(-0.55f, 0.06f, -0.55f),
-            new Vec3f(0.55f, 0.55f, 0.55f),
-            0.52f,
-            -0.005f,
-            0.16f,
+            12f,
+            unchecked((int)0xD82DDBA8),
+            center.AddCopy(-0.24, -0.02, -0.24),
+            center.AddCopy(0.24, 0.12, 0.24),
+            new Vec3f(-0.42f, 0.01f, -0.42f),
+            new Vec3f(0.42f, 0.12f, 0.42f),
+            1.15f,
+            0f,
+            0.132f,
             EnumParticleModel.Quad,
             null
         );
 
-        world.RegisterCallback(_ =>
-        {
-            world.SpawnParticles(
-                18f,
-                unchecked((int)0xC84AA8FF),
-                center.AddCopy(-1.15, -0.06, -1.15),
-                center.AddCopy(1.15, 0.4, 1.15),
-                new Vec3f(-0.42f, 0.03f, -0.42f),
-                new Vec3f(0.42f, 0.28f, 0.42f),
-                0.82f,
-                -0.008f,
-                0.14f,
-                EnumParticleModel.Quad,
-                null
-            );
-        }, 70);
+        world.SpawnParticles(
+            9f,
+            unchecked((int)0xD8129B74),
+            center.AddCopy(-0.24, -0.02, -0.24),
+            center.AddCopy(0.24, 0.12, 0.24),
+            new Vec3f(-0.42f, 0.01f, -0.42f),
+            new Vec3f(0.42f, 0.12f, 0.42f),
+            1.05f,
+            0f,
+            0.12f,
+            EnumParticleModel.Quad,
+            null
+        );
     }
 
     private static bool UsesCopperOnlyRestoration(ItemStack? stack)
@@ -3693,14 +3789,14 @@ MatchedRuleResolved:
             _ when simplified.StartsWith("shelf-shoes", StringComparison.OrdinalIgnoreCase) => ShelfRuleWithBonus(RuinedDurabilityCost, RandomShoeItems),
             _ when simplified.StartsWith("shelf-clothing", StringComparison.OrdinalIgnoreCase) => ShelfRuleWithBonus(RuinedDurabilityCost, RandomShelfClothingItems, 2, 2),
             _ when simplified.StartsWith("shelf-flasks", StringComparison.OrdinalIgnoreCase) => ShelfRuleWithBonus(RuinedDurabilityCost, RandomShelfFlaskItems, 1, 2),
-            "shelf-lab-equipment" => ShelfRuleWithBonusAndRare(RuinedDurabilityCost, RandomShelfLabItems, 1, 1, 50, RandomTemporalGearItems, 1, 1, 0),
+            "shelf-lab-equipment" => ShelfRuleWithBonusAndRare(RuinedDurabilityCost, RandomShelfLabItems, 1, 1, 50, RandomTemporalDustItems, 1, 1, 0),
             "shelf-lamp" => ShelfRuleWithBonus(RuinedDurabilityCost, RandomShelfLampItems),
             "shelf-tools" => ShelfRuleWithBonus(RuinedDurabilityCost, RandomRestoredToolItems),
             "shelf-woodworkingtools" => ShelfRuleWithBonus(RuinedDurabilityCost, RandomRestoredWoodworkingToolItems),
             "shelf-drafting-instrument" => ShelfRuleWithBonus(RuinedDurabilityCost, RandomRestoredPrecisionToolItems),
             _ when simplified.StartsWith("shelf-shelf-precisiontools", StringComparison.OrdinalIgnoreCase) => ShelfRuleWithBonus(AgedDurabilityCost, RandomRestoredPrecisionToolItems),
             _ when simplified.StartsWith("shelf-shelf-drafting-instrument", StringComparison.OrdinalIgnoreCase) => ShelfRuleWithBonus(AgedDurabilityCost, RandomRestoredPrecisionToolItems),
-            _ when simplified.StartsWith("shelf-shelf-lab-equipment", StringComparison.OrdinalIgnoreCase) => ShelfRuleWithBonusAndRare(AgedDurabilityCost, RandomShelfLabItems, 1, 1, 50, RandomTemporalGearItems, 1, 1, 0),
+            _ when simplified.StartsWith("shelf-shelf-lab-equipment", StringComparison.OrdinalIgnoreCase) => ShelfRuleWithBonusAndRare(AgedDurabilityCost, RandomShelfLabItems, 1, 1, 50, RandomTemporalDustItems, 1, 1, 0),
             _ when simplified.StartsWith("shelf-shelf-alchemy", StringComparison.OrdinalIgnoreCase) => ShelfRuleWithBonus(AgedDurabilityCost, RandomShelfAlchemyItems, 2, 3),
             _ when simplified.StartsWith("shelf-shelf-reagents", StringComparison.OrdinalIgnoreCase) => ShelfRuleWithBonus(AgedDurabilityCost, RandomShelfAlchemyItems, 2, 3),
             _ when simplified.StartsWith("shelf-shelf-stuff", StringComparison.OrdinalIgnoreCase) => ShelfRuleWithBonus(AgedDurabilityCost, RandomShelfMiscItems, 1, 3),

@@ -65,34 +65,10 @@
   },
   "creativeinventory": {
     "general": [
-      "*-copper-candle0",
-      "*-brass-candle0",
-      "*-blackbronze-candle0",
-      "*-bismuth-candle0",
-      "*-tinbronze-candle0",
-      "*-bismuthbronze-candle0",
-      "*-iron-candle0",
-      "*-molybdochalkos-candle0",
-      "*-silver-candle0",
-      "*-gold-candle0",
-      "*-steel-candle0",
-      "*-meteoriciron-candle0",
-      "*-electrum-candle0"
+      "*-copper-candle0"
     ],
     "decorative": [
-      "*-copper-candle0",
-      "*-brass-candle0",
-      "*-blackbronze-candle0",
-      "*-bismuth-candle0",
-      "*-tinbronze-candle0",
-      "*-bismuthbronze-candle0",
-      "*-iron-candle0",
-      "*-molybdochalkos-candle0",
-      "*-silver-candle0",
-      "*-gold-candle0",
-      "*-steel-candle0",
-      "*-meteoriciron-candle0",
-      "*-electrum-candle0"
+      "*-copper-candle0"
     ]
   },
   "drawtype": "json",

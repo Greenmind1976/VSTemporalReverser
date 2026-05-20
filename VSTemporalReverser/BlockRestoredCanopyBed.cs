@@ -11,7 +11,7 @@ public class BlockRestoredCanopyBed : BlockBed
 {
     public override bool OnBlockInteractStart(IWorldAccessor world, IPlayer byPlayer, BlockSelection blockSel)
     {
-        if (!IsClosedCanopyVariant())
+        if (!IsClosedCanopyVariant() || !VSTemporalReverserModSystem.Config.AllowClosedCanopyBedSleepWhenNotTired)
         {
             return base.OnBlockInteractStart(world, byPlayer, blockSel);
         }
