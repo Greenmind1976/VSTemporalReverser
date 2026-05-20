@@ -1,10 +1,14 @@
 # VSTemporalReverser
 
-Vintage Story mod experiment for restoring selected ruined or aged vanilla objects into usable forms.
+Vintage Story mod focused on temporal restoration, repair, and salvage.
 
-The mod currently adds three `Temporal Reverser` tiers. When used on supported vanilla clutter or ruined decor, the device removes the original block and drops a usable restored block variant.
+The mod currently includes:
 
-For a full player-facing reference of supported targets, durability costs, rust ward targets, and restored output IDs, see [docs/temporal-reverser-reference.md](/Users/garretcoffman/Documents/VSMods/VSTemporalReverser/docs/temporal-reverser-reference.md).
+- three handheld `Temporal Reverser` tiers for restoring selected ruined or aged vanilla clutter into usable forms
+- a `Temporal Reconstruction Device` for repairing supported worn gear
+- a `Temporal Deconstructor Device` for reclaiming materials from selected crafted items and armor
+
+For a full player-facing reference of handheld reverser targets, durability costs, rust ward targets, and restored output IDs, see [docs/temporal-reverser-reference.md](/Users/garretcoffman/Documents/VSMods/VSTemporalReverser/docs/temporal-reverser-reference.md).
 
 ## Current Restoration Rules
 
@@ -19,7 +23,44 @@ For a full player-facing reference of supported targets, durability costs, rust 
 - `Perfected Temporal Reverser` can be crafted from a `Reverser Casing`, `1` temporal alignment node, `1` flux gap connector, `1` finely balanced oscillator, and `5` temporal gears.
 - When a reverser runs out of durability, it becomes a depleted version instead of being destroyed.
 - Depleted reversers can be recharged in the crafting grid using the depleted device plus their original temporal gear cost.
-- To support these recipes, the mod raises vanilla `temporal gears` to a stack size of `64` while the mod is loaded.
+- The mod raises vanilla `temporal gears` to a stack size of `64` while it is loaded.
+
+## Temporal Machines
+
+Both placed machines consume `temporal gears` as fuel and now provide live status feedback in their dialogs.
+
+### Temporal Reconstruction Device
+
+- Repairs supported damaged gear over time.
+- Displays clear status text for unsupported items, missing fuel, items that do not need repair, and active reconstruction.
+- Resumes more cleanly after reloads than the earlier prototype builds.
+
+### Temporal Deconstructor Device
+
+- Processes queued input items over time and stores reclaimed materials in `12` internal output slots.
+- Uses `8` input slots, `1` fuel slot, and `12` output slots.
+- Takes `20` seconds per deconstruction cycle.
+- Stops cleanly when outputs do not have room instead of ejecting reclaimed items into the world.
+- Shows dedicated status text for unsupported items, missing fuel, active processing, queue handoff, and blocked output capacity.
+
+### Deconstructor Support Rules
+
+The deconstructor is intentionally curated rather than supporting every reversible vanilla craft.
+
+Currently supported categories include:
+
+- selected vanilla grid-crafted furnishings, fixtures, storage, and mechanical assemblies
+- armor, including chain, scale, plate, brigandine, and metal lamellar
+- explicit non-grid exceptions such as anvils
+
+The deconstructor does not attempt to support every basic conversion recipe such as planks, firewood, clay, ingots, bandages, or similar low-value crafts.
+
+### Armor Salvage Notes
+
+- Worn armor is supported.
+- Repair recipes are filtered out so armor does not refund only its repair ingredients.
+- Layered armor refunds are flattened so scale and plate do not kick back intermediate armor pieces.
+- Metal armor salvage is normalized to `ingot-*` and `metalbit-*` outputs instead of chain, scale, plate, or lamella sub-components.
 
 ## Current Supported Families
 
@@ -93,9 +134,9 @@ Some restored crates, beds, chairs, and tables can also spawn bonus critters.
 
 These config settings control the critter families independently:
 
-- `EnableMothCritterSpawns`
-- `EnableMouseCritterSpawns`
-- `EnableRaccoonCritterSpawns`
+- `EnableMoths`
+- `EnableMice`
+- `EnableRaccoons`
 
 ## Crate Restorations
 
@@ -205,19 +246,28 @@ The randomized loot pools behind the crate families are:
 
 - Restored book stands and lecterns currently restore as decorative blocks plus a random book.
 - Placing books onto restored book stands or lecterns is not supported yet.
+- The deconstructor support list is intentionally curated and does not yet cover every worthwhile non-grid vanilla assembly.
 
 ## Configuration
 
-- `VSTemporalReverserConfig.json` stores the mod's settings for restored wood outputs, critter spawns, and debug mode.
+- `VSTemporalReverserConfig.json` stores the mod's settings for restored wood outputs, critter spawns, machine-related options, and debug mode.
 - `EnableDebugMode` is off by default and writes restore events to `~/Library/Application Support/VintagestoryData/Logs/VSTemporalReverser/restore-debug.jsonl` on macOS, or the equivalent `VintagestoryData/Logs/VSTemporalReverser/restore-debug.jsonl` path on other platforms.
-- If `configlib` and your GUI config mod are installed, the config screen is grouped into `Global`, `Wood Restore`, and `Critter Spawns` sections.
+- When `EnableDebugMode` is on, you can spawn a durable test item with exact remaining durability using:
+  - `/trspawntool game:shovel-steel 300`
+  - `/trspawntool game:pickaxe-steel 750`
+  - Format: `/trspawntool <itemcode> <remainingdurability>`
+- `EnableCustomRawMaterialStackSizes` is off by default. This is an opt-in compatibility setting for raising stack sizes on configurable raw materials and common crafting supplies.
+- `RawMaterialStackSize` supports `64`, `128`, and `256`. Any other number snaps to the nearest supported value.
+- Changing custom stack sizes requires a reload to fully apply.
+- The custom stack-size pass can cover raw metals, wood basics, raw clay, seeds, flax materials, cloth, leather, hides, dry grass, papyrus, and resin when the toggle is enabled.
+- If `configlib` and your GUI config mod are installed, the config screen is grouped into `Global`, `Rust Ward`, `Wood Restore`, and `Critter Spawns` sections.
 
 ## Layout
 
 - `VSTemporalReverser/` - buildable Vintage Story code mod project
 - `VSTemporalReverser/assets/vstemporalreverser/` - mod assets
 - `data/` - generated vanilla repair candidate data
-- `docs/` - analysis notes for repair candidates and merchant sources
+- `docs/` - analysis notes, reference docs, and generated support lists
 - `VERSION` - release version
 - `release.sh` - local release package builder
 

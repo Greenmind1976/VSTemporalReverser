@@ -1,0 +1,13 @@
+[
+  {
+    "ingredientPattern": "HG",
+    "ingredients": {
+      "H": { "type": "item", "tags": ["tool-hammer"], "isTool": true, "toolDurabilityCost": 1 },
+      "G": { "type": "item", "code": "game:gear-temporal" }
+    },
+    "shapeless": true,
+    "width": 2,
+    "height": 1,
+    "output": { "type": "item", "code": "vstemporalreverser:temporal-dust", "quantity": 10 }
+  }
+]

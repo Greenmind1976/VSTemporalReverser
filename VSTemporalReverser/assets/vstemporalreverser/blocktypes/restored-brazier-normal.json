@@ -1,5 +1,5 @@
 {
-  "code": "restored-brazier",
+  "code": "restored-normal-brazier",
   "variantgroups": [
     {
       "code": "material",
@@ -87,7 +87,7 @@
   "replaceable": 900,
   "resistance": 3,
   "lightAbsorption": 0,
-  "lightHsv": [4, 4, 31],
+  "lightHsv": [7, 3, 18],
   "particleProperties": [
     {
       "hsvaColor": [

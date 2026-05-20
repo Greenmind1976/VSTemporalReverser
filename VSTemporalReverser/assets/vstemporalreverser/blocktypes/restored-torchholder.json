@@ -72,33 +72,9 @@
   "creativeinventory": {
     "general": [
       "*-copper-empty-north"
-      ,"*-brass-empty-north"
-      ,"*-blackbronze-empty-north"
-      ,"*-bismuth-empty-north"
-      ,"*-tinbronze-empty-north"
-      ,"*-bismuthbronze-empty-north"
-      ,"*-iron-empty-north"
-      ,"*-molybdochalkos-empty-north"
-      ,"*-silver-empty-north"
-      ,"*-gold-empty-north"
-      ,"*-steel-empty-north"
-      ,"*-meteoriciron-empty-north"
-      ,"*-electrum-empty-north"
     ],
     "decorative": [
       "*-copper-empty-north"
-      ,"*-brass-empty-north"
-      ,"*-blackbronze-empty-north"
-      ,"*-bismuth-empty-north"
-      ,"*-tinbronze-empty-north"
-      ,"*-bismuthbronze-empty-north"
-      ,"*-iron-empty-north"
-      ,"*-molybdochalkos-empty-north"
-      ,"*-silver-empty-north"
-      ,"*-gold-empty-north"
-      ,"*-steel-empty-north"
-      ,"*-meteoriciron-empty-north"
-      ,"*-electrum-empty-north"
     ]
   },
   "replaceable": 5001,

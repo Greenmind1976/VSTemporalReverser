@@ -29,6 +29,34 @@
       }
     },
     {
+      "code": "EnableCustomRawMaterialStackSizes",
+      "ingui": "Enable custom stack sizes",
+      "type": "boolean",
+      "weight": 98.85,
+      "comment": "Opt-in compatibility setting for changing stack sizes on raw materials and common crafting supplies. Leave disabled if you use another stack-size mod. Requires a reload to fully apply.",
+      "default": false
+    },
+    {
+      "code": "RawMaterialStackSize",
+      "ingui": "Raw material stack size",
+      "type": "int",
+      "weight": 98.8,
+      "comment": "Stack size applied to configurable raw materials and common crafting supplies such as ingots, metal bits, nuggets, plates, rods, planks, sticks, firewood, raw clay, seeds, flax fibers, twine, cloth, leather, hides, dry grass, papyrus, and resin. Only used when custom stack sizes are enabled. Requires a reload to fully apply. Supported values are 64, 128, and 256. Any other number will snap to the nearest of those values.",
+      "default": 64,
+      "range": {
+        "min": 64,
+        "max": 256
+      }
+    },
+    {
+      "code": "AllowClosedCanopyBedSleepWhenNotTired",
+      "ingui": "Closed canopy bed bypass",
+      "type": "boolean",
+      "weight": 98.75,
+      "comment": "If enabled, restored canopy beds with closed drapes can be used even when the player is not tired. If disabled, they follow normal bed sleep restrictions.",
+      "default": true
+    },
+    {
       "type": "separator",
       "title": "Rust Ward",
       "weight": 98.5
