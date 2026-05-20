@@ -295,6 +295,7 @@ public class BlockEntityTemporalDeconstructorDevice : BlockEntityGenericContaine
     private void FinalizeShutdown()
     {
         shutdownVisualUntilMs = 0;
+        ClearQueuedClientSoundCue();
         UpdateVisualState(false);
         UpdateClientParticleListener();
         UpdateServerPhaseListener();
@@ -315,8 +316,7 @@ public class BlockEntityTemporalDeconstructorDevice : BlockEntityGenericContaine
             && !CanContinueCurrentJob())
         {
             outputCapacityBlocked = false;
-            StopDeconstruction(playShutdown: false);
-            EvaluateDeconstructionState();
+            BeginShutdownSequence();
             return;
         }
 
@@ -326,14 +326,9 @@ public class BlockEntityTemporalDeconstructorDevice : BlockEntityGenericContaine
             if (shutdownVisualUntilMs > 0)
             {
                 shutdownVisualUntilMs = 0;
+                ClearQueuedClientSoundCue();
                 UpdateVisualState(false);
                 UpdateClientParticleListener();
-            }
-
-            if (queuePauseUntilMs > 0)
-            {
-                queuePauseUntilMs = 0;
-                queueResumeCallbackId = 0;
             }
         }
 
@@ -768,6 +763,7 @@ public class BlockEntityTemporalDeconstructorDevice : BlockEntityGenericContaine
 
         queuePauseUntilMs = Api.World.ElapsedMilliseconds + SwitchItemPauseDurationMs;
         queueResumeCallbackId = 1;
+        QueueClientSoundCue("switch-items");
         UpdateServerPhaseListener();
         MarkDirty(true);
     }
@@ -822,7 +818,6 @@ public class BlockEntityTemporalDeconstructorDevice : BlockEntityGenericContaine
             suppressInventoryChanged = false;
         }
 
-        QueueClientSoundCue("switch-items");
         UpdateVisualState(true);
         RegisterProgressListener();
         UpdateClientParticleListener();
@@ -840,6 +835,12 @@ public class BlockEntityTemporalDeconstructorDevice : BlockEntityGenericContaine
         clientSoundCueId++;
         clientSoundCuePath = soundPath;
         MarkDirty(true);
+    }
+
+    private void ClearQueuedClientSoundCue()
+    {
+        clientSoundCueId++;
+        clientSoundCuePath = string.Empty;
     }
 
     private bool IsQueuePauseActive()
@@ -883,7 +884,7 @@ public class BlockEntityTemporalDeconstructorDevice : BlockEntityGenericContaine
 
         float volume = clientSoundCuePath switch
         {
-            "switch-items" => MachineLoopBaseVolume * 1.35f,
+            "switch-items" => MachineLoopBaseVolume * 1.5f,
             "click" => MachineLoopBaseVolume * 0.75f,
             "machine-shutoff" => MachineLoopBaseVolume,
             _ => MachineLoopBaseVolume
