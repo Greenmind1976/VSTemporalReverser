@@ -313,6 +313,7 @@ public class BlockEntityTemporalReconstructionDevice : BlockEntityGenericContain
     private void FinalizeShutdown()
     {
         shutdownVisualUntilMs = 0;
+        ClearQueuedClientSoundCue();
         UpdateVisualState(false);
         UpdateClientParticleListener();
         UpdateServerPhaseListener();
@@ -332,14 +333,9 @@ public class BlockEntityTemporalReconstructionDevice : BlockEntityGenericContain
             if (shutdownVisualUntilMs > 0)
             {
                 shutdownVisualUntilMs = 0;
+                ClearQueuedClientSoundCue();
                 UpdateVisualState(false);
                 UpdateClientParticleListener();
-            }
-
-            if (queuePauseUntilMs > 0)
-            {
-                queuePauseUntilMs = 0;
-                queueResumeCallbackId = 0;
             }
 
             outputCapacityBlocked = false;
@@ -848,6 +844,7 @@ public class BlockEntityTemporalReconstructionDevice : BlockEntityGenericContain
 
         queuePauseUntilMs = Api.World.ElapsedMilliseconds + SwitchItemPauseDurationMs;
         queueResumeCallbackId = 1;
+        QueueClientSoundCue("switch-items");
         UpdateServerPhaseListener();
         MarkDirty(true);
     }
@@ -898,7 +895,6 @@ public class BlockEntityTemporalReconstructionDevice : BlockEntityGenericContain
             suppressInventoryChanged = false;
         }
 
-        QueueClientSoundCue("switch-items");
         UpdateVisualState(true);
         RegisterRepairProgressListener();
         UpdateClientParticleListener();
@@ -916,6 +912,12 @@ public class BlockEntityTemporalReconstructionDevice : BlockEntityGenericContain
         clientSoundCueId++;
         clientSoundCuePath = soundPath;
         MarkDirty(true);
+    }
+
+    private void ClearQueuedClientSoundCue()
+    {
+        clientSoundCueId++;
+        clientSoundCuePath = string.Empty;
     }
 
     private bool IsQueuePauseActive()
