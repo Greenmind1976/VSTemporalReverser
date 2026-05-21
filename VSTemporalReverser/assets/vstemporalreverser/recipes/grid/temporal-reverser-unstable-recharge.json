@@ -7,8 +7,8 @@
     },
     "G": {
       "type": "item",
-      "code": "game:gear-temporal",
-      "quantity": 1
+      "code": "vstemporalreverser:temporal-dust",
+      "quantity": 10
     }
   },
   "width": 3,

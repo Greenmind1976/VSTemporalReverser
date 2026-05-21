@@ -16,7 +16,12 @@
       "code": "state",
       "states": [
         "idle",
-        "running"
+        "running0",
+        "running20",
+        "running40",
+        "running60",
+        "running80",
+        "running100"
       ]
     },
     {
@@ -54,24 +59,113 @@
       "base": "vstemporalreverser:block/machine/temporal-reconstruction-device-running",
       "rotateY": 180
     },
-    "*-running-north": {
+    "*-running0-north": {
       "base": "vstemporalreverser:block/machine/temporal-reconstruction-device-running",
       "rotateY": 90
     },
-    "*-running-east": {
+    "*-running0-east": {
       "base": "vstemporalreverser:block/machine/temporal-reconstruction-device-running",
       "rotateY": 0
     },
-    "*-running-south": {
+    "*-running0-south": {
       "base": "vstemporalreverser:block/machine/temporal-reconstruction-device-running",
       "rotateY": 270
     },
-    "*-running-west": {
+    "*-running0-west": {
+      "base": "vstemporalreverser:block/machine/temporal-reconstruction-device-running",
+      "rotateY": 180
+    },
+    "*-running20-north": {
+      "base": "vstemporalreverser:block/machine/temporal-reconstruction-device-running",
+      "rotateY": 90
+    },
+    "*-running20-east": {
+      "base": "vstemporalreverser:block/machine/temporal-reconstruction-device-running",
+      "rotateY": 0
+    },
+    "*-running20-south": {
+      "base": "vstemporalreverser:block/machine/temporal-reconstruction-device-running",
+      "rotateY": 270
+    },
+    "*-running20-west": {
+      "base": "vstemporalreverser:block/machine/temporal-reconstruction-device-running",
+      "rotateY": 180
+    },
+    "*-running40-north": {
+      "base": "vstemporalreverser:block/machine/temporal-reconstruction-device-running",
+      "rotateY": 90
+    },
+    "*-running40-east": {
+      "base": "vstemporalreverser:block/machine/temporal-reconstruction-device-running",
+      "rotateY": 0
+    },
+    "*-running40-south": {
+      "base": "vstemporalreverser:block/machine/temporal-reconstruction-device-running",
+      "rotateY": 270
+    },
+    "*-running40-west": {
+      "base": "vstemporalreverser:block/machine/temporal-reconstruction-device-running",
+      "rotateY": 180
+    },
+    "*-running60-north": {
+      "base": "vstemporalreverser:block/machine/temporal-reconstruction-device-running",
+      "rotateY": 90
+    },
+    "*-running60-east": {
+      "base": "vstemporalreverser:block/machine/temporal-reconstruction-device-running",
+      "rotateY": 0
+    },
+    "*-running60-south": {
+      "base": "vstemporalreverser:block/machine/temporal-reconstruction-device-running",
+      "rotateY": 270
+    },
+    "*-running60-west": {
+      "base": "vstemporalreverser:block/machine/temporal-reconstruction-device-running",
+      "rotateY": 180
+    },
+    "*-running80-north": {
+      "base": "vstemporalreverser:block/machine/temporal-reconstruction-device-running",
+      "rotateY": 90
+    },
+    "*-running80-east": {
+      "base": "vstemporalreverser:block/machine/temporal-reconstruction-device-running",
+      "rotateY": 0
+    },
+    "*-running80-south": {
+      "base": "vstemporalreverser:block/machine/temporal-reconstruction-device-running",
+      "rotateY": 270
+    },
+    "*-running80-west": {
+      "base": "vstemporalreverser:block/machine/temporal-reconstruction-device-running",
+      "rotateY": 180
+    },
+    "*-running100-north": {
+      "base": "vstemporalreverser:block/machine/temporal-reconstruction-device-running",
+      "rotateY": 90
+    },
+    "*-running100-east": {
+      "base": "vstemporalreverser:block/machine/temporal-reconstruction-device-running",
+      "rotateY": 0
+    },
+    "*-running100-south": {
+      "base": "vstemporalreverser:block/machine/temporal-reconstruction-device-running",
+      "rotateY": 270
+    },
+    "*-running100-west": {
       "base": "vstemporalreverser:block/machine/temporal-reconstruction-device-running",
       "rotateY": 180
     }
   },
   "textures": {
+    "shellframe": {
+      "base": "vstemporalreverser:block/machine/stainless-steel"
+    },
+    "progress": {
+      "base": "vstemporalreverser:block/machine/temporalgear_opaque"
+    },
+    "shellside": {
+      "base": "vstemporalreverser:block/machine/device-panel"
+    },
     "sides2": {
       "base": "vstemporalreverser:block/metal/sheet/cupronickel1"
     },
@@ -88,11 +182,14 @@
       "base": "vstemporalreverser:block/metal/sheet/cupronickel1"
     },
     "panelicon": {
-      "base": "vstemporalreverser:block/machine/restore-panel-running"
+      "base": "vstemporalreverser:block/machine/recycle-panel-running"
     }
   },
   "texturesByType": {
     "*-idle-*": {
+      "progress": {
+        "base": "vstemporalreverser:block/machine/statictranslocator/statictranslocator_glass_idle"
+      },
       "accessories": {
         "base": "vstemporalreverser:block/machine/statictranslocator/statictranslocator_glass_idle"
       },
@@ -100,7 +197,37 @@
         "base": "vstemporalreverser:block/machine/statictranslocator/statictranslocator_glass_idle"
       },
       "panelicon": {
-        "base": "vstemporalreverser:block/machine/restore-panel-idle"
+        "base": "vstemporalreverser:block/machine/recycle-panel-idle"
+      }
+    },
+    "*-running0-*": {
+      "progress": {
+        "base": "vstemporalreverser:block/machine/progress-0"
+      }
+    },
+    "*-running20-*": {
+      "progress": {
+        "base": "vstemporalreverser:block/machine/progress-20"
+      }
+    },
+    "*-running40-*": {
+      "progress": {
+        "base": "vstemporalreverser:block/machine/progress-40"
+      }
+    },
+    "*-running60-*": {
+      "progress": {
+        "base": "vstemporalreverser:block/machine/progress-60"
+      }
+    },
+    "*-running80-*": {
+      "progress": {
+        "base": "vstemporalreverser:block/machine/progress-80"
+      }
+    },
+    "*-running100-*": {
+      "progress": {
+        "base": "vstemporalreverser:block/machine/progress-100"
       }
     }
   },
@@ -110,7 +237,32 @@
     ]
   },
   "lightHsvByType": {
-    "*-running-*": [
+    "*-running0-*": [
+      32,
+      3,
+      15
+    ],
+    "*-running20-*": [
+      32,
+      3,
+      15
+    ],
+    "*-running40-*": [
+      32,
+      3,
+      15
+    ],
+    "*-running60-*": [
+      32,
+      3,
+      15
+    ],
+    "*-running80-*": [
+      32,
+      3,
+      15
+    ],
+    "*-running100-*": [
       32,
       3,
       15

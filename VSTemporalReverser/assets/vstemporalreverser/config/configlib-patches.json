@@ -41,7 +41,7 @@
       "ingui": "Raw material stack size",
       "type": "int",
       "weight": 98.8,
-      "comment": "Stack size applied to configurable raw materials and common crafting supplies such as ingots, metal bits, nuggets, plates, rods, planks, sticks, firewood, raw clay, seeds, flax fibers, twine, cloth, leather, hides, dry grass, papyrus, and resin. Only used when custom stack sizes are enabled. Requires a reload to fully apply. Supported values are 64, 128, and 256. Any other number will snap to the nearest of those values.",
+      "comment": "Stack size applied to configurable raw materials and common crafting supplies such as ingots, metal bits, nuggets, plates, rods, planks, sticks, firewood, raw clay, seeds, flax fibers, twine, cloth, leather, hides, dry grass, papyrus, resin, temporal gears, and temporal dust. Only used when custom stack sizes are enabled. Requires a reload to fully apply. Supported values are 64, 128, and 256. Any other number will snap to the nearest of those values.",
       "default": 64,
       "range": {
         "min": 64,

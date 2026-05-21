@@ -136,8 +136,23 @@ public class GuiDialogBlockEntityTemporalDeconstructorDevice : GuiDialogBlockEnt
         }
 
         string status = be.GetStatusText();
-        return string.IsNullOrWhiteSpace(status)
-            ? "Insert items to deconstruct and add 10 temporal dust for fuel."
-            : status;
+        if (be.IsDeconstructing)
+        {
+            return string.IsNullOrWhiteSpace(status)
+                ? "Deconstruction in progress..."
+                : status;
+        }
+
+        if (string.IsNullOrWhiteSpace(status))
+        {
+            return "Place the item within and add 10 temporal dust to begin deconstruction.";
+        }
+
+        if (status == "Ready for deconstruction.")
+        {
+            return "The chamber is aligned. Deconstruction can begin.";
+        }
+
+        return status;
     }
 }

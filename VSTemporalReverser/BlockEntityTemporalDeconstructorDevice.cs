@@ -485,6 +485,8 @@ public class BlockEntityTemporalDeconstructorDevice : BlockEntityGenericContaine
             return;
         }
 
+        UpdateVisualState(true);
+
         if (Api.World.ElapsedMilliseconds >= deconstructionCompleteAtMs)
         {
             CompleteDeconstruction();
@@ -571,15 +573,13 @@ public class BlockEntityTemporalDeconstructorDevice : BlockEntityGenericContaine
         }
 
         string currentPath = Block.Code.Path;
-        string desiredSegment = running ? "-running-" : "-idle-";
+        string desiredSegment = running ? GetRunningVisualStateSegment() : "-idle-";
         if (currentPath.Contains(desiredSegment, StringComparison.OrdinalIgnoreCase))
         {
             return;
         }
 
-        string updatedPath = currentPath
-            .Replace("-idle-", desiredSegment, StringComparison.OrdinalIgnoreCase)
-            .Replace("-running-", desiredSegment, StringComparison.OrdinalIgnoreCase);
+        string updatedPath = ReplaceVisualStateSegment(currentPath, desiredSegment);
 
         Block? targetBlock = Api.World.GetBlock(new AssetLocation(Block.Code.Domain, updatedPath));
         if (targetBlock == null || targetBlock.Id == Block.Id)
@@ -588,6 +588,38 @@ public class BlockEntityTemporalDeconstructorDevice : BlockEntityGenericContaine
         }
 
         Api.World.BlockAccessor.ExchangeBlock(targetBlock.Id, Pos);
+    }
+
+    private string GetRunningVisualStateSegment()
+    {
+        if (deconstructionStartedAtMs <= 0 || deconstructionCompleteAtMs <= deconstructionStartedAtMs)
+        {
+            return "-running0-";
+        }
+
+        double progress = GameMath.Clamp(
+            (Api!.World.ElapsedMilliseconds - deconstructionStartedAtMs) / (double)(deconstructionCompleteAtMs - deconstructionStartedAtMs),
+            0d,
+            1d);
+
+        if (progress >= 0.999d) return "-running100-";
+        if (progress >= 0.8d) return "-running80-";
+        if (progress >= 0.6d) return "-running60-";
+        if (progress >= 0.4d) return "-running40-";
+        if (progress >= 0.2d) return "-running20-";
+        return "-running0-";
+    }
+
+    private static string ReplaceVisualStateSegment(string path, string desiredSegment)
+    {
+        string updated = path.Replace("-idle-", desiredSegment, StringComparison.OrdinalIgnoreCase);
+        string[] runningStates = ["-running-", "-running0-", "-running20-", "-running40-", "-running60-", "-running80-", "-running100-"];
+        foreach (string state in runningStates)
+        {
+            updated = updated.Replace(state, desiredSegment, StringComparison.OrdinalIgnoreCase);
+        }
+
+        return updated;
     }
 
     private void TrySpawnRunningParticles()

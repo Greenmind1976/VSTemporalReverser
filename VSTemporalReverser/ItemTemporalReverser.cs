@@ -1327,7 +1327,7 @@ public class ItemTemporalReverser : Item
         if (IsDepleted(inSlot?.Itemstack))
         {
             dsc.AppendLine("Its temporal charge is spent.");
-            dsc.AppendLine("Rebuild its field with fresh temporal gears at a crafting grid.");
+            dsc.AppendLine("Rebuild its field with fresh temporal dust at a crafting grid.");
             return;
         }
 
@@ -1402,7 +1402,7 @@ public class ItemTemporalReverser : Item
 
         if (IsDepleted(slot.Itemstack))
         {
-            SendNotification(byEntity, "The reverser's field is spent. It needs fresh temporal gears.");
+            SendNotification(byEntity, "The reverser's field is spent. It needs fresh temporal dust.");
             handling = EnumHandHandling.PreventDefault;
             return;
         }
@@ -2479,22 +2479,29 @@ MatchedRuleResolved:
 
     private static IEnumerable<ItemStack> CreateSupplementalRestoredTemporalDustStacks(IWorldAccessor world, RestorationRule rule, ItemStack? reverserStack)
     {
-        if (!AreBonusRestorationDropsEnabled(reverserStack))
+        if (AreBonusRestorationDropsEnabled(reverserStack))
         {
-            yield break;
+            int dustCount = GetGuaranteedTemporalDustDropCount(reverserStack);
+            int bonusChancePercent = GetTemporalDustBonusChancePercent(reverserStack);
+            if (bonusChancePercent > 0 && Random.Shared.Next(100) < bonusChancePercent)
+            {
+                dustCount += GetBonusTemporalDustDropCount(reverserStack);
+            }
+
+            ItemStack? dustStack = CreateStackForCode(world, RandomTemporalDustItems[0], dustCount);
+            if (dustStack != null)
+            {
+                yield return dustStack;
+            }
         }
 
-        int dustCount = GetGuaranteedTemporalDustDropCount(reverserStack);
-        int bonusChancePercent = GetTemporalDustBonusChancePercent(reverserStack);
-        if (bonusChancePercent > 0 && Random.Shared.Next(100) < bonusChancePercent)
+        if (Random.Shared.Next(100) < 1)
         {
-            dustCount += GetBonusTemporalDustDropCount(reverserStack);
-        }
-
-        ItemStack? dustStack = CreateStackForCode(world, RandomTemporalDustItems[0], dustCount);
-        if (dustStack != null)
-        {
-            yield return dustStack;
+            ItemStack? gearStack = CreateStackForCode(world, "game:gear-temporal", 1, reverserStack);
+            if (gearStack != null)
+            {
+                yield return gearStack;
+            }
         }
     }
 
