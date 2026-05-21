@@ -10,7 +10,6 @@ namespace VSTemporalReverser;
 public class VSTemporalReverserModSystem : ModSystem
 {
     private const string Domain = "vstemporalreverser";
-    private const int TemporalGearMaxStackSize = 64;
     private static readonly string[] RawMaterialItemPrefixes =
     [
         "ingot-",
@@ -40,6 +39,7 @@ public class VSTemporalReverserModSystem : ModSystem
         "papyrustops",
         "papyrusroot",
         "resin",
+        "gear-temporal",
         "temporal-dust"
     ];
     public static VSTemporalReverserConfig Config { get; private set; } = new();
@@ -125,17 +125,7 @@ public class VSTemporalReverserModSystem : ModSystem
 
     private static void RefreshConfigDrivenStackSizes(ICoreAPI api)
     {
-        SetTemporalGearStackSize(api);
         ApplyConfiguredRawMaterialStackSizes(api);
-    }
-
-    private static void SetTemporalGearStackSize(ICoreAPI api)
-    {
-        Item? temporalGear = api.World?.GetItem(new AssetLocation("game", "gear-temporal"));
-        if (temporalGear != null)
-        {
-            temporalGear.MaxStackSize = TemporalGearMaxStackSize;
-        }
     }
 
     private static void ApplyConfiguredRawMaterialStackSizes(ICoreAPI api)

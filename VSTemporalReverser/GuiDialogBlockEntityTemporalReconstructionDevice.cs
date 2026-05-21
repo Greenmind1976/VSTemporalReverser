@@ -68,7 +68,7 @@ public class GuiDialogBlockEntityTemporalReconstructionDevice : GuiDialogBlockEn
 
     private void SetupDialog()
     {
-        ElementBounds contentBounds = ElementBounds.Fixed(0.0, 0.0, 520.0, 360.0);
+        ElementBounds contentBounds = ElementBounds.Fixed(0.0, 0.0, 380.0, 360.0);
         ElementBounds insetBounds = ElementBounds.Fill.WithFixedPadding(GuiStyle.ElementToDialogPadding);
         insetBounds.BothSizing = ElementSizing.FitToChildren;
         insetBounds.WithChildren(contentBounds);
@@ -136,8 +136,23 @@ public class GuiDialogBlockEntityTemporalReconstructionDevice : GuiDialogBlockEn
         }
 
         string status = be.GetStatusText();
-        return string.IsNullOrWhiteSpace(status)
-            ? "Insert damaged items and add 10 temporal dust to begin reconstruction."
-            : status;
+        if (be.IsRepairing)
+        {
+            return string.IsNullOrWhiteSpace(status)
+                ? "Reconstruction in progress..."
+                : status;
+        }
+
+        if (string.IsNullOrWhiteSpace(status))
+        {
+            return "Place the damaged item within and add 10 temporal dust to begin reconstruction.";
+        }
+
+        if (status == "Ready for reconstruction.")
+        {
+            return "The chamber is aligned. Reconstruction can begin.";
+        }
+
+        return status;
     }
 }

@@ -22,16 +22,16 @@ For a full player-facing reference of handheld reverser targets, durability cost
 - `Stabilized Temporal Reverser` can be crafted from `1` plain glass block, `1` iron plate, and `5` temporal gears.
 - `Perfected Temporal Reverser` can be crafted from a `Reverser Casing`, `1` temporal alignment node, `1` flux gap connector, `1` finely balanced oscillator, and `5` temporal gears.
 - When a reverser runs out of durability, it becomes a depleted version instead of being destroyed.
-- Depleted reversers can be recharged in the crafting grid using the depleted device plus their original temporal gear cost.
-- The mod raises vanilla `temporal gears` to a stack size of `64` while it is loaded.
+- Depleted reversers are recharged in the crafting grid with `temporal dust`: `10` dust for `Unstable`, `50` dust for `Stabilized`, and `50` dust for `Perfected`.
 
 ## Temporal Machines
 
-Both placed machines consume `temporal gears` as fuel and now provide live status feedback in their dialogs.
+Both placed machines consume `temporal dust` as fuel and now provide live status feedback in their dialogs.
 
 ### Temporal Reconstruction Device
 
 - Repairs supported damaged gear over time.
+- Uses `10` `temporal dust` per repair cycle.
 - Displays clear status text for unsupported items, missing fuel, items that do not need repair, and active reconstruction.
 - Resumes more cleanly after reloads than the earlier prototype builds.
 
@@ -39,6 +39,7 @@ Both placed machines consume `temporal gears` as fuel and now provide live statu
 
 - Processes queued input items over time and stores reclaimed materials in `12` internal output slots.
 - Uses `8` input slots, `1` fuel slot, and `12` output slots.
+- Uses `10` `temporal dust` per deconstruction cycle.
 - Takes `20` seconds per deconstruction cycle.
 - Stops cleanly when outputs do not have room instead of ejecting reclaimed items into the world.
 - Shows dedicated status text for unsupported items, missing fuel, active processing, queue handoff, and blocked output capacity.
@@ -259,7 +260,7 @@ The randomized loot pools behind the crate families are:
 - `EnableCustomRawMaterialStackSizes` is off by default. This is an opt-in compatibility setting for raising stack sizes on configurable raw materials and common crafting supplies.
 - `RawMaterialStackSize` supports `64`, `128`, and `256`. Any other number snaps to the nearest supported value.
 - Changing custom stack sizes requires a reload to fully apply.
-- The custom stack-size pass can cover raw metals, wood basics, raw clay, seeds, flax materials, cloth, leather, hides, dry grass, papyrus, and resin when the toggle is enabled.
+- The custom stack-size pass can cover raw metals, wood basics, raw clay, seeds, flax materials, cloth, leather, hides, dry grass, papyrus, resin, temporal gears, and temporal dust when the toggle is enabled.
 - If `configlib` and your GUI config mod are installed, the config screen is grouped into `Global`, `Rust Ward`, `Wood Restore`, and `Critter Spawns` sections.
 
 ## Layout
