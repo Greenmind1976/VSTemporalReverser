@@ -26,6 +26,7 @@ public class BlockEntityTemporalDeconstructorDevice : BlockEntityGenericContaine
     private const int VisualPulseIntervalMs = 200;
     private const int SwitchItemPauseDurationMs = 1626;
     private const int ShutdownEffectDurationMs = 7760;
+    private const int CompletionHoldDurationMs = 500;
     private const float MachineLoopBaseVolume = 0.22f;
     private const float MachineLoopFadeDistance = 16f;
     private const float MachineLoopFadeInSeconds = 0.9f;
@@ -597,8 +598,9 @@ public class BlockEntityTemporalDeconstructorDevice : BlockEntityGenericContaine
             return "-running0-";
         }
 
+        long effectiveCompleteAtMs = Math.Max(deconstructionStartedAtMs + 1, deconstructionCompleteAtMs - CompletionHoldDurationMs);
         double progress = GameMath.Clamp(
-            (Api!.World.ElapsedMilliseconds - deconstructionStartedAtMs) / (double)(deconstructionCompleteAtMs - deconstructionStartedAtMs),
+            (Api!.World.ElapsedMilliseconds - deconstructionStartedAtMs) / (double)(effectiveCompleteAtMs - deconstructionStartedAtMs),
             0d,
             1d);
 
@@ -837,7 +839,7 @@ public class BlockEntityTemporalDeconstructorDevice : BlockEntityGenericContaine
         outputCapacityBlocked = false;
         isDeconstructing = true;
         deconstructionStartedAtMs = Api.World.ElapsedMilliseconds;
-        deconstructionCompleteAtMs = deconstructionStartedAtMs + DeconstructionDurationMs;
+        deconstructionCompleteAtMs = deconstructionStartedAtMs + DeconstructionDurationMs + CompletionHoldDurationMs;
 
         suppressInventoryChanged = true;
         try
@@ -1055,7 +1057,7 @@ public class BlockEntityTemporalDeconstructorDevice : BlockEntityGenericContaine
             || now < deconstructionStartedAtMs)
         {
             deconstructionStartedAtMs = now;
-            deconstructionCompleteAtMs = now + DeconstructionDurationMs;
+            deconstructionCompleteAtMs = now + DeconstructionDurationMs + CompletionHoldDurationMs;
             WriteDeconstructionDebugEvent("resume-timer-rebased", GetResumeDebugStack(), null, null, null, null);
         }
 
