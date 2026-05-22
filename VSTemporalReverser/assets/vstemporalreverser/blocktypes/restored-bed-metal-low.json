@@ -1,9 +1,9 @@
 {
-  "code": "restored-metal-table-low",
+  "code": "restored-metal-table",
   "attributes": {
     "handbook": {
       "groupBy": [
-        "restored-metal-table-low-*-*"
+        "restored-metal-table-*-*"
       ]
     }
   },

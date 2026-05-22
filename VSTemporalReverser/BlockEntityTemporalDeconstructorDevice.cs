@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Text.Json;
 using Vintagestory.API.Client;
@@ -24,7 +25,7 @@ public class BlockEntityTemporalDeconstructorDevice : BlockEntityGenericContaine
     private const int PhaseStateTickMs = 100;
     private const int ProgressTickMs = 120;
     private const int VisualPulseIntervalMs = 200;
-    private const int SwitchItemPauseDurationMs = 1626;
+    private const int SwitchItemPauseDurationMs = 2400;
     private const int ShutdownEffectDurationMs = 7760;
     private const int CompletionHoldDurationMs = 500;
     private const float MachineLoopBaseVolume = 0.22f;
@@ -181,6 +182,11 @@ public class BlockEntityTemporalDeconstructorDevice : BlockEntityGenericContaine
             return string.Empty;
         }
 
+        if (IsRestoredToyCandidate(inputStack))
+        {
+            return "The device hums at the toy, then thinks better of it. Some little histories are better left unbroken.";
+        }
+
         if (!IsDeconstructableCandidate(inputStack))
         {
             return "The device cannot find a stable point in this item's timeline.";
@@ -212,6 +218,12 @@ public class BlockEntityTemporalDeconstructorDevice : BlockEntityGenericContaine
         }
 
         return "Ready for deconstruction.";
+    }
+
+    private static bool IsRestoredToyCandidate(ItemStack stack)
+    {
+        string path = stack.Collectible?.Code?.Path ?? string.Empty;
+        return path.StartsWith("restored-toy-", StringComparison.OrdinalIgnoreCase);
     }
 
     private bool CanContinueCurrentJob()
@@ -1207,7 +1219,8 @@ public class BlockEntityTemporalDeconstructorDevice : BlockEntityGenericContaine
     {
         job = null;
 
-        if (!IsDeconstructableCandidate(stack) || !IsExplicitlyAllowedDeconstructionOutput(stack))
+        if (!IsDeconstructableCandidate(stack)
+            || (!IsExplicitlyAllowedDeconstructionOutput(stack) && !IsRestoredSalvageDeconstructionCandidate(stack)))
         {
             WriteDeconstructionDebugEvent("rejected-not-allowed", stack, null, null, null, null);
             return false;
@@ -1284,13 +1297,180 @@ public class BlockEntityTemporalDeconstructorDevice : BlockEntityGenericContaine
             return true;
         }
 
+        if (TryResolveRestoredSalvageDeconstructionJob(stack, out job))
+        {
+            return true;
+        }
+
         if (TryResolveNonCraftableFootwearDeconstructionJob(stack, out job))
+        {
+            return true;
+        }
+
+        if (TryResolveMetalToolDeconstructionJob(stack, out job))
+        {
+            return true;
+        }
+
+        if (TryResolveHelveHammerHeadDeconstructionJob(stack, out job))
+        {
+            return true;
+        }
+
+        if (TryResolveFiredPotteryDeconstructionJob(stack, out job))
         {
             return true;
         }
 
         if (TryResolveAnvilDeconstructionJob(stack, out job))
         {
+            return true;
+        }
+
+        return false;
+    }
+
+    private bool TryResolveMetalToolDeconstructionJob(ItemStack stack, out DeconstructionJob? job)
+    {
+        job = null;
+
+        string path = stack.Collectible?.Code?.Path ?? string.Empty;
+        if (string.IsNullOrWhiteSpace(path)
+            || !IsMetalToolCandidatePath(path)
+            || !TryExtractKnownMetalFromPath(path, out string? metal))
+        {
+            return false;
+        }
+
+        List<ItemStack> outputs = [];
+        if (!AddOutputByCode(outputs, $"ingot-{metal}", 1)
+            || !AddOutputByCode(outputs, "stick", 1))
+        {
+            return false;
+        }
+
+        job = new DeconstructionJob
+        {
+            ConsumedInputCount = 1,
+            OutputStacks = outputs,
+            UpdatedRemainders = new Dictionary<string, double>(StringComparer.OrdinalIgnoreCase)
+        };
+
+        return true;
+    }
+
+    private bool TryResolveHelveHammerHeadDeconstructionJob(ItemStack stack, out DeconstructionJob? job)
+    {
+        job = null;
+
+        string path = stack.Collectible?.Code?.Path ?? string.Empty;
+        if (!path.StartsWith("helvehammerhead-", StringComparison.OrdinalIgnoreCase)
+            || !TryExtractKnownMetalFromPath(path, out string? metal))
+        {
+            return false;
+        }
+
+        List<ItemStack> outputs = [];
+        if (!AddOutputByCode(outputs, $"ingot-{metal}", 1))
+        {
+            return false;
+        }
+
+        job = new DeconstructionJob
+        {
+            ConsumedInputCount = 1,
+            OutputStacks = outputs,
+            UpdatedRemainders = new Dictionary<string, double>(StringComparer.OrdinalIgnoreCase)
+        };
+
+        return true;
+    }
+
+    private bool TryResolveFiredPotteryDeconstructionJob(ItemStack stack, out DeconstructionJob? job)
+    {
+        job = null;
+
+        string path = stack.Collectible?.Code?.Path ?? string.Empty;
+        if (string.IsNullOrWhiteSpace(path)
+            || !IsFiredPotteryCandidatePath(path)
+            || !TryExtractPotteryClayCode(path, out string? clayCode))
+        {
+            return false;
+        }
+
+        List<ItemStack> outputs = [];
+        if (!AddOutputByCode(outputs, clayCode!, 1))
+        {
+            return false;
+        }
+
+        job = new DeconstructionJob
+        {
+            ConsumedInputCount = 1,
+            OutputStacks = outputs,
+            UpdatedRemainders = new Dictionary<string, double>(StringComparer.OrdinalIgnoreCase)
+        };
+
+        return true;
+    }
+
+    private static bool IsMetalToolCandidatePath(string path)
+    {
+        return path.StartsWith("axe-", StringComparison.OrdinalIgnoreCase)
+            || path.StartsWith("pickaxe-", StringComparison.OrdinalIgnoreCase)
+            || path.StartsWith("hammer-", StringComparison.OrdinalIgnoreCase)
+            || path.StartsWith("saw-", StringComparison.OrdinalIgnoreCase)
+            || path.StartsWith("shovel-", StringComparison.OrdinalIgnoreCase)
+            || path.StartsWith("hoe-", StringComparison.OrdinalIgnoreCase)
+            || path.StartsWith("knife-", StringComparison.OrdinalIgnoreCase)
+            || path.StartsWith("spear-", StringComparison.OrdinalIgnoreCase)
+            || path.StartsWith("scythe-", StringComparison.OrdinalIgnoreCase)
+            || path.StartsWith("prospectingpick-", StringComparison.OrdinalIgnoreCase);
+    }
+
+    private static bool IsFiredPotteryCandidatePath(string path)
+    {
+        if (!path.EndsWith("-fired", StringComparison.OrdinalIgnoreCase))
+        {
+            return false;
+        }
+
+        return path.StartsWith("bowl-", StringComparison.OrdinalIgnoreCase)
+            || path.StartsWith("clayplanter-", StringComparison.OrdinalIgnoreCase)
+            || path.StartsWith("claypot-", StringComparison.OrdinalIgnoreCase)
+            || path.StartsWith("crock-", StringComparison.OrdinalIgnoreCase)
+            || path.StartsWith("crucible-", StringComparison.OrdinalIgnoreCase)
+            || path.StartsWith("flowerpot-", StringComparison.OrdinalIgnoreCase)
+            || path.StartsWith("storagevessel-", StringComparison.OrdinalIgnoreCase)
+            || path.StartsWith("jug-", StringComparison.OrdinalIgnoreCase)
+            || path.StartsWith("wateringcan-", StringComparison.OrdinalIgnoreCase);
+    }
+
+    private static bool TryExtractPotteryClayCode(string path, out string? clayCode)
+    {
+        clayCode = null;
+
+        if (path.Contains("-blue-", StringComparison.OrdinalIgnoreCase))
+        {
+            clayCode = "clay-blue";
+            return true;
+        }
+
+        if (path.Contains("-brown-", StringComparison.OrdinalIgnoreCase))
+        {
+            clayCode = "clay-brown";
+            return true;
+        }
+
+        if (path.Contains("-cream-", StringComparison.OrdinalIgnoreCase))
+        {
+            clayCode = "clay-fire";
+            return true;
+        }
+
+        if (path.Contains("-red-", StringComparison.OrdinalIgnoreCase))
+        {
+            clayCode = "clay-red";
             return true;
         }
 
@@ -1333,6 +1513,321 @@ public class BlockEntityTemporalDeconstructorDevice : BlockEntityGenericContaine
             {
                 StackSize = quantity
             });
+        }
+
+        if (outputs.Count == 0)
+        {
+            return false;
+        }
+
+        job = new DeconstructionJob
+        {
+            ConsumedInputCount = 1,
+            OutputStacks = outputs,
+            UpdatedRemainders = new Dictionary<string, double>(StringComparer.OrdinalIgnoreCase)
+        };
+
+        return true;
+    }
+
+    private static bool IsRestoredSalvageDeconstructionCandidate(ItemStack stack)
+    {
+        string path = stack.Collectible?.Code?.Path ?? string.Empty;
+        return path.StartsWith("restored-brazier-", StringComparison.OrdinalIgnoreCase)
+            || path.StartsWith("restored-normal-brazier-", StringComparison.OrdinalIgnoreCase)
+            || path.StartsWith("restored-dim-brazier-", StringComparison.OrdinalIgnoreCase)
+            || path.StartsWith("restored-chandelier-", StringComparison.OrdinalIgnoreCase)
+            || path.StartsWith("restored-canopy-bed-", StringComparison.OrdinalIgnoreCase)
+            || path.StartsWith("restored-short-bed-", StringComparison.OrdinalIgnoreCase)
+            || path.StartsWith("restored-lectern-metal-", StringComparison.OrdinalIgnoreCase)
+            || path.StartsWith("restored-lectern-agedwood-", StringComparison.OrdinalIgnoreCase)
+            || path.StartsWith("restored-lectern-largewood-", StringComparison.OrdinalIgnoreCase)
+            || path.StartsWith("restored-lectern-ornatewood-", StringComparison.OrdinalIgnoreCase)
+            || path.StartsWith("restored-lectern-ruinedwood-", StringComparison.OrdinalIgnoreCase)
+            || path.StartsWith("restored-chair-metal-", StringComparison.OrdinalIgnoreCase)
+            || path.StartsWith("restored-chair-back", StringComparison.OrdinalIgnoreCase)
+            || path.StartsWith("restored-chair-colored-", StringComparison.OrdinalIgnoreCase)
+            || path.StartsWith("restored-chair-crude", StringComparison.OrdinalIgnoreCase)
+            || path.StartsWith("restored-chair-ebony", StringComparison.OrdinalIgnoreCase)
+            || path.StartsWith("restored-chair-long-", StringComparison.OrdinalIgnoreCase)
+            || path.StartsWith("restored-crate-large-", StringComparison.OrdinalIgnoreCase)
+            || path.StartsWith("restored-crate-medium-", StringComparison.OrdinalIgnoreCase)
+            || path.StartsWith("restored-crate-small-", StringComparison.OrdinalIgnoreCase)
+            || path.StartsWith("restored-decoration-", StringComparison.OrdinalIgnoreCase)
+            || path.StartsWith("restored-metal-bed-", StringComparison.OrdinalIgnoreCase)
+            || path.StartsWith("restored-metal-table-", StringComparison.OrdinalIgnoreCase)
+            || path.StartsWith("restored-metal-table-", StringComparison.OrdinalIgnoreCase)
+            || path.StartsWith("restored-table-", StringComparison.OrdinalIgnoreCase)
+            || path.StartsWith("restored-bookstand-", StringComparison.OrdinalIgnoreCase)
+            || path.StartsWith("restored-censer-", StringComparison.OrdinalIgnoreCase);
+    }
+
+    private bool TryResolveRestoredSalvageDeconstructionJob(ItemStack stack, out DeconstructionJob? job)
+    {
+        job = null;
+
+        string path = stack.Collectible?.Code?.Path ?? string.Empty;
+        if (string.IsNullOrWhiteSpace(path))
+        {
+            return false;
+        }
+
+        if (TryResolveRestoredWoodOrLibraryDeconstructionJob(path, out job))
+        {
+            return true;
+        }
+
+        if (TryResolveRestoredBedCrateOrDecorationDeconstructionJob(path, out job))
+        {
+            return true;
+        }
+
+        if (!TryExtractKnownMetalFromPath(path, out string? metal))
+        {
+            return false;
+        }
+
+        int ingotCount;
+        int mordantClothCount = 0;
+
+        if (path.StartsWith("restored-chair-metal-", StringComparison.OrdinalIgnoreCase))
+        {
+            ingotCount = 3;
+            mordantClothCount = 3;
+        }
+        else if (path.StartsWith("restored-metal-table-", StringComparison.OrdinalIgnoreCase))
+        {
+            ingotCount = 1;
+            mordantClothCount = 3;
+        }
+        else if (path.StartsWith("restored-brazier-", StringComparison.OrdinalIgnoreCase)
+            || path.StartsWith("restored-normal-brazier-", StringComparison.OrdinalIgnoreCase)
+            || path.StartsWith("restored-dim-brazier-", StringComparison.OrdinalIgnoreCase)
+            || path.StartsWith("restored-chandelier-", StringComparison.OrdinalIgnoreCase)
+            || path.StartsWith("restored-lectern-metal-", StringComparison.OrdinalIgnoreCase)
+            || path.StartsWith("restored-censer-", StringComparison.OrdinalIgnoreCase))
+        {
+            ingotCount = 1;
+        }
+        else
+        {
+            return false;
+        }
+
+        List<ItemStack> outputs = [];
+        CollectibleObject? ingotCollectible = Api?.World.GetItem(new AssetLocation("game", $"ingot-{metal}"));
+        if (ingotCollectible == null)
+        {
+            return false;
+        }
+
+        outputs.Add(new ItemStack(ingotCollectible) { StackSize = ingotCount });
+
+        if (mordantClothCount > 0 && Api?.World.GetItem(ToGameAssetLocation("cloth-mordant")) is CollectibleObject clothCollectible)
+        {
+            outputs.Add(new ItemStack(clothCollectible) { StackSize = mordantClothCount });
+        }
+
+        job = new DeconstructionJob
+        {
+            ConsumedInputCount = 1,
+            OutputStacks = outputs,
+            UpdatedRemainders = new Dictionary<string, double>(StringComparer.OrdinalIgnoreCase)
+        };
+
+        return true;
+    }
+
+    private bool TryResolveRestoredBedCrateOrDecorationDeconstructionJob(string path, out DeconstructionJob? job)
+    {
+        job = null;
+
+        List<ItemStack> outputs = [];
+
+        if (path.StartsWith("restored-decoration-", StringComparison.OrdinalIgnoreCase))
+        {
+            if (!AddOutputByCode(outputs, "paper-parchment", 2))
+            {
+                return false;
+            }
+        }
+        else if (path.StartsWith("restored-crate-large-", StringComparison.OrdinalIgnoreCase)
+            || path.StartsWith("restored-crate-medium-", StringComparison.OrdinalIgnoreCase)
+            || path.StartsWith("restored-crate-small-", StringComparison.OrdinalIgnoreCase))
+        {
+            if (!TryExtractKnownWoodFromPath(path, out string? crateWood))
+            {
+                return false;
+            }
+
+            int plankCount = path.StartsWith("restored-crate-large-", StringComparison.OrdinalIgnoreCase) ? 5
+                : path.StartsWith("restored-crate-medium-", StringComparison.OrdinalIgnoreCase) ? 4
+                : 3;
+            int nailCount = plankCount;
+
+            if (!AddOutputByCode(outputs, $"plank-{crateWood}", plankCount)
+                || !AddOutputByCode(outputs, "metalnailsandstrips-copper", nailCount))
+            {
+                return false;
+            }
+        }
+        else if (path.StartsWith("restored-canopy-bed-", StringComparison.OrdinalIgnoreCase))
+        {
+            if (!TryExtractKnownWoodFromPath(path, out string? canopyWood))
+            {
+                return false;
+            }
+
+            if (!AddOutputByCode(outputs, $"plank-{canopyWood}", 10)
+                || !AddOutputByCode(outputs, "metalnailsandstrips-copper", 10)
+                || !AddOutputByCode(outputs, "cloth-white", 6))
+            {
+                return false;
+            }
+        }
+        else if (path.StartsWith("restored-short-bed-", StringComparison.OrdinalIgnoreCase))
+        {
+            if (!TryExtractKnownWoodFromPath(path, out string? shortBedWood))
+            {
+                return false;
+            }
+
+            if (!AddOutputByCode(outputs, $"plank-{shortBedWood}", 5)
+                || !AddOutputByCode(outputs, "metalnailsandstrips-copper", 5)
+                || !AddOutputByCode(outputs, "cloth-white", 3))
+            {
+                return false;
+            }
+        }
+        else if (path.StartsWith("restored-metal-bed-", StringComparison.OrdinalIgnoreCase))
+        {
+            if (!TryExtractKnownMetalFromPath(path, out string? bedMetal))
+            {
+                return false;
+            }
+
+            if (!AddOutputByCode(outputs, $"ingot-{bedMetal}", 4)
+                || !AddOutputByCode(outputs, "cloth-white", 3))
+            {
+                return false;
+            }
+        }
+        else if (path.StartsWith("restored-metal-table-", StringComparison.OrdinalIgnoreCase))
+        {
+            string[] metals = ExtractAllKnownMetalsFromPath(path);
+            if (metals.Length == 0)
+            {
+                return false;
+            }
+
+            foreach (string metal in metals)
+            {
+                if (!AddOutputByCode(outputs, $"ingot-{metal}", 1))
+                {
+                    return false;
+                }
+            }
+        }
+        else
+        {
+            return false;
+        }
+
+        job = new DeconstructionJob
+        {
+            ConsumedInputCount = 1,
+            OutputStacks = outputs,
+            UpdatedRemainders = new Dictionary<string, double>(StringComparer.OrdinalIgnoreCase)
+        };
+
+        return true;
+    }
+
+    private bool TryResolveRestoredWoodOrLibraryDeconstructionJob(string path, out DeconstructionJob? job)
+    {
+        job = null;
+
+        if (!TryExtractKnownWoodFromPath(path, out string? wood))
+        {
+            return false;
+        }
+
+        int plankCount = 0;
+        int nailCount = 0;
+        int clothCount = 0;
+        int parchmentCount = 0;
+        int candleCount = 0;
+
+        if (path.StartsWith("restored-bookstand-", StringComparison.OrdinalIgnoreCase)
+            || path.StartsWith("restored-lectern-agedwood-", StringComparison.OrdinalIgnoreCase)
+            || path.StartsWith("restored-lectern-largewood-", StringComparison.OrdinalIgnoreCase)
+            || path.StartsWith("restored-lectern-ornatewood-", StringComparison.OrdinalIgnoreCase)
+            || path.StartsWith("restored-lectern-ruinedwood-", StringComparison.OrdinalIgnoreCase))
+        {
+            plankCount = 5;
+            parchmentCount = 2;
+        }
+        else if (path.StartsWith("restored-table-", StringComparison.OrdinalIgnoreCase))
+        {
+            plankCount = 5;
+            nailCount = 5;
+            if (UsesRestoredTableClothSalvage(path))
+            {
+                clothCount = 3;
+            }
+
+            if (path.Contains("scribeaccessories", StringComparison.OrdinalIgnoreCase))
+            {
+                candleCount = 5;
+            }
+        }
+        else if (path.StartsWith("restored-chair-colored-", StringComparison.OrdinalIgnoreCase))
+        {
+            plankCount = 4;
+            nailCount = 4;
+            clothCount = 2;
+        }
+        else if (path.StartsWith("restored-chair-long-", StringComparison.OrdinalIgnoreCase)
+            || path.StartsWith("restored-chair-back", StringComparison.OrdinalIgnoreCase)
+            || path.StartsWith("restored-chair-crude", StringComparison.OrdinalIgnoreCase)
+            || path.StartsWith("restored-chair-ebony", StringComparison.OrdinalIgnoreCase))
+        {
+            plankCount = 4;
+            nailCount = 4;
+        }
+        else
+        {
+            return false;
+        }
+
+        List<ItemStack> outputs = [];
+        if (!AddOutputByCode(outputs, $"plank-{wood}", plankCount))
+        {
+            return false;
+        }
+
+        if (!AddOutputByCode(outputs, "paper-parchment", parchmentCount))
+        {
+            return false;
+        }
+
+        if (!AddOutputByCode(outputs, "cloth-mordant", clothCount))
+        {
+            return false;
+        }
+
+        if (!AddOutputByCode(outputs, "candle", candleCount))
+        {
+            return false;
+        }
+
+        if (nailCount > 0)
+        {
+            string nailMetal = VSTemporalReverserModSystem.Config.DeconstructMetalOutputsToIngots ? "copper" : "copper";
+            if (!AddOutputByCode(outputs, $"metalnailsandstrips-{nailMetal}", nailCount))
+            {
+                return false;
+            }
         }
 
         if (outputs.Count == 0)
@@ -1430,6 +1925,116 @@ public class BlockEntityTemporalDeconstructorDevice : BlockEntityGenericContaine
         return true;
     }
 
+    private static bool TryExtractKnownMetalFromPath(string path, out string? metal)
+    {
+        string[] knownMetals =
+        [
+            "copper",
+            "brass",
+            "blackbronze",
+            "bismuthbronze",
+            "tinbronze",
+            "silver",
+            "gold",
+            "electrum",
+            "iron",
+            "meteoriciron",
+            "steel",
+            "molybdochalkos",
+            "bismuth"
+        ];
+
+        metal = knownMetals.FirstOrDefault(candidate => path.Contains(candidate, StringComparison.OrdinalIgnoreCase));
+        return metal != null;
+    }
+
+    private static bool TryExtractKnownWoodFromPath(string path, out string? wood)
+    {
+        string[] knownWoods =
+        [
+            "veryaged",
+            "purpleheart",
+            "baldcypress",
+            "mahogany",
+            "redwood",
+            "acacia",
+            "walnut",
+            "maple",
+            "kapok",
+            "larch",
+            "ebony",
+            "birch",
+            "aged",
+            "pine",
+            "oak"
+        ];
+
+        wood = knownWoods.FirstOrDefault(candidate => path.Contains(candidate, StringComparison.OrdinalIgnoreCase));
+        return wood != null;
+    }
+
+    private static string[] ExtractAllKnownMetalsFromPath(string path)
+    {
+        string[] knownMetals =
+        [
+            "copper",
+            "brass",
+            "blackbronze",
+            "bismuthbronze",
+            "tinbronze",
+            "silver",
+            "gold",
+            "electrum",
+            "iron",
+            "meteoriciron",
+            "steel",
+            "molybdochalkos",
+            "bismuth"
+        ];
+
+        return knownMetals
+            .Where(candidate => path.Contains(candidate, StringComparison.OrdinalIgnoreCase))
+            .Distinct(StringComparer.OrdinalIgnoreCase)
+            .ToArray();
+    }
+
+    private bool AddOutputByCode(List<ItemStack> outputs, string code, int quantity)
+    {
+        if (quantity <= 0)
+        {
+            return true;
+        }
+
+        AssetLocation location = ToGameAssetLocation(code);
+        CollectibleObject? collectible = Api?.World.GetItem(location);
+        collectible ??= Api?.World.GetBlock(location);
+        if (collectible == null)
+        {
+            return false;
+        }
+
+        outputs.Add(new ItemStack(collectible)
+        {
+            StackSize = quantity
+        });
+
+        return true;
+    }
+
+    private static bool UsesRestoredTableClothSalvage(string path)
+    {
+        return path.Contains("agedwhite", StringComparison.OrdinalIgnoreCase)
+            || path.Contains("agedblue", StringComparison.OrdinalIgnoreCase)
+            || path.Contains("agedgreen", StringComparison.OrdinalIgnoreCase)
+            || path.Contains("agedpurple", StringComparison.OrdinalIgnoreCase)
+            || path.Contains("agedred", StringComparison.OrdinalIgnoreCase)
+            || path.Contains("scribeblue", StringComparison.OrdinalIgnoreCase)
+            || path.Contains("scribegreen", StringComparison.OrdinalIgnoreCase)
+            || path.Contains("scribepurple", StringComparison.OrdinalIgnoreCase)
+            || path.Contains("scribered", StringComparison.OrdinalIgnoreCase)
+            || path.Contains("scribeaccessories", StringComparison.OrdinalIgnoreCase);
+    }
+
     private IEnumerable<object> GetGridRecipes()
     {
         object? recipes = GetMemberValue(Api?.World, "GridRecipes");
@@ -1515,7 +2120,8 @@ public class BlockEntityTemporalDeconstructorDevice : BlockEntityGenericContaine
 
             if (fractionalRefundQuantity > 1e-9)
             {
-                if (TryCreatePartialMetalBitRefund(stack, fractionalRefundQuantity, out ItemStack? metalBitStack, out string? metalBitRemainderKey, out double metalBitRemainder))
+                if (ShouldConvertMetalOutputToIngots(sourceStack, stack)
+                    && TryCreatePartialMetalBitRefund(stack, fractionalRefundQuantity, out ItemStack? metalBitStack, out string? metalBitRemainderKey, out double metalBitRemainder))
                 {
                     if (metalBitStack != null)
                     {
@@ -1541,6 +2147,11 @@ public class BlockEntityTemporalDeconstructorDevice : BlockEntityGenericContaine
         int quantity,
         Dictionary<string, (ItemStack Stack, int Quantity)> aggregated)
     {
+        if (!VSTemporalReverserModSystem.Config.DeconstructMetalOutputsToIngots)
+        {
+            return false;
+        }
+
         if (!IsArmorStack(sourceStack) || !IsArmorStack(ingredientStack) || quantity <= 0)
         {
             return false;
@@ -1675,7 +2286,8 @@ public class BlockEntityTemporalDeconstructorDevice : BlockEntityGenericContaine
         ItemStack stack,
         int quantity)
     {
-        if (IsArmorStack(sourceStack) && TryGetMetalIngotConversion(stack, out AssetLocation ingotCode, out int ingotsPerUnit))
+        if (ShouldConvertMetalOutputToIngots(sourceStack, stack)
+            && TryGetMetalIngotConversion(stack, out AssetLocation ingotCode, out int ingotsPerUnit))
         {
             CollectibleObject? ingotCollectible = Api?.World.GetItem(ingotCode);
             if (ingotCollectible != null)
@@ -1686,6 +2298,11 @@ public class BlockEntityTemporalDeconstructorDevice : BlockEntityGenericContaine
         }
 
         AddAggregatedStack(aggregated, stack, quantity);
+    }
+
+    private static bool ShouldConvertMetalOutputToIngots(ItemStack sourceStack, ItemStack outputStack)
+    {
+        return VSTemporalReverserModSystem.Config.DeconstructMetalOutputsToIngots;
     }
 
     private static bool IsArmorStack(ItemStack stack)
@@ -2028,6 +2645,11 @@ public class BlockEntityTemporalDeconstructorDevice : BlockEntityGenericContaine
 
     private ItemStack NormalizeArmorRefundStack(ItemStack sourceStack, ItemStack refundStack)
     {
+        if (!VSTemporalReverserModSystem.Config.DeconstructMetalOutputsToIngots)
+        {
+            return refundStack;
+        }
+
         string sourcePath = sourceStack.Collectible?.Code?.Path ?? string.Empty;
         if (!sourcePath.StartsWith("armor-", StringComparison.OrdinalIgnoreCase))
         {
@@ -2148,6 +2770,14 @@ public class BlockEntityTemporalDeconstructorDevice : BlockEntityGenericContaine
             return true;
         }
 
+        if (TryExtractMetalVariant(path, "metalsheet-", out string? sheetMetal))
+        {
+            metalBitCode = new AssetLocation(domain, $"metalbit-{sheetMetal}");
+            ingotCode = new AssetLocation(domain, $"ingot-{sheetMetal}");
+            bitsPerUnit = 20;
+            return true;
+        }
+
         if (TryExtractMetalVariant(path, "rod-", out string? rodMetal))
         {
             metalBitCode = new AssetLocation(domain, $"metalbit-{rodMetal}");
@@ -2181,6 +2811,7 @@ public class BlockEntityTemporalDeconstructorDevice : BlockEntityGenericContaine
 
         if (TryExtractMetalVariant(path, "metalscale-", out string? scaleMetal)
             || TryExtractMetalVariant(path, "metallamellae-", out scaleMetal)
+            || TryExtractMetalVariant(path, "metalsheet-", out scaleMetal)
             || TryExtractMetalVariant(path, "rod-", out scaleMetal))
         {
             ingotCode = new AssetLocation(domain, $"ingot-{scaleMetal}");
@@ -2486,12 +3117,36 @@ public class BlockEntityTemporalDeconstructorDevice : BlockEntityGenericContaine
             "crate",
             "displaycase",
             "labeledchest-",
+            "lantern-",
             "scrollrack",
             "shelf-",
             "table-",
             "talldisplaycase",
             "toolrack-",
             "trunk-",
+
+            // Tools and weapons
+            "axe-",
+            "pickaxe-",
+            "hammer-",
+            "saw-",
+            "shovel-",
+            "hoe-",
+            "knife-",
+            "spear-",
+            "scythe-",
+            "prospectingpick-",
+
+            // Fired pottery
+            "bowl-",
+            "clayplanter-",
+            "claypot-",
+            "crock-",
+            "crucible-",
+            "flowerpot-",
+            "storagevessel-",
+            "jug-",
+            "wateringcan-",
 
             // Doors, ladders, fences, and fixtures
             "door-",
@@ -2517,8 +3172,14 @@ public class BlockEntityTemporalDeconstructorDevice : BlockEntityGenericContaine
             "archimedesscrew-",
             "windmillrotor-",
             "waterwheel-",
+            "woodenaxlehub-",
+            "helvehammer-",
+            "helvehammerhead-",
             "helvehammerbase-",
             "pulverizerframe-",
+            "pulverizertoggle-",
+            "pounder-",
+            "poundercap-",
             "anvil-"
         ];
 
@@ -2530,8 +3191,6 @@ public class BlockEntityTemporalDeconstructorDevice : BlockEntityGenericContaine
             "sail-large-oak",
             "largegearsection-wood",
             "linkage-heavy-oak",
-            "pounder-oak",
-            "pulverizertoggle-oak",
             "backpack-normal",
             "backpack-sturdy",
             "hunterbackpack",

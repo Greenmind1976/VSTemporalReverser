@@ -24,7 +24,7 @@ public class BlockEntityTemporalReconstructionDevice : BlockEntityGenericContain
     private const int RepairProgressTickMs = 120;
     private const int PhaseStateTickMs = 100;
     private const int VisualPulseIntervalMs = 200;
-    private const int SwitchItemPauseDurationMs = 1626;
+    private const int SwitchItemPauseDurationMs = 2400;
     private const int ShutdownEffectDurationMs = 7760;
     private const int CompletionHoldDurationMs = 500;
     private const float MachineLoopBaseVolume = 0.22f;

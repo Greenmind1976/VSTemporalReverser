@@ -1,5 +1,5 @@
 {
-  "version": 10,
+  "version": 11,
   "file": "VSTemporalReverserConfig.json",
   "patches": {},
   "settings": [
@@ -41,12 +41,20 @@
       "ingui": "Raw material stack size",
       "type": "int",
       "weight": 98.8,
-      "comment": "Stack size applied to configurable raw materials and common crafting supplies such as ingots, metal bits, nuggets, plates, rods, planks, sticks, firewood, raw clay, seeds, flax fibers, twine, cloth, leather, hides, dry grass, papyrus, resin, temporal gears, and temporal dust. Only used when custom stack sizes are enabled. Requires a reload to fully apply. Supported values are 64, 128, and 256. Any other number will snap to the nearest of those values.",
+      "comment": "Stack size applied to configurable raw materials and common crafting supplies such as ingots, metal bits, nuggets, plates, chains, nails and strips, sheets, rods, planks, sticks, firewood, raw clay, seeds, flax fibers, twine, cloth, leather, hides, glass, parchment, candles, beeswax, dry grass, papyrus, resin, temporal gears, and temporal dust. Only used when custom stack sizes are enabled. Requires a reload to fully apply. Supported values are 64, 128, and 256. Any other number will snap to the nearest of those values.",
       "default": 64,
       "range": {
         "min": 64,
         "max": 256
       }
+    },
+    {
+      "code": "DeconstructMetalOutputsToIngots",
+      "ingui": "Deconstruct To Ingots",
+      "type": "boolean",
+      "weight": 98.775,
+      "comment": "If enabled, metal recipe outputs such as plates, chain, rods, scales, lamellae, and sheets are refined into ingots during deconstruction instead of being returned as their vanilla intermediate items. Nails and strips are still returned as items.",
+      "default": true
     },
     {
       "code": "AllowClosedCanopyBedSleepWhenNotTired",

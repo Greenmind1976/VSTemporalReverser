@@ -92,14 +92,14 @@ Salvage costs `2x` the durability of the normal restore cost for the same source
 | `bed-short-stitched-ruined` | 2 | random `vstemporalreverser:restored-short-bed-{style}-{wood}-head/feet` | Any short bed style |
 | `bed/bed-ruined1` to `bed/bed-ruined2` | 2 | random `vstemporalreverser:restored-short-bed-{style}-{wood}-head/feet` | Any short bed style |
 | `bed/bed-ruined3` to `bed/bed-ruined6` | 2 | `game:bed-woodaged-head-north` | Vanilla aged wooden bed |
-| `bed/bed-metal` | 1 | `vstemporalreverser:restored-metal-table-low-{lecternmetal}-{bedtopmetal}` | Restores the low metal table form |
-| `bed/bed-metal-ruined1` to `bed/bed-metal-ruined3` | 2 | `vstemporalreverser:restored-metal-table-low-{lecternmetal}-{bedtopmetal}` | Restores the low metal table form |
-| `bed/metal2` | 1 | `vstemporalreverser:restored-metal-bed-high-{lecternmetal}-{chaircolor}-head-north` | Two-block high metal bed |
-| `bed/metal2-mattress` | 1 | `vstemporalreverser:restored-metal-bed-high-{lecternmetal}-{chaircolor}-head-north` | Two-block high metal bed |
-| `bed/metal2-pillow` | 1 | `vstemporalreverser:restored-metal-bed-high-{lecternmetal}-{chaircolor}-head-north` | Two-block high metal bed |
-| `bed/metal2-ruined1` to `bed/metal2-ruined3` | 2 | `vstemporalreverser:restored-metal-bed-high-{lecternmetal}-{chaircolor}-head-north` | Two-block high metal bed |
-| `bed/metal1-evaporating` | 2 | `vstemporalreverser:restored-metal-bed-high-{lecternmetal}-{chaircolor}-head-north` | Two-block high metal bed |
-| `bed/metal2-evaporating` | 2 | `vstemporalreverser:restored-metal-bed-high-{lecternmetal}-{chaircolor}-head-north` | Two-block high metal bed |
+| `bed/bed-metal` | 1 | `vstemporalreverser:restored-metal-table-{lecternmetal}-{bedtopmetal}` | Restores the metal table form |
+| `bed/bed-metal-ruined1` to `bed/bed-metal-ruined3` | 2 | `vstemporalreverser:restored-metal-table-{lecternmetal}-{bedtopmetal}` | Restores the metal table form |
+| `bed/metal2` | 1 | `vstemporalreverser:restored-metal-bed-{lecternmetal}-{chaircolor}-head-north` | Two-block metal bed |
+| `bed/metal2-mattress` | 1 | `vstemporalreverser:restored-metal-bed-{lecternmetal}-{chaircolor}-head-north` | Two-block metal bed |
+| `bed/metal2-pillow` | 1 | `vstemporalreverser:restored-metal-bed-{lecternmetal}-{chaircolor}-head-north` | Two-block metal bed |
+| `bed/metal2-ruined1` to `bed/metal2-ruined3` | 2 | `vstemporalreverser:restored-metal-bed-{lecternmetal}-{chaircolor}-head-north` | Two-block metal bed |
+| `bed/metal1-evaporating` | 2 | `vstemporalreverser:restored-metal-bed-{lecternmetal}-{chaircolor}-head-north` | Two-block metal bed |
+| `bed/metal2-evaporating` | 2 | `vstemporalreverser:restored-metal-bed-{lecternmetal}-{chaircolor}-head-north` | Two-block metal bed |
 | `table-aged` | 1 | `vstemporalreverser:restored-table-agedwhite-{tablewood}-north` | Can spawn moths and mice |
 | `table-long` | 1 | `vstemporalreverser:restored-table-scribe-{tablewood}-north` | Can spawn moths and mice |
 | `table-long-with-accessories` | 1 | `vstemporalreverser:restored-table-scribeaccessories-{tablewood}-north` | Can spawn moths and mice |

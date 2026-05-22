@@ -1,5 +1,5 @@
 {
-  "code": "restored-metal-bed-high",
+  "code": "restored-metal-bed",
   "class": "BlockRestoredBed",
   "entityClassByType": {
     "*-head-*": "Bed"
@@ -10,7 +10,7 @@
     },
     "handbook": {
       "groupBy": [
-        "restored-metal-bed-high-*-*-*"
+        "restored-metal-bed-*-*-*"
       ]
     }
   },
