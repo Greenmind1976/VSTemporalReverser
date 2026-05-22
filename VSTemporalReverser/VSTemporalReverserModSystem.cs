@@ -10,6 +10,99 @@ namespace VSTemporalReverser;
 public class VSTemporalReverserModSystem : ModSystem
 {
     private const string Domain = "vstemporalreverser";
+    private const int DefaultDebugBatchCount = 24;
+    private const int MaxDebugBatchCount = 48;
+    private static readonly string[] DebugDamagedToolCodes =
+    [
+        "game:axe-iron",
+        "game:pickaxe-iron",
+        "game:hammer-iron",
+        "game:saw-iron",
+        "game:shovel-iron",
+        "game:hoe-iron",
+        "game:knife-iron",
+        "game:spear-iron",
+        "game:scythe-iron",
+        "game:prospectingpick-iron",
+        "game:axe-steel",
+        "game:pickaxe-steel",
+        "game:hammer-steel",
+        "game:saw-steel",
+        "game:shovel-steel",
+        "game:hoe-steel",
+        "game:knife-steel",
+        "game:spear-steel",
+        "game:scythe-steel",
+        "game:prospectingpick-steel"
+    ];
+    private static readonly string[] DebugReverserClutterTypes =
+    [
+        "anvil-broken1",
+        "anvil-broken2",
+        "anvil-broken3",
+        "brazier1",
+        "brazier2",
+        "brazier3",
+        "brazier4",
+        "chandelier-ruined1",
+        "chandelier-ruined2",
+        "chandelier-ruined3",
+        "lantern/ground1",
+        "lantern/ground2",
+        "lantern/ground3",
+        "lantern/ground4",
+        "lantern/ground5",
+        "lantern/ground6",
+        "candlestub-single",
+        "candlestubs-bunch1",
+        "candlestubs-bunch2",
+        "lecturn-ruined",
+        "bookshelves/lecturn-aged-empty",
+        "bookshelves/lecturn-aged-book-closed",
+        "bookshelves/lecturn-ruined",
+        "bookshelves/bookstand-book-closed",
+        "chair-metal1-ruined1",
+        "chair-metal1-ruined2",
+        "chair-ruined1",
+        "chair-ruined2",
+        "table/metal1-ruined1",
+        "table/metal1-ruined2",
+        "table-ruined1",
+        "table-ruined2",
+        "bed/metal2-ruined1",
+        "bed/metal2-ruined2",
+        "bed/bed-metal-ruined1",
+        "bed/bed-metal-ruined2",
+        "bed/bed-ruined1",
+        "bed/bed-fancy-ruined1",
+        "crate/crate-medium-books",
+        "crate/crate-medium-pottery",
+        "crate/crate-medium-pottery-alt",
+        "crate/crate-small-pottery",
+        "crate/crate-large-junk",
+        "crate/crate-medium-junk",
+        "crate/crate-large-pottery",
+        "crate/large-pottery1",
+        "crate/large-clothing1",
+        "crate/medium-toybox1",
+        "pile-tools1",
+        "pile-tools2",
+        "pile-tools3",
+        "pile-woodworkingtools",
+        "tool-axe",
+        "tool-hammer",
+        "tool-knife",
+        "tool-hoe",
+        "tool-shovel",
+        "tool-spear",
+        "toy4",
+        "toy8",
+        "toy12",
+        "shelf-toys1",
+        "shelf-toys2",
+        "music-box1",
+        "music-box2"
+    ];
     private static readonly string[] RawMaterialItemPrefixes =
     [
         "ingot-",
@@ -17,15 +110,19 @@ public class VSTemporalReverserModSystem : ModSystem
         "nugget-",
         "metalplate-",
         "metalchain-",
+        "metalnailsandstrips-",
         "metalscale-",
         "metallamellae-",
+        "metalsheet-",
         "rod-",
         "plank-",
         "clay-",
         "seed-",
+        "seeds-",
         "cloth-",
         "leather-",
-        "hide-"
+        "hide-",
+        "glass-"
     ];
 
     private static readonly string[] RawMaterialItemExactCodes =
@@ -39,6 +136,9 @@ public class VSTemporalReverserModSystem : ModSystem
         "papyrustops",
         "papyrusroot",
         "resin",
+        "paper-parchment",
+        "candle",
+        "beeswax",
         "gear-temporal",
         "temporal-dust"
     ];
@@ -96,6 +196,18 @@ public class VSTemporalReverserModSystem : ModSystem
             "Debug: spawn a tool or other durable item with exact remaining durability.",
             "/trspawntool <itemcode> <remainingdurability>",
             OnDebugSpawnToolCommand,
+            Privilege.controlserver);
+        api.RegisterCommand(
+            "trbatch",
+            "Debug: spawn a randomized reverser clutter test batch.",
+            "/trbatch [count]",
+            OnDebugSpawnBatchCommand,
+            Privilege.controlserver);
+        api.RegisterCommand(
+            "trdtools",
+            "Debug: spawn a batch of damaged metal tools.",
+            "/trdtools",
+            OnDebugSpawnDamagedToolsCommand,
             Privilege.controlserver);
 #pragma warning restore CS0618
     }
@@ -210,6 +322,95 @@ public class VSTemporalReverserModSystem : ModSystem
         player.SendMessage(
             groupId,
             $"Spawned {stack.GetName()} with {clampedRemaining}/{maxDurability} durability.",
+            EnumChatType.CommandSuccess,
+            null);
+    }
+
+    private void OnDebugSpawnBatchCommand(IServerPlayer player, int groupId, CmdArgs args)
+    {
+        if (!Config.EnableDebugMode)
+        {
+            player.SendMessage(groupId, "Temporal Reverser debug mode is disabled.", EnumChatType.CommandError, null);
+            return;
+        }
+
+        Block? clutterBlock = sapi?.World.GetBlock(new AssetLocation("game", "clutter"));
+        if (clutterBlock == null)
+        {
+            player.SendMessage(groupId, "Could not find the vanilla clutter block.", EnumChatType.CommandError, null);
+            return;
+        }
+
+        int requestedCount = args.PopInt() ?? DefaultDebugBatchCount;
+        int batchCount = Math.Clamp(requestedCount, 1, Math.Min(MaxDebugBatchCount, DebugReverserClutterTypes.Length));
+        string[] selection = DebugReverserClutterTypes
+            .OrderBy(_ => Guid.NewGuid())
+            .Take(batchCount)
+            .ToArray();
+
+        int spawnedCount = 0;
+        foreach (string clutterType in selection)
+        {
+            ItemStack stack = new(clutterBlock, 1);
+            stack.Attributes.SetString("type", clutterType);
+            stack.Attributes.SetBool("collected", true);
+            stack.ResolveBlockOrItem(sapi!.World);
+
+            bool given = player.InventoryManager.TryGiveItemstack(stack, true);
+            if (!given)
+            {
+                sapi.World.SpawnItemEntity(stack, player.Entity.Pos.XYZ.AddCopy(0, 0.5, 0));
+            }
+
+            spawnedCount++;
+        }
+
+        player.SendMessage(
+            groupId,
+            $"Spawned {spawnedCount} randomized clutter test items for the reverser.",
+            EnumChatType.CommandSuccess,
+            null);
+    }
+
+    private void OnDebugSpawnDamagedToolsCommand(IServerPlayer player, int groupId, CmdArgs args)
+    {
+        if (!Config.EnableDebugMode)
+        {
+            player.SendMessage(groupId, "Temporal Reverser debug mode is disabled.", EnumChatType.CommandError, null);
+            return;
+        }
+
+        int spawnedCount = 0;
+        foreach (string codeText in DebugDamagedToolCodes)
+        {
+            Item? item = sapi?.World.GetItem(new AssetLocation(codeText));
+            if (item == null)
+            {
+                continue;
+            }
+
+            ItemStack stack = new(item);
+            int maxDurability = item.GetMaxDurability(stack);
+            if (maxDurability <= 0)
+            {
+                continue;
+            }
+
+            int remainingDurability = Math.Max(1, maxDurability / 10);
+            item.SetDurability(stack, remainingDurability);
+
+            bool given = player.InventoryManager.TryGiveItemstack(stack, true);
+            if (!given)
+            {
+                sapi?.World.SpawnItemEntity(stack, player.Entity.Pos.XYZ.AddCopy(0, 0.5, 0));
+            }
+
+            spawnedCount++;
+        }
+
+        player.SendMessage(
+            groupId,
+            $"Spawned {spawnedCount} damaged tools.",
             EnumChatType.CommandSuccess,
             null);
     }

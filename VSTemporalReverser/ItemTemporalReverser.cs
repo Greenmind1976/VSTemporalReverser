@@ -1167,18 +1167,18 @@ public class ItemTemporalReverser : Item
         ["bed/bed-ruined4"] = VanillaBedRule(RuinedDurabilityCost, "game:bed-woodaged-head-north"),
         ["bed/bed-ruined5"] = VanillaBedRule(RuinedDurabilityCost, "game:bed-woodaged-head-north"),
         ["bed/bed-ruined6"] = VanillaBedRule(RuinedDurabilityCost, "game:bed-woodaged-head-north"),
-        ["bed/bed-metal"] = VanillaBlockRule(AgedDurabilityCost, "vstemporalreverser:restored-metal-table-low-{lecternmetal}-{bedtopmetal}"),
-        ["bed/bed-metal-ruined1"] = VanillaBlockRule(RuinedDurabilityCost, "vstemporalreverser:restored-metal-table-low-{lecternmetal}-{bedtopmetal}"),
-        ["bed/bed-metal-ruined2"] = VanillaBlockRule(RuinedDurabilityCost, "vstemporalreverser:restored-metal-table-low-{lecternmetal}-{bedtopmetal}"),
-        ["bed/bed-metal-ruined3"] = VanillaBlockRule(RuinedDurabilityCost, "vstemporalreverser:restored-metal-table-low-{lecternmetal}-{bedtopmetal}"),
-        ["bed/metal2"] = VanillaBlockRule(AgedDurabilityCost, "vstemporalreverser:restored-metal-bed-high-{lecternmetal}-{chaircolor}-head-north"),
-        ["bed/metal2-mattress"] = VanillaBlockRule(AgedDurabilityCost, "vstemporalreverser:restored-metal-bed-high-{lecternmetal}-{chaircolor}-head-north"),
-        ["bed/metal2-pillow"] = VanillaBlockRule(AgedDurabilityCost, "vstemporalreverser:restored-metal-bed-high-{lecternmetal}-{chaircolor}-head-north"),
-        ["bed/metal2-ruined1"] = VanillaBlockRule(RuinedDurabilityCost, "vstemporalreverser:restored-metal-bed-high-{lecternmetal}-{chaircolor}-head-north"),
-        ["bed/metal2-ruined2"] = VanillaBlockRule(RuinedDurabilityCost, "vstemporalreverser:restored-metal-bed-high-{lecternmetal}-{chaircolor}-head-north"),
-        ["bed/metal2-ruined3"] = VanillaBlockRule(RuinedDurabilityCost, "vstemporalreverser:restored-metal-bed-high-{lecternmetal}-{chaircolor}-head-north"),
-        ["bed/metal1-evaporating"] = VanillaBlockRule(RuinedDurabilityCost, "vstemporalreverser:restored-metal-bed-high-{lecternmetal}-{chaircolor}-head-north"),
-        ["bed/metal2-evaporating"] = VanillaBlockRule(RuinedDurabilityCost, "vstemporalreverser:restored-metal-bed-high-{lecternmetal}-{chaircolor}-head-north"),
+        ["bed/bed-metal"] = VanillaBlockRule(AgedDurabilityCost, "vstemporalreverser:restored-metal-table-{lecternmetal}-{bedtopmetal}"),
+        ["bed/bed-metal-ruined1"] = VanillaBlockRule(RuinedDurabilityCost, "vstemporalreverser:restored-metal-table-{lecternmetal}-{bedtopmetal}"),
+        ["bed/bed-metal-ruined2"] = VanillaBlockRule(RuinedDurabilityCost, "vstemporalreverser:restored-metal-table-{lecternmetal}-{bedtopmetal}"),
+        ["bed/bed-metal-ruined3"] = VanillaBlockRule(RuinedDurabilityCost, "vstemporalreverser:restored-metal-table-{lecternmetal}-{bedtopmetal}"),
+        ["bed/metal2"] = VanillaBlockRule(AgedDurabilityCost, "vstemporalreverser:restored-metal-bed-{lecternmetal}-{chaircolor}-head-north"),
+        ["bed/metal2-mattress"] = VanillaBlockRule(AgedDurabilityCost, "vstemporalreverser:restored-metal-bed-{lecternmetal}-{chaircolor}-head-north"),
+        ["bed/metal2-pillow"] = VanillaBlockRule(AgedDurabilityCost, "vstemporalreverser:restored-metal-bed-{lecternmetal}-{chaircolor}-head-north"),
+        ["bed/metal2-ruined1"] = VanillaBlockRule(RuinedDurabilityCost, "vstemporalreverser:restored-metal-bed-{lecternmetal}-{chaircolor}-head-north"),
+        ["bed/metal2-ruined2"] = VanillaBlockRule(RuinedDurabilityCost, "vstemporalreverser:restored-metal-bed-{lecternmetal}-{chaircolor}-head-north"),
+        ["bed/metal2-ruined3"] = VanillaBlockRule(RuinedDurabilityCost, "vstemporalreverser:restored-metal-bed-{lecternmetal}-{chaircolor}-head-north"),
+        ["bed/metal1-evaporating"] = VanillaBlockRule(RuinedDurabilityCost, "vstemporalreverser:restored-metal-bed-{lecternmetal}-{chaircolor}-head-north"),
+        ["bed/metal2-evaporating"] = VanillaBlockRule(RuinedDurabilityCost, "vstemporalreverser:restored-metal-bed-{lecternmetal}-{chaircolor}-head-north"),
         ["table-aged"] = RestoredTableRule(AgedDurabilityCost, "agedwhite"),
         ["table-long"] = RestoredTableRule(AgedDurabilityCost, "scribe"),
         ["table-long-with-accessories"] = RestoredTableRule(AgedDurabilityCost, "scribeaccessories"),
@@ -1554,6 +1554,13 @@ MatchedRuleResolved:
         RestorationRule rule = matchedRule.Value;
         string sourceCode = clutterType ?? block.Code.Path;
         bool isSalvageMode = GetSelectedToolMode(slot.Itemstack) == SalvageToolMode && IsSalvageEnabled(slot.Itemstack);
+        if (isSalvageMode && IsToySalvageSource(sourceCode))
+        {
+            SendNotification(byEntity, "The reverser hums at the toy, then thinks better of it. Some little histories are better left unbroken.");
+            handling = EnumHandHandling.PreventDefault;
+            return;
+        }
+
         long restoreCooldownMs = GetRestoreCooldownMs(slot.Itemstack);
         long nowMs = world.ElapsedMilliseconds;
 
@@ -1820,9 +1827,15 @@ MatchedRuleResolved:
     {
         string[] enabledRestoredWoodTypes = VSTemporalReverserModSystem.GetEnabledWoodTypes(RandomRestoredWoodTypes);
         string[] enabledRestoredTableWoodTypes = VSTemporalReverserModSystem.GetEnabledWoodTypes(RandomRestoredTableWoodTypes);
-        string[] enabledLibraryMaterials = VSTemporalReverserModSystem.GetEnabledWoodTypes(RandomRestoredLibraryMaterials);
-        string[] enabledCrateWoodTypes = VSTemporalReverserModSystem.GetEnabledWoodTypes(RandomCrateWoodTypes);
-        bool copperOnly = UsesCopperOnlyRestoration(reverserStack);
+            string[] enabledLibraryMaterials = VSTemporalReverserModSystem.GetEnabledWoodTypes(RandomRestoredLibraryMaterials);
+            string[] enabledCrateWoodTypes = VSTemporalReverserModSystem.GetEnabledWoodTypes(RandomCrateWoodTypes);
+            bool copperOnly = UsesCopperOnlyRestoration(reverserStack);
+        string[] randomWoodLecternFamilies =
+        [
+            "restored-lectern-agedwood",
+            "restored-lectern-largewood",
+            "restored-lectern-ornatewood"
+        ];
 
         if (rule.TargetKind == RestorationTargetKind.RandomRestoredCanopyBed)
         {
@@ -1982,6 +1995,7 @@ MatchedRuleResolved:
             string lecternMetalFinish = lecternMetalFinishes[Random.Shared.Next(lecternMetalFinishes.Length)];
             string bedTopMetal = RandomRestoredBedTopMetals[Random.Shared.Next(RandomRestoredBedTopMetals.Length)];
             string libraryMaterial = enabledLibraryMaterials[Random.Shared.Next(enabledLibraryMaterials.Length)];
+            string lecternFamily = randomWoodLecternFamilies[Random.Shared.Next(randomWoodLecternFamilies.Length)];
             string crateWood = enabledCrateWoodTypes[Random.Shared.Next(enabledCrateWoodTypes.Length)];
             string tableMetal = lanternMaterials[Random.Shared.Next(lanternMaterials.Length)];
             string tableClothColor = RandomRestoredMetalTableClothColors[Random.Shared.Next(RandomRestoredMetalTableClothColors.Length)];
@@ -1994,6 +2008,7 @@ MatchedRuleResolved:
                 .Replace("{tablemetal}", tableMetal, StringComparison.Ordinal)
                 .Replace("{tableclothcolor}", tableClothColor, StringComparison.Ordinal)
                 .Replace("{lecternmetal}", lecternMetalFinish, StringComparison.Ordinal)
+                .Replace("{lecternfamily}", lecternFamily, StringComparison.Ordinal)
                 .Replace("{bedtopmetal}", bedTopMetal, StringComparison.Ordinal)
                 .Replace("{librarymaterial}", libraryMaterial, StringComparison.Ordinal)
                 .Replace("{cratewood}", crateWood, StringComparison.Ordinal)
@@ -3286,8 +3301,8 @@ MatchedRuleResolved:
         }
 
         if (rule.Target.Contains("restored-chair-metal", StringComparison.OrdinalIgnoreCase)
-            || rule.Target.Contains("restored-metal-bed-high", StringComparison.OrdinalIgnoreCase)
-            || rule.Target.Contains("restored-metal-table-low", StringComparison.OrdinalIgnoreCase))
+            || rule.Target.Contains("restored-metal-bed", StringComparison.OrdinalIgnoreCase)
+            || rule.Target.Contains("restored-metal-table", StringComparison.OrdinalIgnoreCase))
         {
             return 2;
         }
@@ -3873,6 +3888,22 @@ MatchedRuleResolved:
         };
     }
 
+    private static bool IsToySalvageSource(string? sourceCode)
+    {
+        if (string.IsNullOrWhiteSpace(sourceCode))
+        {
+            return false;
+        }
+
+        string normalized = sourceCode.StartsWith("clutter/", StringComparison.OrdinalIgnoreCase)
+            ? sourceCode["clutter/".Length..]
+            : sourceCode;
+
+        return normalized.StartsWith("toy", StringComparison.OrdinalIgnoreCase)
+            || normalized.StartsWith("shelf-toys", StringComparison.OrdinalIgnoreCase)
+            || normalized.Contains("toybox", StringComparison.OrdinalIgnoreCase);
+    }
+
     private static RestorationRule? TryGetCrateJunkRule(string? clutterType)
     {
         if (string.IsNullOrWhiteSpace(clutterType))
@@ -4140,7 +4171,7 @@ MatchedRuleResolved:
                 normalized.Contains("book", StringComparison.OrdinalIgnoreCase)),
             _ when string.Equals(normalized, "bookshelves/lecturn-ruined", StringComparison.OrdinalIgnoreCase) => LecternFamilyRule(
                 RuinedDurabilityCost,
-                "vstemporalreverser:restored-lectern-ruinedwood-{librarymaterial}",
+                "vstemporalreverser:{lecternfamily}-{librarymaterial}",
                 false),
             _ when normalized.StartsWith("bookshelves/lecturn-", StringComparison.OrdinalIgnoreCase) => LecternFamilyRule(
                 DecorativeDurabilityCost(normalized),

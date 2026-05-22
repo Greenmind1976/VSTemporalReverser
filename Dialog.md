@@ -73,6 +73,8 @@ Current status text shown in `Temporal Reading`:
   - Fallback if the block entity cannot be found on the client.
 - `The device cannot find a stable point in this item's timeline.`
   - Shown when the inserted item is not a supported deconstruction candidate.
+- `The device hums at the toy, then thinks better of it. Some little histories are better left unbroken.`
+  - Shown when a `restored-toy-*` item is inserted into the deconstructor.
 - `Its past is too tangled for the device to unwind safely.`
   - Shown when the item category is allowed but no valid deconstruction job can be resolved.
 - `Preparing next item...`
@@ -143,6 +145,8 @@ Messages and trigger conditions:
   - Shown when a restoration rule matches, but the restored stack cannot be created.
 - `The reverser cannot salvage anything useful from this pattern.`
   - Shown when salvage resolves to no output stacks.
+- `The reverser hums at the toy, then thinks better of it. Some little histories are better left unbroken.`
+  - Shown when the handheld reverser is in salvage mode and the target is toy clutter, a toy shelf, or a toybox-style toy source.
 - `Salvaged materials spill free from the unraveling pattern.`
   - Success notification for salvage mode.
 - `The restored item drops free in a usable shape.`

@@ -61,7 +61,8 @@ The deconstructor does not attempt to support every basic conversion recipe such
 - Worn armor is supported.
 - Repair recipes are filtered out so armor does not refund only its repair ingredients.
 - Layered armor refunds are flattened so scale and plate do not kick back intermediate armor pieces.
-- Metal armor salvage is normalized to `ingot-*` and `metalbit-*` outputs instead of chain, scale, plate, or lamella sub-components.
+- When `DeconstructMetalOutputsToIngots` is enabled, metal armor salvage is normalized to `ingot-*` and `metalbit-*` outputs instead of chain, scale, plate, rod, sheet, or lamella sub-components.
+- When `DeconstructMetalOutputsToIngots` is disabled, armor and other supported items return their normal vanilla metal recipe intermediates where available.
 
 ## Current Supported Families
 
@@ -257,10 +258,17 @@ The randomized loot pools behind the crate families are:
   - `/trspawntool game:shovel-steel 300`
   - `/trspawntool game:pickaxe-steel 750`
   - Format: `/trspawntool <itemcode> <remainingdurability>`
+- You can also spawn a randomized reverser clutter batch with:
+  - `/trbatch`
+  - `/trbatch 32`
+  - Format: `/trbatch [count]`
+- You can spawn a batch of low-durability metal tools with:
+  - `/trdtools`
 - `EnableCustomRawMaterialStackSizes` is off by default. This is an opt-in compatibility setting for raising stack sizes on configurable raw materials and common crafting supplies.
+- `DeconstructMetalOutputsToIngots` is on by default. When enabled, supported metal recipe outputs such as plates, chain, rods, scales, lamellae, and sheets are refined into ingots during deconstruction, while nails and strips are still returned as their normal vanilla item.
 - `RawMaterialStackSize` supports `64`, `128`, and `256`. Any other number snaps to the nearest supported value.
 - Changing custom stack sizes requires a reload to fully apply.
-- The custom stack-size pass can cover raw metals, wood basics, raw clay, seeds, flax materials, cloth, leather, hides, dry grass, papyrus, resin, temporal gears, and temporal dust when the toggle is enabled.
+- The custom stack-size pass can cover raw metals, nails and strips, metal sheets, wood basics, raw clay, seeds, flax materials, cloth, leather, hides, glass, parchment, candles, beeswax, dry grass, papyrus, resin, temporal gears, and temporal dust when the toggle is enabled.
 - If `configlib` and your GUI config mod are installed, the config screen is grouped into `Global`, `Rust Ward`, `Wood Restore`, and `Critter Spawns` sections.
 
 ## Layout
