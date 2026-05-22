@@ -160,8 +160,11 @@
     "shellframe": {
       "base": "vstemporalreverser:block/machine/stainless-steel"
     },
-    "progress": {
-      "base": "vstemporalreverser:block/machine/temporalgear_opaque"
+    "progressbg": {
+      "base": "vstemporalreverser:block/machine/stainless-steel"
+    },
+    "progressfill": {
+      "base": "vstemporalreverser:block/machine/progress-fill-0"
     },
     "shellside": {
       "base": "vstemporalreverser:block/machine/device-panel"
@@ -187,9 +190,6 @@
   },
   "texturesByType": {
     "*-idle-*": {
-      "progress": {
-        "base": "vstemporalreverser:block/machine/statictranslocator/statictranslocator_glass_idle"
-      },
       "accessories": {
         "base": "vstemporalreverser:block/machine/statictranslocator/statictranslocator_glass_idle"
       },
@@ -201,33 +201,33 @@
       }
     },
     "*-running0-*": {
-      "progress": {
-        "base": "vstemporalreverser:block/machine/progress-0"
+      "progressfill": {
+        "base": "vstemporalreverser:block/machine/progress-fill-0"
       }
     },
     "*-running20-*": {
-      "progress": {
-        "base": "vstemporalreverser:block/machine/progress-20"
+      "progressfill": {
+        "base": "vstemporalreverser:block/machine/progress-fill-20"
       }
     },
     "*-running40-*": {
-      "progress": {
-        "base": "vstemporalreverser:block/machine/progress-40"
+      "progressfill": {
+        "base": "vstemporalreverser:block/machine/progress-fill-40"
       }
     },
     "*-running60-*": {
-      "progress": {
-        "base": "vstemporalreverser:block/machine/progress-60"
+      "progressfill": {
+        "base": "vstemporalreverser:block/machine/progress-fill-60"
       }
     },
     "*-running80-*": {
-      "progress": {
-        "base": "vstemporalreverser:block/machine/progress-80"
+      "progressfill": {
+        "base": "vstemporalreverser:block/machine/progress-fill-80"
       }
     },
     "*-running100-*": {
-      "progress": {
-        "base": "vstemporalreverser:block/machine/progress-100"
+      "progressfill": {
+        "base": "vstemporalreverser:block/machine/progress-fill-100"
       }
     }
   },

@@ -26,6 +26,7 @@ public class BlockEntityTemporalReconstructionDevice : BlockEntityGenericContain
     private const int VisualPulseIntervalMs = 200;
     private const int SwitchItemPauseDurationMs = 1626;
     private const int ShutdownEffectDurationMs = 7760;
+    private const int CompletionHoldDurationMs = 500;
     private const float MachineLoopBaseVolume = 0.22f;
     private const float MachineLoopFadeDistance = 16f;
     private const float MachineLoopFadeInSeconds = 0.9f;
@@ -678,8 +679,9 @@ public class BlockEntityTemporalReconstructionDevice : BlockEntityGenericContain
             return "-running0-";
         }
 
+        long effectiveCompleteAtMs = Math.Max(repairStartedAtMs + 1, repairCompleteAtMs - CompletionHoldDurationMs);
         double progress = GameMath.Clamp(
-            (Api!.World.ElapsedMilliseconds - repairStartedAtMs) / (double)(repairCompleteAtMs - repairStartedAtMs),
+            (Api!.World.ElapsedMilliseconds - repairStartedAtMs) / (double)(effectiveCompleteAtMs - repairStartedAtMs),
             0d,
             1d);
 
@@ -915,7 +917,7 @@ public class BlockEntityTemporalReconstructionDevice : BlockEntityGenericContain
         temporalStabilityLost = false;
         initialRemainingDurability = repairStack.Collectible.GetRemainingDurability(repairStack);
         initialCondition = repairStack.Attributes.GetFloat("condition", 1f);
-        repairCompleteAtMs = repairStartedAtMs + activeRepairDurationMs;
+        repairCompleteAtMs = repairStartedAtMs + activeRepairDurationMs + CompletionHoldDurationMs;
         suppressInventoryChanged = true;
         try
         {
@@ -1120,7 +1122,7 @@ public class BlockEntityTemporalReconstructionDevice : BlockEntityGenericContain
         if (repairStartedAtMs > now || repairCompleteAtMs > now + Math.Max(activeRepairDurationMs, RepairProgressTickMs))
         {
             repairStartedAtMs = now;
-            repairCompleteAtMs = now + Math.Max(activeRepairDurationMs, RepairProgressTickMs);
+            repairCompleteAtMs = now + Math.Max(activeRepairDurationMs, RepairProgressTickMs) + CompletionHoldDurationMs;
             MarkDirty(true);
         }
 
