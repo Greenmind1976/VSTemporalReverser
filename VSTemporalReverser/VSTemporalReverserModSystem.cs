@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using HarmonyLib;
 using Vintagestory.API.Common;
 using Vintagestory.API.Server;
 
@@ -34,6 +35,41 @@ public class VSTemporalReverserModSystem : ModSystem
         "game:spear-steel",
         "game:scythe-steel",
         "game:prospectingpick-steel"
+    ];
+    private static readonly string[] DebugDurableItemCodes =
+    [
+        "game:axe-copper",
+        "game:pickaxe-tinbronze",
+        "game:hammer-bismuthbronze",
+        "game:saw-blackbronze",
+        "game:shovel-iron",
+        "game:hoe-meteoriciron",
+        "game:knife-steel",
+        "game:spear-copper",
+        "game:scythe-tinbronze",
+        "game:prospectingpick-blackbronze",
+        "game:cleaver-iron",
+        "game:club-copper",
+        "game:chisel-steel",
+        "game:crowbar-iron",
+        "game:bow-crude",
+        "game:bow-simple",
+        "game:bow-long",
+        "game:bow-recurve",
+        "game:sling",
+        "game:axe-steel",
+        "game:pickaxe-meteoriciron",
+        "game:hammer-iron",
+        "game:saw-steel",
+        "game:shovel-copper",
+        "game:hoe-blackbronze",
+        "game:knife-iron",
+        "game:spear-steel",
+        "game:scythe-iron",
+        "game:prospectingpick-steel",
+        "game:cleaver-bismuthbronze",
+        "game:club-iron",
+        "game:chisel-copper"
     ];
     private static readonly string[] DebugReverserClutterTypes =
     [
@@ -149,6 +185,7 @@ public class VSTemporalReverserModSystem : ModSystem
     private Delegate? configLibConfigsLoadedHandler;
     private ICoreServerAPI? sapi;
     private ICoreAPI? coreApi;
+    private Harmony? harmony;
 
     public override void Start(ICoreAPI api)
     {
@@ -159,6 +196,8 @@ public class VSTemporalReverserModSystem : ModSystem
         ApplyConfig(api, Config);
         api.RegisterItemClass("ItemTemporalReverser", typeof(ItemTemporalReverser));
         api.RegisterItemClass("ItemRestoredToy", typeof(ItemRestoredToy));
+        api.RegisterItemClass("ItemBrokenDurableProxy", typeof(ItemBrokenDurableProxy));
+        api.RegisterCollectibleBehaviorClass("BrokenToolBehavior", typeof(BrokenToolBehavior));
         api.RegisterBlockClass("BlockTemporalReconstructionDevice", typeof(BlockTemporalReconstructionDevice));
         api.RegisterBlockClass("BlockTemporalDeconstructorDevice", typeof(BlockTemporalDeconstructorDevice));
         api.RegisterBlockClass("BlockRestoredBed", typeof(BlockRestoredBed));
@@ -167,6 +206,8 @@ public class VSTemporalReverserModSystem : ModSystem
         api.RegisterBlockEntityClass("TemporalReconstructionDevice", typeof(BlockEntityTemporalReconstructionDevice));
         api.RegisterBlockEntityClass("TemporalDeconstructorDevice", typeof(BlockEntityTemporalDeconstructorDevice));
         api.RegisterBlockEntityClass("RestoredBookSurface", typeof(BlockEntityRestoredBookSurface));
+        harmony ??= new Harmony($"{Domain}.runtime");
+        harmony.PatchAll(Assembly.GetExecutingAssembly());
         TrySubscribeToConfigLib(api);
     }
 
@@ -204,6 +245,24 @@ public class VSTemporalReverserModSystem : ModSystem
             "Debug: spawn a batch of damaged metal tools.",
             "/trdtools",
             OnDebugSpawnDamagedToolsCommand,
+            Privilege.controlserver);
+        api.RegisterCommand(
+            "trbatchdur",
+            "Debug: spawn a batch of durable tools and weapons with exact remaining durability.",
+            "/trbatchdur <remainingdurability>",
+            OnDebugSpawnDurabilityBatchCommand,
+            Privilege.controlserver);
+        api.RegisterCommand(
+            "trspawnbroken",
+            "Debug: spawn a worn out version of a supported durable tool or weapon.",
+            "/trspawnbroken <itemcode>",
+            OnDebugSpawnBrokenToolCommand,
+            Privilege.controlserver);
+        api.RegisterCommand(
+            "trbatchbroken",
+            "Debug: spawn a batch of worn out tools and weapons.",
+            "/trbatchbroken",
+            OnDebugSpawnBrokenBatchCommand,
             Privilege.controlserver);
 #pragma warning restore CS0618
     }
@@ -409,6 +468,147 @@ public class VSTemporalReverserModSystem : ModSystem
             $"Spawned {spawnedCount} damaged tools.",
             EnumChatType.CommandSuccess,
             null);
+    }
+
+    private void OnDebugSpawnDurabilityBatchCommand(IServerPlayer player, int groupId, CmdArgs args)
+    {
+        if (!Config.EnableDebugMode)
+        {
+            player.SendMessage(groupId, "Temporal Reverser debug mode is disabled.", EnumChatType.CommandError, null);
+            return;
+        }
+
+        int? requestedDurability = args.PopInt();
+        if (requestedDurability == null || requestedDurability.Value < 0)
+        {
+            player.SendMessage(groupId, "Usage: /trbatchdur <remainingdurability>", EnumChatType.CommandError, null);
+            return;
+        }
+
+        int spawnedCount = 0;
+        foreach (string codeText in DebugDurableItemCodes)
+        {
+            Item? item = sapi?.World.GetItem(new AssetLocation(codeText));
+            if (item == null)
+            {
+                continue;
+            }
+
+            ItemStack stack = new(item);
+            int maxDurability = item.GetMaxDurability(stack);
+            if (maxDurability <= 0)
+            {
+                continue;
+            }
+
+            int remainingDurability = Math.Clamp(requestedDurability.Value, 0, maxDurability);
+            item.SetDurability(stack, remainingDurability);
+
+            bool given = player.InventoryManager.TryGiveItemstack(stack, true);
+            if (!given)
+            {
+                sapi?.World.SpawnItemEntity(stack, player.Entity.Pos.XYZ.AddCopy(0, 0.5, 0));
+            }
+
+            spawnedCount++;
+        }
+
+        player.SendMessage(
+            groupId,
+            $"Spawned {spawnedCount} durable tools and weapons at {requestedDurability.Value} durability (clamped per item max).",
+            EnumChatType.CommandSuccess,
+            null);
+    }
+
+    private void OnDebugSpawnBrokenToolCommand(IServerPlayer player, int groupId, CmdArgs args)
+    {
+        if (!Config.EnableDebugMode)
+        {
+            player.SendMessage(groupId, "Temporal Reverser debug mode is disabled.", EnumChatType.CommandError, null);
+            return;
+        }
+
+        string? codeArg = args.PopWord();
+        if (string.IsNullOrWhiteSpace(codeArg))
+        {
+            player.SendMessage(groupId, "Usage: /trspawnbroken <itemcode>", EnumChatType.CommandError, null);
+            return;
+        }
+
+        AssetLocation code = codeArg.Contains(':')
+            ? new AssetLocation(codeArg)
+            : new AssetLocation("game", codeArg);
+
+        Item? item = sapi?.World.GetItem(code);
+        if (item == null)
+        {
+            player.SendMessage(groupId, $"Item not found: {code}", EnumChatType.CommandError, null);
+            return;
+        }
+
+        ItemStack sourceStack = new(item);
+        if (item.GetMaxDurability(sourceStack) <= 0 || !BrokenToolStackHelper.IsManagedDurable(item))
+        {
+            player.SendMessage(groupId, $"{sourceStack.GetName()} is not a supported breakable tool or weapon.", EnumChatType.CommandError, null);
+            return;
+        }
+
+        if (!BrokenToolStackHelper.TryCreateBrokenProxy(sapi!, sourceStack, out ItemStack? brokenStack) || brokenStack == null)
+        {
+            player.SendMessage(groupId, $"Could not create a worn out proxy for {sourceStack.GetName()}.", EnumChatType.CommandError, null);
+            return;
+        }
+
+        GiveOrSpawnStack(player, brokenStack);
+        player.SendMessage(groupId, $"Spawned worn out {sourceStack.GetName()}.", EnumChatType.CommandSuccess, null);
+    }
+
+    private void OnDebugSpawnBrokenBatchCommand(IServerPlayer player, int groupId, CmdArgs args)
+    {
+        if (!Config.EnableDebugMode)
+        {
+            player.SendMessage(groupId, "Temporal Reverser debug mode is disabled.", EnumChatType.CommandError, null);
+            return;
+        }
+
+        int spawnedCount = 0;
+        foreach (string codeText in DebugDurableItemCodes)
+        {
+            Item? item = sapi?.World.GetItem(new AssetLocation(codeText));
+            if (item == null)
+            {
+                continue;
+            }
+
+            ItemStack sourceStack = new(item);
+            if (item.GetMaxDurability(sourceStack) <= 0 || !BrokenToolStackHelper.IsManagedDurable(item))
+            {
+                continue;
+            }
+
+            if (!BrokenToolStackHelper.TryCreateBrokenProxy(sapi!, sourceStack, out ItemStack? brokenStack) || brokenStack == null)
+            {
+                continue;
+            }
+
+            GiveOrSpawnStack(player, brokenStack);
+            spawnedCount++;
+        }
+
+        player.SendMessage(
+            groupId,
+            $"Spawned {spawnedCount} worn out tools and weapons.",
+            EnumChatType.CommandSuccess,
+            null);
+    }
+
+    private void GiveOrSpawnStack(IServerPlayer player, ItemStack stack)
+    {
+        bool given = player.InventoryManager.TryGiveItemstack(stack, true);
+        if (!given)
+        {
+            sapi?.World.SpawnItemEntity(stack, player.Entity.Pos.XYZ.AddCopy(0, 0.5, 0));
+        }
     }
 
     private void TrySubscribeToConfigLib(ICoreAPI api)

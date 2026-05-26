@@ -4266,12 +4266,16 @@ MatchedRuleResolved:
                 normalized.Contains("evaporating", StringComparison.OrdinalIgnoreCase) ? RuinedDurabilityCost : AgedDurabilityCost,
                 RandomNormalBookItems,
                 3,
-                6),
+                6,
+                rareBonusItems: new[] { "locatormap-treasures" },
+                rareBonusChancePercent: 5),
             _ when normalized.StartsWith("bookshelves/cartography-book-open", StringComparison.OrdinalIgnoreCase) => RandomVanillaItemBundleRule(
                 normalized.Contains("evaporating", StringComparison.OrdinalIgnoreCase) ? RuinedDurabilityCost : AgedDurabilityCost,
                 RandomNormalBookItems,
                 3,
-                6),
+                6,
+                rareBonusItems: new[] { "locatormap-treasures" },
+                rareBonusChancePercent: 5),
             _ when normalized.StartsWith("bookshelves/", StringComparison.OrdinalIgnoreCase) => VanillaAttributedBlockRule(
                 normalized.Contains("ruined", StringComparison.OrdinalIgnoreCase) ? RuinedDurabilityCost : AgedDurabilityCost,
                 normalized.Contains("scrollrack", StringComparison.OrdinalIgnoreCase) ? "game:scrollrack" : "game:bookshelf",
@@ -4301,7 +4305,22 @@ MatchedRuleResolved:
                 "game:bookshelf",
                 "type", "2row1col",
                 "material", "{librarymaterial}"),
+            _ when normalized.StartsWith("bookrow/bookrow15", StringComparison.OrdinalIgnoreCase) => RandomVanillaItemBundleRule(
+                AgedDurabilityCost,
+                RandomNormalBookItems,
+                3,
+                6,
+                rareBonusItems: new[] { "locatormap-treasures" },
+                rareBonusChancePercent: 5),
             _ when normalized.StartsWith("bookrow/bookrow", StringComparison.OrdinalIgnoreCase) => RandomVanillaItemBundleRule(AgedDurabilityCost, RandomNormalBookItems, 3, 6),
+            _ when string.Equals(normalized, "book-big-open", StringComparison.OrdinalIgnoreCase)
+                || string.Equals(normalized, "book-big-open-trader", StringComparison.OrdinalIgnoreCase) => RandomVanillaItemBundleRule(
+                AgedDurabilityCost,
+                RandomNormalBookItems,
+                3,
+                6,
+                rareBonusItems: new[] { "locatormap-treasures" },
+                rareBonusChancePercent: 5),
             _ when normalized.StartsWith("book-big-", StringComparison.OrdinalIgnoreCase) => RandomVanillaItemBundleRule(AgedDurabilityCost, RandomNormalBookItems, 3, 6),
             _ => null
         };
@@ -4785,7 +4804,13 @@ MatchedRuleResolved:
             PrimaryMaxCount: primaryMaxCount);
     }
 
-    private static RestorationRule RandomVanillaItemBundleRule(int durabilityCost, string[] itemCodes, int minCount, int maxCount)
+    private static RestorationRule RandomVanillaItemBundleRule(
+        int durabilityCost,
+        string[] itemCodes,
+        int minCount,
+        int maxCount,
+        string[]? rareBonusItems = null,
+        int rareBonusChancePercent = 0)
     {
         int clampedMin = Math.Max(1, minCount);
         int clampedMax = Math.Max(clampedMin, maxCount);
@@ -4802,6 +4827,8 @@ MatchedRuleResolved:
             BonusMaxCount: Math.Max(0, clampedMax - 1),
             BonusItemMinCount: 1,
             BonusItemMaxCount: 1,
+            RareBonusTargets: rareBonusItems,
+            RareBonusChancePercent: rareBonusChancePercent,
             PrimaryMinCount: 1,
             PrimaryMaxCount: 1);
     }

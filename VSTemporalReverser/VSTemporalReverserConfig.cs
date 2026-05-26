@@ -9,7 +9,7 @@ public sealed class VSTemporalReverserConfig
     public const string FileName = "VSTemporalReverserConfig.json";
     private static readonly int[] AllowedRawMaterialStackSizes = [64, 128, 256];
 
-    public int SchemaVersion { get; set; } = 10;
+    public int SchemaVersion { get; set; } = 11;
 
     public bool Birch { get; set; } = true;
 
@@ -65,11 +65,13 @@ public sealed class VSTemporalReverserConfig
 
     public bool AllowClosedCanopyBedSleepWhenNotTired { get; set; } = true;
 
+    public bool PreserveBrokenToolsAtZeroDurability { get; set; } = true;
+
     public void EnsureDefaults()
     {
-        if (SchemaVersion < 10)
+        if (SchemaVersion < 11)
         {
-            SchemaVersion = 10;
+            SchemaVersion = 11;
         }
 
         RustWardDamage = Math.Clamp(RustWardDamage, 0f, 10f);

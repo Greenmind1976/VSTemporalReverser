@@ -10,9 +10,25 @@ Use it as a practical checklist after behavior, loot, dialog, audio, or block-id
 - [ ] Confirm placed reconstruction and deconstruction devices render correctly.
 - [ ] Confirm device progress bars render correctly when idle and while running.
 - [ ] Confirm the raw-material stack-size config is set to the value you want to test.
+- [ ] If using debug helpers, confirm `EnableDebugMode` is turned on.
 - [ ] Confirm `Deconstruct To Ingots` is tested in both states:
   - [ ] `On`
   - [ ] `Off`
+
+## Debug Helpers
+
+These commands are only available when `EnableDebugMode` is enabled.
+
+- [ ] `/trbatch`
+  - Spawns a randomized unique batch of clutter test items for reverser testing.
+- [ ] `/trbatch 32`
+  - Same as above, but requests a larger batch size.
+- [ ] `/trdtools`
+  - Spawns a batch of damaged metal tools at low durability for restore / deconstructor testing.
+- [ ] `/trspawntool game:shovel-steel 300`
+  - Spawns one exact damaged tool with the requested remaining durability.
+- [ ] `/trspawntool game:pickaxe-steel 750`
+  - Useful for testing a specific tool family or durability breakpoint.
 
 ## Handheld Reverser: Restore Mode
 

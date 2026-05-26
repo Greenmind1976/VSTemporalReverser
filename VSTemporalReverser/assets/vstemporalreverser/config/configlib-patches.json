@@ -1,5 +1,5 @@
 {
-  "version": 11,
+  "version": 12,
   "file": "VSTemporalReverserConfig.json",
   "patches": {},
   "settings": [
@@ -62,6 +62,14 @@
       "type": "boolean",
       "weight": 98.75,
       "comment": "If enabled, restored canopy beds with closed drapes can be used even when the player is not tired. If disabled, they follow normal bed sleep restrictions.",
+      "default": true
+    },
+    {
+      "code": "PreserveBrokenToolsAtZeroDurability",
+      "ingui": "Preserve worn out tools",
+      "type": "boolean",
+      "weight": 98.7,
+      "comment": "If enabled, supported tools stop at 0 durability instead of being destroyed. Worn out tools cannot be used again until restored, which lets the Temporal Reconstruction Device recover them.",
       "default": true
     },
     {
