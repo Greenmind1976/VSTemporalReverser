@@ -1,0 +1,69 @@
+{
+  "editor": { "allAngles": true, "entityTextureMode": false },
+  "textureWidth": 16,
+  "textureHeight": 16,
+  "textures": {
+    "wood": "game:block/wood/debarked/oak",
+    "fiber": "game:item/flaxtwine"
+  },
+  "elements": [
+    {
+      "name": "limb-top",
+      "from": [ 5.4, 1.0, 7.2 ],
+      "to": [ 6.8, 7.8, 8.8 ],
+      "rotationOrigin": [ 6.1, 7.8, 8.0 ],
+      "rotationZ": 22.0,
+      "faces": {
+        "north": { "texture": "#wood", "uv": [ 0, 0, 1.4, 6.8 ] },
+        "east": { "texture": "#wood", "uv": [ 1.6, 0, 3.2, 6.8 ] },
+        "south": { "texture": "#wood", "uv": [ 3.4, 0, 4.8, 6.8 ] },
+        "west": { "texture": "#wood", "uv": [ 5.0, 0, 6.6, 6.8 ] },
+        "up": { "texture": "#wood", "uv": [ 6.8, 0, 8.2, 1.6 ] },
+        "down": { "texture": "#wood", "uv": [ 8.4, 0, 9.8, 1.6 ] }
+      }
+    },
+    {
+      "name": "grip",
+      "from": [ 6.2, 6.2, 7.15 ],
+      "to": [ 7.8, 10.8, 8.85 ],
+      "faces": {
+        "north": { "texture": "#wood", "uv": [ 0, 7, 1.6, 11.6 ] },
+        "east": { "texture": "#wood", "uv": [ 1.8, 7, 3.5, 11.6 ] },
+        "south": { "texture": "#wood", "uv": [ 3.7, 7, 5.3, 11.6 ] },
+        "west": { "texture": "#wood", "uv": [ 5.5, 7, 7.2, 11.6 ] },
+        "up": { "texture": "#wood", "uv": [ 7.4, 7, 9.0, 8.7 ] },
+        "down": { "texture": "#wood", "uv": [ 9.2, 7, 10.8, 8.7 ] }
+      }
+    },
+    {
+      "name": "limb-bottom",
+      "from": [ 7.4, 9.3, 7.2 ],
+      "to": [ 8.8, 15.2, 8.8 ],
+      "rotationOrigin": [ 8.1, 9.3, 8.0 ],
+      "rotationZ": -35.0,
+      "faces": {
+        "north": { "texture": "#wood", "uv": [ 0, 12, 1.4, 17.9 ] },
+        "east": { "texture": "#wood", "uv": [ 1.6, 12, 3.2, 17.9 ] },
+        "south": { "texture": "#wood", "uv": [ 3.4, 12, 4.8, 17.9 ] },
+        "west": { "texture": "#wood", "uv": [ 5.0, 12, 6.6, 17.9 ] },
+        "up": { "texture": "#wood", "uv": [ 6.8, 12, 8.2, 13.6 ] },
+        "down": { "texture": "#wood", "uv": [ 8.4, 12, 9.8, 13.6 ] }
+      }
+    },
+    {
+      "name": "broken-string",
+      "from": [ 6.8, 5.3, 7.8 ],
+      "to": [ 7.1, 11.7, 8.2 ],
+      "rotationOrigin": [ 6.95, 8.5, 8.0 ],
+      "rotationZ": 10.0,
+      "faces": {
+        "north": { "texture": "#fiber", "uv": [ 0, 0, 0.3, 6.4 ] },
+        "east": { "texture": "#fiber", "uv": [ 0.5, 0, 0.9, 6.4 ] },
+        "south": { "texture": "#fiber", "uv": [ 1.1, 0, 1.4, 6.4 ] },
+        "west": { "texture": "#fiber", "uv": [ 1.6, 0, 2.0, 6.4 ] },
+        "up": { "texture": "#fiber", "uv": [ 2.2, 0, 2.5, 0.4 ] },
+        "down": { "texture": "#fiber", "uv": [ 2.7, 0, 3.0, 0.4 ] }
+      }
+    }
+  ]
+}
