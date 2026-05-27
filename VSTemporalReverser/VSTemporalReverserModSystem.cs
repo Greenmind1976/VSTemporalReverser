@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using HarmonyLib;
 using Vintagestory.API.Common;
 using Vintagestory.API.Server;
 
@@ -13,6 +12,7 @@ public class VSTemporalReverserModSystem : ModSystem
     private const string Domain = "vstemporalreverser";
     private const int DefaultDebugBatchCount = 24;
     private const int MaxDebugBatchCount = 48;
+    private static readonly Random DebugRandom = new();
     private static readonly string[] DebugDamagedToolCodes =
     [
         "game:axe-iron",
@@ -22,9 +22,11 @@ public class VSTemporalReverserModSystem : ModSystem
         "game:shovel-iron",
         "game:hoe-iron",
         "game:knife-iron",
-        "game:spear-iron",
+        "game:cleaver-iron",
+        "game:spear-generic-iron",
         "game:scythe-iron",
         "game:prospectingpick-iron",
+        "game:bow-simple",
         "game:axe-steel",
         "game:pickaxe-steel",
         "game:hammer-steel",
@@ -32,44 +34,46 @@ public class VSTemporalReverserModSystem : ModSystem
         "game:shovel-steel",
         "game:hoe-steel",
         "game:knife-steel",
-        "game:spear-steel",
+        "game:cleaver-steel",
+        "game:spear-generic-steel",
         "game:scythe-steel",
         "game:prospectingpick-steel"
     ];
-    private static readonly string[] DebugDurableItemCodes =
+    private static readonly string[] DebugSupportedDurableDeconstructionCodes =
     [
-        "game:axe-copper",
-        "game:pickaxe-tinbronze",
-        "game:hammer-bismuthbronze",
-        "game:saw-blackbronze",
-        "game:shovel-iron",
-        "game:hoe-meteoriciron",
-        "game:knife-steel",
-        "game:spear-copper",
-        "game:scythe-tinbronze",
-        "game:prospectingpick-blackbronze",
-        "game:cleaver-iron",
-        "game:club-copper",
-        "game:chisel-steel",
-        "game:crowbar-iron",
-        "game:bow-crude",
-        "game:bow-simple",
-        "game:bow-long",
-        "game:bow-recurve",
-        "game:sling",
-        "game:axe-steel",
-        "game:pickaxe-meteoriciron",
+        "game:axe-iron",
+        "game:pickaxe-iron",
         "game:hammer-iron",
-        "game:saw-steel",
-        "game:shovel-copper",
-        "game:hoe-blackbronze",
+        "game:saw-iron",
+        "game:shovel-iron",
+        "game:hoe-iron",
         "game:knife-iron",
-        "game:spear-steel",
+        "game:cleaver-iron",
+        "game:spear-generic-iron",
         "game:scythe-iron",
+        "game:prospectingpick-iron",
+        "game:chisel-iron",
+        "game:crowbar-iron",
+        "game:shears-iron",
+        "game:wrench-iron",
+        "game:tongsmetal-standard-iron",
+        "game:axe-steel",
+        "game:pickaxe-steel",
+        "game:hammer-steel",
+        "game:saw-steel",
+        "game:shovel-steel",
+        "game:hoe-steel",
+        "game:knife-steel",
+        "game:cleaver-steel",
+        "game:spear-generic-steel",
+        "game:scythe-steel",
         "game:prospectingpick-steel",
-        "game:cleaver-bismuthbronze",
-        "game:club-iron",
-        "game:chisel-copper"
+        "game:chisel-steel",
+        "game:crowbar-steel",
+        "game:shears-steel",
+        "game:wrench-steel",
+        "game:tongsmetal-standard-steel",
+        "game:solderingiron"
     ];
     private static readonly string[] DebugReverserClutterTypes =
     [
@@ -161,8 +165,8 @@ public class VSTemporalReverserModSystem : ModSystem
         "glass-"
     ];
 
-    private static readonly string[] RawMaterialItemExactCodes =
-    [
+    private static readonly HashSet<string> RawMaterialItemExactCodes = new(StringComparer.OrdinalIgnoreCase)
+    {
         "stick",
         "firewood",
         "firewood-aged",
@@ -177,7 +181,7 @@ public class VSTemporalReverserModSystem : ModSystem
         "beeswax",
         "gear-temporal",
         "temporal-dust"
-    ];
+    };
     public static VSTemporalReverserConfig Config { get; private set; } = new();
     private object? configLibModSystem;
     private bool configLibSubscribed;
@@ -185,8 +189,6 @@ public class VSTemporalReverserModSystem : ModSystem
     private Delegate? configLibConfigsLoadedHandler;
     private ICoreServerAPI? sapi;
     private ICoreAPI? coreApi;
-    private Harmony? harmony;
-
     public override void Start(ICoreAPI api)
     {
         base.Start(api);
@@ -196,18 +198,17 @@ public class VSTemporalReverserModSystem : ModSystem
         ApplyConfig(api, Config);
         api.RegisterItemClass("ItemTemporalReverser", typeof(ItemTemporalReverser));
         api.RegisterItemClass("ItemRestoredToy", typeof(ItemRestoredToy));
-        api.RegisterItemClass("ItemBrokenDurableProxy", typeof(ItemBrokenDurableProxy));
-        api.RegisterCollectibleBehaviorClass("BrokenToolBehavior", typeof(BrokenToolBehavior));
         api.RegisterBlockClass("BlockTemporalReconstructionDevice", typeof(BlockTemporalReconstructionDevice));
         api.RegisterBlockClass("BlockTemporalDeconstructorDevice", typeof(BlockTemporalDeconstructorDevice));
+        api.RegisterBlockClass("BlockTemporalDisposalUnit", typeof(BlockTemporalDisposalUnit));
         api.RegisterBlockClass("BlockRestoredBed", typeof(BlockRestoredBed));
         api.RegisterBlockClass("BlockRestoredCanopyBed", typeof(BlockRestoredCanopyBed));
         api.RegisterBlockClass("BlockRestoredBookSurface", typeof(BlockRestoredBookSurface));
+        api.RegisterBlockClass("BlockRestoredTorchHolder", typeof(BlockRestoredTorchHolder));
         api.RegisterBlockEntityClass("TemporalReconstructionDevice", typeof(BlockEntityTemporalReconstructionDevice));
         api.RegisterBlockEntityClass("TemporalDeconstructorDevice", typeof(BlockEntityTemporalDeconstructorDevice));
+        api.RegisterBlockEntityClass("TemporalDisposalUnit", typeof(BlockEntityTemporalDisposalUnit));
         api.RegisterBlockEntityClass("RestoredBookSurface", typeof(BlockEntityRestoredBookSurface));
-        harmony ??= new Harmony($"{Domain}.runtime");
-        harmony.PatchAll(Assembly.GetExecutingAssembly());
         TrySubscribeToConfigLib(api);
     }
 
@@ -248,21 +249,15 @@ public class VSTemporalReverserModSystem : ModSystem
             Privilege.controlserver);
         api.RegisterCommand(
             "trbatchdur",
-            "Debug: spawn a batch of durable tools and weapons with exact remaining durability.",
-            "/trbatchdur <remainingdurability>",
-            OnDebugSpawnDurabilityBatchCommand,
+            "Debug: spawn a batch of tools and weapons with exact remaining durability.",
+            "/trbatchdur [remainingdurability]",
+            OnDebugSpawnBatchDurabilityCommand,
             Privilege.controlserver);
         api.RegisterCommand(
-            "trspawnbroken",
-            "Debug: spawn a worn out version of a supported durable tool or weapon.",
-            "/trspawnbroken <itemcode>",
-            OnDebugSpawnBrokenToolCommand,
-            Privilege.controlserver);
-        api.RegisterCommand(
-            "trbatchbroken",
-            "Debug: spawn a batch of worn out tools and weapons.",
-            "/trbatchbroken",
-            OnDebugSpawnBrokenBatchCommand,
+            "trbatchsupported",
+            "Debug: spawn a randomized batch of supported durable deconstruction items.",
+            "/trbatchsupported [count] [remainingdurability]",
+            OnDebugSpawnSupportedBatchCommand,
             Privilege.controlserver);
 #pragma warning restore CS0618
     }
@@ -322,12 +317,24 @@ public class VSTemporalReverserModSystem : ModSystem
                 continue;
             }
 
-            if (RawMaterialItemExactCodes.Contains(path, StringComparer.OrdinalIgnoreCase)
-                || RawMaterialItemPrefixes.Any(prefix => path.StartsWith(prefix, StringComparison.OrdinalIgnoreCase)))
+            if (RawMaterialItemExactCodes.Contains(path) || HasRawMaterialPrefix(path))
             {
                 item.MaxStackSize = configuredSize;
             }
         }
+    }
+
+    private static bool HasRawMaterialPrefix(string path)
+    {
+        for (int i = 0; i < RawMaterialItemPrefixes.Length; i++)
+        {
+            if (path.StartsWith(RawMaterialItemPrefixes[i], StringComparison.OrdinalIgnoreCase))
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private void OnDebugSpawnToolCommand(IServerPlayer player, int groupId, CmdArgs args)
@@ -470,7 +477,7 @@ public class VSTemporalReverserModSystem : ModSystem
             null);
     }
 
-    private void OnDebugSpawnDurabilityBatchCommand(IServerPlayer player, int groupId, CmdArgs args)
+    private void OnDebugSpawnBatchDurabilityCommand(IServerPlayer player, int groupId, CmdArgs args)
     {
         if (!Config.EnableDebugMode)
         {
@@ -478,15 +485,10 @@ public class VSTemporalReverserModSystem : ModSystem
             return;
         }
 
-        int? requestedDurability = args.PopInt();
-        if (requestedDurability == null || requestedDurability.Value < 0)
-        {
-            player.SendMessage(groupId, "Usage: /trbatchdur <remainingdurability>", EnumChatType.CommandError, null);
-            return;
-        }
-
+        int requestedRemainingDurability = args.PopInt() ?? 1;
         int spawnedCount = 0;
-        foreach (string codeText in DebugDurableItemCodes)
+
+        foreach (string codeText in DebugDamagedToolCodes)
         {
             Item? item = sapi?.World.GetItem(new AssetLocation(codeText));
             if (item == null)
@@ -501,7 +503,7 @@ public class VSTemporalReverserModSystem : ModSystem
                 continue;
             }
 
-            int remainingDurability = Math.Clamp(requestedDurability.Value, 0, maxDurability);
+            int remainingDurability = Math.Clamp(requestedRemainingDurability, 1, maxDurability);
             item.SetDurability(stack, remainingDurability);
 
             bool given = player.InventoryManager.TryGiveItemstack(stack, true);
@@ -515,12 +517,12 @@ public class VSTemporalReverserModSystem : ModSystem
 
         player.SendMessage(
             groupId,
-            $"Spawned {spawnedCount} durable tools and weapons at {requestedDurability.Value} durability (clamped per item max).",
+            $"Spawned {spawnedCount} tools and weapons with {requestedRemainingDurability} durability.",
             EnumChatType.CommandSuccess,
             null);
     }
 
-    private void OnDebugSpawnBrokenToolCommand(IServerPlayer player, int groupId, CmdArgs args)
+    private void OnDebugSpawnSupportedBatchCommand(IServerPlayer player, int groupId, CmdArgs args)
     {
         if (!Config.EnableDebugMode)
         {
@@ -528,51 +530,14 @@ public class VSTemporalReverserModSystem : ModSystem
             return;
         }
 
-        string? codeArg = args.PopWord();
-        if (string.IsNullOrWhiteSpace(codeArg))
-        {
-            player.SendMessage(groupId, "Usage: /trspawnbroken <itemcode>", EnumChatType.CommandError, null);
-            return;
-        }
-
-        AssetLocation code = codeArg.Contains(':')
-            ? new AssetLocation(codeArg)
-            : new AssetLocation("game", codeArg);
-
-        Item? item = sapi?.World.GetItem(code);
-        if (item == null)
-        {
-            player.SendMessage(groupId, $"Item not found: {code}", EnumChatType.CommandError, null);
-            return;
-        }
-
-        ItemStack sourceStack = new(item);
-        if (item.GetMaxDurability(sourceStack) <= 0 || !BrokenToolStackHelper.IsManagedDurable(item))
-        {
-            player.SendMessage(groupId, $"{sourceStack.GetName()} is not a supported breakable tool or weapon.", EnumChatType.CommandError, null);
-            return;
-        }
-
-        if (!BrokenToolStackHelper.TryCreateBrokenProxy(sapi!, sourceStack, out ItemStack? brokenStack) || brokenStack == null)
-        {
-            player.SendMessage(groupId, $"Could not create a worn out proxy for {sourceStack.GetName()}.", EnumChatType.CommandError, null);
-            return;
-        }
-
-        GiveOrSpawnStack(player, brokenStack);
-        player.SendMessage(groupId, $"Spawned worn out {sourceStack.GetName()}.", EnumChatType.CommandSuccess, null);
-    }
-
-    private void OnDebugSpawnBrokenBatchCommand(IServerPlayer player, int groupId, CmdArgs args)
-    {
-        if (!Config.EnableDebugMode)
-        {
-            player.SendMessage(groupId, "Temporal Reverser debug mode is disabled.", EnumChatType.CommandError, null);
-            return;
-        }
+        int requestedCount = args.PopInt() ?? 12;
+        int? requestedRemainingDurability = args.PopInt();
+        List<string> availableCodes = GetAvailableDebugItemCodes(DebugSupportedDurableDeconstructionCodes);
+        int batchCount = Math.Clamp(requestedCount, 1, Math.Min(MaxDebugBatchCount, availableCodes.Count));
+        string[] selection = GetRandomSelection([.. availableCodes], batchCount);
 
         int spawnedCount = 0;
-        foreach (string codeText in DebugDurableItemCodes)
+        foreach (string codeText in selection)
         {
             Item? item = sapi?.World.GetItem(new AssetLocation(codeText));
             if (item == null)
@@ -580,35 +545,61 @@ public class VSTemporalReverserModSystem : ModSystem
                 continue;
             }
 
-            ItemStack sourceStack = new(item);
-            if (item.GetMaxDurability(sourceStack) <= 0 || !BrokenToolStackHelper.IsManagedDurable(item))
+            ItemStack stack = new(item);
+            int maxDurability = item.GetMaxDurability(stack);
+            if (maxDurability > 0 && requestedRemainingDurability.HasValue)
             {
-                continue;
+                int remainingDurability = Math.Clamp(requestedRemainingDurability.Value, 1, maxDurability);
+                item.SetDurability(stack, remainingDurability);
             }
 
-            if (!BrokenToolStackHelper.TryCreateBrokenProxy(sapi!, sourceStack, out ItemStack? brokenStack) || brokenStack == null)
+            bool given = player.InventoryManager.TryGiveItemstack(stack, true);
+            if (!given)
             {
-                continue;
+                sapi?.World.SpawnItemEntity(stack, player.Entity.Pos.XYZ.AddCopy(0, 0.5, 0));
             }
 
-            GiveOrSpawnStack(player, brokenStack);
             spawnedCount++;
         }
 
+        string durabilitySuffix = requestedRemainingDurability.HasValue
+            ? $" at {requestedRemainingDurability.Value} durability"
+            : string.Empty;
+
         player.SendMessage(
             groupId,
-            $"Spawned {spawnedCount} worn out tools and weapons.",
+            $"Spawned {spawnedCount} randomized supported deconstruction items{durabilitySuffix}.",
             EnumChatType.CommandSuccess,
             null);
     }
 
-    private void GiveOrSpawnStack(IServerPlayer player, ItemStack stack)
+    private static string[] GetRandomSelection(string[] source, int count)
     {
-        bool given = player.InventoryManager.TryGiveItemstack(stack, true);
-        if (!given)
+        string[] copy = (string[])source.Clone();
+        int limit = Math.Min(count, copy.Length);
+
+        for (int i = 0; i < limit; i++)
         {
-            sapi?.World.SpawnItemEntity(stack, player.Entity.Pos.XYZ.AddCopy(0, 0.5, 0));
+            int swapIndex = DebugRandom.Next(i, copy.Length);
+            (copy[i], copy[swapIndex]) = (copy[swapIndex], copy[i]);
         }
+
+        return copy.Take(limit).ToArray();
+    }
+
+    private List<string> GetAvailableDebugItemCodes(IEnumerable<string> codes)
+    {
+        List<string> available = [];
+
+        foreach (string codeText in codes)
+        {
+            if (sapi?.World.GetItem(new AssetLocation(codeText)) != null)
+            {
+                available.Add(codeText);
+            }
+        }
+
+        return available;
     }
 
     private void TrySubscribeToConfigLib(ICoreAPI api)
@@ -651,14 +642,7 @@ public class VSTemporalReverserModSystem : ModSystem
     {
         if (!string.Equals(domain, Domain, StringComparison.OrdinalIgnoreCase)) return;
 
-        try
-        {
-            MethodInfo? assign = setting.GetType().GetMethod("AssignSettingValue", [typeof(object)]);
-            assign?.Invoke(setting, [Config]);
-        }
-        catch
-        {
-        }
+        SyncConfigFromConfigLib();
 
         Config.EnsureDefaults();
         if (coreApi != null)
@@ -670,6 +654,18 @@ public class VSTemporalReverserModSystem : ModSystem
 #pragma warning restore IDE0060
 
     private void OnConfigLibConfigsLoaded()
+    {
+        SyncConfigFromConfigLib();
+
+        Config.EnsureDefaults();
+        if (coreApi != null)
+        {
+            ApplyConfig(coreApi, Config);
+            RefreshConfigDrivenStackSizes(coreApi);
+        }
+    }
+
+    private void SyncConfigFromConfigLib()
     {
         try
         {
@@ -685,13 +681,6 @@ public class VSTemporalReverserModSystem : ModSystem
         }
         catch
         {
-        }
-
-        Config.EnsureDefaults();
-        if (coreApi != null)
-        {
-            ApplyConfig(coreApi, Config);
-            RefreshConfigDrivenStackSizes(coreApi);
         }
     }
 }

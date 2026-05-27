@@ -1,0 +1,98 @@
+{
+  "code": "temporaldisposalunit",
+  "class": "BlockTemporalDisposalUnit",
+  "entityClass": "TemporalDisposalUnit",
+  "behaviors": [
+    {
+      "name": "Lockable"
+    },
+    {
+      "name": "Container"
+    },
+    {
+      "name": "HorizontalOrientable",
+      "properties": {
+        "dropBlockFace": "east"
+      }
+    }
+  ],
+  "drawtype": "json",
+  "variantgroups": [
+    {
+      "code": "state",
+      "states": [
+        "idle",
+        "running"
+      ]
+    },
+    {
+      "code": "side",
+      "loadFromProperties": "abstract/horizontalorientation"
+    }
+  ],
+  "attributes": {
+    "reinforcable": true,
+    "height": 0.5,
+    "inventoryClassName": "temporaldisposalunit",
+    "quantitySlots": 9,
+    "dialogTitleLangCode": "vstemporalreverser:temporaldisposalunit",
+    "variantByGroup": "side",
+    "variantByGroupInventory": null
+  },
+  "shapeInventoryByType": {
+    "*": {
+      "base": "game:block/wood/chest/normal",
+      "rotateY": 270
+    }
+  },
+  "shapeByType": {
+    "*-idle-north": { "base": "vstemporalreverser:block/machine/temporal-reconstruction-device-running", "rotateY": 0 },
+    "*-idle-east": { "base": "vstemporalreverser:block/machine/temporal-reconstruction-device-running", "rotateY": 270 },
+    "*-idle-south": { "base": "vstemporalreverser:block/machine/temporal-reconstruction-device-running", "rotateY": 180 },
+    "*-idle-west": { "base": "vstemporalreverser:block/machine/temporal-reconstruction-device-running", "rotateY": 90 },
+    "*-running-north": { "base": "vstemporalreverser:block/machine/temporal-reconstruction-device-running", "rotateY": 0 },
+    "*-running-east": { "base": "vstemporalreverser:block/machine/temporal-reconstruction-device-running", "rotateY": 270 },
+    "*-running-south": { "base": "vstemporalreverser:block/machine/temporal-reconstruction-device-running", "rotateY": 180 },
+    "*-running-west": { "base": "vstemporalreverser:block/machine/temporal-reconstruction-device-running", "rotateY": 90 }
+  },
+  "textures": {
+    "shellframe": { "base": "vstemporalreverser:block/machine/stainless-steel" },
+    "progressbg": { "base": "vstemporalreverser:block/machine/stainless-steel" },
+    "progressfill": { "base": "vstemporalreverser:block/machine/progress-fill-0" },
+    "shellside": { "base": "vstemporalreverser:block/machine/device-panel" },
+    "sides2": { "base": "vstemporalreverser:block/metal/sheet/cupronickel1" },
+    "lid": { "base": "vstemporalreverser:block/metal/sheet/cupronickel1" },
+    "accessories": { "base": "vstemporalreverser:block/machine/statictranslocator/statictranslocator_glass_idle" },
+    "gear": { "base": "vstemporalreverser:block/machine/statictranslocator/statictranslocator_glass_idle" },
+    "housing": { "base": "vstemporalreverser:block/metal/sheet/cupronickel1" },
+    "panelicon": { "base": "vstemporalreverser:block/machine/disposal-panel-idle" }
+  },
+  "creativeinventory": {
+    "general": [
+      "*-idle-east"
+    ]
+  },
+  "texturesByType": {
+    "*-running-*": {
+      "accessories": { "base": "vstemporalreverser:block/machine/temporalgear_opaque" },
+      "gear": { "base": "vstemporalreverser:block/machine/temporalgear_opaque" },
+      "panelicon": { "base": "vstemporalreverser:block/machine/disposal-panel-running" }
+    }
+  },
+  "lightHsvByType": {
+    "*-running-*": [32, 3, 15]
+  },
+  "maxStackSize": 8,
+  "lightAbsorption": 0,
+  "sideAo": {
+    "all": false
+  },
+  "sidesolid": {
+    "all": false
+  },
+  "sideopaque": {
+    "all": false
+  },
+  "blockmaterial": "metal",
+  "resistance": 2
+}

@@ -16,6 +16,7 @@ namespace VSTemporalReverser;
 
 public class BlockEntityTemporalDeconstructorDevice : BlockEntityGenericContainer
 {
+    private static readonly string[] RunningVisualStates = ["-running-", "-running0-", "-running20-", "-running40-", "-running60-", "-running80-", "-running100-"];
     private const int InputSlotCount = 8;
     private const int FuelSlotId = 8;
     private const int OutputSlotStart = 9;
@@ -593,7 +594,6 @@ public class BlockEntityTemporalDeconstructorDevice : BlockEntityGenericContaine
         }
 
         string updatedPath = ReplaceVisualStateSegment(currentPath, desiredSegment);
-
         Block? targetBlock = Api.World.GetBlock(new AssetLocation(Block.Code.Domain, updatedPath));
         if (targetBlock == null || targetBlock.Id == Block.Id)
         {
@@ -627,8 +627,7 @@ public class BlockEntityTemporalDeconstructorDevice : BlockEntityGenericContaine
     private static string ReplaceVisualStateSegment(string path, string desiredSegment)
     {
         string updated = path.Replace("-idle-", desiredSegment, StringComparison.OrdinalIgnoreCase);
-        string[] runningStates = ["-running-", "-running0-", "-running20-", "-running40-", "-running60-", "-running80-", "-running100-"];
-        foreach (string state in runningStates)
+        foreach (string state in RunningVisualStates)
         {
             updated = updated.Replace(state, desiredSegment, StringComparison.OrdinalIgnoreCase);
         }
@@ -1335,18 +1334,39 @@ public class BlockEntityTemporalDeconstructorDevice : BlockEntityGenericContaine
         job = null;
 
         string path = stack.Collectible?.Code?.Path ?? string.Empty;
-        if (string.IsNullOrWhiteSpace(path)
-            || !IsMetalToolCandidatePath(path)
-            || !TryExtractKnownMetalFromPath(path, out string? metal))
+        if (string.IsNullOrWhiteSpace(path))
         {
             return false;
         }
 
         List<ItemStack> outputs = [];
-        if (!AddOutputByCode(outputs, $"ingot-{metal}", 1)
-            || !AddOutputByCode(outputs, "stick", 1))
+
+        if (path.Equals("solderingiron", StringComparison.OrdinalIgnoreCase))
         {
-            return false;
+            if (!AddOutputByCode(outputs, "ingot-copper", 1)
+                || !AddOutputByCode(outputs, "stick", 1))
+            {
+                return false;
+            }
+        }
+        else
+        {
+            if (!IsMetalToolCandidatePath(path)
+                || !TryExtractKnownMetalFromPath(path, out string? metal))
+            {
+                return false;
+            }
+
+            if (!AddOutputByCode(outputs, $"ingot-{metal}", 1))
+            {
+                return false;
+            }
+
+            if (RequiresStickHandledToolOutput(path)
+                && !AddOutputByCode(outputs, "stick", 1))
+            {
+                return false;
+            }
         }
 
         job = new DeconstructionJob
@@ -1357,6 +1377,36 @@ public class BlockEntityTemporalDeconstructorDevice : BlockEntityGenericContaine
         };
 
         return true;
+    }
+
+    private static bool RequiresStickHandledToolOutput(string path)
+    {
+        return path.StartsWith("axe-", StringComparison.OrdinalIgnoreCase)
+            || path.StartsWith("pickaxe-", StringComparison.OrdinalIgnoreCase)
+            || path.StartsWith("hammer-", StringComparison.OrdinalIgnoreCase)
+            || path.StartsWith("saw-", StringComparison.OrdinalIgnoreCase)
+            || path.StartsWith("shovel-", StringComparison.OrdinalIgnoreCase)
+            || path.StartsWith("hoe-", StringComparison.OrdinalIgnoreCase)
+            || path.StartsWith("knife-", StringComparison.OrdinalIgnoreCase)
+            || path.StartsWith("cleaver-", StringComparison.OrdinalIgnoreCase)
+            || path.StartsWith("spear-", StringComparison.OrdinalIgnoreCase)
+            || path.StartsWith("scythe-", StringComparison.OrdinalIgnoreCase)
+            || path.StartsWith("prospectingpick-", StringComparison.OrdinalIgnoreCase);
+    }
+
+    private static bool IsMetalOnlyDurableToolCandidatePath(string path)
+    {
+        return path.StartsWith("chisel-", StringComparison.OrdinalIgnoreCase)
+            || path.StartsWith("crowbar-", StringComparison.OrdinalIgnoreCase)
+            || path.StartsWith("shears-", StringComparison.OrdinalIgnoreCase)
+            || path.StartsWith("wrench-", StringComparison.OrdinalIgnoreCase)
+            || path.StartsWith("tongsmetal-", StringComparison.OrdinalIgnoreCase);
+    }
+
+    private static bool IsMetalToolCandidatePath(string path)
+    {
+        return RequiresStickHandledToolOutput(path)
+            || IsMetalOnlyDurableToolCandidatePath(path);
     }
 
     private bool TryResolveHelveHammerHeadDeconstructionJob(ItemStack stack, out DeconstructionJob? job)
@@ -1412,20 +1462,6 @@ public class BlockEntityTemporalDeconstructorDevice : BlockEntityGenericContaine
         };
 
         return true;
-    }
-
-    private static bool IsMetalToolCandidatePath(string path)
-    {
-        return path.StartsWith("axe-", StringComparison.OrdinalIgnoreCase)
-            || path.StartsWith("pickaxe-", StringComparison.OrdinalIgnoreCase)
-            || path.StartsWith("hammer-", StringComparison.OrdinalIgnoreCase)
-            || path.StartsWith("saw-", StringComparison.OrdinalIgnoreCase)
-            || path.StartsWith("shovel-", StringComparison.OrdinalIgnoreCase)
-            || path.StartsWith("hoe-", StringComparison.OrdinalIgnoreCase)
-            || path.StartsWith("knife-", StringComparison.OrdinalIgnoreCase)
-            || path.StartsWith("spear-", StringComparison.OrdinalIgnoreCase)
-            || path.StartsWith("scythe-", StringComparison.OrdinalIgnoreCase)
-            || path.StartsWith("prospectingpick-", StringComparison.OrdinalIgnoreCase);
     }
 
     private static bool IsFiredPotteryCandidatePath(string path)
@@ -1533,7 +1569,8 @@ public class BlockEntityTemporalDeconstructorDevice : BlockEntityGenericContaine
     private static bool IsRestoredSalvageDeconstructionCandidate(ItemStack stack)
     {
         string path = stack.Collectible?.Code?.Path ?? string.Empty;
-        return path.StartsWith("restored-brazier-", StringComparison.OrdinalIgnoreCase)
+        return path.StartsWith("torchholder-", StringComparison.OrdinalIgnoreCase)
+            || path.StartsWith("restored-brazier-", StringComparison.OrdinalIgnoreCase)
             || path.StartsWith("restored-normal-brazier-", StringComparison.OrdinalIgnoreCase)
             || path.StartsWith("restored-dim-brazier-", StringComparison.OrdinalIgnoreCase)
             || path.StartsWith("restored-chandelier-", StringComparison.OrdinalIgnoreCase)
@@ -1588,12 +1625,18 @@ public class BlockEntityTemporalDeconstructorDevice : BlockEntityGenericContaine
         }
 
         int ingotCount;
+        int metalPlateCount = 0;
         int mordantClothCount = 0;
 
         if (path.StartsWith("restored-chair-metal-", StringComparison.OrdinalIgnoreCase))
         {
             ingotCount = 3;
             mordantClothCount = 3;
+        }
+        else if (path.StartsWith("torchholder-", StringComparison.OrdinalIgnoreCase))
+        {
+            ingotCount = 0;
+            metalPlateCount = 1;
         }
         else if (path.StartsWith("restored-metal-table-", StringComparison.OrdinalIgnoreCase))
         {
@@ -1615,13 +1658,40 @@ public class BlockEntityTemporalDeconstructorDevice : BlockEntityGenericContaine
         }
 
         List<ItemStack> outputs = [];
-        CollectibleObject? ingotCollectible = Api?.World.GetItem(new AssetLocation("game", $"ingot-{metal}"));
-        if (ingotCollectible == null)
+        if (ingotCount > 0)
         {
-            return false;
+            CollectibleObject? ingotCollectible = Api?.World.GetItem(new AssetLocation("game", $"ingot-{metal}"));
+            if (ingotCollectible == null)
+            {
+                return false;
+            }
+
+            outputs.Add(new ItemStack(ingotCollectible) { StackSize = ingotCount });
         }
 
-        outputs.Add(new ItemStack(ingotCollectible) { StackSize = ingotCount });
+        if (metalPlateCount > 0)
+        {
+            if (VSTemporalReverserModSystem.Config.DeconstructMetalOutputsToIngots)
+            {
+                CollectibleObject? ingotCollectible = Api?.World.GetItem(new AssetLocation("game", $"ingot-{metal}"));
+                if (ingotCollectible == null)
+                {
+                    return false;
+                }
+
+                outputs.Add(new ItemStack(ingotCollectible) { StackSize = metalPlateCount * 2 });
+            }
+            else
+            {
+                CollectibleObject? metalPlateCollectible = Api?.World.GetItem(new AssetLocation("game", $"metalplate-{metal}"));
+                if (metalPlateCollectible == null)
+                {
+                    return false;
+                }
+
+                outputs.Add(new ItemStack(metalPlateCollectible) { StackSize = metalPlateCount });
+            }
+        }
 
         if (mordantClothCount > 0 && Api?.World.GetItem(ToGameAssetLocation("cloth-mordant")) is CollectibleObject clothCollectible)
         {
@@ -3133,9 +3203,15 @@ public class BlockEntityTemporalDeconstructorDevice : BlockEntityGenericContaine
             "shovel-",
             "hoe-",
             "knife-",
+            "cleaver-",
             "spear-",
             "scythe-",
             "prospectingpick-",
+            "chisel-",
+            "crowbar-",
+            "shears-",
+            "wrench-",
+            "tongsmetal-",
 
             // Fired pottery
             "bowl-",
@@ -3195,7 +3271,8 @@ public class BlockEntityTemporalDeconstructorDevice : BlockEntityGenericContaine
             "backpack-sturdy",
             "hunterbackpack",
             "miningbag",
-            "miningbagsturdy"
+            "miningbagsturdy",
+            "solderingiron"
         };
     }
 
