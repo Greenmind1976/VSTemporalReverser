@@ -1,5 +1,5 @@
 {
-  "code": "temporal-deconstructor-device",
+  "code": "temporaldeconstructordevice",
   "class": "BlockTemporalDeconstructorDevice",
   "entityClass": "TemporalDeconstructorDevice",
   "behaviors": [
@@ -8,6 +8,12 @@
     },
     {
       "name": "Container"
+    },
+    {
+      "name": "HorizontalOrientable",
+      "properties": {
+        "dropBlockFace": "east"
+      }
     }
   ],
   "drawtype": "json",
@@ -34,7 +40,9 @@
     "height": 0.5,
     "inventoryClassName": "temporaldeconstructordevice",
     "quantitySlots": 21,
-    "dialogTitleLangCode": "vstemporalreverser:temporaldeconstructordevice"
+    "dialogTitleLangCode": "vstemporalreverser:temporaldeconstructordevice",
+    "variantByGroup": "side",
+    "variantByGroupInventory": null
   },
   "shapeInventoryByType": {
     "*": {
@@ -45,115 +53,109 @@
   "shapeByType": {
     "*-idle-north": {
       "base": "vstemporalreverser:block/machine/temporal-reconstruction-device-running",
-      "rotateY": 90
+      "rotateY": 0
     },
     "*-idle-east": {
       "base": "vstemporalreverser:block/machine/temporal-reconstruction-device-running",
-      "rotateY": 0
+      "rotateY": 270
     },
     "*-idle-south": {
       "base": "vstemporalreverser:block/machine/temporal-reconstruction-device-running",
-      "rotateY": 270
+      "rotateY": 180
     },
     "*-idle-west": {
       "base": "vstemporalreverser:block/machine/temporal-reconstruction-device-running",
-      "rotateY": 180
+      "rotateY": 90
     },
     "*-running0-north": {
-      "base": "vstemporalreverser:block/machine/temporal-reconstruction-device-running",
-      "rotateY": 90
+      "base": "vstemporalreverser:block/machine/temporal-reconstruction-device-running"
     },
     "*-running0-east": {
       "base": "vstemporalreverser:block/machine/temporal-reconstruction-device-running",
-      "rotateY": 0
+      "rotateY": 270
     },
     "*-running0-south": {
       "base": "vstemporalreverser:block/machine/temporal-reconstruction-device-running",
-      "rotateY": 270
+      "rotateY": 180
     },
     "*-running0-west": {
       "base": "vstemporalreverser:block/machine/temporal-reconstruction-device-running",
-      "rotateY": 180
+      "rotateY": 90
     },
     "*-running20-north": {
-      "base": "vstemporalreverser:block/machine/temporal-reconstruction-device-running",
-      "rotateY": 90
+      "base": "vstemporalreverser:block/machine/temporal-reconstruction-device-running"
     },
     "*-running20-east": {
       "base": "vstemporalreverser:block/machine/temporal-reconstruction-device-running",
-      "rotateY": 0
+      "rotateY": 270
     },
     "*-running20-south": {
       "base": "vstemporalreverser:block/machine/temporal-reconstruction-device-running",
-      "rotateY": 270
+      "rotateY": 180
     },
     "*-running20-west": {
       "base": "vstemporalreverser:block/machine/temporal-reconstruction-device-running",
-      "rotateY": 180
+      "rotateY": 90
     },
     "*-running40-north": {
-      "base": "vstemporalreverser:block/machine/temporal-reconstruction-device-running",
-      "rotateY": 90
+      "base": "vstemporalreverser:block/machine/temporal-reconstruction-device-running"
     },
     "*-running40-east": {
       "base": "vstemporalreverser:block/machine/temporal-reconstruction-device-running",
-      "rotateY": 0
+      "rotateY": 270
     },
     "*-running40-south": {
       "base": "vstemporalreverser:block/machine/temporal-reconstruction-device-running",
-      "rotateY": 270
+      "rotateY": 180
     },
     "*-running40-west": {
       "base": "vstemporalreverser:block/machine/temporal-reconstruction-device-running",
-      "rotateY": 180
+      "rotateY": 90
     },
     "*-running60-north": {
-      "base": "vstemporalreverser:block/machine/temporal-reconstruction-device-running",
-      "rotateY": 90
+      "base": "vstemporalreverser:block/machine/temporal-reconstruction-device-running"
     },
     "*-running60-east": {
       "base": "vstemporalreverser:block/machine/temporal-reconstruction-device-running",
-      "rotateY": 0
+      "rotateY": 270
     },
     "*-running60-south": {
       "base": "vstemporalreverser:block/machine/temporal-reconstruction-device-running",
-      "rotateY": 270
+      "rotateY": 180
     },
     "*-running60-west": {
       "base": "vstemporalreverser:block/machine/temporal-reconstruction-device-running",
-      "rotateY": 180
+      "rotateY": 90
     },
     "*-running80-north": {
-      "base": "vstemporalreverser:block/machine/temporal-reconstruction-device-running",
-      "rotateY": 90
+      "base": "vstemporalreverser:block/machine/temporal-reconstruction-device-running"
     },
     "*-running80-east": {
       "base": "vstemporalreverser:block/machine/temporal-reconstruction-device-running",
-      "rotateY": 0
+      "rotateY": 270
     },
     "*-running80-south": {
       "base": "vstemporalreverser:block/machine/temporal-reconstruction-device-running",
-      "rotateY": 270
+      "rotateY": 180
     },
     "*-running80-west": {
       "base": "vstemporalreverser:block/machine/temporal-reconstruction-device-running",
-      "rotateY": 180
+      "rotateY": 90
     },
     "*-running100-north": {
-      "base": "vstemporalreverser:block/machine/temporal-reconstruction-device-running",
-      "rotateY": 90
+      "base": "vstemporalreverser:block/machine/temporal-reconstruction-device-running"
     },
     "*-running100-east": {
       "base": "vstemporalreverser:block/machine/temporal-reconstruction-device-running",
-      "rotateY": 0
+      "rotateY": 270
     },
     "*-running100-south": {
       "base": "vstemporalreverser:block/machine/temporal-reconstruction-device-running",
-      "rotateY": 270
+      "rotateY": 180
     },
     "*-running100-west": {
       "base": "vstemporalreverser:block/machine/temporal-reconstruction-device-running",
-      "rotateY": 180
+      "rotateY": 90
     }
   },
   "textures": {
@@ -176,59 +178,16 @@
       "base": "vstemporalreverser:block/metal/sheet/cupronickel1"
     },
     "accessories": {
-      "base": "vstemporalreverser:block/machine/temporalgear_opaque"
+      "base": "vstemporalreverser:block/machine/statictranslocator/statictranslocator_glass_idle"
     },
     "gear": {
-      "base": "vstemporalreverser:block/machine/temporalgear_opaque"
+      "base": "vstemporalreverser:block/machine/statictranslocator/statictranslocator_glass_idle"
     },
     "housing": {
       "base": "vstemporalreverser:block/metal/sheet/cupronickel1"
     },
     "panelicon": {
-      "base": "vstemporalreverser:block/machine/recycle-panel-running"
-    }
-  },
-  "texturesByType": {
-    "*-idle-*": {
-      "accessories": {
-        "base": "vstemporalreverser:block/machine/statictranslocator/statictranslocator_glass_idle"
-      },
-      "gear": {
-        "base": "vstemporalreverser:block/machine/statictranslocator/statictranslocator_glass_idle"
-      },
-      "panelicon": {
-        "base": "vstemporalreverser:block/machine/recycle-panel-idle"
-      }
-    },
-    "*-running0-*": {
-      "progressfill": {
-        "base": "vstemporalreverser:block/machine/progress-fill-0"
-      }
-    },
-    "*-running20-*": {
-      "progressfill": {
-        "base": "vstemporalreverser:block/machine/progress-fill-20"
-      }
-    },
-    "*-running40-*": {
-      "progressfill": {
-        "base": "vstemporalreverser:block/machine/progress-fill-40"
-      }
-    },
-    "*-running60-*": {
-      "progressfill": {
-        "base": "vstemporalreverser:block/machine/progress-fill-60"
-      }
-    },
-    "*-running80-*": {
-      "progressfill": {
-        "base": "vstemporalreverser:block/machine/progress-fill-80"
-      }
-    },
-    "*-running100-*": {
-      "progressfill": {
-        "base": "vstemporalreverser:block/machine/progress-fill-100"
-      }
+      "base": "vstemporalreverser:block/machine/recycle-panel-idle"
     }
   },
   "creativeinventory": {
@@ -236,37 +195,51 @@
       "*-idle-east"
     ]
   },
+  "texturesByType": {
+    "*-running0-*": {
+      "accessories": { "base": "vstemporalreverser:block/machine/temporalgear_opaque" },
+      "gear": { "base": "vstemporalreverser:block/machine/temporalgear_opaque" },
+      "panelicon": { "base": "vstemporalreverser:block/machine/recycle-panel-running" },
+      "progressfill": { "base": "vstemporalreverser:block/machine/progress-fill-0" }
+    },
+    "*-running20-*": {
+      "accessories": { "base": "vstemporalreverser:block/machine/temporalgear_opaque" },
+      "gear": { "base": "vstemporalreverser:block/machine/temporalgear_opaque" },
+      "panelicon": { "base": "vstemporalreverser:block/machine/recycle-panel-running" },
+      "progressfill": { "base": "vstemporalreverser:block/machine/progress-fill-20" }
+    },
+    "*-running40-*": {
+      "accessories": { "base": "vstemporalreverser:block/machine/temporalgear_opaque" },
+      "gear": { "base": "vstemporalreverser:block/machine/temporalgear_opaque" },
+      "panelicon": { "base": "vstemporalreverser:block/machine/recycle-panel-running" },
+      "progressfill": { "base": "vstemporalreverser:block/machine/progress-fill-40" }
+    },
+    "*-running60-*": {
+      "accessories": { "base": "vstemporalreverser:block/machine/temporalgear_opaque" },
+      "gear": { "base": "vstemporalreverser:block/machine/temporalgear_opaque" },
+      "panelicon": { "base": "vstemporalreverser:block/machine/recycle-panel-running" },
+      "progressfill": { "base": "vstemporalreverser:block/machine/progress-fill-60" }
+    },
+    "*-running80-*": {
+      "accessories": { "base": "vstemporalreverser:block/machine/temporalgear_opaque" },
+      "gear": { "base": "vstemporalreverser:block/machine/temporalgear_opaque" },
+      "panelicon": { "base": "vstemporalreverser:block/machine/recycle-panel-running" },
+      "progressfill": { "base": "vstemporalreverser:block/machine/progress-fill-80" }
+    },
+    "*-running100-*": {
+      "accessories": { "base": "vstemporalreverser:block/machine/temporalgear_opaque" },
+      "gear": { "base": "vstemporalreverser:block/machine/temporalgear_opaque" },
+      "panelicon": { "base": "vstemporalreverser:block/machine/recycle-panel-running" },
+      "progressfill": { "base": "vstemporalreverser:block/machine/progress-fill-100" }
+    }
+  },
   "lightHsvByType": {
-    "*-running0-*": [
-      32,
-      3,
-      15
-    ],
-    "*-running20-*": [
-      32,
-      3,
-      15
-    ],
-    "*-running40-*": [
-      32,
-      3,
-      15
-    ],
-    "*-running60-*": [
-      32,
-      3,
-      15
-    ],
-    "*-running80-*": [
-      32,
-      3,
-      15
-    ],
-    "*-running100-*": [
-      32,
-      3,
-      15
-    ]
+    "*-running0-*": [32, 3, 15],
+    "*-running20-*": [32, 3, 15],
+    "*-running40-*": [32, 3, 15],
+    "*-running60-*": [32, 3, 15],
+    "*-running80-*": [32, 3, 15],
+    "*-running100-*": [32, 3, 15]
   },
   "blockmaterial": "Wood",
   "replaceable": 900,

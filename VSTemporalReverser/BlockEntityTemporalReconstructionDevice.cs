@@ -11,6 +11,7 @@ namespace VSTemporalReverser;
 
 public class BlockEntityTemporalReconstructionDevice : BlockEntityGenericContainer
 {
+    private static readonly string[] RunningVisualStates = ["-running-", "-running0-", "-running20-", "-running40-", "-running60-", "-running80-", "-running100-"];
     private const int RepairSlotCount = 8;
     private const int FuelSlotId = 8;
     private const int OutputSlotStart = 9;
@@ -27,11 +28,9 @@ public class BlockEntityTemporalReconstructionDevice : BlockEntityGenericContain
     private const int SwitchItemPauseDurationMs = 2400;
     private const int ShutdownEffectDurationMs = 7760;
     private const int CompletionHoldDurationMs = 500;
-    private const float WornOutActivationProgress = 0.2f;
     private const float MachineLoopBaseVolume = 0.22f;
     private const float MachineLoopFadeDistance = 16f;
     private const float MachineLoopFadeInSeconds = 0.9f;
-
     private bool isRepairing;
     private bool temporalStabilityLost;
     private bool outputCapacityBlocked;
@@ -41,8 +40,6 @@ public class BlockEntityTemporalReconstructionDevice : BlockEntityGenericContain
     private int activeRepairDurationMs;
     private int initialRemainingDurability;
     private float initialCondition = 1f;
-    private bool activeRepairStartedAsWornOut;
-    private bool activeRepairConvertedFromWornOut;
     private long nextVisualPulseAtMs;
     private long phaseStateListenerId;
     private long repairProgressListenerId;
@@ -91,8 +88,6 @@ public class BlockEntityTemporalReconstructionDevice : BlockEntityGenericContain
         activeRepairDurationMs = tree.GetInt("activeRepairDurationMs");
         initialRemainingDurability = tree.GetInt("initialRemainingDurability");
         initialCondition = tree.GetFloat("initialCondition", 1f);
-        activeRepairStartedAsWornOut = tree.GetBool("activeRepairStartedAsWornOut");
-        activeRepairConvertedFromWornOut = tree.GetBool("activeRepairConvertedFromWornOut");
         queuePauseUntilMs = tree.GetLong("queuePauseUntilMs");
         shutdownVisualUntilMs = tree.GetLong("shutdownVisualUntilMs");
         clientSoundCueId = tree.GetLong("clientSoundCueId");
@@ -126,8 +121,6 @@ public class BlockEntityTemporalReconstructionDevice : BlockEntityGenericContain
         tree.SetInt("activeRepairDurationMs", activeRepairDurationMs);
         tree.SetInt("initialRemainingDurability", initialRemainingDurability);
         tree.SetFloat("initialCondition", initialCondition);
-        tree.SetBool("activeRepairStartedAsWornOut", activeRepairStartedAsWornOut);
-        tree.SetBool("activeRepairConvertedFromWornOut", activeRepairConvertedFromWornOut);
         tree.SetLong("queuePauseUntilMs", queuePauseUntilMs);
         tree.SetLong("shutdownVisualUntilMs", shutdownVisualUntilMs);
         tree.SetLong("clientSoundCueId", clientSoundCueId);
@@ -252,16 +245,7 @@ public class BlockEntityTemporalReconstructionDevice : BlockEntityGenericContain
             return;
         }
 
-        ItemStack outputStack = CreateRepairOutputStack(repairStack, Api!.World);
-        int maxDurability = outputStack.Collectible.GetMaxDurability(outputStack);
-        if (maxDurability > 0)
-        {
-            outputStack.Collectible.SetDurability(outputStack, maxDurability);
-        }
-        else
-        {
-            outputStack.Attributes.SetFloat("condition", 1f);
-        }
+        ItemStack outputStack = CreateCompletedRepairOutputStack(repairStack);
 
         if (!CanStoreOutputs([outputStack]))
         {
@@ -276,7 +260,8 @@ public class BlockEntityTemporalReconstructionDevice : BlockEntityGenericContain
         StoreOutputs([outputStack]);
         outputCapacityBlocked = false;
 
-        bool hasQueuedFollowup = FindNextRepairableSlotId() >= 0 && HasTemporalDustFuel;
+        int nextRepairableSlotId = FindNextRepairableSlotId();
+        bool hasQueuedFollowup = nextRepairableSlotId >= 0 && HasTemporalDustFuel;
         if (hasQueuedFollowup)
         {
             StopRepair(playShutdown: false);
@@ -296,8 +281,6 @@ public class BlockEntityTemporalReconstructionDevice : BlockEntityGenericContain
         activeRepairDurationMs = 0;
         initialRemainingDurability = 0;
         initialCondition = 1f;
-        activeRepairStartedAsWornOut = false;
-        activeRepairConvertedFromWornOut = false;
         UnregisterRepairProgressListener();
         if (!IsShutdownVisualActive())
         {
@@ -338,7 +321,9 @@ public class BlockEntityTemporalReconstructionDevice : BlockEntityGenericContain
             return;
         }
 
-        if (Api?.Side == EnumAppSide.Server && !isRepairing && HasTemporalDustFuel && FindNextRepairableSlotId() >= 0)
+        int nextRepairableSlotId = FindNextRepairableSlotId();
+
+        if (Api?.Side == EnumAppSide.Server && !isRepairing && HasTemporalDustFuel && nextRepairableSlotId >= 0)
         {
             if (shutdownVisualUntilMs > 0)
             {
@@ -380,9 +365,11 @@ public class BlockEntityTemporalReconstructionDevice : BlockEntityGenericContain
             return;
         }
 
+        int nextRepairableSlotId = FindNextRepairableSlotId();
+
         outputCapacityBlocked = HasTemporalDustFuel
-            && FindNextRepairableSlotId() >= 0
-            && !CanStoreOutputsForNextRepair();
+            && nextRepairableSlotId >= 0
+            && !CanStoreOutputsForNextRepair(nextRepairableSlotId);
 
         if (IsQueuePauseActive())
         {
@@ -408,7 +395,7 @@ public class BlockEntityTemporalReconstructionDevice : BlockEntityGenericContain
             return;
         }
 
-        if (!outputCapacityBlocked && FindNextRepairableSlotId() >= 0)
+        if (!outputCapacityBlocked && nextRepairableSlotId >= 0)
         {
             BeginSwitchPause();
         }
@@ -561,47 +548,12 @@ public class BlockEntityTemporalReconstructionDevice : BlockEntityGenericContain
         double elapsedMs = Math.Max(0, Api.World.ElapsedMilliseconds - repairStartedAtMs);
         float progress = GameMath.Clamp((float)(elapsedMs / activeRepairDurationMs), 0f, 1f);
 
-        if (BrokenToolStackHelper.IsBrokenProxy(repairStack))
-        {
-            if (!activeRepairStartedAsWornOut || progress < WornOutActivationProgress || activeRepairConvertedFromWornOut)
-            {
-                return;
-            }
-
-            if (!BrokenToolStackHelper.TryGetOriginalStack(repairStack, Api.World, out ItemStack? originalStack) || originalStack == null)
-            {
-                return;
-            }
-
-            int maxOriginalDurability = originalStack.Collectible.GetMaxDurability(originalStack);
-            if (maxOriginalDurability > 0)
-            {
-                originalStack.Collectible.SetDurability(originalStack, Math.Min(1, maxOriginalDurability));
-            }
-
-            repairSlot!.Itemstack = originalStack;
-            initialRemainingDurability = maxOriginalDurability > 0 ? 1 : 0;
-            initialCondition = originalStack.Attributes.GetFloat("condition", 1f);
-            activeRepairConvertedFromWornOut = true;
-            Inventory.MarkSlotDirty(activeRepairSlotId);
-            MarkDirty(true);
-            return;
-        }
-
-        float durabilityProgress = progress;
-        if (activeRepairStartedAsWornOut)
-        {
-            durabilityProgress = progress <= WornOutActivationProgress
-                ? 0f
-                : GameMath.Clamp((progress - WornOutActivationProgress) / (1f - WornOutActivationProgress), 0f, 1f);
-        }
-
         int maxDurability = repairStack.Collectible.GetMaxDurability(repairStack);
         if (maxDurability > 0)
         {
             int missingDurability = Math.Max(0, maxDurability - initialRemainingDurability);
-            int restoredDurability = (int)Math.Floor(missingDurability * durabilityProgress);
-            if (durabilityProgress < 1f)
+            int restoredDurability = (int)Math.Floor(missingDurability * progress);
+            if (progress < 1f)
             {
                 restoredDurability = (restoredDurability / DurabilityRepairStep) * DurabilityRepairStep;
             }
@@ -700,13 +652,12 @@ public class BlockEntityTemporalReconstructionDevice : BlockEntityGenericContain
 
         string currentPath = Block.Code.Path;
         string desiredSegment = running ? GetRunningVisualStateSegment() : "-idle-";
-        if (currentPath.Contains(desiredSegment, System.StringComparison.OrdinalIgnoreCase))
+        if (currentPath.Contains(desiredSegment, StringComparison.OrdinalIgnoreCase))
         {
             return;
         }
 
         string updatedPath = ReplaceVisualStateSegment(currentPath, desiredSegment);
-
         Block? targetBlock = Api.World.GetBlock(new AssetLocation(Block.Code.Domain, updatedPath));
         if (targetBlock == null || targetBlock.Id == Block.Id)
         {
@@ -739,11 +690,10 @@ public class BlockEntityTemporalReconstructionDevice : BlockEntityGenericContain
 
     private static string ReplaceVisualStateSegment(string path, string desiredSegment)
     {
-        string updated = path.Replace("-idle-", desiredSegment, System.StringComparison.OrdinalIgnoreCase);
-        string[] runningStates = ["-running-", "-running0-", "-running20-", "-running40-", "-running60-", "-running80-", "-running100-"];
-        foreach (string state in runningStates)
+        string updated = path.Replace("-idle-", desiredSegment, StringComparison.OrdinalIgnoreCase);
+        foreach (string state in RunningVisualStates)
         {
-            updated = updated.Replace(state, desiredSegment, System.StringComparison.OrdinalIgnoreCase);
+            updated = updated.Replace(state, desiredSegment, StringComparison.OrdinalIgnoreCase);
         }
 
         return updated;
@@ -945,7 +895,7 @@ public class BlockEntityTemporalReconstructionDevice : BlockEntityGenericContain
             return;
         }
 
-        if (!CanStoreOutputsForNextRepair())
+        if (!CanStoreOutputsForNextRepair(nextSlotId))
         {
             outputCapacityBlocked = true;
             MarkDirty(true);
@@ -961,8 +911,6 @@ public class BlockEntityTemporalReconstructionDevice : BlockEntityGenericContain
         temporalStabilityLost = false;
         initialRemainingDurability = repairStack.Collectible.GetRemainingDurability(repairStack);
         initialCondition = repairStack.Attributes.GetFloat("condition", 1f);
-        activeRepairStartedAsWornOut = BrokenToolStackHelper.IsBrokenProxy(repairStack);
-        activeRepairConvertedFromWornOut = false;
         repairCompleteAtMs = repairStartedAtMs + activeRepairDurationMs + CompletionHoldDurationMs;
         suppressInventoryChanged = true;
         try
@@ -1197,11 +1145,6 @@ public class BlockEntityTemporalReconstructionDevice : BlockEntityGenericContain
             return false;
         }
 
-        if (BrokenToolStackHelper.IsBrokenProxy(stack))
-        {
-            return true;
-        }
-
         if (IsTemporalReverserItem(stack))
         {
             return false;
@@ -1223,11 +1166,6 @@ public class BlockEntityTemporalReconstructionDevice : BlockEntityGenericContain
 
     private static bool NeedsRepair(ItemStack stack)
     {
-        if (BrokenToolStackHelper.IsBrokenProxy(stack))
-        {
-            return true;
-        }
-
         int maxDurability = stack.Collectible.GetMaxDurability(stack);
         if (maxDurability > 0)
         {
@@ -1246,19 +1184,6 @@ public class BlockEntityTemporalReconstructionDevice : BlockEntityGenericContain
 
     private int GetRepairDurationMs(ItemStack stack)
     {
-        if (BrokenToolStackHelper.IsBrokenProxy(stack))
-        {
-            ItemStack outputStack = CreateRepairOutputStack(stack, Api!.World);
-            int proxyTargetMaxDurability = outputStack.Collectible.GetMaxDurability(outputStack);
-            if (proxyTargetMaxDurability > 0)
-            {
-                double proxyDurationMs = proxyTargetMaxDurability * (ToolRepairDurationPer100DurabilityMs / 100d);
-                return (int)Math.Clamp(Math.Round(proxyDurationMs), 0, ToolMaxRepairDurationMs);
-            }
-
-            return ClothingMaxRepairDurationMs;
-        }
-
         int maxDurability = stack.Collectible.GetMaxDurability(stack);
         if (maxDurability > 0)
         {
@@ -1295,9 +1220,8 @@ public class BlockEntityTemporalReconstructionDevice : BlockEntityGenericContain
         return FindFirstOccupiedRepairSlotId();
     }
 
-    private bool CanStoreOutputsForNextRepair()
+    private bool CanStoreOutputsForNextRepair(int nextSlotId)
     {
-        int nextSlotId = FindNextRepairableSlotId();
         if (nextSlotId < 0)
         {
             return true;
@@ -1309,7 +1233,13 @@ public class BlockEntityTemporalReconstructionDevice : BlockEntityGenericContain
             return false;
         }
 
-        ItemStack outputStack = CreateRepairOutputStack(stack, Api!.World);
+        ItemStack outputStack = CreateCompletedRepairOutputStack(stack);
+        return CanStoreOutputs([outputStack]);
+    }
+
+    private static ItemStack CreateCompletedRepairOutputStack(ItemStack stack)
+    {
+        ItemStack outputStack = stack.Clone();
         int maxDurability = outputStack.Collectible.GetMaxDurability(outputStack);
         if (maxDurability > 0)
         {
@@ -1320,18 +1250,9 @@ public class BlockEntityTemporalReconstructionDevice : BlockEntityGenericContain
             outputStack.Attributes.SetFloat("condition", 1f);
         }
 
-        return CanStoreOutputs([outputStack]);
+        return outputStack;
     }
 
-    private static ItemStack CreateRepairOutputStack(ItemStack stack, IWorldAccessor world)
-    {
-        if (BrokenToolStackHelper.TryGetOriginalStack(stack, world, out ItemStack? originalStack) && originalStack != null)
-        {
-            return originalStack;
-        }
-
-        return stack.Clone();
-    }
 
     private bool TryFinalizeCompletedActiveRepair()
     {

@@ -1,6 +1,6 @@
 {
   "code": "torchholder",
-  "class": "BlockTorchHolder",
+  "class": "BlockRestoredTorchHolder",
   "entityClass": "TorchHolder",
   "behaviors": [
     {
@@ -90,7 +90,7 @@
     ],
     "*-filled-*": [
       { "code": "vstemporalreverser:torchholder-{material}-empty-north" },
-      { "code": "torch-basic-lit-up" }
+      { "code": "game:torch-basic-lit-up" }
     ]
   },
   "particlePropertiesByType": {
